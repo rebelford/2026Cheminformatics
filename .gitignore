@@ -1,0 +1,191 @@
+# ==================================================
+# PART 1 — Repo-specific generated artifacts
+# (Local products created by notebooks, scripts,
+#  model training, or data acquisition)
+# ==================================================
+
+# Project outputs (never canonical)
+data/**/*
+models/**/*
+results/**/*
+outputs/**/*
+cache/**/*
+.jupyter_cache/
+
+# Keep directory structure under version control
+# (.gitkeep files are intentional placeholders)
+!data/.gitkeep
+!models/.gitkeep
+!results/.gitkeep
+!outputs/.gitkeep
+
+# --------------------------------------------------
+# Generated figures (NOT book documentation)
+# --------------------------------------------------
+outputs/**/*.png
+outputs/**/*.svg
+outputs/**/*.pdf
+
+results/**/*.png
+results/**/*.svg
+results/**/*.pdf
+
+# --------------------------------------------------
+# Jupyter Book static assets
+# --------------------------------------------------
+# Track custom CSS and documentation images
+_static/*
+!_static/custom.css
+!_static/**/*.png
+!_static/**/*.svg
+!_static/**/*.js
+!_static/**/*.woff*
+
+# Allow documentation images extracted from notebooks
+!content/**/images/**
+
+# ==================================================
+# PART 2 — General rules (portable across repos)
+# ==================================================
+
+# --------------------------------------------------
+# Jupyter / IPython
+# --------------------------------------------------
+.ipynb_checkpoints/
+profile_default/
+ipython_config.py
+
+# Jupyter Book build artifacts
+_build/
+build/
+.jupyter-book/
+
+# Jupyter runtime files (Linux / WSL)
+~/.local/share/jupyter/runtime/
+
+# --------------------------------------------------
+# Python bytecode / caches
+# --------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --------------------------------------------------
+# Binary / ML artifacts
+# --------------------------------------------------
+*.npy
+*.npz
+*.joblib
+*.pkl
+*.h5
+
+# --------------------------------------------------
+# Packaging / distribution
+# --------------------------------------------------
+.Python
+dist/
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg
+*.egg-info/
+.installed.cfg
+MANIFEST
+pip-wheel-metadata/
+
+# --------------------------------------------------
+# PyInstaller
+# --------------------------------------------------
+*.manifest
+*.spec
+
+# --------------------------------------------------
+# Testing / coverage
+# --------------------------------------------------
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# --------------------------------------------------
+# Logs / local databases
+# --------------------------------------------------
+*.log
+*.sqlite3
+*.db
+*.bak
+pip-log.txt
+pip-delete-this-directory.txt
+
+# --------------------------------------------------
+# Virtual environments
+# --------------------------------------------------
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.env
+conda-env/
+
+# --------------------------------------------------
+# Dependency managers
+# --------------------------------------------------
+.pdm.toml
+.pdm-python
+.pdm-build/
+__pypackages__/
+
+# --------------------------------------------------
+# IDEs / editors
+# --------------------------------------------------
+.vscode/
+.idea/
+*.code-workspace
+.spyderproject
+.spyproject
+.ropeproject
+
+# --------------------------------------------------
+# Documentation tools
+# --------------------------------------------------
+docs/_build/
+site/
+
+# --------------------------------------------------
+# OS-specific junk
+# --------------------------------------------------
+.DS_Store
+Thumbs.db
+*:Zone.Identifier
+
+# ==================================================
+# PART 3 — Repo-specific exceptions
+# (Canonical inputs or documentation we explicitly
+#  want to track despite ignore rules above)
+# ==================================================
+
+# Examples (uncomment as needed):
+# !data/reference/periodic_table.csv
+# !data/reference/assay_metadata.csv
+# !models/README.md
+# !results/README.md

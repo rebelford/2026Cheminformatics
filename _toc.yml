@@ -1,0 +1,23 @@
+format: jb-book
+root: content/intro
+
+parts:
+  - caption: Core Modules
+    chapters:
+    - file: content/modules/01_PythonPrimer/README
+      sections:
+      - file: content/modules/01_PythonPrimer/01_1_python-basics
+      - file: content/modules/01_PythonPrimer/01_2_python-intermediate
+    - file: content/modules/10_SupervisedML/README
+      sections:
+      - file: content/modules/10_SupervisedML/10_1_data_prep
+      - file: content/modules/10_SupervisedML/10_0_Intro
+
+  - caption: Appendices
+    chapters:
+    - file: content/appendices/App_1/README
+      sections:
+      - file: content/appendices/App_1/A_01-1_OS
+    - file: content/appendices/App_10/README
+      sections:
+      - file: content/appendices/App_10/A_10_AID_Selector

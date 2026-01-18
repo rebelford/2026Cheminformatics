@@ -1,0 +1,12 @@
+{
+  "assay": "AID743139",
+  "split_name": "90_10",
+  "description": "Stratified 90/10 train/test split",
+  "test_fraction": 0.1,
+  "train_fraction": 0.9,
+  "stratified": true,
+  "random_state": 3100,
+  "labels": "Active vs Inactive",
+  "features": "MACCS (variance-filtered)",
+  "source_feature_file": "AID743139_MACCS_activites_noSalt_20260104_v1.csv"
+}

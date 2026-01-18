@@ -1,0 +1,1156 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>BioAssay Screening: Enough Actives &#8212; 2026 Cheminformatics OLCC</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/appendices/App_10/A_10_AID_Selector';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="prev" title="Appendix 10: Supervised Machine Learning" href="README.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="2026 Cheminformatics OLCC - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="2026 Cheminformatics OLCC - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules/01_PythonPrimer/README.html">Module 1 Python Primers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01_PythonPrimer/01_1_python-basics.html">1.1 Python Basics</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01_PythonPrimer/01_2_python-intermediate.html">1.2 Intermediate Python</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules/10_SupervisedML/README.html">Module 10: Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/10_SupervisedML/10_1_data_prep.html">10.1: Data Preparation and Feature Engineering</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../modules/10_SupervisedML/10_0_Intro.html">10.0 Intro</a></li>
+
+
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../App_1/README.html">Appendix 1.1: Getting Set Up</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../App_1/A_01-1_OS.html">Appendix 1: Operating System</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="README.html">Appendix 10: Supervised Machine Learning</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">BioAssay Screening: Enough Actives</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://nanohub.org/tools/datachemolcc/hub/user-redirect/git-pull?repo=https%3A//github.com/rebelford/2026Cheminformatics&urlpath=lab/tree/2026Cheminformatics/content/appendices/App_10/A_10_AID_Selector.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/rebelford/2026Cheminformatics" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rebelford/2026Cheminformatics/issues/new?title=Issue%20on%20page%20%2Fcontent/appendices/App_10/A_10_AID_Selector.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/content/appendices/App_10/A_10_AID_Selector.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>BioAssay Screening: Enough Actives</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="bioassay-screening-enough-actives">
+<h1>BioAssay Screening: Enough Actives<a class="headerlink" href="#bioassay-screening-enough-actives" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_assay_outcome_counts</span><span class="p">(</span><span class="n">aid</span><span class="p">,</span> <span class="n">count_basis</span><span class="o">=</span><span class="s2">&quot;CID&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieve Active/Inactive/Inconclusive/Total counts for a PubChem BioAssay AID.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    aid : int</span>
+<span class="sd">        PubChem Assay ID.</span>
+<span class="sd">    count_basis : str</span>
+<span class="sd">        &quot;CID&quot; (default) counts unique compounds (recommended for cheminformatics/ML),</span>
+<span class="sd">        or &quot;SID&quot; counts submitted substances.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict</span>
+<span class="sd">        Counts and basis used.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://pubchem.ncbi.nlm.nih.gov/rest/pug/assay/aid/</span><span class="si">{</span><span class="n">aid</span><span class="si">}</span><span class="s2">/summary/JSON&quot;</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+
+    <span class="n">summary</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;AssaySummaries&quot;</span><span class="p">][</span><span class="s2">&quot;AssaySummary&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">basis</span> <span class="o">=</span> <span class="n">count_basis</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">basis</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;CID&quot;</span><span class="p">,</span> <span class="s2">&quot;SID&quot;</span><span class="p">}:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;count_basis must be &#39;CID&#39; or &#39;SID&#39;&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Preferred schema (what you are seeing)</span>
+    <span class="k">if</span> <span class="n">basis</span> <span class="o">==</span> <span class="s2">&quot;CID&quot;</span> <span class="ow">and</span> <span class="s2">&quot;CIDCountAll&quot;</span> <span class="ow">in</span> <span class="n">summary</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;Basis&quot;</span><span class="p">:</span> <span class="s2">&quot;CID&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Total&quot;</span><span class="p">:</span> <span class="n">summary</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;CIDCountAll&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="s2">&quot;Active&quot;</span><span class="p">:</span> <span class="n">summary</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;CIDCountActive&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="s2">&quot;Inactive&quot;</span><span class="p">:</span> <span class="n">summary</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;CIDCountInactive&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="s2">&quot;Inconclusive&quot;</span><span class="p">:</span> <span class="n">summary</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;CIDCountInconclusive&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="s2">&quot;Unspecified&quot;</span><span class="p">:</span> <span class="n">summary</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;CIDCountUnspecified&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="s2">&quot;Probe&quot;</span><span class="p">:</span> <span class="n">summary</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;CIDCountProbe&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="p">}</span>
+
+    <span class="k">if</span> <span class="n">basis</span> <span class="o">==</span> <span class="s2">&quot;SID&quot;</span> <span class="ow">and</span> <span class="s2">&quot;SIDCountAll&quot;</span> <span class="ow">in</span> <span class="n">summary</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;Basis&quot;</span><span class="p">:</span> <span class="s2">&quot;SID&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Total&quot;</span><span class="p">:</span> <span class="n">summary</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SIDCountAll&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="s2">&quot;Active&quot;</span><span class="p">:</span> <span class="n">summary</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SIDCountActive&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="s2">&quot;Inactive&quot;</span><span class="p">:</span> <span class="n">summary</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SIDCountInactive&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="s2">&quot;Inconclusive&quot;</span><span class="p">:</span> <span class="n">summary</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SIDCountInconclusive&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="s2">&quot;Unspecified&quot;</span><span class="p">:</span> <span class="n">summary</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SIDCountUnspecified&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="s2">&quot;Probe&quot;</span><span class="p">:</span> <span class="n">summary</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SIDCountProbe&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="p">}</span>
+
+    <span class="c1"># Fallback schema (less common, but we handle it)</span>
+    <span class="c1"># Try a couple of plausible alternatives if PubChem changes formatting.</span>
+    <span class="n">alt_map</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Total&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;TotalCount&quot;</span><span class="p">,</span> <span class="s2">&quot;CIDCount&quot;</span><span class="p">,</span> <span class="s2">&quot;SIDCount&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Active&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ActiveCount&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Inactive&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;InactiveCount&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Inconclusive&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;InconclusiveCount&quot;</span><span class="p">],</span>
+    <span class="p">}</span>
+
+    <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Basis&quot;</span><span class="p">:</span> <span class="n">basis</span><span class="p">}</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">candidates</span> <span class="ow">in</span> <span class="n">alt_map</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">out</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">candidates</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">summary</span><span class="p">:</span>
+                <span class="n">out</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">summary</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">out</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counts_cid</span> <span class="o">=</span> <span class="n">get_assay_outcome_counts</span><span class="p">(</span><span class="mi">743139</span><span class="p">,</span> <span class="s2">&quot;CID&quot;</span><span class="p">)</span>
+<span class="n">counts_sid</span> <span class="o">=</span> <span class="n">get_assay_outcome_counts</span><span class="p">(</span><span class="mi">743139</span><span class="p">,</span> <span class="s2">&quot;SID&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CID counts:&quot;</span><span class="p">,</span> <span class="n">counts_cid</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SID counts:&quot;</span><span class="p">,</span> <span class="n">counts_sid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CID counts: {&#39;Basis&#39;: &#39;CID&#39;, &#39;Total&#39;: 8099, &#39;Active&#39;: 326, &#39;Inactive&#39;: 6114, &#39;Inconclusive&#39;: 2092, &#39;Unspecified&#39;: 0, &#39;Probe&#39;: 0}
+SID counts: {&#39;Basis&#39;: &#39;SID&#39;, &#39;Total&#39;: 10486, &#39;Active&#39;: 379, &#39;Inactive&#39;: 7562, &#39;Inconclusive&#39;: 2545, &#39;Unspecified&#39;: 0, &#39;Probe&#39;: 0}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_assay_summary</span><span class="p">(</span><span class="n">aid</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieve assay name and outcome counts (CID and SID)</span>
+<span class="sd">    for a PubChem BioAssay AID.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://pubchem.ncbi.nlm.nih.gov/rest/pug/assay/aid/</span><span class="si">{</span><span class="n">aid</span><span class="si">}</span><span class="s2">/summary/JSON&quot;</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+
+    <span class="n">s</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;AssaySummaries&quot;</span><span class="p">][</span><span class="s2">&quot;AssaySummary&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;AID&quot;</span><span class="p">:</span> <span class="n">aid</span><span class="p">,</span>
+        <span class="s2">&quot;AssayName&quot;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
+        
+        <span class="c1"># CID counts (preferred for ML)</span>
+        <span class="s2">&quot;CID_Total&quot;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;CIDCountAll&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="s2">&quot;CID_Active&quot;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;CIDCountActive&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="s2">&quot;CID_Inactive&quot;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;CIDCountInactive&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="s2">&quot;CID_Inconclusive&quot;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;CIDCountInconclusive&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+
+        <span class="c1"># SID counts (for completeness)</span>
+        <span class="s2">&quot;SID_Total&quot;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SIDCountAll&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="s2">&quot;SID_Active&quot;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SIDCountActive&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="s2">&quot;SID_Inactive&quot;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SIDCountInactive&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="s2">&quot;SID_Inconclusive&quot;</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;SIDCountInconclusive&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">candidate_aids</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mi">743040</span><span class="p">,</span>  <span class="c1"># ERα agonist</span>
+    <span class="mi">743077</span><span class="p">,</span>  <span class="c1"># ERα antagonist</span>
+    <span class="mi">720552</span><span class="p">,</span>  <span class="c1"># AR antagonist</span>
+    <span class="mi">720551</span><span class="p">,</span>  <span class="c1"># AR agonist</span>
+    <span class="mi">743122</span><span class="p">,</span>  <span class="c1"># AhR activation</span>
+    <span class="mi">743065</span><span class="p">,</span>  <span class="c1"># PPARγ</span>
+    <span class="mi">743067</span><span class="p">,</span>  <span class="c1"># PPARδ</span>
+    <span class="mi">743053</span><span class="p">,</span>  <span class="c1"># NRF2 antioxidant response</span>
+<span class="p">]</span>
+
+<span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">aid</span> <span class="ow">in</span> <span class="n">candidate_aids</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_assay_summary</span><span class="p">(</span><span class="n">aid</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s2">&quot;AID&quot;</span><span class="p">:</span> <span class="n">aid</span><span class="p">,</span>
+            <span class="s2">&quot;AssayName&quot;</span><span class="p">:</span> <span class="s2">&quot;ERROR&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Error&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="p">})</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AID</th>
+      <th>AssayName</th>
+      <th>CID_Total</th>
+      <th>CID_Active</th>
+      <th>CID_Inactive</th>
+      <th>CID_Inconclusive</th>
+      <th>SID_Total</th>
+      <th>SID_Active</th>
+      <th>SID_Inactive</th>
+      <th>SID_Inconclusive</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>743040</td>
+      <td>qHTS assay to identify small molecule agonists...</td>
+      <td>8099</td>
+      <td>341</td>
+      <td>7706</td>
+      <td>201</td>
+      <td>10486</td>
+      <td>461</td>
+      <td>9812</td>
+      <td>213</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>743077</td>
+      <td>qHTS assay to identify small molecule agonists...</td>
+      <td>8099</td>
+      <td>438</td>
+      <td>7303</td>
+      <td>736</td>
+      <td>10486</td>
+      <td>589</td>
+      <td>9089</td>
+      <td>808</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>720552</td>
+      <td>qHTS assay for small molecule agonists of the ...</td>
+      <td>8099</td>
+      <td>527</td>
+      <td>6960</td>
+      <td>816</td>
+      <td>10488</td>
+      <td>659</td>
+      <td>8888</td>
+      <td>941</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>720551</td>
+      <td>qHTS for Inhibitors of KCHN2 3.1: Wildtype qHTS</td>
+      <td>343666</td>
+      <td>1267</td>
+      <td>341674</td>
+      <td>730</td>
+      <td>343909</td>
+      <td>1267</td>
+      <td>341912</td>
+      <td>730</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>743122</td>
+      <td>qHTS assay to identify small molecule that act...</td>
+      <td>8099</td>
+      <td>875</td>
+      <td>6397</td>
+      <td>1357</td>
+      <td>10486</td>
+      <td>1063</td>
+      <td>7945</td>
+      <td>1478</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>743065</td>
+      <td>qHTS assay to identify small molecule antagoni...</td>
+      <td>8099</td>
+      <td>1536</td>
+      <td>5937</td>
+      <td>912</td>
+      <td>10486</td>
+      <td>1880</td>
+      <td>7568</td>
+      <td>1038</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>743067</td>
+      <td>qHTS assay to identify small molecule antagoni...</td>
+      <td>8099</td>
+      <td>378</td>
+      <td>5631</td>
+      <td>2491</td>
+      <td>10486</td>
+      <td>426</td>
+      <td>7088</td>
+      <td>2972</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>743053</td>
+      <td>qHTS assay to identify small molecule agonists...</td>
+      <td>8099</td>
+      <td>260</td>
+      <td>7168</td>
+      <td>918</td>
+      <td>10486</td>
+      <td>372</td>
+      <td>9070</td>
+      <td>1044</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;CID_ActiveFraction&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CID_Active&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CID_Total&quot;</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;CID_InconclusiveFraction&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CID_Inconclusive&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CID_Total&quot;</span><span class="p">]</span>
+
+<span class="n">df</span><span class="p">[[</span>
+    <span class="s2">&quot;AID&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;AssayName&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;CID_Total&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;CID_Active&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;CID_ActiveFraction&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;CID_InconclusiveFraction&quot;</span>
+<span class="p">]]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;CID_ActiveFraction&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AID</th>
+      <th>AssayName</th>
+      <th>CID_Total</th>
+      <th>CID_Active</th>
+      <th>CID_ActiveFraction</th>
+      <th>CID_InconclusiveFraction</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5</th>
+      <td>743065</td>
+      <td>qHTS assay to identify small molecule antagoni...</td>
+      <td>8099</td>
+      <td>1536</td>
+      <td>0.189653</td>
+      <td>0.112606</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>743122</td>
+      <td>qHTS assay to identify small molecule that act...</td>
+      <td>8099</td>
+      <td>875</td>
+      <td>0.108038</td>
+      <td>0.167552</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>720552</td>
+      <td>qHTS assay for small molecule agonists of the ...</td>
+      <td>8099</td>
+      <td>527</td>
+      <td>0.065070</td>
+      <td>0.100753</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>743077</td>
+      <td>qHTS assay to identify small molecule agonists...</td>
+      <td>8099</td>
+      <td>438</td>
+      <td>0.054081</td>
+      <td>0.090875</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>743067</td>
+      <td>qHTS assay to identify small molecule antagoni...</td>
+      <td>8099</td>
+      <td>378</td>
+      <td>0.046672</td>
+      <td>0.307569</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>743040</td>
+      <td>qHTS assay to identify small molecule agonists...</td>
+      <td>8099</td>
+      <td>341</td>
+      <td>0.042104</td>
+      <td>0.024818</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>743053</td>
+      <td>qHTS assay to identify small molecule agonists...</td>
+      <td>8099</td>
+      <td>260</td>
+      <td>0.032103</td>
+      <td>0.113347</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>720551</td>
+      <td>qHTS for Inhibitors of KCHN2 3.1: Wildtype qHTS</td>
+      <td>343666</td>
+      <td>1267</td>
+      <td>0.003687</td>
+      <td>0.002124</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">suitability</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;CID_Total&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">5000</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Too Small&quot;</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;CID_Active&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Too Few Actives&quot;</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;CID_ActiveFraction&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.01</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Advanced / Highly Imbalanced&quot;</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;CID_ActiveFraction&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Intermediate&quot;</span>
+    <span class="k">return</span> <span class="s2">&quot;Intro-Friendly&quot;</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;SuggestedUse&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">suitability</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AID</th>
+      <th>AssayName</th>
+      <th>CID_Total</th>
+      <th>CID_Active</th>
+      <th>CID_Inactive</th>
+      <th>CID_Inconclusive</th>
+      <th>SID_Total</th>
+      <th>SID_Active</th>
+      <th>SID_Inactive</th>
+      <th>SID_Inconclusive</th>
+      <th>CID_ActiveFraction</th>
+      <th>CID_InconclusiveFraction</th>
+      <th>SuggestedUse</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>743040</td>
+      <td>qHTS assay to identify small molecule agonists...</td>
+      <td>8099</td>
+      <td>341</td>
+      <td>7706</td>
+      <td>201</td>
+      <td>10486</td>
+      <td>461</td>
+      <td>9812</td>
+      <td>213</td>
+      <td>0.042104</td>
+      <td>0.024818</td>
+      <td>Intermediate</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>743077</td>
+      <td>qHTS assay to identify small molecule agonists...</td>
+      <td>8099</td>
+      <td>438</td>
+      <td>7303</td>
+      <td>736</td>
+      <td>10486</td>
+      <td>589</td>
+      <td>9089</td>
+      <td>808</td>
+      <td>0.054081</td>
+      <td>0.090875</td>
+      <td>Intro-Friendly</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>720552</td>
+      <td>qHTS assay for small molecule agonists of the ...</td>
+      <td>8099</td>
+      <td>527</td>
+      <td>6960</td>
+      <td>816</td>
+      <td>10488</td>
+      <td>659</td>
+      <td>8888</td>
+      <td>941</td>
+      <td>0.065070</td>
+      <td>0.100753</td>
+      <td>Intro-Friendly</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>720551</td>
+      <td>qHTS for Inhibitors of KCHN2 3.1: Wildtype qHTS</td>
+      <td>343666</td>
+      <td>1267</td>
+      <td>341674</td>
+      <td>730</td>
+      <td>343909</td>
+      <td>1267</td>
+      <td>341912</td>
+      <td>730</td>
+      <td>0.003687</td>
+      <td>0.002124</td>
+      <td>Advanced / Highly Imbalanced</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>743122</td>
+      <td>qHTS assay to identify small molecule that act...</td>
+      <td>8099</td>
+      <td>875</td>
+      <td>6397</td>
+      <td>1357</td>
+      <td>10486</td>
+      <td>1063</td>
+      <td>7945</td>
+      <td>1478</td>
+      <td>0.108038</td>
+      <td>0.167552</td>
+      <td>Intro-Friendly</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>743065</td>
+      <td>qHTS assay to identify small molecule antagoni...</td>
+      <td>8099</td>
+      <td>1536</td>
+      <td>5937</td>
+      <td>912</td>
+      <td>10486</td>
+      <td>1880</td>
+      <td>7568</td>
+      <td>1038</td>
+      <td>0.189653</td>
+      <td>0.112606</td>
+      <td>Intro-Friendly</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>743067</td>
+      <td>qHTS assay to identify small molecule antagoni...</td>
+      <td>8099</td>
+      <td>378</td>
+      <td>5631</td>
+      <td>2491</td>
+      <td>10486</td>
+      <td>426</td>
+      <td>7088</td>
+      <td>2972</td>
+      <td>0.046672</td>
+      <td>0.307569</td>
+      <td>Intermediate</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>743053</td>
+      <td>qHTS assay to identify small molecule agonists...</td>
+      <td>8099</td>
+      <td>260</td>
+      <td>7168</td>
+      <td>918</td>
+      <td>10486</td>
+      <td>372</td>
+      <td>9070</td>
+      <td>1044</td>
+      <td>0.032103</td>
+      <td>0.113347</td>
+      <td>Intermediate</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "datachem"
+        },
+        kernelOptions: {
+            name: "datachem",
+            path: "./content/appendices/App_10"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'datachem'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="README.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Appendix 10: Supervised Machine Learning</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Robert Belford
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <script async src="https://hypothes.is/embed.js"></script>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

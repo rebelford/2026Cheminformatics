@@ -5,19 +5,18 @@
 # ==================================================
 
 # Project outputs (never canonical)
-data/**/*
-models/**/*
-results/**/*
-outputs/**/*
-cache/**/*
+# Generated artifacts inside book content
+content/**/data/**/*
+content/**/models/**/*
+content/**/results/**/*
+content/**/outputs/**/*
+content/**/cache/**/*
+
 .jupyter_cache/
 
 # Keep directory structure under version control
 # (.gitkeep files are intentional placeholders)
-!data/.gitkeep
-!models/.gitkeep
-!results/.gitkeep
-!outputs/.gitkeep
+
 
 # --------------------------------------------------
 # Generated figures (NOT book documentation)

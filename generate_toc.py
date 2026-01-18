@@ -11,13 +11,15 @@ TOC = BOOK_ROOT / "_toc.yml"
 # --------------------------------------------------
 # Helpers
 # --------------------------------------------------
-def numeric_key(name):
+def numeric_key(name: str):
     """
-    Extract leading integer for numeric sorting.
-    Non-numeric names sort last.
+    Extract numeric components for safe hierarchical sorting.
+    Examples:
+      10_0_Intro.ipynb -> (10, 0)
+      2_3_test.md     -> (2, 3)
     """
-    m = re.match(r"(\d+)", name)
-    return int(m.group(1)) if m else 9999
+    nums = re.findall(r"\d+", name)
+    return tuple(int(n) for n in nums) if nums else (9999,)
 
 
 def collect_chapter(dir_path: Path):
@@ -61,6 +63,7 @@ def collect_part(base_dir: Path):
 
 
 # --------------------------------------------------
+# --------------------------------------------------
 # Write TOC
 # --------------------------------------------------
 with open(TOC, "w", encoding="utf-8") as f:
@@ -98,5 +101,5 @@ with open(TOC, "w", encoding="utf-8") as f:
                 f.write("      sections:\n")
                 for sec in ch["sections"]:
                     f.write(f"      - file: {sec.as_posix()}\n")
-
 print("✅ _toc.yml regenerated from directory structure.")
+

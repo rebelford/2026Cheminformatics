@@ -10,8 +10,8 @@ parts:
       - file: content/modules/01_PythonPrimer/01_2_python-intermediate
     - file: content/modules/10_SupervisedML/README
       sections:
-      - file: content/modules/10_SupervisedML/10_1_data_prep
       - file: content/modules/10_SupervisedML/10_0_Intro
+      - file: content/modules/10_SupervisedML/10_1_data_prep
 
   - caption: Appendices
     chapters:

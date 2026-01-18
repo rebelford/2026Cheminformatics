@@ -1,5 +1,5 @@
 # Cheminformatics 2026 — Jupyter Book & Course Materials
-
+**[Jupyter Book](https://rebelford.github.io/2026Cheminformatics/content/intro.html)**
 This repository contains the **source materials** for the *Cheminformatics 2026* course, including:
 
 - Jupyter notebooks used for instruction

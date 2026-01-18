@@ -60,8 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/modules/10_SupervisedML/10_1_data_prep';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="10.0 Intro" href="10_0_Intro.html" />
-    <link rel="prev" title="Module 10: Supervised Machine Learning" href="README.html" />
+    <link rel="next" title="Appendix 1.1: Getting Set Up" href="../../appendices/App_1/README.html" />
+    <link rel="prev" title="10.0: Intro" href="10_0_Intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -191,14 +191,14 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="README.html">Module 10: Supervised Machine Learning</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="10_0_Intro.html">10.0: Intro</a></li>
+
+
+
+
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">10.1: Data Preparation and Feature Engineering</a></li>
 
 
-
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="10_0_Intro.html">10.0 Intro</a></li>
 
 
 
@@ -448,7 +448,6 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">10.1: Data Preparation and Feature Engineering</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#import-bioactivity-data-from-pubchem">1. Import bioactivity data from PubChem</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#directory-architecture">1.1 Directory Architecture</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.1 Directory Architecture</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#helper-function-make-fixed-filename">1.2 Helper Function: make_fixed_filename</a></li>
 </ul>
 </li>
@@ -572,51 +571,6 @@ document.write(`
 </div>
 <section id="directory-architecture">
 <h2>1.1 Directory Architecture<a class="headerlink" href="#directory-architecture" title="Link to this heading">#</a></h2>
-<p>In this activity we are going to generate multiple fingerprints and eventually run different ML programs on different BioAssays. Below is a sample hierarchy structure for each bioassay, which is this class will be in the downloads folder of your module working directory.</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>10_SupervisedML/
-├── data/                      ← algorithm-agnostic artifacts
-│   └── AID743139/
-│       ├── raw/               ← raw PubChem exports
-│       │   └── AID743139_pubchem_raw_20251224.csv
-│       ├── curated/           ← chemically curated datasets
-│       │   └── AID743139_Activity_CID_20260111_v1.csv
-│       ├── features/          ← feature-level artifacts (post-representation)
-│       │   └── AID743139_MACCS_activities_noSalt_20260104_v1.csv
-│       │   ├── maccs_variance_mask_20260104_v1.npy
-│       │   └── feature_metadata_20260104_v1.json
-│       └── splits/            ← experimental splits
-│           └── 90_10/
-│               ├── arrays/
-│               │   ├── X_train.npy
-│               │   ├── X_test.npy
-│               │   ├── y_train.npy
-│               │   └── y_test.npy
-│               └── split_metadata.json
-│
-├── models/                    ← algorithm-specific artifacts
-│   └── AID743139/
-│       ├── nb_maccs_20260109_v1.joblib
-│       ├── dt_maccs_20260110_v1.joblib
-│       └── rf_maccs_20260112_v1.joblib
-│
-├── results/                   ← evaluation outputs
-│   └── AID743139/
-│       ├── nb/
-│       ├── dt/
-│       └── comparison_tables/
-│
-├── notebooks/                 ← executable notebooks
-│   ├── 10_introduction.ipynb
-│   ├── 10_1_data_prep.ipynb
-│   ├── 10_2_NB_model_construction_workflow.ipynb
-│   ├── 10_3_pipelines_and_inference.ipynb
-│   ├── 10_4_model_eval_interpretation.ipynb
-│   └── 10_5_model_comparison_exp_design.ipynb
-</pre></div>
-</div>
-</section>
-<section id="id1">
-<h2>1.1 Directory Architecture<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>In this activity we are going to generate multiple fingerprints and eventually run different ML programs on different BioAssays. Below is a sample hierarchy structure for each bioassay, which is this class will be in the downloads folder of your module working directory.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>10_SupervisedML/
 ├── 10_introduction.ipynb
@@ -6890,20 +6844,20 @@ Example <code>AID743139ecfp4_1024_activites_noSalt_20260111_v1</code> which desc
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="README.html"
+       href="10_0_Intro.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Module 10: Supervised Machine Learning</p>
+        <p class="prev-next-title">10.0: Intro</p>
       </div>
     </a>
     <a class="right-next"
-       href="10_0_Intro.html"
+       href="../../appendices/App_1/README.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">10.0 Intro</p>
+        <p class="prev-next-title">Appendix 1.1: Getting Set Up</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -6926,7 +6880,6 @@ Example <code>AID743139ecfp4_1024_activites_noSalt_20260111_v1</code> which desc
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">10.1: Data Preparation and Feature Engineering</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#import-bioactivity-data-from-pubchem">1. Import bioactivity data from PubChem</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#directory-architecture">1.1 Directory Architecture</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.1 Directory Architecture</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#helper-function-make-fixed-filename">1.2 Helper Function: make_fixed_filename</a></li>
 </ul>
 </li>

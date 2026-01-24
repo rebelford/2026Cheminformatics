@@ -1,18 +1,5 @@
 # Cheminformatics 2026 — Jupyter Book & Course Materials
-**[Jupyter Book](https://rebelford.github.io/2026Cheminformatics/content/intro.html)**
-This repository contains the **source materials** for the *Cheminformatics 2026* course, including:
-
-- Jupyter notebooks used for instruction
-- A Jupyter Book built from those notebooks
-- Supporting infrastructure for local execution and cloud deployment (e.g., nanoHUB)
-
-The repository is designed to support **three use cases**:
-
-1. Reading the course as a **published Jupyter Book**
-2. Cloning the repository to **run notebooks locally**
-3. Serving as the **source of truth** for downstream deployments (e.g., nanoHUB)
-
----
-
-## Repository Structure
+**[2026 Cheminformatics Jupyter Book](https://rebelford.github.io/2026Cheminformatics/content/intro.html)**
+This contents diretory contains the source materials for the *Cheminformatics 2026* course.
+This course also uses a course package that can be obtained from the [CheminformaticsPackage26 Git Repo](https://github.com/rebelford/CheminformaticsPackage26)
 

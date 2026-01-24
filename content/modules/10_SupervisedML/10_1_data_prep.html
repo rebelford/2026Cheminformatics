@@ -661,10 +661,11 @@ else:
 <p><strong>Note: For the following code cell to generate the above directory structure your notebook must be in the 10_SupervisedML/notebooks folder.</strong> This code will create the <code class="docutils literal notranslate"><span class="pre">/data/AID743139/raw</span></code> directory path if it does not exist.  If you are working with a different bioassay you need to change the AID in the path to the new one.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">cinf26pk.mod10</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">p10</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">cinf26pk.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">filenames</span>
 
-<span class="n">RAW</span> <span class="o">=</span> <span class="n">p10</span><span class="o">.</span><span class="n">DATA_DIR</span> <span class="o">/</span> <span class="s2">&quot;AID743139&quot;</span> <span class="o">/</span> <span class="s2">&quot;raw&quot;</span>
+<span class="n">PROJECT_ROOT</span><span class="o">=</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>
+<span class="n">RAW</span> <span class="o">=</span> <span class="n">PROJECT_ROOT</span><span class="o">/</span><span class="s2">&quot;data&quot;</span><span class="o">/</span> <span class="s2">&quot;AID743139&quot;</span> <span class="o">/</span> <span class="s2">&quot;raw&quot;</span>
 <span class="n">RAW</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">fname</span> <span class="o">=</span> <span class="n">filenames</span><span class="o">.</span><span class="n">make_fixed_filename</span><span class="p">(</span>
@@ -760,9 +761,12 @@ df_raw.to_csv(RAW / fname, index=False)
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Write Code here </span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">cinf26pk.mod10</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">p10</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
-<span class="n">RAW</span> <span class="o">=</span> <span class="n">p10</span><span class="o">.</span><span class="n">DATA_DIR</span> <span class="o">/</span> <span class="s2">&quot;AID743139&quot;</span> <span class="o">/</span> <span class="s2">&quot;raw&quot;</span>
+<span class="n">PROJECT_ROOT</span><span class="o">=</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>
+<span class="n">RAW</span> <span class="o">=</span> <span class="n">PROJECT_ROOT</span><span class="o">/</span><span class="s2">&quot;data&quot;</span><span class="o">/</span> <span class="s2">&quot;AID743139&quot;</span> <span class="o">/</span> <span class="s2">&quot;raw&quot;</span>
+<span class="n">RAW</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
 <span class="n">df_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">RAW</span> <span class="o">/</span> <span class="s2">&quot;AID743139_pubchem_raw_20260117.csv&quot;</span><span class="p">)</span>
 <span class="n">df_raw</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>  <span class="c1"># gives the first 7 rows of the dataframe</span>
 </pre></div>

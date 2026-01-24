@@ -4,7 +4,7 @@
 title: 2026 Cheminformatics OLCC
 author: Robert Belford
 logo: logo.png
-
+f
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
@@ -66,3 +66,4 @@ sphinx:
       - mystnb.unknown_mime_type
     exclude_patterns:
       - README.md
+copyright: "© 2026 Robert Belford"

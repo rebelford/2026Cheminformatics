@@ -3746,7 +3746,8 @@ total number of Compound IDs=  6793
 </div></div></div>
 </div>
 <div class="alert alert-block alert-warning">
-Explore the above displayed sorted dataframe. Identify any CIDs that are repeated, and if they have different <b>SID</b> or <b>activity_outcome</b> values.<p>We will use the <code class="docutils literal notranslate"><span class="pre">drop_duplicates()</span></code> method in pandas to remove any duplicate rows in our dataframe. We can use the <code class="docutils literal notranslate"><span class="pre">subset</span></code> parameter to signify which column to consider when identifying duplicates. In our case, we need unique identifiers to get structural data, so we use <strong>‘cid’</strong>.</p>
+Explore the above displayed sorted dataframe. Identify any CIDs that are repeated, and if they have different <b>SID</b> or <b>activity_outcome</b> values.
+</div><p>We will use the <code class="docutils literal notranslate"><span class="pre">drop_duplicates()</span></code> method in pandas to remove any duplicate rows in our dataframe. We can use the <code class="docutils literal notranslate"><span class="pre">subset</span></code> parameter to signify which column to consider when identifying duplicates. In our case, we need unique identifiers to get structural data, so we use <strong>‘cid’</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_clean</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;cid&#39;</span><span class="p">)</span>  <span class="c1"># remove duplicate rows except for the first occurring row.</span>

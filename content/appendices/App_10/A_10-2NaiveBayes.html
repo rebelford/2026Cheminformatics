@@ -1,0 +1,1493 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>A10.2 Bayes Theorem as an Inference &#8212; 2026 Cheminformatics OLCC</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/appendices/App_10/A_10-2NaiveBayes';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="prev" title="BioAssay Screening: Enough Actives" href="A_10_AID_Selector.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="2026 Cheminformatics OLCC - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="2026 Cheminformatics OLCC - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules/01_PythonPrimer/README.html">Module 1 Python Primers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01_PythonPrimer/01_1_python-basics.html">1.1 Python Basics</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01_PythonPrimer/01_2_python-intermediate.html">1.2 Intermediate Python</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules/10_SupervisedML/README.html">Module 10: Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/10_SupervisedML/10_0_Intro.html">10.0: Intro</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../modules/10_SupervisedML/10_1_data_prep.html">10.1: Data Preparation and Feature Engineering</a></li>
+
+
+
+
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../App_1/README.html">Appendix 1.1: Getting Set Up</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../App_1/A_01-1_OS.html">Appendix 1: Operating System</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="README.html">Appendix 10: Supervised Machine Learning</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="A_10_AID_Selector.html">BioAssay Screening: Enough Actives</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">A10.2 Bayes Theorem as an Inference</a></li>
+
+
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://nanohub.org/tools/datachemolcc/hub/user-redirect/git-pull?repo=https%3A//github.com/rebelford/2026Cheminformatics&urlpath=lab/tree/2026Cheminformatics/content/appendices/App_10/A_10-2NaiveBayes.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/rebelford/2026Cheminformatics" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rebelford/2026Cheminformatics/issues/new?title=Issue%20on%20page%20%2Fcontent/appendices/App_10/A_10-2NaiveBayes.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/content/appendices/App_10/A_10-2NaiveBayes.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>A10.2 Bayes Theorem as an Inference</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">A10.2 Bayes Theorem as an Inference</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-s-theorem-single-feature-inference">1. Bayes’s Theorem: Single-Feature Inference</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-probability-notation">1.1 Conditional Probability Notation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-a-conditional-probability-from-data">1.2 Computing a Conditional Probability from data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-inference-to-binary-classification">1.3 From Inference to Binary Classification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inference-vs-classification">1.3.1 Inference vs. classification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-classification-in-this-example">1.3.2 Binary classification in this example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decission-classification-rule">1.4 Decission (classification) rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-bayes-theorem-does-and-does-not-tell-us">1.5 What Bayes’ theorem does — and does not — tell us</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes">2. Naïve Bayes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-one-feature-to-many-features">2.0 From one feature to many features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-probability-vs-conditional-probability">2.1 Joint probability vs. conditional probability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes-inference-with-multiple-features-worked-example">2.2 Naïve Bayes inference with multiple features (worked example)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#worked-example">2.2.1 Worked Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prior-probability-data">2.2.1.1 Prior probability data</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-likelihoods-given-covid">2.2.1.2 Feature likelihoods given COVID</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-write-the-naive-bayes-inference-model">Step 1 — Write the Naïve Bayes inference model</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-compute-the-naive-bayes-numerator">Step 2 — Compute the Naïve Bayes numerator</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-the-naive-bayes-inference-score">2.2.3 Interpreting the Naïve Bayes inference score</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-covid-vs-not-covid-inferences">2.2.3.1 Comparing COVID vs. not-COVID Inferences</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-inference-to-models-placing-naive-bayes-in-the-bigger-picture">2.2.4 From inference to models: placing Naïve Bayes in the bigger picture</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-feature-binary-case">2.2.4.1 What is a feature? (binary case)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#why-inference-alone-is-not-enough">2.2.4.2 Why inference alone is not enough</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-model">2.2.5 What is a model?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#from-probabilistic-inference-to-machine-learning-models">3. From probabilistic inference to machine-learning models</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-scikit-learn">3.1 Introducing scikit-learn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-matrices-x">3.2 Feature matrices (<span class="math notranslate nohighlight">\(X\)</span>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#label-vectors-y">3.3 Label vectors (<span class="math notranslate nohighlight">\(y\)</span>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-of-the-label-vector">3.3.1 Structure of the label vector</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-labels-and-interpretation">3.3.2 Binary labels and interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#role-of-numpy-and-pandas">3.4 Role of NumPy and Pandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extending-naive-bayes-to-multicomponent-systems">3.5 Extending Naïve Bayes to multicomponent systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-means-to-train-and-use-a-model">3.6 What it means to train and use a model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#producing-class-predictions-decisions">3.6.1 Producing class predictions (decisions)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#producing-class-probabilities-confidence">3.6.2 Producing class probabilities (confidence)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bernoulli-naive-bayes-and-binary-features">3.7 Bernoulli Naïve Bayes and binary features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generality-beyond-naive-bayes">3.8 Generality beyond Naïve Bayes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-inference-to-models-key-takeaways">3.9 From Inference to Models: Key Takeaways</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="a10-2-bayes-theorem-as-an-inference">
+<h1>A10.2 Bayes Theorem as an Inference<a class="headerlink" href="#a10-2-bayes-theorem-as-an-inference" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="bayes-s-theorem-single-feature-inference">
+<h1>1. Bayes’s Theorem: Single-Feature Inference<a class="headerlink" href="#bayes-s-theorem-single-feature-inference" title="Link to this heading">#</a></h1>
+<p>Bayes theorem comes from probabilty theory and uses probablity notation. Suppose it is 2020 and we want to deduce the likelyhood someone has COVID who is in the Emergency Room (ER) during the month of April. We will use this to understand Bayes theorem, and then use naive bayes to extend this to other factors like, do they have a fever and have they lost the sense of taste?  But we will start with focusing on just these two events.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(C\)</span> = event C: has COVID</p></li>
+<li><p><span class="math notranslate nohighlight">\(E\)</span> = event E: ER visit
+We want the conditional probability:</p></li>
+</ul>
+<section id="conditional-probability-notation">
+<h2>1.1 Conditional Probability Notation<a class="headerlink" href="#conditional-probability-notation" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+P(C \mid E)
+\]</div>
+<ul class="simple">
+<li><p>| stands for “given” or “conditioned on”</p></li>
+<li><p>What is the probablity of C, given that E has occured.</p></li>
+<li><p>Historically, <span class="math notranslate nohighlight">\(P(A \mid B)\)</span> meant “the probability of set <span class="math notranslate nohighlight">\(A\)</span> inside set <span class="math notranslate nohighlight">\(B\)</span>”</p></li>
+</ul>
+<blockquote>
+<div><p>That is, what is the probability a person has COVID if they have visited an emergency room?</p>
+</div></blockquote>
+</section>
+<section id="computing-a-conditional-probability-from-data">
+<h2>1.2 Computing a Conditional Probability from data<a class="headerlink" href="#computing-a-conditional-probability-from-data" title="Link to this heading">#</a></h2>
+<p>Consider 2% of a cities population has covid and 20% of them visit the ER, while while 5% of the total population visit the Emergency room during the month of April.  This introduces the 3 probabilities we will use in our calculations.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(C) = 0.02\)</span> - prior (baseline) probabilty someone in the city has COVID</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(E)= 0.05\)</span> - probability someone in the city goes to ER for any reason</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(E \mid C) = 0.20\)</span> - probability someone with COVID goes to the ER</p></li>
+</ul>
+<p>Consider the city has 100,000 people, then</p>
+<ul class="simple">
+<li><p>2,000 have COVID</p></li>
+<li><p>10,000 visited the ER</p></li>
+<li><p>400 have COVID <em>and</em> visited the ER
+We can think of the 400 people as those for whom <em>both</em> conditions are true. There are two valid probabilistic ways to express the fraction of the population represented by those people:</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>Start from people with COVID, then take the fraction of them who visited the ER:
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+P(E \mid C)
+&amp;= \frac{P(C \cap E)}{P(C)} = \frac{\text{fraction of people who are both } C \text{ and } E}
+     {\text{fraction of people who are } C} \\
+&amp;\therefore \\ 
+P(C \cap E) 
+&amp;= P(E \mid C)\,P(C)
+\end{aligned}
+\)</span>$</p></li>
+<li><p>Start from people who visited the ER, then take the fraction of them who had COVID:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+P(C \mid E)
+&amp;= \frac{P(E \cap C)}{P(E)}=\frac{\text{fraction of people who are both } E \text{ and } C}
+{\text{fraction of people who are } E} \\
+&amp;\therefore \\ 
+P(C \cap E)&amp;= P(C \mid E)P(E)
+\end{aligned}
+\end{split}\]</div>
+<p>equating <span class="math notranslate nohighlight">\(P(C \cap E)\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+P(C \mid E)P(E) = P(E \mid C)P(C)
+\]</div>
+<p>and solving for <span class="math notranslate nohighlight">\(P(C\mid E)\)</span> gives  Bayers Theorem:
+$<span class="math notranslate nohighlight">\(\boxed{
+P(C \mid E) = \frac{P(E \mid C)\,P(C)}{P(E)}
+}
+\)</span>$</p>
+<p>substituting in values:
+$<span class="math notranslate nohighlight">\(
+P(C \mid E)= \frac{(0.2)(0.02)}{0.05}= 0.08
+\)</span>$
+So the probability of someone in the ER having covid is 8%</p>
+<div class="alert alert-block alert-info">
+<strong>Check your understanding</strong>
+<p>In our model we had:
+<ol>
+  <li>$P(C) = 0.02$</li>
+  <li>$P(E)= 0.05$ </li>
+<li>$P(E \mid C) = 0.20$</li>
+</ol>    
+How do the following scenarios change the data from above, and predict the probability that someone in the emergency room has COVID?
+</p>
+<p>Scenario 1: Change prior relevance. Does the probability of someone in the ER having COVID increase or decreast if 10% of the population has COVID?  Calculate the new probability</p>
+  <div style="
+    background-color: #efffff;
+    color: #000000;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #dddddd;
+    margin-top: 10px;
+  ">
+<details>
+    <summary>Answer</summary>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(C) = 0.02\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(E) = 0.05\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(E \mid C) = 0.50\)</span>
+It increases from 8% to 40%
+<span class="math notranslate nohighlight">\(P(C \mid E) = 0.40\)</span></p></li>
+</ul>
+</div>
+<p>Scenario 2. Change disease severity.What if the disease became worse and 50% of the people who have COVID go to the emergency room? What is the new probability of someone in the ER having COVID and does it increase or decrease?</p>
+  <div style="
+    background-color: #efffff;
+    color: #000000;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #dddddd;
+    margin-top: 10px;
+  ">
+<details>
+    <summary>Answer</summary>
+- $P(C) = 0.02$  
+- $P(E) = 0.05$  
+- $P(E \mid C) = 0.50$  
+It increases from 8% to 20%
+</details>
+</div>
+<p>Scenario 3. What if there was an earthquake and 15% of the population ends up in the ER? What is the new probability of somene in the ER having covid and did it increase or decrease from the initial conditions</p>
+  <div style="
+    background-color: #efffff;
+    color: #000000;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #dddddd;
+    margin-top: 10px;
+  ">
+<details>
+    <summary>Answer</summary>
+- $P(C) = 0.02$  
+- $P(E) = 0.15$  
+- $P(E \mid C) = 0.20$  
+It drops  fom 8% to 2%.
+</details>
+</div>
+</div>
+</section>
+<section id="from-inference-to-binary-classification">
+<h2>1.3 From Inference to Binary Classification<a class="headerlink" href="#from-inference-to-binary-classification" title="Link to this heading">#</a></h2>
+<p>Up to this point, we have used Bayes’ theorem to perform <strong>inference</strong>. That is, we answered questions of the form: “Given that a person visited the emergency room, what is the probability that they have COVID?”
+$<span class="math notranslate nohighlight">\(
+P(C \mid E)
+\)</span><span class="math notranslate nohighlight">\(
+This result is a probability, not yet a decision and in our original example, we found:
+\)</span><span class="math notranslate nohighlight">\(
+P(C \mid E) = 0.08
+\)</span>$
+That is, there is an 8% chance that a randomly selected emergency room patient has COVID.</p>
+<section id="inference-vs-classification">
+<h3>1.3.1 Inference vs. classification<a class="headerlink" href="#inference-vs-classification" title="Link to this heading">#</a></h3>
+<p>It is important to distinguish between two related but different tasks:</p>
+<ul class="simple">
+<li><p><strong>Inference</strong>: estimating probabilities</p></li>
+<li><p><strong>Classification</strong>: making a decision based on those probabilities</p></li>
+</ul>
+<p>Bayes’ theorem gives us inference.
+Classification requires an additional step.</p>
+</section>
+<section id="binary-classification-in-this-example">
+<h3>1.3.2 Binary classification in this example<a class="headerlink" href="#binary-classification-in-this-example" title="Link to this heading">#</a></h3>
+<p>In this appendix, we are working with a binary outcome:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(C\)</span>: the person has COVID (1)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\neg C\)</span>: the person does not have COVID (0)</p></li>
+</ul>
+<p>Because these are the only two possibilities,</p>
+<div class="math notranslate nohighlight">
+\[
+P(C \mid E) + P(\neg C \mid E) = 1
+\]</div>
+<p>So if:</p>
+<div class="math notranslate nohighlight">
+\[
+P(C \mid E) = 0.08
+\]</div>
+<p>then:</p>
+<div class="math notranslate nohighlight">
+\[
+P(\neg C \mid E) = 0.92
+\]</div>
+<p>Bayes’ theorem has therefore told us <strong>how plausible each explanation is</strong>, given the evidence.</p>
+</section>
+</section>
+<section id="decission-classification-rule">
+<h2>1.4 Decission (classification) rule<a class="headerlink" href="#decission-classification-rule" title="Link to this heading">#</a></h2>
+<p>To turn inference into classification, we need a <strong>decision rule</strong>. The simplest possible rule is:</p>
+<blockquote>
+<div><p><strong>Assign the class with the larger posterior probability.</strong></p>
+</div></blockquote>
+<p>In this case:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(C \mid E) = 0.08\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(\neg C \mid E) = 0.92\)</span></p></li>
+</ul>
+<p>Since <span class="math notranslate nohighlight">\(0.92 &gt; 0.08\)</span>, the classification decision would be:</p>
+<blockquote>
+<div><p><strong>This person is classified as not having COVID.</strong></p>
+</div></blockquote>
+</section>
+<section id="what-bayes-theorem-does-and-does-not-tell-us">
+<h2>1.5 What Bayes’ theorem does — and does not — tell us<a class="headerlink" href="#what-bayes-theorem-does-and-does-not-tell-us" title="Link to this heading">#</a></h2>
+<p>Bayes’ theorem itself:</p>
+<ul class="simple">
+<li><p>does not decide what threshold to use</p></li>
+<li><p>does not say whether 8% is “high” or “low”</p></li>
+<li><p>does not encode policy, risk, or consequences</p></li>
+</ul>
+<p>It only tells us:</p>
+<blockquote>
+<div><p>Given the assumptions and the data, how probable each outcome is.</p>
+</div></blockquote>
+<p>The <strong>classification decision</strong> depends on context.</p>
+<p>For example:</p>
+<ul class="simple">
+<li><p>A hospital screening system might flag patients even at low probabilities</p></li>
+<li><p>A public health study might use a different cutoff</p></li>
+<li><p>A diagnostic test might require very high confidence</p></li>
+</ul>
+<p>Those decisions come <em>after</em> inference.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="naive-bayes">
+<h1>2. Naïve Bayes<a class="headerlink" href="#naive-bayes" title="Link to this heading">#</a></h1>
+<p>In the previous section, we used Bayes’ theorem with a single observed feature, whether a person visited the emergency room. Now we extend that idea by adding additional binary (yes/no) features that may also provide evidence.</p>
+<p>We will continue to use:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(C\)</span> = the event that a person has COVID</p></li>
+</ul>
+<p>and introduce the following features:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(E\)</span> = ER visit</p></li>
+<li><p><span class="math notranslate nohighlight">\(F\)</span> = fever present</p></li>
+<li><p><span class="math notranslate nohighlight">\(T\)</span> = loss of taste</p></li>
+<li><p><span class="math notranslate nohighlight">\(S\)</span> = shortness of breath</p></li>
+</ul>
+<hr class="docutils" />
+<section id="from-one-feature-to-many-features">
+<h2>2.0 From one feature to many features<a class="headerlink" href="#from-one-feature-to-many-features" title="Link to this heading">#</a></h2>
+<p>With a single feature, Bayes’ theorem gives:</p>
+<div class="math notranslate nohighlight">
+\[
+P(C \mid E) = \frac{[P(E \mid C)][P(C)]}{P(E)}
+\]</div>
+<p>When multiple features are observed simultaneously, the conditional probability becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+P(C \mid E,F,T,S) = \frac{[P(E,F,T,S \mid C)][P(C)]}{P(E,F,T,S)}
+\]</div>
+<p>Here:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(E,F,T,S \mid C)\)</span> is a <strong>joint conditional probability</strong></p></li>
+<li><p>it represents the probability that all four features occur together, given that the person has COVID. This joint probability is the main challenge in extending Bayes’ theorem to multiple features.</p></li>
+</ul>
+</section>
+<section id="joint-probability-vs-conditional-probability">
+<h2>2.1 Joint probability vs. conditional probability<a class="headerlink" href="#joint-probability-vs-conditional-probability" title="Link to this heading">#</a></h2>
+<p>Before introducing any assumptions, it is important to clarify the notation. The comma in a probability expression means “and”, not multiplication.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Expression</p></th>
+<th class="head"><p>Meaning (plain English)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(P(E)\)</span></p></td>
+<td><p>probability of an ER visit</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(P(F)\)</span></p></td>
+<td><p>probability of fever</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(P(E,F)\)</span></p></td>
+<td><p>probability of an ER visit and fever</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(P(E,F,T,S)\)</span></p></td>
+<td><p>probability that all four features occur together</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(P(E,F,T,S \mid C)\)</span></p></td>
+<td><p>probability that all four features occur together among people with COVID</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>So:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(E,F,T,S)\)</span> refers to how common that entire combination is in the population</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(E,F,T,S \mid C)\)</span> refers to how common that combination is among people with COVID</p></li>
+</ul>
+<p>The difficulty is that for <span class="math notranslate nohighlight">\(n\)</span> binary features there are <span class="math notranslate nohighlight">\(2^n\)</span> possible feature combinations. As the number of features increases, many of these combinations will have few or zero observations in a finite dataset.</p>
+<p>For example, a MACCS fingerprint contains 166 binary features. This means there are:</p>
+<div class="math notranslate nohighlight">
+\[
+2^{166} \approx 9.35 \times 10^{49}
+\]</div>
+<p>possible feature combinations. In practice, only an extremely small fraction of these combinations will ever appear in real data.</p>
+</section>
+<section id="naive-bayes-inference-with-multiple-features-worked-example">
+<h2>2.2 Naïve Bayes inference with multiple features (worked example)<a class="headerlink" href="#naive-bayes-inference-with-multiple-features-worked-example" title="Link to this heading">#</a></h2>
+<p>In this section, we use the Naïve Bayes assumption to compute an updated probability that a person has COVID given several observed features. Our goal is not classification or decision-making, but to see how multiple pieces of evidence combine to update belief.</p>
+<p>We continue to use:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(C\)</span> = the event that a person has COVID</p></li>
+</ul>
+<p>and the observed features:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(E\)</span> = ER visit</p></li>
+<li><p><span class="math notranslate nohighlight">\(F\)</span> = fever present</p></li>
+<li><p><span class="math notranslate nohighlight">\(T\)</span> = loss of taste</p></li>
+<li><p><span class="math notranslate nohighlight">\(S\)</span> = shortness of breath</p></li>
+</ul>
+<section id="worked-example">
+<h3>2.2.1 Worked Example<a class="headerlink" href="#worked-example" title="Link to this heading">#</a></h3>
+<p>To focus on the computation, we assume the following probabilities are known.</p>
+<section id="prior-probability-data">
+<h4>2.2.1.1 Prior probability data<a class="headerlink" href="#prior-probability-data" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Quantity</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(P(C)\)</span></p></td>
+<td><p>baseline probability a person has COVID</p></td>
+<td><p>0.02</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="feature-likelihoods-given-covid">
+<h4>2.2.1.2 Feature likelihoods given COVID<a class="headerlink" href="#feature-likelihoods-given-covid" title="Link to this heading">#</a></h4>
+<p>These describe how common each feature is <strong>among people who have COVID</strong>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(P(x \mid C)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(E\)</span></p></td>
+<td><p>ER visit</p></td>
+<td><p>0.20</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(F\)</span></p></td>
+<td><p>fever</p></td>
+<td><p>0.70</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(T\)</span></p></td>
+<td><p>loss of taste</p></td>
+<td><p>0.60</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(S\)</span></p></td>
+<td><p>shortness of breath</p></td>
+<td><p>0.50</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p>These values are <strong>assumed</strong> for instructional purposes. They are not real epidemiological data.</p>
+</div></blockquote>
+<section id="step-1-write-the-naive-bayes-inference-model">
+<h5>Step 1 — Write the Naïve Bayes inference model<a class="headerlink" href="#step-1-write-the-naive-bayes-inference-model" title="Link to this heading">#</a></h5>
+<p>From Section 2.1, the Naïve Bayes approximation gives:</p>
+<div class="math notranslate nohighlight">
+\[
+P(C \mid E,F,T,S)
+\approx
+\frac{
+P(C)[P(E \mid C)]P(F \mid C)[P(T \mid C)]P(S \mid C)
+}{
+P(E,F,T,S)
+}
+\]</div>
+<p>At this stage, we are interested in how the <strong>numerator</strong> changes as features are added.</p>
+</section>
+<section id="step-2-compute-the-naive-bayes-numerator">
+<h5>Step 2 — Compute the Naïve Bayes numerator<a class="headerlink" href="#step-2-compute-the-naive-bayes-numerator" title="Link to this heading">#</a></h5>
+<p>Substitute the assumed values and multiply:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\text{Numerator}
+&amp;=
+P(C)[P(E \mid C)]P(F \mid C)[P(T \mid C)]P(S \mid C) \\
+&amp;=
+(0.02)(0.20)(0.70)(0.60)(0.50)
+\end{aligned}
+\end{split}\]</div>
+<p>Evaluating this product:
+$<span class="math notranslate nohighlight">\(
+\text{Numerator} = 0.00084
+\)</span>$</p>
+<p>This value represents a score that measures how consistent the observed features are with COVID (sometimes called the unnormalized posterior). Larger values indicate stronger support for COVID given this combination of features.</p>
+<p><strong>Conceptual takeaway:</strong>  Naïve Bayes allows us to replace a difficult joint probability,</p>
+<div class="math notranslate nohighlight">
+\[
+P(E,F,T,S \mid C)
+\]</div>
+<p>with a product of simpler conditional probabilities,</p>
+<div class="math notranslate nohighlight">
+\[
+P(E \mid C)[P(F \mid C)]P(T \mid C)[P(S \mid C)]
+\]</div>
+<p>making inference feasible even when many features are present.</p>
+</section>
+</section>
+</section>
+<section id="interpreting-the-naive-bayes-inference-score">
+<h3>2.2.3 Interpreting the Naïve Bayes inference score<a class="headerlink" href="#interpreting-the-naive-bayes-inference-score" title="Link to this heading">#</a></h3>
+<p>The Naïve Bayes inference score computed above is not a probability that can be interpreted on its own.Two important observations follow directly from the calculation:</p>
+<ol class="arabic simple">
+<li><p>As more features are added, the numerical value always decreases. This happens because Naïve Bayes multiplies together probabilities that are all less than one. Each additional feature further narrows the set of cases consistent with COVID, so the product becomes smaller. This behavior is expected and does not indicate weaker evidence.</p></li>
+<li><p>The magnitude of this value by itself has no meaning. The value does not answer the question “Does this person have COVID?” It only measures how consistent this particular combination of features is with COVID. Without a point of comparison, the number cannot support a decision.</p></li>
+</ol>
+<section id="comparing-covid-vs-not-covid-inferences">
+<h4>2.2.3.1 Comparing COVID vs. not-COVID Inferences<a class="headerlink" href="#comparing-covid-vs-not-covid-inferences" title="Link to this heading">#</a></h4>
+<p>The following code cell reproduces the Naïve Bayes multiplication using Python as a calculator. It also computes the same product using the complement of each feature likelihood. This allows us to compare how strongly the same features support COVID versus not COVID. To make the comparison easier to see, the output reports ratios rather than raw probabilities. The absolute numbers are less important than how they compare.</p>
+<p><strong>Run the cell below and examine how the ratio changes when we move from a single feature to multiple features.</strong></p>
+<p>For this demonstration, the not-COVID feature likelihoods are approximated using the binary complements of the COVID likelihoods. That is, for each feature <span class="math notranslate nohighlight">\(x\)</span> we use
+$<span class="math notranslate nohighlight">\(P(x=0 \mid C) = 1 - P(x=1 \mid C)\)</span>$ Where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(x=1 \mid C)\)</span> is the probability of having the feature given COVID.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(x=0\mid C)\)</span> is the probability of not having the feature given COVID and</p></li>
+</ul>
+<p>This approximation is used only to illustrate how relative support changes when additional features are included. In a full classification model, the not-COVID likelihoods would be estimated separately as <span class="math notranslate nohighlight">\(P(x \mid \neg C)\)</span> from data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">naive_bayes_numerator</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihoods</span><span class="p">):</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">prior</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">likelihoods</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">*=</span> <span class="n">p</span>
+    <span class="k">return</span> <span class="n">value</span>
+
+<span class="n">prior</span> <span class="o">=</span> <span class="mf">0.02</span>
+<span class="n">likelihoods</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.20</span><span class="p">,</span> <span class="mf">0.70</span><span class="p">,</span> <span class="mf">0.60</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">]</span>
+<span class="n">unlikelihoods</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.80</span><span class="p">,</span> <span class="mf">0.70</span><span class="p">,</span> <span class="mf">0.40</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">]</span>
+<span class="n">onefeatlikelihood</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">]</span>
+<span class="n">onefeatunlikelihood</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Likelihood of having COVID with 1 feature: </span><span class="si">{</span><span class="n">naive_bayes_numerator</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span><span class="w"> </span><span class="n">onefeatlikelihood</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unikelihood of having COVID with 1 features: </span><span class="si">{</span><span class="n">naive_bayes_numerator</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span><span class="w"> </span><span class="n">onefeatunlikelihood</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">F</span><span class="s2">&quot;Ratio of likelihood to unlikelihood for four features = </span><span class="si">{</span><span class="n">naive_bayes_numerator</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span><span class="w"> </span><span class="n">onefeatlikelihood</span><span class="p">)</span><span class="o">/</span><span class="n">naive_bayes_numerator</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span><span class="w"> </span><span class="n">onefeatunlikelihood</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Likelihood of having COVID with 4 feature: </span><span class="si">{</span><span class="n">naive_bayes_numerator</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span><span class="w"> </span><span class="n">likelihoods</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unlikelihood of having COVID with 4 features: </span><span class="si">{</span><span class="n">naive_bayes_numerator</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span><span class="w"> </span><span class="n">unlikelihoods</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">F</span><span class="s2">&quot;Ratio of likelihood to unlikelihood for four features = </span><span class="si">{</span><span class="n">naive_bayes_numerator</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span><span class="w"> </span><span class="n">likelihoods</span><span class="p">)</span><span class="o">/</span><span class="n">naive_bayes_numerator</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span><span class="w"> </span><span class="n">unlikelihoods</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Likelihood of having COVID with 1 feature: 0.004
+Unikelihood of having COVID with 1 features: 0.016
+Ratio of likelihood to unlikelihood for four features = 0.25
+Likelihood of having COVID with 4 feature: 0.0008399999999999999
+Unlikelihood of having COVID with 4 features: 0.0022400000000000002
+Ratio of likelihood to unlikelihood for four features = 0.37499999999999994
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-info">
+<strong>Check your understanding</strong>
+<p>
+The code above computes Naïve Bayes inference scores for having COVID and not having COVID,
+and then compares them by taking their ratio.
+Explain what changes when additional features are included.
+</p>
+<div style="
+  background-color: #efffff;
+  color: #000000;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #dddddd;
+  margin-top: 10px;
+  ">
+<details>
+  <summary>Answer</summary>
+<p>When only one feature is used, the ratio of the COVID inference score to the not-COVID inference score is 0.25, meaning the evidence favors not having COVID by a factor of four.</p>
+<p>When all four features are included, the absolute inference score for COVID becomes smaller, but the ratio increases to 0.375. This means that, relative to the alternative hypothesis, the additional features provide stronger support for COVID.</p>
+<p>Although multiplying more probabilities always reduces the raw score, what matters for interpretation is the comparison between competing hypotheses. Additional features can increase relative support for one hypothesis even as the numerical score itself decreases.</p>
+</details>
+</div>
+</div>
+</section>
+</section>
+<section id="from-inference-to-models-placing-naive-bayes-in-the-bigger-picture">
+<h3>2.2.4 From inference to models: placing Naïve Bayes in the bigger picture<a class="headerlink" href="#from-inference-to-models-placing-naive-bayes-in-the-bigger-picture" title="Link to this heading">#</a></h3>
+<p>Up to this point, we have used Naïve Bayes strictly as a tool for probabilistic inference. Given a single individual and a small number of observed features, we computed how consistent those features are with a particular hypothesis (having COVID).</p>
+<section id="what-is-a-feature-binary-case">
+<h4>2.2.4.1 What is a feature? (binary case)<a class="headerlink" href="#what-is-a-feature-binary-case" title="Link to this heading">#</a></h4>
+<p>In this appendix, a feature is a measurable property associated with an individual case that can take one of two values. In our COVID example, all features are binary, meaning they represent a yes/no condition:</p>
+<ul class="simple">
+<li><p>fever present or not</p></li>
+<li><p>loss of taste or not</p></li>
+<li><p>shortness of breath or not</p></li>
+</ul>
+<p>Each feature answers a simple question about the individual and is encoded as either present (1) or absent (0). In cheminformatics, the same idea appears in a familiar form:</p>
+<ul class="simple">
+<li><p>each bit in a fingerprint (for example, a MACCS key) is a binary feature,</p></li>
+<li><p>each feature records the presence or absence of a specific structural pattern,</p></li>
+<li><p>each molecule is represented by a vector of many such binary features.</p></li>
+</ul>
+<p>Because each feature is binary, molecular fingerprints naturally fit the assumptions of <em>Bernoulli Naïve Bayes</em>, which will be the first machine learning algorithm we use in Module 10.2.</p>
+</section>
+<section id="why-inference-alone-is-not-enough">
+<h4>2.2.4.2 Why inference alone is not enough<a class="headerlink" href="#why-inference-alone-is-not-enough" title="Link to this heading">#</a></h4>
+<p>The worked example in Section 2.2.1 showed that:</p>
+<ul class="simple">
+<li><p>adding features always reduces the raw inference score,</p></li>
+<li><p>the score only becomes meaningful when it is compared to an alternative hypothesis.</p></li>
+</ul>
+<p>This comparison step, deciding which hypothesis is better supported by the data—is the conceptual bridge from inference to classification. Once we move from a single individual to:</p>
+<ul class="simple">
+<li><p>many individuals (patients, molecules),</p></li>
+<li><p>many features per individual,</p></li>
+<li><p>repeated predictions across a dataset,</p></li>
+</ul>
+<p>we are no longer performing isolated inference. Instead, we are applying the same inference logic repeatedly using a shared set of learned probabilities. At that point, we are no longer working with individual calculations—we are using a model.</p>
+</section>
+</section>
+<section id="what-is-a-model">
+<h3>2.2.5 What is a model?<a class="headerlink" href="#what-is-a-model" title="Link to this heading">#</a></h3>
+<p>A model is not a single probability calculation. It is a data-derived object that stores the probabilities needed to apply Naïve Bayes inference consistently and automatically:</p>
+<ul class="simple">
+<li><p>across many individuals,</p></li>
+<li><p>across many feature vectors,</p></li>
+<li><p>across entire datasets.</p></li>
+</ul>
+<p>In this appendix, we assumed probability values by hand to make the mechanics of Naïve Bayes explicit. In practice, these probabilities are estimated from data, not chosen. That transition, from hand-specified probabilities to data-
+, derived probabilities—is what distinguishes inference from model building.</p>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="from-probabilistic-inference-to-machine-learning-models">
+<h1>3. From probabilistic inference to machine-learning models<a class="headerlink" href="#from-probabilistic-inference-to-machine-learning-models" title="Link to this heading">#</a></h1>
+<p>Up to this point, we have used Naïve Bayes to reason about a single individual at a time, using a small number of features and assumed probabilities. This allowed us to focus on how probabilistic inference works and how evidence combines. Machine learning operates at a different level. Instead of reasoning about one case, we work with datasets, and instead of manually specifying probabilities, we learn them from data. This section explains how that transition happens conceptually, and how it is implemented in practice using the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> machine-learning library. No models are built here; the goal is to establish a shared framework that later modules will reuse.</p>
+<section id="introducing-scikit-learn">
+<h2>3.1 Introducing scikit-learn<a class="headerlink" href="#introducing-scikit-learn" title="Link to this heading">#</a></h2>
+<p>Up to this point, we have used Naïve Bayes as a mathematical tool for inference. To apply these ideas to real datasets, we need software that can estimate probabilities from data and reuse them to make predictions. In this course, that role is played by scikit-learn. Scikit-learn provides implementations of many machine-learning algorithms, including Naïve Bayes, in a consistent framework. Rather than computing probabilities by hand, we give scikit-learn:</p>
+<ul class="simple">
+<li><p>a <strong>feature matrix</strong> <span class="math notranslate nohighlight">\(X\)</span> (many individuals, many features),</p></li>
+<li><p>a <strong>label vector</strong> <span class="math notranslate nohighlight">\(y\)</span> (the outcome for each individual),</p></li>
+</ul>
+<p>By convention:</p>
+<ul class="simple">
+<li><p>feature matrices are written as uppercase <span class="math notranslate nohighlight">\(X\)</span>,</p></li>
+<li><p>label vectors are written as lowercase <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
+</ul>
+<p>This notation reflects their different roles:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X\)</span> represents many features per entity,</p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span> represents a single outcome per entity.</p></li>
+</ul>
+<p>Together, <span class="math notranslate nohighlight">\((X, y)\)</span> define a supervised learning problem
+and it constructs a model that captures the relationships between features and labels.</p>
+<p>At a conceptual level, scikit-learn can be used in two closely related ways:</p>
+<ol class="arabic simple">
+<li><p><strong>Model-focused use</strong>, where we explicitly build and inspect a single model.
+This is the focus of Module 10.2, where we connect the mathematics of Naïve Bayes to concrete code.</p></li>
+<li><p><strong>Pipeline-focused use</strong>, where data preparation, modeling, and prediction are combined into a reusable workflow.
+This is the focus of Module 10.3, and becomes important when models are applied repeatedly or compared systematically.</p></li>
+</ol>
+<p>Both approaches rely on the same underlying models. Pipelines do not replace models; they organize how models are applied. In this appendix, our goal is only to introduce the ideas that make model-based workflows possible. The actual construction and use of models is developed in the modules that follow.</p>
+</section>
+<section id="feature-matrices-x">
+<h2>3.2 Feature matrices (<span class="math notranslate nohighlight">\(X\)</span>)<a class="headerlink" href="#feature-matrices-x" title="Link to this heading">#</a></h2>
+<p>In earlier sections, we reasoned about a single individual described by a small set of features. In practice, machine learning operates on datasets containing many individuals, each described by the same set of features. This requires a structured representation. Machine-learning datasets organize features into a feature matrix, conventionally denoted <span class="math notranslate nohighlight">\(X\)</span>:</p>
+<ul class="simple">
+<li><p>each row corresponds to one entity (e.g., a molecule),</p></li>
+<li><p>each column corresponds to one feature,</p></li>
+<li><p>each entry <span class="math notranslate nohighlight">\(x_{ij}\)</span> records the value of feature <span class="math notranslate nohighlight">\(j\)</span> for entity <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
+</ul>
+<p>For MACCS fingerprints:</p>
+<ul class="simple">
+<li><p>features are binary (0 or 1),</p></li>
+<li><p>each column represents a specific structural pattern,</p></li>
+<li><p>each row is a fingerprint describing one molecule.</p></li>
+</ul>
+<p>This matrix representation generalizes the feature lists used earlier:</p>
+<ul class="simple">
+<li><p>the four COVID features become four columns,</p></li>
+<li><p>thousands of molecules become thousands of rows.</p></li>
+</ul>
+<p>In practice, features are often prepared and inspected using Pandas DataFrames, which preserve column names and metadata. Before modeling, these features are converted into NumPy arrays, which is the format expected by scikit-learn algorithms. This separation allows us to maintain interpretability during data preparation while using efficient numeric representations during model training. Once features are arranged in this way, they can be passed directly to machine-learning algorithms.</p>
+</section>
+<section id="label-vectors-y">
+<h2>3.3 Label vectors (<span class="math notranslate nohighlight">\(y\)</span>)<a class="headerlink" href="#label-vectors-y" title="Link to this heading">#</a></h2>
+<p>In supervised machine learning, features alone are not sufficient. Each entity in the dataset must also have an associated outcome or target value that the model is trying to predict. These outcomes are organized into a label vector, conventionally denoted <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<section id="structure-of-the-label-vector">
+<h3>3.3.1 Structure of the label vector<a class="headerlink" href="#structure-of-the-label-vector" title="Link to this heading">#</a></h3>
+<p>The label vector <span class="math notranslate nohighlight">\(y\)</span> is a one-dimensional array with one entry per entity:</p>
+<ul class="simple">
+<li><p>each entry <span class="math notranslate nohighlight">\(y_i\)</span> corresponds to the outcome for row <span class="math notranslate nohighlight">\(i\)</span> of the feature matrix <span class="math notranslate nohighlight">\(X\)</span>,</p></li>
+<li><p>the ordering of <span class="math notranslate nohighlight">\(y\)</span> must match the ordering of rows in <span class="math notranslate nohighlight">\(X\)</span>.</p></li>
+</ul>
+<p>In the COVID example, <span class="math notranslate nohighlight">\(y\)</span> would indicate whether each individual has COVID or not.
+In cheminformatics, <span class="math notranslate nohighlight">\(y\)</span> typically represents an experimental outcome, such as:</p>
+<ul class="simple">
+<li><p>active vs inactive in a bioassay,</p></li>
+<li><p>toxic vs non-toxic,</p></li>
+<li><p>binder vs non-binder.</p></li>
+</ul>
+<p>Because we are performing binary classification, each label takes one of two values (for example, 1 or 0).</p>
+</section>
+<section id="binary-labels-and-interpretation">
+<h3>3.3.2 Binary labels and interpretation<a class="headerlink" href="#binary-labels-and-interpretation" title="Link to this heading">#</a></h3>
+<p>In this appendix and the following modules, labels are binary:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(y = 1\)</span> indicates membership in the positive class (e.g., active, COVID),</p></li>
+<li><p><span class="math notranslate nohighlight">\(y = 0\)</span> indicates membership in the negative class (e.g., inactive, not COVID).</p></li>
+</ul>
+<p>This binary structure aligns naturally with the probabilistic framework developed earlier, where we compared:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(C \mid X)\)</span> versus <span class="math notranslate nohighlight">\(P(\neg C \mid X)\)</span>.</p></li>
+</ul>
+<p>Later modules will show how this same structure generalizes to multi-class problems, but the binary case provides the clearest starting point.</p>
+</section>
+</section>
+<section id="role-of-numpy-and-pandas">
+<h2>3.4 Role of NumPy and Pandas<a class="headerlink" href="#role-of-numpy-and-pandas" title="Link to this heading">#</a></h2>
+<p>During data preparation, labels are often stored in Pandas DataFrames alongside feature columns. This makes it easy to inspect, filter, and align labels with their corresponding features. Before modeling, labels are converted into NumPy arrays, which is the format expected by scikit-learn algorithms. NumPy arrays provide:</p>
+<ul class="simple">
+<li><p>consistent numeric typing,</p></li>
+<li><p>efficient computation,</p></li>
+<li><p>compatibility with scikit-learn’s API.</p></li>
+</ul>
+<p>As with features, Pandas supports interpretability during preparation, while NumPy supports computation during modeling.</p>
+<p><strong>A note on the word “label”</strong></p>
+<p>The word <em>label</em> appears in two different contexts that students often encounter together, which can be confusing.</p>
+<ul class="simple">
+<li><p>In machine learning, a label refers to the outcome or target value we want to predict. This is the vector <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
+<li><p>In Pandas, a label refers to the name of a row or column used for indexing and data access.</p></li>
+</ul>
+<p>Although these meanings often appear together in practice (for example, machine-learning labels are frequently stored as a Pandas column), they represent different concepts. In this appendix and throughout the machine-learning modules, the term label always refers to the machine-learning meaning (the target vector <span class="math notranslate nohighlight">\(y\)</span>), unless explicitly stated otherwise.
+.</p>
+</section>
+<section id="extending-naive-bayes-to-multicomponent-systems">
+<h2>3.5 Extending Naïve Bayes to multicomponent systems<a class="headerlink" href="#extending-naive-bayes-to-multicomponent-systems" title="Link to this heading">#</a></h2>
+<p>With this data representation in place, we can now write Naïve Bayes in its dataset-level form. For a single entity with feature vector <span class="math notranslate nohighlight">\(X = (x_1, x_2, \dots, x_n)\)</span> and class label <span class="math notranslate nohighlight">\(y\)</span>, the Naïve Bayes model assumes:</p>
+<div class="math notranslate nohighlight">
+\[
+P(y \mid X) \propto P(y)\prod_{i=1}^{n} P(x_i \mid y)
+\]</div>
+<p>This equation generalizes everything you have seen so far:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_i\)</span> are features (columns of the feature matrix),</p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span> is the class label (from the label vector),</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(x_i \mid y)\)</span> are feature-conditional probabilities,</p></li>
+<li><p>the product replaces a joint probability over many features.</p></li>
+</ul>
+<p>The key difference from earlier sections is how these probabilities are obtained.</p>
+</section>
+<section id="what-it-means-to-train-and-use-a-model">
+<h2>3.6 What it means to train and use a model<a class="headerlink" href="#what-it-means-to-train-and-use-a-model" title="Link to this heading">#</a></h2>
+<p>In the worked examples earlier in this appendix, probabilities were assumed so that the mechanics of Naïve Bayes were clear. In machine learning, those probabilities are learned from data during training.</p>
+<p>Training a Naïve Bayes model means estimating:</p>
+<ul class="simple">
+<li><p>the class prior <span class="math notranslate nohighlight">\(P(y)\)</span> from label frequencies,</p></li>
+<li><p>the feature-conditional probabilities <span class="math notranslate nohighlight">\(P(x_i \mid y)\)</span> from feature counts.</p></li>
+</ul>
+<p>Once this estimation is complete, the model becomes a data-derived object that can be reused to make predictions on new, unseen cases. At this point, the model can be used in two distinct but related ways.</p>
+<section id="producing-class-predictions-decisions">
+<h3>3.6.1 Producing class predictions (decisions)<a class="headerlink" href="#producing-class-predictions-decisions" title="Link to this heading">#</a></h3>
+<p>The most basic use of a trained model is to produce a class label for each new entity. Conceptually, this corresponds to:
+$<span class="math notranslate nohighlight">\(
+\hat{y} = \arg\max_y P(y \mid X)
+\)</span>$</p>
+<p>That is, the model compares the probabilities of each class and returns the most likely class.</p>
+<p>In scikit-learn, this behavior is exposed through methods such as:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.predict()</span></code></p></li>
+</ul>
+<p>The output is a vector of predicted labels (e.g., 0 or 1). These predictions are what we use to compute:</p>
+<ul class="simple">
+<li><p>confusion matrices,</p></li>
+<li><p>accuracy,</p></li>
+<li><p>precision and recall,</p></li>
+<li><p>F1 scores.</p></li>
+</ul>
+<p>All of these metrics depend only on discrete class assignments, not on probabilities.</p>
+</section>
+<section id="producing-class-probabilities-confidence">
+<h3>3.6.2 Producing class probabilities (confidence)<a class="headerlink" href="#producing-class-probabilities-confidence" title="Link to this heading">#</a></h3>
+<p>Many models—including Naïve Bayes—can also report how confident they are in each prediction. Instead of returning just a class label, the model returns estimated probabilities such as:
+$<span class="math notranslate nohighlight">\(
+P(y=1 \mid X), \quad P(y=0 \mid X)
+\)</span>$
+In scikit-learn, this behavior is exposed through methods such as:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.predict_proba()</span></code></p></li>
+</ul>
+<p>The output is a probability distribution over classes for each entity. These probabilities are essential for:</p>
+<ul class="simple">
+<li><p>ROC curves,</p></li>
+<li><p>AUC (area under the curve),</p></li>
+<li><p>threshold-based decision analysis,</p></li>
+<li><p>ranking and prioritization of predictions.</p></li>
+</ul>
+<p>Importantly, ROC and AUC cannot be computed from class labels alone; they require probability scores.</p>
+</section>
+</section>
+<section id="bernoulli-naive-bayes-and-binary-features">
+<h2>3.7 Bernoulli Naïve Bayes and binary features<a class="headerlink" href="#bernoulli-naive-bayes-and-binary-features" title="Link to this heading">#</a></h2>
+<p>When features are binary, as they are for fingerprints, the appropriate Naïve Bayes variant is Bernoulli Naïve Bayes.</p>
+<p>This model:</p>
+<ul class="simple">
+<li><p>treats each feature as present or absent,</p></li>
+<li><p>estimates probabilities based on binary counts,</p></li>
+<li><p>aligns naturally with fingerprint-based representations.</p></li>
+</ul>
+<p>In scikit-learn, this model is implemented as <code class="docutils literal notranslate"><span class="pre">BernoulliNB</span></code>. You will build and evaluate such a model in Module 10.2, using the feature matrices created in Module 10.1.</p>
+</section>
+<section id="generality-beyond-naive-bayes">
+<h2>3.8 Generality beyond Naïve Bayes<a class="headerlink" href="#generality-beyond-naive-bayes" title="Link to this heading">#</a></h2>
+<p>Although this appendix uses Naïve Bayes as its running example, the data organization and workflow introduced here apply broadly. Many machine-learning algorithms share the same structure:</p>
+<ul class="simple">
+<li><p>feature matrix <span class="math notranslate nohighlight">\(X\)</span>,</p></li>
+<li><p>label vector <span class="math notranslate nohighlight">\(y\)</span>,</p></li>
+<li><p>a training step producing a reusable model.</p></li>
+</ul>
+<p>Naïve Bayes is simply the first algorithm you encounter, not the last.</p>
+</section>
+<section id="from-inference-to-models-key-takeaways">
+<h2>3.9 From Inference to Models: Key Takeaways<a class="headerlink" href="#from-inference-to-models-key-takeaways" title="Link to this heading">#</a></h2>
+<p>This appendix established the conceptual framework behind supervised machine learning:</p>
+<ul class="simple">
+<li><p>how features become a matrix <span class="math notranslate nohighlight">\(X\)</span>,</p></li>
+<li><p>how outcomes become a label vector <span class="math notranslate nohighlight">\(y\)</span>,</p></li>
+<li><p>how probabilistic inference becomes a trained model,</p></li>
+<li><p>and how that model can be used for decisions or probability-based evaluation.</p></li>
+</ul>
+<p>In Module 10.2, these ideas are put into practice. You will construct, train, and evaluate a Bernoulli Naïve Bayes model using real chemical fingerprints and experimental labels. No new concepts are introduced there—only concrete implementations of the framework developed here.</p>
+<div class="alert alert-block alert-info">
+<strong>Check Your Understanding</strong>
+<p>1. What role does the feature matrix $X$ play in supervised learning?
+</p>
+  <div style="
+    background-color: #efffff;
+    color: #000000;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #dddddd;
+    margin-top: 10px;
+  ">
+<details>
+    <summary>Answer</summary>
+The feature matrix $X$ stores the measured properties of each entity in the dataset. Each row represents one entity (such as a molecule), and each column represents one feature. The model uses $X$ as the input information from which it learns patterns.
+</details>
+</div>
+2. What information is stored in the label vector $y$
+  <div style="
+    background-color: #efffff;
+    color: #000000;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #dddddd;
+    margin-top: 10px;
+  ">
+<details>
+    <summary>Answer</summary>
+The label vector $y$ stores the known outcomes associated with each entity. Each entry in $y$ corresponds to a row in $X$ and indicates the class or value the model is trying to predict (for example, active vs inactive).
+</details>
+</div>
+3. Why is a trained model more than a single probability calculation?
+  <div style="
+    background-color: #efffff;
+    color: #000000;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #dddddd;
+    margin-top: 10px;
+  ">
+<details>
+    <summary>Answer</summary>
+<p>A trained model captures relationships learned from an entire dataset and can be reused to make predictions on new, unseen data. Unlike a single probability calculation, a model stores learned parameters and applies them consistently across many predictions.
+</p>
+</details>
+</div>
+</div>
+<p>In cheminformatics, molecular fingerprints provide the features, experimental outcomes provide the labels, and machine-learning models learn how structure relates to activity across entire datasets.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "nbi"
+        },
+        kernelOptions: {
+            name: "nbi",
+            path: "./content/appendices/App_10"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'nbi'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="A_10_AID_Selector.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">BioAssay Screening: Enough Actives</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">A10.2 Bayes Theorem as an Inference</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-s-theorem-single-feature-inference">1. Bayes’s Theorem: Single-Feature Inference</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-probability-notation">1.1 Conditional Probability Notation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-a-conditional-probability-from-data">1.2 Computing a Conditional Probability from data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-inference-to-binary-classification">1.3 From Inference to Binary Classification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inference-vs-classification">1.3.1 Inference vs. classification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-classification-in-this-example">1.3.2 Binary classification in this example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decission-classification-rule">1.4 Decission (classification) rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-bayes-theorem-does-and-does-not-tell-us">1.5 What Bayes’ theorem does — and does not — tell us</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes">2. Naïve Bayes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-one-feature-to-many-features">2.0 From one feature to many features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-probability-vs-conditional-probability">2.1 Joint probability vs. conditional probability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes-inference-with-multiple-features-worked-example">2.2 Naïve Bayes inference with multiple features (worked example)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#worked-example">2.2.1 Worked Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prior-probability-data">2.2.1.1 Prior probability data</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-likelihoods-given-covid">2.2.1.2 Feature likelihoods given COVID</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-write-the-naive-bayes-inference-model">Step 1 — Write the Naïve Bayes inference model</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-compute-the-naive-bayes-numerator">Step 2 — Compute the Naïve Bayes numerator</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-the-naive-bayes-inference-score">2.2.3 Interpreting the Naïve Bayes inference score</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-covid-vs-not-covid-inferences">2.2.3.1 Comparing COVID vs. not-COVID Inferences</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-inference-to-models-placing-naive-bayes-in-the-bigger-picture">2.2.4 From inference to models: placing Naïve Bayes in the bigger picture</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-feature-binary-case">2.2.4.1 What is a feature? (binary case)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#why-inference-alone-is-not-enough">2.2.4.2 Why inference alone is not enough</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-model">2.2.5 What is a model?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#from-probabilistic-inference-to-machine-learning-models">3. From probabilistic inference to machine-learning models</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-scikit-learn">3.1 Introducing scikit-learn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-matrices-x">3.2 Feature matrices (<span class="math notranslate nohighlight">\(X\)</span>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#label-vectors-y">3.3 Label vectors (<span class="math notranslate nohighlight">\(y\)</span>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-of-the-label-vector">3.3.1 Structure of the label vector</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-labels-and-interpretation">3.3.2 Binary labels and interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#role-of-numpy-and-pandas">3.4 Role of NumPy and Pandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extending-naive-bayes-to-multicomponent-systems">3.5 Extending Naïve Bayes to multicomponent systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-means-to-train-and-use-a-model">3.6 What it means to train and use a model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#producing-class-predictions-decisions">3.6.1 Producing class predictions (decisions)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#producing-class-probabilities-confidence">3.6.2 Producing class probabilities (confidence)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bernoulli-naive-bayes-and-binary-features">3.7 Bernoulli Naïve Bayes and binary features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generality-beyond-naive-bayes">3.8 Generality beyond Naïve Bayes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-inference-to-models-key-takeaways">3.9 From Inference to Models: Key Takeaways</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Robert Belford
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright CC 4.0 2026 Robert Belford, additional info on each notebook.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <script async src="https://hypothes.is/embed.js"></script>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/appendices/App_10/A_10-2NaiveBayes';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="prev" title="BioAssay Screening: Enough Actives" href="A_10_AID_Selector.html" />
+    <link rel="prev" title="A10.1 BioAssay Screening: Enough Actives" href="A_10-1AID_Selector.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -217,7 +217,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="README.html">Appendix 10: Supervised Machine Learning</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="A_10_AID_Selector.html">BioAssay Screening: Enough Actives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="A_10-1AID_Selector.html">A10.1 BioAssay Screening: Enough Actives</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">A10.2 Bayes Theorem as an Inference</a></li>
 
 
@@ -564,17 +564,20 @@ P(C \mid E)
 We can think of the 400 people as those for whom <em>both</em> conditions are true. There are two valid probabilistic ways to express the fraction of the population represented by those people:</p></li>
 </ul>
 <ol class="arabic simple">
-<li><p>Start from people with COVID, then take the fraction of them who visited the ER:
-$<span class="math notranslate nohighlight">\(
+<li><p>Start from people with COVID, then take the fraction of them who visited the ER:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{aligned}
 P(E \mid C)
 &amp;= \frac{P(C \cap E)}{P(C)} = \frac{\text{fraction of people who are both } C \text{ and } E}
-     {\text{fraction of people who are } C} \\
+        {\text{fraction of people who are } C} \\
 &amp;\therefore \\ 
 P(C \cap E) 
 &amp;= P(E \mid C)\,P(C)
 \end{aligned}
-\)</span>$</p></li>
+\end{split}\]</div>
+<ol class="arabic simple" start="2">
 <li><p>Start from people who visited the ER, then take the fraction of them who had COVID:</p></li>
 </ol>
 <div class="math notranslate nohighlight">
@@ -586,21 +589,23 @@ P(C \mid E)
 P(C \cap E)&amp;= P(C \mid E)P(E)
 \end{aligned}
 \end{split}\]</div>
-<p>equating <span class="math notranslate nohighlight">\(P(C \cap E)\)</span></p>
+<p>equating    <span class="math notranslate nohighlight">\(P(C \cap E)\)</span></p>
 <div class="math notranslate nohighlight">
 \[
 P(C \mid E)P(E) = P(E \mid C)P(C)
 \]</div>
-<p>and solving for <span class="math notranslate nohighlight">\(P(C\mid E)\)</span> gives  Bayers Theorem:
-$<span class="math notranslate nohighlight">\(\boxed{
+<p>and solving for <span class="math notranslate nohighlight">\(P(C\mid E)\)</span> gives  Bayers Theorem:</p>
+<div class="math notranslate nohighlight">
+\[\boxed{
 P(C \mid E) = \frac{P(E \mid C)\,P(C)}{P(E)}
 }
-\)</span>$</p>
-<p>substituting in values:
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>substituting in values:</p>
+<div class="math notranslate nohighlight">
+\[
 P(C \mid E)= \frac{(0.2)(0.02)}{0.05}= 0.08
-\)</span>$
-So the probability of someone in the ER having covid is 8%</p>
+\]</div>
+<p>So the probability of someone in the ER having covid is 8%</p>
 <div class="alert alert-block alert-info">
 <strong>Check your understanding</strong>
 <p>In our model we had:
@@ -1196,11 +1201,12 @@ P(y \mid X) \propto P(y)\prod_{i=1}^{n} P(x_i \mid y)
 <p>Once this estimation is complete, the model becomes a data-derived object that can be reused to make predictions on new, unseen cases. At this point, the model can be used in two distinct but related ways.</p>
 <section id="producing-class-predictions-decisions">
 <h3>3.6.1 Producing class predictions (decisions)<a class="headerlink" href="#producing-class-predictions-decisions" title="Link to this heading">#</a></h3>
-<p>The most basic use of a trained model is to produce a class label for each new entity. Conceptually, this corresponds to:
-$<span class="math notranslate nohighlight">\(
-\hat{y} = \arg\max_y P(y \mid X)
-\)</span>$</p>
-<p>That is, the model compares the probabilities of each class and returns the most likely class.</p>
+<p>The most basic use of a trained model is to produce a class label for each new entity. Conceptually, this corresponds to:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{y} = \arg\max_{y} \; P(y \mid X)
+\]</div>
+<p>This expression means: choose the class label 𝑦 that has the highest predicted probability given the observed features. In other words, the model compares the probabilities of each class and returns the most likely class.</p>
 <p>In scikit-learn, this behavior is exposed through methods such as:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">.predict()</span></code></p></li>
@@ -1216,11 +1222,12 @@ $<span class="math notranslate nohighlight">\(
 </section>
 <section id="producing-class-probabilities-confidence">
 <h3>3.6.2 Producing class probabilities (confidence)<a class="headerlink" href="#producing-class-probabilities-confidence" title="Link to this heading">#</a></h3>
-<p>Many models—including Naïve Bayes—can also report how confident they are in each prediction. Instead of returning just a class label, the model returns estimated probabilities such as:
-$<span class="math notranslate nohighlight">\(
+<p>Many models—including Naïve Bayes—can also report how confident they are in each prediction. Instead of returning just a class label, the model returns estimated probabilities such as:</p>
+<div class="math notranslate nohighlight">
+\[
 P(y=1 \mid X), \quad P(y=0 \mid X)
-\)</span>$
-In scikit-learn, this behavior is exposed through methods such as:</p>
+\]</div>
+<p>In scikit-learn, this behavior is exposed through methods such as:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">.predict_proba()</span></code></p></li>
 </ul>
@@ -1347,12 +1354,12 @@ The label vector $y$ stores the known outcomes associated with each entity. Each
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="A_10_AID_Selector.html"
+       href="A_10-1AID_Selector.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">BioAssay Screening: Enough Actives</p>
+        <p class="prev-next-title">A10.1 BioAssay Screening: Enough Actives</p>
       </div>
     </a>
 </div>

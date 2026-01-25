@@ -21,3 +21,4 @@ parts:
     - file: content/appendices/App_10/README
       sections:
       - file: content/appendices/App_10/A_10_AID_Selector
+      - file: content/appendices/App_10/A_10-2NaiveBayes

@@ -956,8 +956,10 @@ P(E \mid C)[P(F \mid C)]P(T \mid C)[P(S \mid C)]
 <h4>2.2.3.1 Comparing COVID vs. not-COVID Inferences<a class="headerlink" href="#comparing-covid-vs-not-covid-inferences" title="Link to this heading">#</a></h4>
 <p>The following code cell reproduces the Naïve Bayes multiplication using Python as a calculator. It also computes the same product using the complement of each feature likelihood. This allows us to compare how strongly the same features support COVID versus not COVID. To make the comparison easier to see, the output reports ratios rather than raw probabilities. The absolute numbers are less important than how they compare.</p>
 <p><strong>Run the cell below and examine how the ratio changes when we move from a single feature to multiple features.</strong></p>
-<p>For this demonstration, the not-COVID feature likelihoods are approximated using the binary complements of the COVID likelihoods. That is, for each feature <span class="math notranslate nohighlight">\(x\)</span> we use
-$<span class="math notranslate nohighlight">\(P(x=0 \mid C) = 1 - P(x=1 \mid C)\)</span>$ Where</p>
+<p>For this demonstration, the not-COVID feature likelihoods are approximated using the binary complements of the COVID likelihoods. That is, for each feature <span class="math notranslate nohighlight">\(x\)</span> we use</p>
+<div class="math notranslate nohighlight">
+\[P(x=0 \mid C) = 1 - P(x=1 \mid C)\]</div>
+<p>Where</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(P(x=1 \mid C)\)</span> is the probability of having the feature given COVID.</p></li>
 <li><p><span class="math notranslate nohighlight">\(P(x=0\mid C)\)</span> is the probability of not having the feature given COVID and</p></li>

@@ -546,49 +546,25 @@ and training decisions affect model behavior and evaluation.</p>
   <li>Complete Appendix A10.2: <a href="https://rebelford.github.io/2026Cheminformatics/content/appendices/App_10/A_10-2NaiveBayes.html">Bayes' Theorem: From Inference to Models</a></li>
 </ul>
 </div>
-<div class="alert alert-block alert-warning">
-<h1>Learning Objectives</h1>
-<p><strong>Purpose</strong>  Introduce students to the manual construction of a model using Naive Bayes.</p>
-<p><strong>Students Learn</strong></p>
-<ul class="simple">
-<li><p>Remove invariant features and save Test/Training Splits</p></li>
-<li><p>Store Test/Training splits and metadata</p></li>
-<li><p>Balance an imbalanced set through downsizing</p></li>
-<li><p>Build a Naïve Bayes classifier using training data.</p></li>
-<li><p>Generate a Confusion Matrix</p></li>
-<li><p>Generate an ROC curve</p></li>
-</ul>
-<p><strong>Core Activities</strong></p>
-<ul class="simple">
-<li><p>Create a directory with data artifacts</p></li>
-<li></li>
-</ul>
-<p><strong>Prior Knowledge</strong></p>
-<ul class="simple">
-<li><p>Complete Module 10.2 [Data Preparation and Feature Engineering](file://wsl.localhost/Ubuntu/home/rebelford/jupyterbooks/cinf26book/_build/html/content/modules/10_SupervisedML/10_1_data_prep.html)</p></li>
-<li><p>Complete Appendix A10.2: <a class="reference external" href="https://rebelford.github.io/2026Cheminformatics/content/appendices/App_10/A_10-2NaiveBayes.html">Bayes’ Theorem: From Inference to Models</a></p></li>
-</ul>
-<p><strong>Reading links</strong></p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://rebelford.github.io/py4scibook/content/module3-packages1/03-2-pandas.html">Pandas Chapter of Py4Sci</a></p></li>
-</ul>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="preparation-for-model-building">
 <h1>1. Preparation for model building<a class="headerlink" href="#preparation-for-model-building" title="Link to this heading">#</a></h1>
 <p>We are building supervised learning models to predict the biological activity of small molecules. Each molecule is represented by a set of MACCS keys, and each molecule has an associated activity label: <strong>1 for active</strong> and <strong>0 for inactive</strong>.</p>
-<p>For a <em>single compound</em>, the model can be written as:
-$<span class="math notranslate nohighlight">\(y = f(X)\)</span>$
-where:</p>
+<p>For a <em>single compound</em>, the model can be written as:</p>
+<div class="math notranslate nohighlight">
+\[y = f(X)\]</div>
+<p>where:</p>
 <ul class="simple">
 <li><p>(X) is a <strong>feature vector</strong> containing the MACCS keys for that compound,</p></li>
 <li><p>(y) is a <strong>scalar</strong> prediction (0 or 1),</p></li>
 <li><p>(f) is the learned model that maps features to an activity prediction.</p></li>
 </ul>
-<p>For an <em>entire dataset</em> of compounds, this generalizes to:
-$<span class="math notranslate nohighlight">\(
+<p>For an <em>entire dataset</em> of compounds, this generalizes to:</p>
+<div class="math notranslate nohighlight">
+\[
 \mathbf{y} = f(\mathbf{X})
-\)</span>$
-where:</p>
+\]</div>
+<p>where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\((\mathbf{X})\)</span> is a <strong>feature matrix</strong> of shape <em>(n_samples, n_features)</em>,</p></li>
 <li><p><span class="math notranslate nohighlight">\((\mathbf{y})\)</span> is a <strong>label vector</strong> of length <em>n_samples</em>.</p></li>

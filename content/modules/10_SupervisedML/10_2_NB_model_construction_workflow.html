@@ -1942,7 +1942,7 @@ dataset version is used.
   </tbody>
 </table>
 Answer the Following Questions:
-<p>1. What was the original set balanced or unbalanced and identify the majority and minority classes </p>
+<p>1. Was the original set balanced or unbalanced and identify the majority and minority classes </p>
 <div style="
   background-color: #efffff;
   color: #000000;
@@ -1958,7 +1958,7 @@ The initial data set was highly imbalanced with 8 Inactives (majority class) for
 </p>
 </details>
 </div>
-<p>2. Explain from the data how downsampling worked</p>
+<p>2. Explain from the data how down sampling worked</p>
 <div style="
   background-color: #efffff;
   color: #000000;
@@ -2024,14 +2024,11 @@ This separation is intentional. Machine-learning models operate on numerical fea
 Chemical identity is instead preserved in separate artifacts created earlier in section 1.5.1 of this workflow, such as the <code>train_cids.csv</code> file and the corresponding index arrays (e.g., <code>train_idx.npy</code>). These files allow individual
 rows in the NumPy arrays to be traced back to specific compounds without embedding identity information into the model’s inputs.
 </p>
-<p>
-This design cleanly separates <em>what the model learns</em> (numerical feature patterns) from <em>how results are interpreted</em> (mapping predictions back to chemical compounds), and supports reproducibility, auditing, and downstream analysis.
-</p>
 </details>
 </div>
 </div>
 <div class="alert alert-block alert-success">
-<strong>Code Dive:</strong> How Downsampling Works with NumPy
+<strong>Code Dive:</strong> How down sampling Works with NumPy
 <div style="
   background-color: #efffff;
   color: #000000;
@@ -2043,7 +2040,7 @@ This design cleanly separates <em>what the model learns</em> (numerical feature 
 <details>
 <summary>Explanation</summary>
 <p>
-This code performs downsampling using NumPy array operations rather than
+This code performs down sampling using NumPy array operations rather than
 Pandas DataFrames. The goal is to construct a new, balanced training set
 from the original training data.
 </p>
@@ -2921,6 +2918,72 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 </div>
 <div class="alert alert-block alert-info">
 <strong>Deeper Dive:</strong> From <em>y = f(X)</em> to predictions in scikit-learn
+<div style="
+  background-color: #efffff;
+  color: #000000;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #dddddd;
+  margin-top: 10px;
+">
+<details>
+<summary>Explanation</summary>
+<p>
+The <code>scikit-learn</code> library follows the <code>X</code>/<code>y</code>
+conventions consistently when fitting models and generating predictions.
+</p>
+<ul>
+  <li>Models are trained using <code>model.fit(X, y)</code></li>
+  <li><code>X</code> is treated as a feature matrix</li>
+  <li><code>y</code> is treated as a target vector</li>
+</ul>
+<p>
+For <b>probabilistic classifiers</b> such as Naïve Bayes, prediction occurs in
+two conceptual steps:
+</p>
+<p style="text-align: center; font-family: monospace;">
+X  →  P(y | X)  →  y_hat
+</p>
+<ul>
+  <li>
+    <b><code>X</code></b> — the feature matrix
+    <ul>
+      <li>Numerical representation of the compounds</li>
+      <li>Each row corresponds to one compound</li>
+      <li>Each column corresponds to one descriptor or fingerprint bit</li>
+    </ul>
+  </li>
+  <li>
+    <b><code>P(y | X)</code></b> — the posterior class probabilities
+    <ul>
+      <li>The model’s estimated probability for each class</li>
+      <li>Computed internally using Bayes’ theorem</li>
+      <li>Returned by <code>model.predict_proba(X)</code></li>
+    </ul>
+  </li>
+  <li>
+    <b><code>y_hat</code></b> — the predicted class label
+    <ul>
+      <li>The single class assigned to each compound</li>
+      <li>Chosen as the class with the highest probability</li>
+      <li>Returned by <code>model.predict(X)</code></li>
+    </ul>
+  </li>
+</ul>
+<p>
+In short, <code>predict_proba()</code> computes probabilities, while
+<code>predict()</code> applies a decision rule based on those probabilities.
+</p>
+<p>
+Even when Pandas DataFrames or Series are supplied, scikit-learn converts them
+internally to <b>NumPy arrays</b>, preserving the matrix–vector structure
+implied by <code>X</code> and <code>y</code>.
+</p>
+</details>
+</div>
+</div>
+<div class="alert alert-block alert-info">
+<strong>Deeper Dive:</strong> From <em>y = f(X)</em> to predictions in scikit-learn
   <div style="
     background-color: #efffff;
     color: #000000;
@@ -2957,7 +3020,7 @@ two conceptual steps:
     </ul>
   </li>
   <li>
-    <b>\( P(y \mid X) \)</b> — the <b>posterior probability</b>
+    <b>\( P(y \mid X) \)</b>: the <b>posterior probability</b>
     <ul>
       <li>The model’s estimated probability of each class</li>
       <li>Computed using Bayes’ theorem</li>
@@ -2965,7 +3028,7 @@ two conceptual steps:
     </ul>
   </li>
   <li>
-    <b>\( \hat{y} \)</b> — the <b>predicted class label</b>
+    <b>\( \hat{y} \)</b>: the <b>predicted class label</b>
     <ul>
       <li>The single class chosen for each compound</li>
       <li>Selected as the class with the highest probability</li>

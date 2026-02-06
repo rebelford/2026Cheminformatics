@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Module 10.2: Naive Bayes and Model Construction &#8212; 2026 Cheminformatics OLCC</title>
+    <title>10.2: Naive Bayes and Model Construction &#8212; 2026 Cheminformatics OLCC</title>
   
   
   
@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/modules/10_SupervisedML/10_2_NB_model_construction_workflow';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Appendix 1.1: Getting Set Up" href="../../appendices/App_1/README.html" />
+    <link rel="next" title="10.3: Evaluating and Interpreting Models" href="10_3_model_evaluation.html" />
     <link rel="prev" title="10.1: Data Preparation and Feature Engineering" href="10_1_data_prep.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -193,7 +193,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="README.html">Module 10: Supervised Machine Learning</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="10_0_Intro.html">10.0: Intro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10_0_Intro.html">10.0: Introduction</a></li>
 
 
 
@@ -205,7 +205,14 @@
 
 
 
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Module 10.2: Naive Bayes and Model Construction</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">10.2: Naive Bayes and Model Construction</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="10_3_model_evaluation.html">10.3: Evaluating and Interpreting Models</a></li>
+
 
 
 
@@ -447,7 +454,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Module 10.2: Naive Bayes and Model Construction</h1>
+    <h1>10.2: Naive Bayes and Model Construction</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -457,7 +464,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Module 10.2: Naive Bayes and Model Construction</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">10.2: Naive Bayes and Model Construction</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#preparation-for-model-building">1. Preparation for model building</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-data-into-x-and-y">1.1 Loading the data into X and y.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-selection-remove-zero-variance-features">1.2 Feature Selection: Remove zero-variance features</a></li>
@@ -482,7 +489,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#balance-the-training-set-by-downsampling">2.3 Balance the Training Set by Downsampling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.3 Balance the training set by downsampling</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#build-a-model-using-the-training-set">3. Build a model using the training set.</a><ul class="visible nav section-nav flex-column">
@@ -517,8 +523,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="module-10-2-naive-bayes-and-model-construction">
-<h1>Module 10.2: Naive Bayes and Model Construction<a class="headerlink" href="#module-10-2-naive-bayes-and-model-construction" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="naive-bayes-and-model-construction">
+<h1>10.2: Naive Bayes and Model Construction<a class="headerlink" href="#naive-bayes-and-model-construction" title="Link to this heading">#</a></h1>
 <div class="alert alert-block alert-warning">
 <h1>Learning Objectives</h1>
 <p><strong>Purpose</strong><br />
@@ -644,7 +650,7 @@ communicate the structure of the data at a glance.
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="c1"># read fingerprints with activities csv file into pandas dataframe</span>
-<span class="n">df_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/AID743139/features/AID743139_MACCS_activites_noSalt_20260118_v1.csv&quot;</span><span class="p">)</span> <span class="c1"># Change to your file path if you need to load the dataframe</span>
+<span class="n">df_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/AID743139/features/AID743139_MACCS_activities_noSalt_20260205.csv&quot;</span><span class="p">)</span> <span class="c1"># Change to your file path if you need to load the dataframe</span>
 
 <span class="c1"># we now have a dataframe with CIDS, activities and maccs keys</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -1063,37 +1069,36 @@ variance across all molecules, it is removed during feature preprocessing.
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pchelpfct</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pchf</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cinf26pk.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_filename</span><span class="p">,</span> <span class="n">make_fixed_filename</span>
 
-<span class="n">PROJECT_ROOT</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>  <span class="c1"># current working directory</span>
-<span class="n">FEATURES</span> <span class="o">=</span> <span class="n">PROJECT_ROOT</span> <span class="o">/</span> <span class="s2">&quot;data&quot;</span> <span class="o">/</span> <span class="s2">&quot;AID743139&quot;</span> <span class="o">/</span> <span class="s2">&quot;features&quot;</span>
+
+<span class="c1">#PROJECT_ROOT = Path.cwd()  # current working directory</span>
+<span class="n">FEATURES</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/AID743139/features&quot;</span><span class="p">)</span>
 <span class="n">FEATURES</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Save variance mask</span>
-<span class="n">mask_fname</span> <span class="o">=</span> <span class="n">pchf</span><span class="o">.</span><span class="n">make_filename</span><span class="p">(</span>
+<span class="n">mask_fname</span> <span class="o">=</span> <span class="n">make_filename</span><span class="p">(</span>
     <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;AID743139_MACCS_variance_mask&quot;</span><span class="p">,</span>
-    <span class="n">ext</span><span class="o">=</span><span class="s2">&quot;npy&quot;</span><span class="p">,</span>
-    <span class="n">folder</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">FEATURES</span><span class="p">)</span>
+    <span class="n">ext</span><span class="o">=</span><span class="s2">&quot;npy&quot;</span>
 <span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">FEATURES</span> <span class="o">/</span> <span class="n">mask_fname</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
 
 <span class="c1"># Save metadata JSON</span>
-<span class="n">meta_fname</span> <span class="o">=</span> <span class="n">pchf</span><span class="o">.</span><span class="n">make_filename</span><span class="p">(</span>
+<span class="n">meta_fname</span> <span class="o">=</span> <span class="n">make_filename</span><span class="p">(</span>
     <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;AID743139_MACCS_feature_metadata&quot;</span><span class="p">,</span>
-    <span class="n">ext</span><span class="o">=</span><span class="s2">&quot;json&quot;</span><span class="p">,</span>
-    <span class="n">folder</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">FEATURES</span><span class="p">)</span>
+    <span class="n">ext</span><span class="o">=</span><span class="s2">&quot;json&quot;</span>
 <span class="p">)</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">FEATURES</span> <span class="o">/</span> <span class="n">meta_fname</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">feature_metadata</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[Saved] Variance mask → </span><span class="si">{</span><span class="n">mask_fname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[Saved] Feature metadata → </span><span class="si">{</span><span class="n">meta_fname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[Saved] Variance mask → </span><span class="si">{</span><span class="n">FEATURES</span><span class="o">/</span><span class="n">mask_fname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[Saved] Feature metadata → </span><span class="si">{</span><span class="n">FEATURES</span><span class="o">/</span><span class="n">meta_fname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Saved] Variance mask → /home/rebelford/jupyterbooks/cinf26book/content/modules/10_SupervisedML/data/AID743139/features/AID743139_MACCS_variance_mask_20260128_v1.npy
-[Saved] Feature metadata → /home/rebelford/jupyterbooks/cinf26book/content/modules/10_SupervisedML/data/AID743139/features/AID743139_MACCS_feature_metadata_20260128_v1.json
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Saved] Variance mask → data/AID743139/features/AID743139_MACCS_variance_mask_20260205_v1.npy
+[Saved] Feature metadata → data/AID743139/features/AID743139_MACCS_feature_metadata_20260205_v1.json
 </pre></div>
 </div>
 </div>
@@ -1191,7 +1196,7 @@ In this module, we are continuing a supervised learning pipeline that began with
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">df_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
-    <span class="s2">&quot;data/AID743139/features/AID743139_MACCS_activites_noSalt_20260118_v1.csv&quot;</span>
+    <span class="s2">&quot;data/AID743139/features/AID743139_MACCS_activities_noSalt_20260205.csv&quot;</span>
 <span class="p">)</span><span class="c1"># adjust code to your file</span>
 
 <span class="c1"># Separate labels</span>
@@ -1223,7 +1228,7 @@ In this module, we are continuing a supervised learning pipeline that began with
 
 <span class="c1"># Load saved variance mask</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
-    <span class="s2">&quot;data/AID743139/features/AID743139_MACCS_variance_mask_20260125_v1.npy&quot;</span>
+    <span class="s2">&quot;data/AID743139/features/AID743139_MACCS_variance_mask_20260205_v1.npy&quot;</span>
 <span class="p">)</span><span class="c1"># adjust code to your file path</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mask shape:&quot;</span><span class="p">,</span> <span class="n">mask</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -1422,22 +1427,25 @@ The remaining 90% is used for model training.</p></li>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="c1"># Project root</span>
-<span class="n">PROJECT_ROOT</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>  <span class="c1"># 10_ML</span>
-
-<span class="c1"># Define split directory</span>
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="c1"># Define split configuration</span>
+<span class="c1"># ------------------------------------------------------------</span>
 <span class="n">SPLIT_NAME</span> <span class="o">=</span> <span class="s2">&quot;90_10&quot;</span>
-<span class="n">SPLITS</span> <span class="o">=</span> <span class="n">PROJECT_ROOT</span> <span class="o">/</span> <span class="s2">&quot;data&quot;</span> <span class="o">/</span> <span class="s2">&quot;AID743139&quot;</span> <span class="o">/</span> <span class="s2">&quot;splits&quot;</span> <span class="o">/</span> <span class="n">SPLIT_NAME</span>
+
+<span class="n">SPLITS</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/AID743139/splits&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="n">SPLIT_NAME</span>
 <span class="n">SPLITS</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Optional subfolder for arrays (keeps things tidy)</span>
 <span class="n">ARRAYS</span> <span class="o">=</span> <span class="n">SPLITS</span> <span class="o">/</span> <span class="s2">&quot;arrays&quot;</span>
 <span class="n">ARRAYS</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
+
+<span class="c1"># ------------------------------------------------------------</span>
 <span class="c1"># Save NumPy arrays</span>
+<span class="c1"># ------------------------------------------------------------</span>
 <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">ARRAYS</span> <span class="o">/</span> <span class="s2">&quot;X_train.npy&quot;</span><span class="p">,</span> <span class="n">X_train</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">ARRAYS</span> <span class="o">/</span> <span class="s2">&quot;X_test.npy&quot;</span><span class="p">,</span> <span class="n">X_test</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">ARRAYS</span> <span class="o">/</span> <span class="s2">&quot;y_train.npy&quot;</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -1447,10 +1455,13 @@ The remaining 90% is used for model training.</p></li>
 <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">SPLITS</span> <span class="o">/</span> <span class="s2">&quot;train_idx.npy&quot;</span><span class="p">,</span> <span class="n">idx_train</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">SPLITS</span> <span class="o">/</span> <span class="s2">&quot;test_idx.npy&quot;</span><span class="p">,</span> <span class="n">idx_test</span><span class="p">)</span>
 
+
+<span class="c1"># ------------------------------------------------------------</span>
 <span class="c1"># Save CID traceability</span>
+<span class="c1"># ------------------------------------------------------------</span>
 <span class="n">df_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx_train</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;cid&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span>
     <span class="n">SPLITS</span> <span class="o">/</span> <span class="s2">&quot;train_cids.csv&quot;</span><span class="p">,</span>
-    <span class="n">index</span><span class="o">=</span><span class="kc">False</span> 
+    <span class="n">index</span><span class="o">=</span><span class="kc">False</span>
 <span class="p">)</span>
 
 <span class="n">df_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx_test</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;cid&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span>
@@ -1458,7 +1469,10 @@ The remaining 90% is used for model training.</p></li>
     <span class="n">index</span><span class="o">=</span><span class="kc">False</span>
 <span class="p">)</span>
 
+
+<span class="c1"># ------------------------------------------------------------</span>
 <span class="c1"># Save split metadata</span>
+<span class="c1"># ------------------------------------------------------------</span>
 <span class="n">split_metadata</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;assay&quot;</span><span class="p">:</span> <span class="s2">&quot;AID743139&quot;</span><span class="p">,</span>
     <span class="s2">&quot;split_name&quot;</span><span class="p">:</span> <span class="n">SPLIT_NAME</span><span class="p">,</span>
@@ -1469,7 +1483,7 @@ The remaining 90% is used for model training.</p></li>
     <span class="s2">&quot;random_state&quot;</span><span class="p">:</span> <span class="mi">3100</span><span class="p">,</span>
     <span class="s2">&quot;labels&quot;</span><span class="p">:</span> <span class="s2">&quot;Active vs Inactive&quot;</span><span class="p">,</span>
     <span class="s2">&quot;features&quot;</span><span class="p">:</span> <span class="s2">&quot;MACCS (variance-filtered)&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;source_feature_file&quot;</span><span class="p">:</span> <span class="s2">&quot;AID743139_MACCS_activites_noSalt_20260104_v1.csv&quot;</span>
+    <span class="s2">&quot;source_feature_file&quot;</span><span class="p">:</span> <span class="s2">&quot;AID743139_MACCS_activities_noSalt_20260205.csv&quot;</span>
 <span class="p">}</span>
 
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">SPLITS</span> <span class="o">/</span> <span class="s2">&quot;split_metadata.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
@@ -1480,7 +1494,7 @@ The remaining 90% is used for model training.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Saved] Train/test split → /home/rebelford/jupyterbooks/cinf26book/content/modules/10_SupervisedML/data/AID743139/splits/90_10
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Saved] Train/test split → data/AID743139/splits/90_10
 </pre></div>
 </div>
 </div>
@@ -1521,11 +1535,11 @@ below summarizes what was saved and why.</p>
 <strong>Data Artifacts Dive: What was Saved and Why</strong>
 <p>Explain the role of the following files in the splits/90_10 directory. <strong>Be sure to open the files!</strong> You can open the *.csv and *.json files directly from the jupyter lab file browser.  You can open the *.npy files by executing the following in a code cell (and altering file name as appropriate).
 <pre><code>
-import numpy as np
-from pathlib import Path
-<p>PROJECT_ROOT = Path.cwd()  # 10_ML</p>
-<p>SPLIT_NAME = “90_10”
-SPLITS = PROJECT_ROOT / “data” / “AID743139” / “splits” / SPLIT_NAME
+SPLIT_NAME = "90_10"
+<p>SPLITS = Path(“data/AID743139/splits”) / SPLIT_NAME
+SPLITS.mkdir(parents=True, exist_ok=True)</p>
+<p>ARRAYS = SPLITS / “arrays”
+ARRAYS.mkdir(exist_ok=True)
 test_idx = np.load(SPLITS / “arrays/X_test.npy”)
 test_idx
 </code></pre>
@@ -1629,6 +1643,14 @@ X_test.npy is the feature matrix for the test compounds, and y_test.npy contains
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write code here to view a *.npy files in the arrays folder (see above hints)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">SPLITS</span><span class="o">/</span><span class="s2">&quot;arrays/y_train.npy&quot;</span><span class="p">)</span>
+<span class="n">y_train</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 1, 0, 0])
 </pre></div>
 </div>
 </div>
@@ -1659,25 +1681,15 @@ Unlike earlier steps, where we defined the feature space and created a fixed tra
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="c1"># Define project root (10_ML)</span>
-<span class="n">PROJECT_ROOT</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>
-
-<span class="c1"># Define arrays directory</span>
-<span class="n">ARRAY_DIR</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">PROJECT_ROOT</span>
-    <span class="o">/</span> <span class="s2">&quot;data&quot;</span>
-    <span class="o">/</span> <span class="s2">&quot;AID743139&quot;</span>
-    <span class="o">/</span> <span class="s2">&quot;splits&quot;</span>
-    <span class="o">/</span> <span class="s2">&quot;90_10&quot;</span>
-    <span class="o">/</span> <span class="s2">&quot;arrays&quot;</span>
-<span class="p">)</span>
+<span class="c1"># Define arrays directory (relative to notebook)</span>
+<span class="n">SPLIT_ROOT</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/AID743139/splits/90_10/arrays&quot;</span><span class="p">)</span>
 
 <span class="c1"># Load arrays into active memory</span>
-<span class="n">X_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">ARRAY_DIR</span> <span class="o">/</span> <span class="s2">&quot;X_train.npy&quot;</span><span class="p">)</span>
-<span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">ARRAY_DIR</span> <span class="o">/</span> <span class="s2">&quot;y_train.npy&quot;</span><span class="p">)</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">SPLIT_ROOT</span> <span class="o">/</span> <span class="s2">&quot;X_train.npy&quot;</span><span class="p">)</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">SPLIT_ROOT</span> <span class="o">/</span> <span class="s2">&quot;y_train.npy&quot;</span><span class="p">)</span>
 
-<span class="n">X_test</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">ARRAY_DIR</span> <span class="o">/</span> <span class="s2">&quot;X_test.npy&quot;</span><span class="p">)</span>
-<span class="n">y_test</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">ARRAY_DIR</span> <span class="o">/</span> <span class="s2">&quot;y_test.npy&quot;</span><span class="p">)</span>
+<span class="n">X_test</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">SPLIT_ROOT</span> <span class="o">/</span> <span class="s2">&quot;X_test.npy&quot;</span><span class="p">)</span>
+<span class="n">y_test</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">SPLIT_ROOT</span> <span class="o">/</span> <span class="s2">&quot;y_test.npy&quot;</span><span class="p">)</span>
 
 <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
@@ -1693,8 +1705,8 @@ Unlike earlier steps, where we defined the feature space and created a fixed tra
 <strong>What does it mean to load a Numpy Array</strong>
 <p>The following code loads two objects into memory. Explain what these objects are, where they come from, and how they are used in the machine-learning workflow.
 </p>
-<pre><code>X_train = np.load(ARRAY_DIR / "X_train.npy")
-y_train = np.load(ARRAY_DIR / "y_train.npy")</code></pre>
+<pre><code>X_train = np.load(SPLIT_ROOT / "X_train.npy")
+y_train = np.load(SPLIT_ROOT / "y_train.npy")</code></pre>
   <div style="
     background-color: #efffff;
     color: #000000;
@@ -1832,12 +1844,6 @@ the ratio of inactive to active in training set= 8.137518684603886
 </section>
 <section id="balance-the-training-set-by-downsampling">
 <h2>2.3 Balance the Training Set by Downsampling<a class="headerlink" href="#balance-the-training-set-by-downsampling" title="Link to this heading">#</a></h2>
-<p>When a dataset exhibits strong class imbalance, one common mitigation strategy is downsampling the majority class. In downsampling, we randomly select a subset of the majority class so that its size is comparable to that of the minority class. This encourages the model to learn decision boundaries that treat both classes more equitably, rather than defaulting to predictions driven primarily by class frequency.</p>
-<p>Downsampling reduces the total amount of training data and may discard potentially informative samples from the majority class. However, it often improves a model’s ability to recognize the minority class and reduces bias toward the dominant class. In this notebook, we use downsampling as a simple, transparent strategy to address class imbalance during model training.</p>
-<p>Importantly, this procedure is applied only to the training data. The test set remains unchanged and continues to reflect the original class distribution.</p>
-</section>
-<section id="id1">
-<h2>2.3 Balance the training set by downsampling<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>When a dataset has a strong class imbalance a common mitigation strategy is downsampling the majority class. In downsampling, we randomly select a subset of the majority class so that its size is comparable to that of the minority class. This encourages the model to learn decision boundaries that treat both classes more equitably, rather than defaulting to predictions dominated by the majority class. While downsampling reduces the total amount of training data and may discard potentially informative samples from the majority class, it often improves model performance on the minority class and reduces bias toward the majority class.</p>
 <p>In the code cell below, we randomly select a subset of the inactive compounds such that their number matches the number of active compounds.</p>
 <div class="cell docutils container">
@@ -2233,7 +2239,7 @@ The model also estimates how common each class is in the training data. These cl
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model expects features: 162
 </pre></div>
 </div>
-<div class="output text_html"><style>#sk-container-id-1 {
+<div class="output text_html"><style>#sk-container-id-2 {
   /* Definition of color scheme common for light and dark mode */
   --sklearn-color-text: #000;
   --sklearn-color-text-muted: #666;
@@ -2264,15 +2270,15 @@ The model also estimates how common each class is in the training data. These cl
   }
 }
 
-#sk-container-id-1 {
+#sk-container-id-2 {
   color: var(--sklearn-color-text);
 }
 
-#sk-container-id-1 pre {
+#sk-container-id-2 pre {
   padding: 0;
 }
 
-#sk-container-id-1 input.sk-hidden--visually {
+#sk-container-id-2 input.sk-hidden--visually {
   border: 0;
   clip: rect(1px 1px 1px 1px);
   clip: rect(1px, 1px, 1px, 1px);
@@ -2284,7 +2290,7 @@ The model also estimates how common each class is in the training data. These cl
   width: 1px;
 }
 
-#sk-container-id-1 div.sk-dashed-wrapped {
+#sk-container-id-2 div.sk-dashed-wrapped {
   border: 1px dashed var(--sklearn-color-line);
   margin: 0 0.4em 0.5em 0.4em;
   box-sizing: border-box;
@@ -2292,7 +2298,7 @@ The model also estimates how common each class is in the training data. These cl
   background-color: var(--sklearn-color-background);
 }
 
-#sk-container-id-1 div.sk-container {
+#sk-container-id-2 div.sk-container {
   /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
      but bootstrap.min.css set `[hidden] { display: none !important; }`
      so we also need the `!important` here to be able to override the
@@ -2302,7 +2308,7 @@ The model also estimates how common each class is in the training data. These cl
   position: relative;
 }
 
-#sk-container-id-1 div.sk-text-repr-fallback {
+#sk-container-id-2 div.sk-text-repr-fallback {
   display: none;
 }
 
@@ -2318,14 +2324,14 @@ div.sk-item {
 
 /* Parallel-specific style estimator block */
 
-#sk-container-id-1 div.sk-parallel-item::after {
+#sk-container-id-2 div.sk-parallel-item::after {
   content: "";
   width: 100%;
   border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
   flex-grow: 1;
 }
 
-#sk-container-id-1 div.sk-parallel {
+#sk-container-id-2 div.sk-parallel {
   display: flex;
   align-items: stretch;
   justify-content: center;
@@ -2333,28 +2339,28 @@ div.sk-item {
   position: relative;
 }
 
-#sk-container-id-1 div.sk-parallel-item {
+#sk-container-id-2 div.sk-parallel-item {
   display: flex;
   flex-direction: column;
 }
 
-#sk-container-id-1 div.sk-parallel-item:first-child::after {
+#sk-container-id-2 div.sk-parallel-item:first-child::after {
   align-self: flex-end;
   width: 50%;
 }
 
-#sk-container-id-1 div.sk-parallel-item:last-child::after {
+#sk-container-id-2 div.sk-parallel-item:last-child::after {
   align-self: flex-start;
   width: 50%;
 }
 
-#sk-container-id-1 div.sk-parallel-item:only-child::after {
+#sk-container-id-2 div.sk-parallel-item:only-child::after {
   width: 0;
 }
 
 /* Serial-specific style estimator block */
 
-#sk-container-id-1 div.sk-serial {
+#sk-container-id-2 div.sk-serial {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2372,14 +2378,14 @@ clickable and can be expanded/collapsed.
 
 /* Pipeline and ColumnTransformer style (default) */
 
-#sk-container-id-1 div.sk-toggleable {
+#sk-container-id-2 div.sk-toggleable {
   /* Default theme specific background. It is overwritten whether we have a
   specific estimator or a Pipeline/ColumnTransformer */
   background-color: var(--sklearn-color-background);
 }
 
 /* Toggleable label */
-#sk-container-id-1 label.sk-toggleable__label {
+#sk-container-id-2 label.sk-toggleable__label {
   cursor: pointer;
   display: flex;
   width: 100%;
@@ -2392,13 +2398,13 @@ clickable and can be expanded/collapsed.
   gap: 0.5em;
 }
 
-#sk-container-id-1 label.sk-toggleable__label .caption {
+#sk-container-id-2 label.sk-toggleable__label .caption {
   font-size: 0.6rem;
   font-weight: lighter;
   color: var(--sklearn-color-text-muted);
 }
 
-#sk-container-id-1 label.sk-toggleable__label-arrow:before {
+#sk-container-id-2 label.sk-toggleable__label-arrow:before {
   /* Arrow on the left of the label */
   content: "▸";
   float: left;
@@ -2406,25 +2412,25 @@ clickable and can be expanded/collapsed.
   color: var(--sklearn-color-icon);
 }
 
-#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {
+#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {
   color: var(--sklearn-color-text);
 }
 
 /* Toggleable content - dropdown */
 
-#sk-container-id-1 div.sk-toggleable__content {
+#sk-container-id-2 div.sk-toggleable__content {
   display: none;
   text-align: left;
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-1 div.sk-toggleable__content.fitted {
+#sk-container-id-2 div.sk-toggleable__content.fitted {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
-#sk-container-id-1 div.sk-toggleable__content pre {
+#sk-container-id-2 div.sk-toggleable__content pre {
   margin: 0.2em;
   border-radius: 0.25em;
   color: var(--sklearn-color-text);
@@ -2432,79 +2438,79 @@ clickable and can be expanded/collapsed.
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-1 div.sk-toggleable__content.fitted pre {
+#sk-container-id-2 div.sk-toggleable__content.fitted pre {
   /* unfitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
-#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {
   /* Expand drop-down */
   display: block;
   width: 100%;
   overflow: visible;
 }
 
-#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
   content: "▾";
 }
 
 /* Pipeline/ColumnTransformer-specific style */
 
-#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-1 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-2 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
 /* Estimator-specific style */
 
 /* Colorize estimator box */
-#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-1 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+#sk-container-id-2 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
-#sk-container-id-1 div.sk-label label.sk-toggleable__label,
-#sk-container-id-1 div.sk-label label {
+#sk-container-id-2 div.sk-label label.sk-toggleable__label,
+#sk-container-id-2 div.sk-label label {
   /* The background is the default theme color */
   color: var(--sklearn-color-text-on-default-background);
 }
 
 /* On hover, darken the color of the background */
-#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {
+#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
 /* Label box, darken color on hover, fitted */
-#sk-container-id-1 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+#sk-container-id-2 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
   color: var(--sklearn-color-text);
   background-color: var(--sklearn-color-fitted-level-2);
 }
 
 /* Estimator label */
 
-#sk-container-id-1 div.sk-label label {
+#sk-container-id-2 div.sk-label label {
   font-family: monospace;
   font-weight: bold;
   display: inline-block;
   line-height: 1.2em;
 }
 
-#sk-container-id-1 div.sk-label-container {
+#sk-container-id-2 div.sk-label-container {
   text-align: center;
 }
 
 /* Estimator-specific */
-#sk-container-id-1 div.sk-estimator {
+#sk-container-id-2 div.sk-estimator {
   font-family: monospace;
   border: 1px dotted var(--sklearn-color-border-box);
   border-radius: 0.25em;
@@ -2514,18 +2520,18 @@ clickable and can be expanded/collapsed.
   background-color: var(--sklearn-color-unfitted-level-0);
 }
 
-#sk-container-id-1 div.sk-estimator.fitted {
+#sk-container-id-2 div.sk-estimator.fitted {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-0);
 }
 
 /* on hover */
-#sk-container-id-1 div.sk-estimator:hover {
+#sk-container-id-2 div.sk-estimator:hover {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-2);
 }
 
-#sk-container-id-1 div.sk-estimator.fitted:hover {
+#sk-container-id-2 div.sk-estimator.fitted:hover {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-2);
 }
@@ -2613,7 +2619,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 
 /* "?"-specific style due to the `<a>` HTML tag */
 
-#sk-container-id-1 a.estimator_doc_link {
+#sk-container-id-2 a.estimator_doc_link {
   float: right;
   font-size: 1rem;
   line-height: 1em;
@@ -2628,21 +2634,21 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
   border: var(--sklearn-color-unfitted-level-1) 1pt solid;
 }
 
-#sk-container-id-1 a.estimator_doc_link.fitted {
+#sk-container-id-2 a.estimator_doc_link.fitted {
   /* fitted */
   border: var(--sklearn-color-fitted-level-1) 1pt solid;
   color: var(--sklearn-color-fitted-level-1);
 }
 
 /* On hover */
-#sk-container-id-1 a.estimator_doc_link:hover {
+#sk-container-id-2 a.estimator_doc_link:hover {
   /* unfitted */
   background-color: var(--sklearn-color-unfitted-level-3);
   color: var(--sklearn-color-background);
   text-decoration: none;
 }
 
-#sk-container-id-1 a.estimator_doc_link.fitted:hover {
+#sk-container-id-2 a.estimator_doc_link.fitted:hover {
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-3);
 }
@@ -2710,7 +2716,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
     height: 14px;
     cursor: pointer;
 }
-</style><body><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>BernoulliNB()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>BernoulliNB</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.naive_bayes.BernoulliNB.html">?<span>Documentation for BernoulliNB</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
+</style><body><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>BernoulliNB()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" checked><label for="sk-estimator-id-2" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>BernoulliNB</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.naive_bayes.BernoulliNB.html">?<span>Documentation for BernoulliNB</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
         <div class="estimator-table">
             <details>
                 <summary>Parameters</summary>
@@ -3192,11 +3198,11 @@ In the sections that follow we will focus on what does the model output, and how
 <span class="n">y_test_pred</span> <span class="o">=</span> <span class="n">clf_NB</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
 <span class="c1"># Confusion matrix</span>
-<span class="n">CMat</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_pred</span><span class="p">)</span>
-<span class="n">TN</span><span class="p">,</span> <span class="n">FP</span><span class="p">,</span> <span class="n">FN</span><span class="p">,</span> <span class="n">TP</span> <span class="o">=</span> <span class="n">CMat</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_pred</span><span class="p">)</span>
+<span class="n">TN</span><span class="p">,</span> <span class="n">FP</span><span class="p">,</span> <span class="n">FN</span><span class="p">,</span> <span class="n">TP</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test-set Confusion Matrix&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">CMat</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
 
 <span class="c1"># Classification report</span>
 <span class="c1">#|print(&quot;\nTest-set Classification Report&quot;)</span>
@@ -3214,18 +3220,18 @@ In the sections that follow we will focus on what does the model output, and how
 </div>
 <p>These two lines perform the core evaluation step.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf_NB</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">CMat</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">CMat</span><span class="p">)</span>    <span class="c1"># [[TN, FP], </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>    <span class="c1"># [[TN, FP], </span>
                <span class="c1">#  [FN, TP]]</span>
 <span class="c1"># Extracting TN, FP, FN, TP from the confusion matrix               </span>
-<span class="n">TN</span> <span class="o">=</span> <span class="n">CMat</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># True Negatives</span>
-<span class="n">FP</span> <span class="o">=</span> <span class="n">CMat</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># False Positives</span>
-<span class="n">FN</span> <span class="o">=</span> <span class="n">CMat</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># False Negatives</span>
-<span class="n">TP</span> <span class="o">=</span> <span class="n">CMat</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># True Positives</span>
+<span class="n">TN</span> <span class="o">=</span> <span class="n">cm</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># True Negatives</span>
+<span class="n">FP</span> <span class="o">=</span> <span class="n">cm</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># False Positives</span>
+<span class="n">FN</span> <span class="o">=</span> <span class="n">cm</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># False Negatives</span>
+<span class="n">TP</span> <span class="o">=</span> <span class="n">cm</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># True Positives</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;True Negatives (TN):&quot;</span><span class="p">,</span> <span class="n">TN</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;False Positives (FP):&quot;</span><span class="p">,</span> <span class="n">FP</span><span class="p">)</span>
@@ -3351,16 +3357,16 @@ Saved test-set predictions to test_predictions.csv
 <span class="c1"># Save confusion matrix</span>
 <span class="c1"># -------------------------------------------------</span>
 <span class="n">cm_path</span> <span class="o">=</span> <span class="n">RESULTS_ROOT</span> <span class="o">/</span> <span class="s2">&quot;confusion_matrix_test.npy&quot;</span>
-<span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">cm_path</span><span class="p">,</span> <span class="n">CMat</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">cm_path</span><span class="p">,</span> <span class="n">cm</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved confusion matrix to </span><span class="si">{</span><span class="n">cm_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved confusion matrix to </span><span class="si">{</span><span class="n">cm_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Confusion matrix contents:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">CMat</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saved confusion matrix to confusion_matrix_test.npy
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saved confusion matrix to results/AID743139/nb/confusion_matrix_test.npy
 Confusion matrix contents:
 [[400 206]
  [ 25  49]]
@@ -3405,15 +3411,15 @@ Confusion matrix contents:
     <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Saved metrics and metadata:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; - </span><span class="si">{</span><span class="n">metrics_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; - </span><span class="si">{</span><span class="n">metadata_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; - </span><span class="si">{</span><span class="n">metrics_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; - </span><span class="si">{</span><span class="n">metadata_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saved metrics and metadata:
- - metrics_test.json
- - results_metadata.json
+ - results/AID743139/nb/metrics_test.json
+ - results/AID743139/nb/results_metadata.json
 </pre></div>
 </div>
 </div>
@@ -3505,7 +3511,7 @@ Many sources choose to place the positive first and negative second, essentially
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
 <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span>
-    <span class="n">CMat</span><span class="p">,</span>
+    <span class="n">cm</span><span class="p">,</span>
     <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span>
     <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Greens&quot;</span><span class="p">,</span>
@@ -3526,7 +3532,7 @@ Many sources choose to place the positive first and negative second, essentially
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/262854df656d5250fac257bed54ab40fe73a5f61d8aad8616c8f2ba07e79e013.png" src="../../../_images/262854df656d5250fac257bed54ab40fe73a5f61d8aad8616c8f2ba07e79e013.png" />
+<img alt="../../../_images/b24eee0915d63a62f6b7edcc35ecc80be4b81632c1e8d5c6cdd6bedc28b267b8.png" src="../../../_images/b24eee0915d63a62f6b7edcc35ecc80be4b81632c1e8d5c6cdd6bedc28b267b8.png" />
 </div>
 </div>
 <p>The diagonal cells represent correct predictions, while the off-diagonal cells represent errors. The confusion matrix makes it visually clear that different types of errors occur, which is why we need multiple evaluation metrics rather than a single accuracy value</p>
@@ -3737,14 +3743,14 @@ ROC–AUC is fundamentally a ranking-based evaluation. Rather than measuring per
 
 <span class="c1"># 6. Create confusion matrices (train and test)</span>
 
-<span class="n">CMat_test</span>  <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_test</span><span class="p">)</span>
-<span class="n">CMat_train</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_train_bal</span><span class="p">,</span> <span class="n">y_pred_train</span><span class="p">)</span>
+<span class="n">cm_test</span>  <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_test</span><span class="p">)</span>
+<span class="n">cm_train</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_train_bal</span><span class="p">,</span> <span class="n">y_pred_train</span><span class="p">)</span>
 
-<span class="n">TN</span><span class="p">,</span> <span class="n">FP</span><span class="p">,</span> <span class="n">FN</span><span class="p">,</span> <span class="n">TP</span> <span class="o">=</span> <span class="n">CMat_test</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
-<span class="n">TN_tr</span><span class="p">,</span> <span class="n">FP_tr</span><span class="p">,</span> <span class="n">FN_tr</span><span class="p">,</span> <span class="n">TP_tr</span> <span class="o">=</span> <span class="n">CMat_train</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<span class="n">TN</span><span class="p">,</span> <span class="n">FP</span><span class="p">,</span> <span class="n">FN</span><span class="p">,</span> <span class="n">TP</span> <span class="o">=</span> <span class="n">cm_test</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<span class="n">TN_tr</span><span class="p">,</span> <span class="n">FP_tr</span><span class="p">,</span> <span class="n">FN_tr</span><span class="p">,</span> <span class="n">TP_tr</span> <span class="o">=</span> <span class="n">cm_train</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test confusion matrix:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">CMat_test</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Training confusion matrix:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">CMat_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test confusion matrix:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">cm_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Training confusion matrix:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">cm_train</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3902,7 +3908,7 @@ ROC curve arrays (test set):
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/1aa7536f8fab88fccbc2b9ee6914f1dcc92a3489020761baea5605dcc4205344.png" src="../../../_images/1aa7536f8fab88fccbc2b9ee6914f1dcc92a3489020761baea5605dcc4205344.png" />
+<img alt="../../../_images/1699d18f6b172d43f794728b01fcd6593a706d4ab010deb887bc1d61b2a9b541.png" src="../../../_images/1699d18f6b172d43f794728b01fcd6593a706d4ab010deb887bc1d61b2a9b541.png" />
 </div>
 </div>
 <p>The ROC curves for both the training and test sets lie well above the diagonal reference line, indicating that the model has learned a meaningful ranking signal rather than behaving like a random classifier. The training curve consistently exceeds the test curve, as expected, but the gap between them is modest, suggesting limited overfitting and reasonable generalization. The test-set AUC of approximately 0.72 confirms that active compounds tend to receive higher scores than inactive compounds, even though no single decision threshold has yet been chosen. At the same time, the gradual rise of the curve highlights an inherent trade-off: increasing sensitivity necessarily increases the false positive rate. This reinforces the idea that ROC–AUC evaluates whether useful separation exists at all, while the choice of a specific threshold must be guided by scientific or practical priorities.</p>
@@ -3922,16 +3928,16 @@ ROC curve arrays (test set):
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "datachem"
+            mode: "nbi"
         },
         kernelOptions: {
-            name: "datachem",
+            name: "nbi",
             path: "./content/modules/10_SupervisedML"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'datachem'</script>
+    <script>kernelName = 'nbi'</script>
 
                 </article>
               
@@ -3953,11 +3959,11 @@ ROC curve arrays (test set):
       </div>
     </a>
     <a class="right-next"
-       href="../../appendices/App_1/README.html"
+       href="10_3_model_evaluation.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Appendix 1.1: Getting Set Up</p>
+        <p class="prev-next-title">10.3: Evaluating and Interpreting Models</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -3977,7 +3983,7 @@ ROC curve arrays (test set):
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Module 10.2: Naive Bayes and Model Construction</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">10.2: Naive Bayes and Model Construction</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#preparation-for-model-building">1. Preparation for model building</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-data-into-x-and-y">1.1 Loading the data into X and y.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-selection-remove-zero-variance-features">1.2 Feature Selection: Remove zero-variance features</a></li>
@@ -4002,7 +4008,6 @@ ROC curve arrays (test set):
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#balance-the-training-set-by-downsampling">2.3 Balance the Training Set by Downsampling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.3 Balance the training set by downsampling</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#build-a-model-using-the-training-set">3. Build a model using the training set.</a><ul class="visible nav section-nav flex-column">

@@ -60,8 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/modules/10_SupervisedML/10_1_data_prep';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Module 10.2: Naive Bayes and Model Construction" href="10_2_NB_model_construction_workflow.html" />
-    <link rel="prev" title="10.0: Intro" href="10_0_Intro.html" />
+    <link rel="next" title="10.2: Naive Bayes and Model Construction" href="10_2_NB_model_construction_workflow.html" />
+    <link rel="prev" title="10.0: Introduction" href="10_0_Intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -191,7 +191,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="README.html">Module 10: Supervised Machine Learning</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="10_0_Intro.html">10.0: Intro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10_0_Intro.html">10.0: Introduction</a></li>
 
 
 
@@ -203,7 +203,14 @@
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="10_2_NB_model_construction_workflow.html">Module 10.2: Naive Bayes and Model Construction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10_2_NB_model_construction_workflow.html">10.2: Naive Bayes and Model Construction</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="10_3_model_evaluation.html">10.3: Evaluating and Interpreting Models</a></li>
+
 
 
 
@@ -672,13 +679,12 @@ else:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">cinf26pk.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">filenames</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cinf26pk.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_fixed_filename</span>
 
-<span class="n">PROJECT_ROOT</span><span class="o">=</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>
-<span class="n">RAW</span> <span class="o">=</span> <span class="n">PROJECT_ROOT</span><span class="o">/</span><span class="s2">&quot;data&quot;</span><span class="o">/</span> <span class="s2">&quot;AID743139&quot;</span> <span class="o">/</span> <span class="s2">&quot;raw&quot;</span>
+<span class="n">RAW</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/AID743139/raw&quot;</span><span class="p">)</span>
 <span class="n">RAW</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="n">fname</span> <span class="o">=</span> <span class="n">filenames</span><span class="o">.</span><span class="n">make_fixed_filename</span><span class="p">(</span>
+<span class="n">fname</span> <span class="o">=</span> <span class="n">make_fixed_filename</span><span class="p">(</span>
     <span class="n">stem</span><span class="o">=</span><span class="s2">&quot;AID743139_pubchem_raw&quot;</span><span class="p">,</span>
     <span class="n">ext</span><span class="o">=</span><span class="s2">&quot;csv&quot;</span><span class="p">,</span>
     <span class="n">add_date</span><span class="o">=</span><span class="kc">True</span>
@@ -773,8 +779,7 @@ df_raw.to_csv(RAW / fname, index=False)
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
-<span class="n">PROJECT_ROOT</span><span class="o">=</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>
-<span class="n">RAW</span> <span class="o">=</span> <span class="n">PROJECT_ROOT</span><span class="o">/</span><span class="s2">&quot;data&quot;</span><span class="o">/</span> <span class="s2">&quot;AID743139&quot;</span> <span class="o">/</span> <span class="s2">&quot;raw&quot;</span>
+<span class="n">RAW</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/AID743139/raw&quot;</span><span class="p">)</span>
 <span class="n">RAW</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">df_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">RAW</span> <span class="o">/</span> <span class="s2">&quot;AID743139_pubchem_raw_20260117.csv&quot;</span><span class="p">)</span>
@@ -1534,28 +1539,28 @@ return str(folder_path / filename)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">cinf26pk.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">filenames</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cinf26pk.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_fixed_filename</span>
 
-<span class="c1"># generate path</span>
-<span class="n">PROJECT_ROOT</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="c1"># project root (10_SupervisedML)</span>
-<span class="n">CUR</span> <span class="o">=</span> <span class="n">PROJECT_ROOT</span> <span class="o">/</span> <span class="s2">&quot;data&quot;</span> <span class="o">/</span> <span class="s2">&quot;AID743139&quot;</span> <span class="o">/</span> <span class="s2">&quot;curated&quot;</span>
+<span class="c1"># Generate path (relative to notebook)</span>
+<span class="n">CUR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/AID743139/curated&quot;</span><span class="p">)</span>
 <span class="n">CUR</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Create deterministic filename with date stamp</span>
-<span class="n">fname</span> <span class="o">=</span> <span class="n">filenames</span><span class="o">.</span><span class="n">make_filename</span><span class="p">(</span>
-    <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;AID743139_pc_curated&quot;</span><span class="p">,</span>
+<span class="n">fname</span> <span class="o">=</span> <span class="n">make_fixed_filename</span><span class="p">(</span>
+    <span class="n">stem</span><span class="o">=</span><span class="s2">&quot;AID743139_pc_curated&quot;</span><span class="p">,</span>
     <span class="n">ext</span><span class="o">=</span><span class="s2">&quot;csv&quot;</span><span class="p">,</span>
-    <span class="n">folder</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">CUR</span><span class="p">)</span>
+    <span class="n">add_date</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 
-<span class="c1"># Save raw dataset</span>
-<span class="n">df_curated</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">CUR</span><span class="o">/</span><span class="n">fname</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[Saved] Curated PubChem data → </span><span class="si">{</span><span class="n">fname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># Save curated dataset</span>
+<span class="n">df_curated</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">CUR</span> <span class="o">/</span> <span class="n">fname</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[Saved] Curated PubChem data → </span><span class="si">{</span><span class="n">CUR</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">fname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Saved] Curated PubChem data → /home/rebelford/jupyterbooks/cinf26book/content/modules/10_SupervisedML/data/AID743139/curated/AID743139_pc_curated_20260118_v1.csv
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Saved] Curated PubChem data → data/AID743139/curated/AID743139_pc_curated_20260205.csv
 </pre></div>
 </div>
 </div>
@@ -1571,10 +1576,8 @@ return str(folder_path / filename)
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="c1">#from pathlib import Path</span>
 
-<span class="c1">#PROJECT_ROOT = Path.cwd() # project root (10_SupervisedML)</span>
-<span class="c1">#CUR = PROJECT_ROOT / &quot;data&quot; / &quot;AID743139&quot; / &quot;curated&quot;</span>
 
-<span class="n">df_curated</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">CUR</span> <span class="o">/</span> <span class="s2">&quot;AID743139_pc_curated_20260118_v1.csv&quot;</span><span class="p">)</span>
+<span class="n">df_curated</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">CUR</span> <span class="o">/</span> <span class="s2">&quot;AID743139_pc_curated_20260205.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3774,30 +3777,30 @@ total number of Compound IDs=  6793
 <p>Save the dataframe in your curated data folder with date stamp and version number using <code class="docutils literal notranslate"><span class="pre">prefix=&quot;AID743139_clean_CID&quot;,</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Complete the code to save your work as a versioned filename in the folder</span>
-<span class="c1"># 10_SupervisedMLdata/AID743139/curated/</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save cleaned CID data (curated)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">cinf26pk.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">filenames</span>
-<span class="c1"># generate path</span>
-<span class="n">PROJECT_ROOT</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="c1"># project root (10_SupervisedML)</span>
-<span class="n">CUR</span> <span class="o">=</span> <span class="n">PROJECT_ROOT</span> <span class="o">/</span> <span class="s2">&quot;data&quot;</span> <span class="o">/</span> <span class="s2">&quot;AID743139&quot;</span> <span class="o">/</span> <span class="s2">&quot;curated&quot;</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cinf26pk.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_fixed_filename</span>
+
+<span class="c1"># Generate path (relative to notebook)</span>
+<span class="n">CUR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/AID743139/curated&quot;</span><span class="p">)</span>
 <span class="n">CUR</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Create deterministic filename with date stamp</span>
-<span class="n">fname</span> <span class="o">=</span> <span class="n">filenames</span><span class="o">.</span><span class="n">make_filename</span><span class="p">(</span>
-    <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;AID743139_clean_CID&quot;</span><span class="p">,</span>
+<span class="n">fname</span> <span class="o">=</span> <span class="n">make_fixed_filename</span><span class="p">(</span>
+    <span class="n">stem</span><span class="o">=</span><span class="s2">&quot;AID743139_clean_CID&quot;</span><span class="p">,</span>
     <span class="n">ext</span><span class="o">=</span><span class="s2">&quot;csv&quot;</span><span class="p">,</span>
-    <span class="n">folder</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">CUR</span><span class="p">)</span>
+    <span class="n">add_date</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 
-<span class="c1"># Save raw dataset</span>
-<span class="n">df_clean</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">CUR</span><span class="o">/</span><span class="n">fname</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[Saved] Curated PubChem data → </span><span class="si">{</span><span class="n">fname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># Save curated dataset</span>
+<span class="n">df_clean</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">CUR</span> <span class="o">/</span> <span class="n">fname</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[Saved] Curated PubChem data → </span><span class="si">{</span><span class="n">CUR</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">fname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Saved] Curated PubChem data → /home/rebelford/jupyterbooks/cinf26book/content/modules/10_SupervisedML/data/AID743139/curated/AID743139_clean_CID_20260118_v1.csv
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Saved] Curated PubChem data → data/AID743139/curated/AID743139_clean_CID_20260205.csv
 </pre></div>
 </div>
 </div>
@@ -3807,7 +3810,7 @@ total number of Compound IDs=  6793
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#write your code here to open the file as a dataframe called df </span>
 <span class="c1">#double check the the number of CIDs and SIDs has not changedand check that inconclusives and duplicates have been removed</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">CUR</span><span class="o">/</span><span class="s2">&quot;AID743139_clean_CID_20260118_v1.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">CUR</span><span class="o">/</span><span class="s2">&quot;AID743139_clean_CID_20260205.csv&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;total number of Substance IDs=&#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sid&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;total number of Compound IDs= &#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;cid&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -4585,27 +4588,28 @@ CIDs is type &lt;class &#39;list&#39;&gt;
 <span class="c1"># Complete the code to save your work as a versioned filename in the folder</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">cinf26pk.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">filenames</span>
-<span class="c1"># generate path</span>
-<span class="n">PROJECT_ROOT</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="c1"># project root (10_SupervisedML)</span>
-<span class="n">CUR</span> <span class="o">=</span> <span class="n">PROJECT_ROOT</span> <span class="o">/</span> <span class="s2">&quot;data&quot;</span> <span class="o">/</span> <span class="s2">&quot;AID743139&quot;</span> <span class="o">/</span> <span class="s2">&quot;curated&quot;</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cinf26pk.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_fixed_filename</span>
+
+<span class="c1"># Generate path (relative to notebook)</span>
+<span class="n">CUR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/AID743139/curated&quot;</span><span class="p">)</span>
 <span class="n">CUR</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Create deterministic filename with date stamp</span>
-<span class="n">fname</span> <span class="o">=</span> <span class="n">filenames</span><span class="o">.</span><span class="n">make_filename</span><span class="p">(</span>
-    <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;AID743139_Activity_CID&quot;</span><span class="p">,</span>
+<span class="n">fname</span> <span class="o">=</span> <span class="n">make_fixed_filename</span><span class="p">(</span>
+    <span class="n">stem</span><span class="o">=</span><span class="s2">&quot;AID743139_Activity_CID&quot;</span><span class="p">,</span>
     <span class="n">ext</span><span class="o">=</span><span class="s2">&quot;csv&quot;</span><span class="p">,</span>
-    <span class="n">folder</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">CUR</span><span class="p">)</span>
+    <span class="n">add_date</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 
-<span class="c1"># Save raw dataset</span>
-<span class="n">df_activity</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">CUR</span><span class="o">/</span><span class="n">fname</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[Saved] Curated PubChem data → </span><span class="si">{</span><span class="n">fname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># Save curated dataset</span>
+<span class="n">df_activity</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">CUR</span> <span class="o">/</span> <span class="n">fname</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[Saved] Curated PubChem data → </span><span class="si">{</span><span class="n">CUR</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">fname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Saved] Curated PubChem data → /home/rebelford/jupyterbooks/cinf26book/content/modules/10_SupervisedML/data/AID743139/curated/AID743139_Activity_CID_20260118_v1.csv
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Saved] Curated PubChem data → data/AID743139/curated/AID743139_Activity_CID_20260205.csv
 </pre></div>
 </div>
 </div>
@@ -4727,29 +4731,40 @@ return None
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">cinf26pk.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">utils</span><span class="p">,</span> <span class="n">filenames</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">cinf26pk.pubchem</span><span class="w"> </span><span class="kn">import</span> <span class="n">http</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringIO</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="c1"># 1. If needed, Reload df_activity from your saved CSV </span>
-<span class="n">df_activity</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/AID743139/curated/AID743139_Activity_CID_20260118_v1.csv&quot;</span><span class="p">)</span>
-<span class="c1"># 2. Extract CIDs as integers</span>
-<span class="n">cids</span> <span class="o">=</span> <span class="n">df_activity</span><span class="o">.</span><span class="n">cid</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">cinf26pk.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">chunk_list</span><span class="p">,</span> <span class="n">make_fixed_filename</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cinf26pk.pubchem</span><span class="w"> </span><span class="kn">import</span> <span class="n">http</span>
+
+
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="c1"># 1. Reload curated activity data</span>
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="n">df_activity</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;data/AID743139/curated/AID743139_Activity_CID_20260205.csv&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Extract CIDs as integers</span>
+<span class="n">cids</span> <span class="o">=</span> <span class="n">df_activity</span><span class="p">[</span><span class="s2">&quot;cid&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;# CIDs:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">cids</span><span class="p">))</span>
 
-<span class="c1"># 3. Retrieve standardized PubChem SMILES</span>
+
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="c1"># 2. Retrieve standardized PubChem SMILES</span>
+<span class="c1"># ------------------------------------------------------------</span>
 <span class="n">chunk_size</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">sleep_time</span> <span class="o">=</span> <span class="mf">0.2</span>   <span class="c1"># 5 calls per second</span>
-
 <span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid&quot;</span>
 
 <span class="n">df_chunks</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">failed_chunks</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="n">chunks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">chunk_list</span><span class="p">(</span><span class="n">cids</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">chunk_size</span><span class="p">))</span>
+<span class="n">chunks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">chunk_list</span><span class="p">(</span><span class="n">cids</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">chunk_size</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;# Total chunks:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">chunks</span><span class="p">))</span>
 
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tqdm</span><span class="p">(</span><span class="n">chunks</span><span class="p">)):</span>
@@ -4765,13 +4780,20 @@ return None
         <span class="k">continue</span>
     
     <span class="c1"># Convert to DataFrame</span>
-    <span class="n">df_chunk</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">text</span><span class="p">),</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;smiles&#39;</span><span class="p">])</span>
+    <span class="n">df_chunk</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+        <span class="n">StringIO</span><span class="p">(</span><span class="n">text</span><span class="p">),</span>
+        <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;smiles&quot;</span><span class="p">]</span>
+    <span class="p">)</span>
     <span class="n">df_chunks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df_chunk</span><span class="p">)</span>
     
     <span class="c1"># Rate limit compliance</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">sleep_time</span><span class="p">)</span>
 
-<span class="c1"># 4. Combine all SMILES results</span>
+
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="c1"># 3. Combine results</span>
+<span class="c1"># ------------------------------------------------------------</span>
 <span class="n">df_smiles</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">df_chunks</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">df_smiles</span><span class="p">[</span><span class="s2">&quot;cid&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cids</span>
 
@@ -4780,22 +4802,22 @@ return None
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Failed chunks: </span><span class="si">{</span><span class="n">failed_chunks</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-<span class="c1"># 5. Save to data/ with versioning</span>
-<span class="c1"># generate path</span>
-<span class="n">PROJECT_ROOT</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="c1"># project root (10_SupervisedML)</span>
-<span class="n">CUR</span> <span class="o">=</span> <span class="n">PROJECT_ROOT</span> <span class="o">/</span> <span class="s2">&quot;data&quot;</span> <span class="o">/</span> <span class="s2">&quot;AID743139&quot;</span> <span class="o">/</span> <span class="s2">&quot;curated&quot;</span>
+
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="c1"># 4. Save canonical SMILES dataset (overwrite-on-rerun)</span>
+<span class="c1"># ------------------------------------------------------------</span>
+<span class="n">CUR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/AID743139/curated&quot;</span><span class="p">)</span>
 <span class="n">CUR</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="c1"># Create deterministic filename with date stamp</span>
-<span class="n">fname</span> <span class="o">=</span> <span class="n">filenames</span><span class="o">.</span><span class="n">make_filename</span><span class="p">(</span>
-    <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;AID743139_pcSMILES_act&quot;</span><span class="p">,</span>
+<span class="n">fname</span> <span class="o">=</span> <span class="n">make_fixed_filename</span><span class="p">(</span>
+    <span class="n">stem</span><span class="o">=</span><span class="s2">&quot;AID743139_pcSMILES_act&quot;</span><span class="p">,</span>
     <span class="n">ext</span><span class="o">=</span><span class="s2">&quot;csv&quot;</span><span class="p">,</span>
-    <span class="n">folder</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">CUR</span><span class="p">)</span>
+    <span class="n">add_date</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 
-<span class="c1"># Save raw dataset</span>
-<span class="n">df_smiles</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">CUR</span><span class="o">/</span><span class="n">fname</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[Saved] Curated PubChem data → </span><span class="si">{</span><span class="n">fname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">df_smiles</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">CUR</span> <span class="o">/</span> <span class="n">fname</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[Saved] Curated PubChem SMILES → </span><span class="si">{</span><span class="n">CUR</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">fname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -4804,7 +4826,7 @@ return None
 # Total chunks: 68
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|███████████████████████████████████████████████████████████████████████████████████| 68/68 [05:56&lt;00:00,  5.25s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|███████████████████████████████████████████████████████████████████████████████████| 68/68 [05:54&lt;00:00,  5.21s/it]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Preview of combined SMILES:
@@ -4816,7 +4838,7 @@ return None
 4                               CC(=CCC/C(=C/CO)/C)C    637566
 
 Failed chunks: []
-[Saved] Curated PubChem data → /home/rebelford/jupyterbooks/cinf26book/content/modules/10_SupervisedML/data/AID743139/curated/AID743139_pcSMILES_act_20260118_v1.csv
+[Saved] Curated PubChem SMILES → data/AID743139/curated/AID743139_pcSMILES_act_20260205.csv
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -4892,7 +4914,7 @@ Failed chunks: []
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># reload the file you just saved and print the head to ensure it was correctly saved</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="n">df_smiles</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/AID743139/curated/AID743139_pcSMILES_act_20260118_v1.csv&quot;</span><span class="p">)</span>
+<span class="n">df_smiles</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/AID743139/curated/AID743139_pcSMILES_act_20260205.csv&quot;</span><span class="p">)</span>
 <span class="n">df_smiles</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -4999,7 +5021,7 @@ In the above code we created a python function called clean_smiles().  The apply
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[08:50:44] WARNING: not removing hydrogen atom without neighbors
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[12:31:32] WARNING: not removing hydrogen atom without neighbors
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                              smiles       cid  \
@@ -5085,7 +5107,7 @@ Name: count, dtype: int64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make sure the number of rows in df_smiles is equal to the number of unique CIDs we had previously</span>
-<span class="n">df_activity</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/AID743139/curated/AID743139_Activity_CID_20260118_v1.csv&quot;</span><span class="p">)</span>
+<span class="n">df_activity</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/AID743139/curated/AID743139_Activity_CID_20260205.csv&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of CIDs in df_smiles:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_smiles</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of unique CIDs in original df:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_activity</span><span class="p">[</span><span class="s1">&#39;cid&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
 
@@ -5245,7 +5267,7 @@ Understanding what a comparison actually measures is just as important as runnin
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[08:54:53] WARNING: not removing hydrogen atom without neighbors
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[12:33:40] WARNING: not removing hydrogen atom without neighbors
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5336
@@ -5467,27 +5489,28 @@ dtype: object
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here:</span>
 <span class="c1"># Save to data/ with versioning</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">cinf26pk.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">filenames</span>
-<span class="c1"># generate path</span>
-<span class="n">PROJECT_ROOT</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="c1"># project root (10_SupervisedML)</span>
-<span class="n">CUR</span> <span class="o">=</span> <span class="n">PROJECT_ROOT</span> <span class="o">/</span> <span class="s2">&quot;data&quot;</span> <span class="o">/</span> <span class="s2">&quot;AID743139&quot;</span> <span class="o">/</span> <span class="s2">&quot;curated&quot;</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cinf26pk.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_fixed_filename</span>
+
+<span class="c1"># Generate path (relative to notebook)</span>
+<span class="n">CUR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/AID743139/curated&quot;</span><span class="p">)</span>
 <span class="n">CUR</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Create deterministic filename with date stamp</span>
-<span class="n">fname</span> <span class="o">=</span> <span class="n">filenames</span><span class="o">.</span><span class="n">make_filename</span><span class="p">(</span>
-    <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;AID743139_noSalt_pcSMILES&quot;</span><span class="p">,</span>
+<span class="n">fname</span> <span class="o">=</span> <span class="n">make_fixed_filename</span><span class="p">(</span>
+    <span class="n">stem</span><span class="o">=</span><span class="s2">&quot;AID743139_noSalt_pcSMILES&quot;</span><span class="p">,</span>
     <span class="n">ext</span><span class="o">=</span><span class="s2">&quot;csv&quot;</span><span class="p">,</span>
-    <span class="n">folder</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">CUR</span><span class="p">)</span>
+    <span class="n">add_date</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 
-<span class="c1"># Save raw dataset</span>
-<span class="n">df_smiles</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">CUR</span><span class="o">/</span><span class="n">fname</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[Saved] Curated PubChem data → </span><span class="si">{</span><span class="n">fname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># Save curated dataset</span>
+<span class="n">df_smiles</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">CUR</span> <span class="o">/</span> <span class="n">fname</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[Saved] Curated PubChem data → </span><span class="si">{</span><span class="n">CUR</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">fname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Saved] Curated PubChem data → /home/rebelford/jupyterbooks/cinf26book/content/modules/10_SupervisedML/data/AID743139/curated/AID743139_noSalt_pcSMILES_20260118_v1.csv
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Saved] Curated PubChem data → data/AID743139/curated/AID743139_noSalt_pcSMILES_20260205.csv
 </pre></div>
 </div>
 </div>
@@ -6097,29 +6120,29 @@ It serves as the starting point for:</p>
 <p>Lets now save this in a new folder, data/features and give it a versioning name AID743139_MACCS_noSalt</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save to data/ with versioning</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">cinf26pk.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">filenames</span>
-<span class="c1"># generate path</span>
-<span class="n">PROJECT_ROOT</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="c1"># project root (10_SupervisedML)</span>
-<span class="n">CUR</span> <span class="o">=</span> <span class="n">PROJECT_ROOT</span> <span class="o">/</span> <span class="s2">&quot;data&quot;</span> <span class="o">/</span> <span class="s2">&quot;AID743139&quot;</span> <span class="o">/</span> <span class="s2">&quot;features&quot;</span>
-<span class="n">CUR</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cinf26pk.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_fixed_filename</span>
+
+<span class="c1"># Generate path (relative to notebook)</span>
+<span class="n">FEATURES</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/AID743139/features&quot;</span><span class="p">)</span>
+<span class="n">FEATURES</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Create deterministic filename with date stamp</span>
-<span class="n">fname</span> <span class="o">=</span> <span class="n">filenames</span><span class="o">.</span><span class="n">make_filename</span><span class="p">(</span>
-    <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;AID743139_MACCS_noSalt&quot;</span><span class="p">,</span>
+<span class="n">fname</span> <span class="o">=</span> <span class="n">make_fixed_filename</span><span class="p">(</span>
+    <span class="n">stem</span><span class="o">=</span><span class="s2">&quot;AID743139_MACCS_noSalt&quot;</span><span class="p">,</span>
     <span class="n">ext</span><span class="o">=</span><span class="s2">&quot;csv&quot;</span><span class="p">,</span>
-    <span class="n">folder</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">CUR</span><span class="p">)</span>
+    <span class="n">add_date</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 
-<span class="c1"># Save raw dataset</span>
-<span class="n">df_fps</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">CUR</span><span class="o">/</span><span class="n">fname</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[Saved] Curated PubChem data → </span><span class="si">{</span><span class="n">fname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># Save MACCS fingerprint dataset</span>
+<span class="n">df_fps</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">FEATURES</span> <span class="o">/</span> <span class="n">fname</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[Saved] MACCS features → </span><span class="si">{</span><span class="n">FEATURES</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">fname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Saved] Curated PubChem data → /home/rebelford/jupyterbooks/cinf26book/content/modules/10_SupervisedML/data/AID743139/features/AID743139_MACCS_noSalt_20260118_v1.csv
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Saved] MACCS features → data/AID743139/features/AID743139_MACCS_noSalt_20260205.csv
 </pre></div>
 </div>
 </div>
@@ -6131,7 +6154,7 @@ It serves as the starting point for:</p>
 <p>note, you may need to load the data into df_activity, which you generated in step 4.6.1 (with a file prefix of AID743139_Activity_CID_)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_activity</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/AID743139/curated/AID743139_Activity_CID_20260118_v1.csv&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#df_activity=pd.read_csv(&quot;data/AID743139/curated/AID743139_Activity_CID_20260118_v1.csv&quot;)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">df_activity</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">df_activity</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -6770,29 +6793,29 @@ after drop nan: 6793
 <p>Save df_data in CSV for future use using the prefix=”AID743139_MACCS_activites_noSalt”</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save to data/ with versioning</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">cinf26pk.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">filenames</span>
-<span class="c1"># generate path</span>
-<span class="n">PROJECT_ROOT</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="c1"># project root (10_SupervisedML)</span>
-<span class="n">FEAT</span> <span class="o">=</span> <span class="n">PROJECT_ROOT</span> <span class="o">/</span> <span class="s2">&quot;data&quot;</span> <span class="o">/</span> <span class="s2">&quot;AID743139&quot;</span> <span class="o">/</span> <span class="s2">&quot;features&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cinf26pk.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_fixed_filename</span>
+
+<span class="c1"># Generate path (relative to notebook)</span>
+<span class="n">FEAT</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/AID743139/features&quot;</span><span class="p">)</span>
 <span class="n">FEAT</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Create deterministic filename with date stamp</span>
-<span class="n">fname</span> <span class="o">=</span> <span class="n">filenames</span><span class="o">.</span><span class="n">make_filename</span><span class="p">(</span>
-    <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;AID743139_MACCS_activites_noSalt&quot;</span><span class="p">,</span>
+<span class="n">fname</span> <span class="o">=</span> <span class="n">make_fixed_filename</span><span class="p">(</span>
+    <span class="n">stem</span><span class="o">=</span><span class="s2">&quot;AID743139_MACCS_activities_noSalt&quot;</span><span class="p">,</span>
     <span class="n">ext</span><span class="o">=</span><span class="s2">&quot;csv&quot;</span><span class="p">,</span>
-    <span class="n">folder</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">FEAT</span><span class="p">)</span>
+    <span class="n">add_date</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 
-<span class="c1"># Save raw dataset</span>
-<span class="n">df_data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">FEAT</span><span class="o">/</span><span class="n">fname</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[Saved] Features csv data → </span><span class="si">{</span><span class="n">fname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># Save feature dataset</span>
+<span class="n">df_data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">FEAT</span> <span class="o">/</span> <span class="n">fname</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[Saved] Features CSV data → </span><span class="si">{</span><span class="n">FEAT</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">fname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Saved] Features csv data → /home/rebelford/jupyterbooks/cinf26book/content/modules/10_SupervisedML/data/AID743139/features/AID743139_MACCS_activites_noSalt_20260118_v1.csv
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Saved] Features CSV data → data/AID743139/features/AID743139_MACCS_activities_noSalt_20260205.csv
 </pre></div>
 </div>
 </div>
@@ -6864,7 +6887,7 @@ Example <code>AID743139ecfp4_1024_activites_noSalt_20260111_v1</code> which desc
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">10.0: Intro</p>
+        <p class="prev-next-title">10.0: Introduction</p>
       </div>
     </a>
     <a class="right-next"
@@ -6872,7 +6895,7 @@ Example <code>AID743139ecfp4_1024_activites_noSalt_20260111_v1</code> which desc
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Module 10.2: Naive Bayes and Model Construction</p>
+        <p class="prev-next-title">10.2: Naive Bayes and Model Construction</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -39,6 +39,7 @@ def collect_chapter(dir_path: Path):
             and f.suffix in (".md", ".ipynb")
             and f.name != "README.md"
             and not f.name.startswith(".")
+            and not f.name.startswith("wip_")
         ):
             sections.append(f.relative_to(BOOK_ROOT).with_suffix(""))
 

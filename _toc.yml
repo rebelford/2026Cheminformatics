@@ -14,6 +14,7 @@ parts:
       - file: content/modules/10_SupervisedML/10_1_data_prep
       - file: content/modules/10_SupervisedML/10_2_NB_model_construction_workflow
       - file: content/modules/10_SupervisedML/10_3_model_evaluation
+      - file: content/modules/10_SupervisedML/10_4_Pipelines
 
   - caption: Appendices
     chapters:

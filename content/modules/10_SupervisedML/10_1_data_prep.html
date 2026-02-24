@@ -203,6 +203,7 @@
 
 
 
+
 <li class="toctree-l2"><a class="reference internal" href="10_2_NB_model_construction_workflow.html">10.2: Naive Bayes and Model Construction</a></li>
 
 
@@ -216,13 +217,21 @@
 
 
 
+<li class="toctree-l2"><a class="reference internal" href="10_4_Pipelines.html">10.4: Pipelines, Persistence, and Reproducible Inference</a></li>
+
+
+
+
+
+
+
 </ul>
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/App_1/README.html">Appendix 1.1: Getting Set Up</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../appendices/App_1/A_01-1_OS.html">Appendix 1: Operating System</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/App_1/README.html">Appendix 1: Getting Set Up</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/App_1/A_01-1_OS.html">Appendix 1.1: Linux &amp; WSL</a></li>
 
 
 
@@ -516,6 +525,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-activity-data-and-fingerprint-information">6.2 Merge activity data and fingerprint information</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">Homework</a></li>
 </ul>
 
             </nav>
@@ -6821,8 +6831,11 @@ after drop nan: 6793
 </div>
 </div>
 <p>At this point, we have completed the primary objective of this module: transforming curated chemical and biological data into a feature-level dataset suitable for supervised machine learning. The file saved in <code class="docutils literal notranslate"><span class="pre">data/AID743139/features/</span></code> captures the outcome of all decisions made in this module—compound selection, activity labeling, structural standardization, and fingerprint representation—encoded as numerical input that models can consume. Importantly, this file is not an end product, but a <em>handoff artifact</em>. In the next modules, it will be reused to construct models, build pipelines, and perform inference. Likewise, in the homework, you will repeat this workflow with a different assay and explore an alternative fingerprinting strategy, reinforcing the idea that feature generation is one step in a broader, repeatable process rather than a one-off task. The goal is not to produce a single “correct” dataset, but to understand how each representation fits into a reproducible machine-learning pipeline.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="homework">
+<h1>Homework<a class="headerlink" href="#homework" title="Link to this heading">#</a></h1>
 <div class="alert alert-block alert-success">
-<H1>Homework</H1>
 <strong>Problem 1: hw_10.1a_fp.ipynb</strong> 
 <p>Create a new notebook in your notebooks directory called hw_10.1a_fp.ipynb and with this notebook create a new .csv fingerprint file in the <i>/data/AID743139/features</i> directory. You must get instructor approval of the fingerprint and parameters before proceeding and use the modern generator function approach to create the fingerprints.</p>
 <p>File naming convention needs to identify</p>
@@ -6849,7 +6862,6 @@ Example <code>AID743139ecfp4_1024_activites_noSalt_20260111_v1</code> which desc
 │   │── AID999999/   (your AID)     
 </code></pre>
 </div></section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -6969,6 +6981,7 @@ Example <code>AID743139ecfp4_1024_activites_noSalt_20260111_v1</code> which desc
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-activity-data-and-fingerprint-information">6.2 Merge activity data and fingerprint information</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">Homework</a></li>
 </ul>
 
   </nav></div>

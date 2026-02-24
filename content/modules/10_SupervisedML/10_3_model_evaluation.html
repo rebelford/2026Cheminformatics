@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/modules/10_SupervisedML/10_3_model_evaluation';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Appendix 1.1: Getting Set Up" href="../../appendices/App_1/README.html" />
+    <link rel="next" title="10.4: Pipelines, Persistence, and Reproducible Inference" href="10_4_Pipelines.html" />
     <link rel="prev" title="10.2: Naive Bayes and Model Construction" href="10_2_NB_model_construction_workflow.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -205,6 +205,7 @@
 
 
 
+
 <li class="toctree-l2"><a class="reference internal" href="10_2_NB_model_construction_workflow.html">10.2: Naive Bayes and Model Construction</a></li>
 
 
@@ -218,13 +219,21 @@
 
 
 
+<li class="toctree-l2"><a class="reference internal" href="10_4_Pipelines.html">10.4: Pipelines, Persistence, and Reproducible Inference</a></li>
+
+
+
+
+
+
+
 </ul>
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/App_1/README.html">Appendix 1.1: Getting Set Up</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../appendices/App_1/A_01-1_OS.html">Appendix 1: Operating System</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/App_1/README.html">Appendix 1: Getting Set Up</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/App_1/A_01-1_OS.html">Appendix 1.1: Linux &amp; WSL</a></li>
 
 
 
@@ -522,48 +531,36 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="evaluating-and-interpreting-models">
 <h1>10.3: Evaluating and Interpreting Models<a class="headerlink" href="#evaluating-and-interpreting-models" title="Link to this heading">#</a></h1>
-<blockquote>
-<div><p>⚠️ <strong>Work in Progress</strong></p>
-<p>This notebook is under active development and may change without notice.
-Content is not yet part of the published course narrative.</p>
-</div></blockquote>
 <div class="alert alert-block alert-warning">
 <h1>Learning Objectives</h1>
 <p><strong>Purpose</strong><br />
-Introduce students to the manual construction of a supervised classification
-model using Naïve Bayes, emphasizing how data preparation, feature selection,
-and training decisions affect model behavior and evaluation.</p>
+Understand the evaluation of classification based machine learning models.</p>
 <p><strong>Students Learn</strong></p>
 <ul>
-  <li>Define a fixed feature space by removing invariant fingerprint bits and preserving the feature mask.</li>
-  <li>Create, save, and reload stratified training and test splits along with supporting metadata.</li>
-  <li>Diagnose class imbalance in a training dataset and apply downsampling as a model-specific preprocessing step.</li>
-  <li>Build a probabilistic Naïve Bayes classifier from training data.</li>
-  <li>Generate and interpret confusion matrices for classification-based inference.</li>
-  <li>Generate and interpret ROC curves for probability-based model evaluation.</li>
+  <li>Metrics for Evaluating Confusion Matrices</li>
+   <ul>
+    <li>Accuracy</li>
+    <li>Precision</li>
+    <li>Sensitivity</li>
+    <li>Specificity</li>
+       <li>Balanced Accuracy</li>
+       <li>F1 Score</li>
+  </ul>
+ <li>ROC Curves and Threshold Independent Performance</li>
+ <li>Choosing an Operating Theshold: Youden's J Statistic</li>
 </ul>
 <p><strong>Core Activities</strong></p>
 <ul>
-  <li>Organize model inputs, splits, and metadata into a reproducible directory structure.</li>
-  <li>Construct a Naïve Bayes classifier step-by-step using saved training data.</li>
-  <li>Evaluate model performance using both class predictions and predicted probabilities.</li>
+  <li>Develop Confusion Matrix</li>
+  <li>Compare Confusion Matrices of Test and Balanced Training Sets</li>
+  <li>Recover CIDs for feature matrices</li>
+    <li>Investigate Threshold Variance on Confusion Matrices</li>
 </ul>
 <p><strong>Prior Knowledge</strong></p>
 <ul>
-  <li>Complete Module 10.1: <a href="content/modules/10_SupervisedML/10_1_data_prep.html">Data Preparation and Feature Engineering</a></li>
+  <li>Complete Module 10.2: <a href="https://rebelford.github.io/2026Cheminformatics/content/modules/10_SupervisedML/10_2_NB_model_construction_workflow.html">Naive Bayes and Model Construction</a></li>
   <li>Complete Appendix A10.2: <a href="https://rebelford.github.io/2026Cheminformatics/content/appendices/App_10/A_10-2NaiveBayes.html">Bayes' Theorem: From Inference to Models</a></li>
 </ul>
-</div>
-<div class="alert alert-block alert-info">
-<p>This chapter is built on <strong><a href="https://rebelford.github.io/2026Cheminformatics/content/modules/10_SupervisedML/10_2_NB_model_construction_workflow.html">10.2 Naive Bayes and Model Construction</a></strong> and we will start by reloading the predictions and the model, without refiting anything. Our goal is to use the data set of the previous chapter to understand:</p>
-  <ul>
-      <li>confusion matrix anatomy and metrics</li>
-      <li>class imbalance effects</li>
-      <li>ROC curves</li>
-      <li>Threshold movement and Youden index</li>
-      <li>False Positives vs. False Negatives</li>
-  </ul>
-In this activity we will look at three different sets of data, the training set, the test set, and the entire set.
 </div>
 <section id="what-evaluation-means">
 <h2>What Evaluation Means?<a class="headerlink" href="#what-evaluation-means" title="Link to this heading">#</a></h2>
@@ -3379,11 +3376,11 @@ Note: The similarity matrix will be symmetric, and the diagonal elements will al
       </div>
     </a>
     <a class="right-next"
-       href="../../appendices/App_1/README.html"
+       href="10_4_Pipelines.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Appendix 1.1: Getting Set Up</p>
+        <p class="prev-next-title">10.4: Pipelines, Persistence, and Reproducible Inference</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

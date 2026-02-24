@@ -1,1 +1,1 @@
-# Appendix 1.1: Getting Set Up
+# Appendix 1: Getting Set Up

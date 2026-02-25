@@ -225,6 +225,7 @@
 
 
 
+
 </ul>
 </details></li>
 </ul>
@@ -512,6 +513,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-preprocessing-is-still-required">5.1 What preprocessing is still required?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predicting-activity-for-a-single-molecule">5.2 Predicting activity for a single molecule</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predicting-activity-for-a-list-of-molecules">5.3 Predicting Activity for a list of Molecules</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#piplines-as-algorithm-containers">6. Piplines as Algorithm Containers</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipelines-expose-model-parameters">6.1 Pipelines Expose Model Parameters</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">Homework</a><ul class="visible nav section-nav flex-column">
@@ -3086,6 +3091,86 @@ AUC (Natural Training):  0.7287
 </div>
 </section>
 </section>
+<section class="tex2jax_ignore mathjax_ignore" id="piplines-as-algorithm-containers">
+<h1>6. Piplines as Algorithm Containers<a class="headerlink" href="#piplines-as-algorithm-containers" title="Link to this heading">#</a></h1>
+<p>In this chapter, we introduced the <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> as a structured way to combine:</p>
+<ul class="simple">
+<li><p>Feature transformations</p></li>
+<li><p>A learning algorithm</p></li>
+<li><p>A unified interface for training and prediction</p></li>
+<li><p>A single object that can be serialized and reused</p></li>
+</ul>
+<p>A pipeline is not tied to Naïve Bayes. It is simply a container for <em>any</em> estimator that follows the scikit-learn API. For example, we could swap the final step with:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s2">&quot;classifier&quot;</span><span class="p">,</span> <span class="n">RandomForestClassifier</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>and the rest of the pipeline would remain unchanged.</p>
+<section id="pipelines-expose-model-parameters">
+<h2>6.1 Pipelines Expose Model Parameters<a class="headerlink" href="#pipelines-expose-model-parameters" title="Link to this heading">#</a></h2>
+<p>Every estimator inside a pipeline has parameters. You can inspect them:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pipe</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Notice how parameters are namespaced:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">classifier__alpha</span>
+<span class="n">var_filter__threshold</span>
+</pre></div>
+</div>
+<p>This naming structure allows us to:</p>
+<ul class="simple">
+<li><p>Modify individual parameters</p></li>
+<li><p>Compare models under different settings</p></li>
+<li><p>Perform systematic tuning</p></li>
+<li><p>Wrap pipelines inside cross-validation procedures</p></li>
+</ul>
+<p>Naïve Bayes has only a few parameters and makes strong independence assumptions. But other algorithms — such as Random Forest — introduce:</p>
+<ul class="simple">
+<li><p>Model depth</p></li>
+<li><p>Number of trees</p></li>
+<li><p>Feature subsampling</p></li>
+<li><p>Randomness control</p></li>
+<li><p>Regularization behavior</p></li>
+</ul>
+<p>These parameters directly influence:</p>
+<ul class="simple">
+<li><p>Bias and variance</p></li>
+<li><p>Overfitting behavior</p></li>
+<li><p>Predictive stability</p></li>
+<li><p>Interpretability</p></li>
+</ul>
+<p>Up to now, we have treated our classifier as a fixed object. In the next module, we will treat it as a configurable learning system. In the next chapter, we will:</p>
+<ul class="simple">
+<li><p>Replace the Naïve Bayes classifier with a Random Forest</p></li>
+<li><p>Explore how ensemble methods differ from probabilistic classifiers</p></li>
+<li><p>Examine how model complexity affects performance</p></li>
+<li><p>Begin investigating the role of hyperparameters in supervised learning</p></li>
+</ul>
+<p>The pipeline infrastructure we built here will remain unchanged. Only the learning algorithm and its parameter space will evolve.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nb_bal_loaded</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;memory&#39;: None,
+ &#39;steps&#39;: [(&#39;var_filter&#39;, VarianceThreshold()), (&#39;classifier&#39;, BernoulliNB())],
+ &#39;transform_input&#39;: None,
+ &#39;verbose&#39;: False,
+ &#39;var_filter&#39;: VarianceThreshold(),
+ &#39;classifier&#39;: BernoulliNB(),
+ &#39;var_filter__threshold&#39;: 0.0,
+ &#39;classifier__alpha&#39;: 1.0,
+ &#39;classifier__binarize&#39;: 0.0,
+ &#39;classifier__class_prior&#39;: None,
+ &#39;classifier__fit_prior&#39;: True,
+ &#39;classifier__force_alpha&#39;: True}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
 <section class="tex2jax_ignore mathjax_ignore" id="homework">
 <h1>Homework<a class="headerlink" href="#homework" title="Link to this heading">#</a></h1>
 <section id="problem-1-hw-10-4-pipelines">
@@ -3207,6 +3292,10 @@ AUC (Natural Training):  0.7287
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-preprocessing-is-still-required">5.1 What preprocessing is still required?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predicting-activity-for-a-single-molecule">5.2 Predicting activity for a single molecule</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predicting-activity-for-a-list-of-molecules">5.3 Predicting Activity for a list of Molecules</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#piplines-as-algorithm-containers">6. Piplines as Algorithm Containers</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipelines-expose-model-parameters">6.1 Pipelines Expose Model Parameters</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">Homework</a><ul class="visible nav section-nav flex-column">

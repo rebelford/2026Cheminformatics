@@ -1,0 +1,3073 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>10.6 Logistic Regression and SVM &#8212; 2026 Cheminformatics OLCC</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/modules/10_SupervisedML/10_6_LR_SVM_Modeling';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Appendix 1: Getting Set Up" href="../../appendices/App_1/README.html" />
+    <link rel="prev" title="10.5 Random Forest and Model Complexity" href="10_5_RD_Model_Complexity.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="2026 Cheminformatics OLCC - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="2026 Cheminformatics OLCC - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_PythonPrimer/README.html">Module 1 Python Primers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_PythonPrimer/01_1_python-basics.html">1.1 Python Basics</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../01_PythonPrimer/01_2_python-intermediate.html">1.2 Intermediate Python</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="README.html">Module 10: Supervised Machine Learning</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="10_0_Intro.html">10.0: Introduction</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="10_1_data_prep.html">10.1: Data Preparation and Feature Engineering</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="10_2_NB_model_construction_workflow.html">10.2: Naive Bayes and Model Construction</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="10_3_model_evaluation.html">10.3: Evaluating and Interpreting Models</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="10_4_Pipelines.html">10.4: Pipelines, Persistence, and Reproducible Inference</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="10_5_RD_Model_Complexity.html">10.5 Random Forest and Model Complexity</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">10.6 Logistic Regression and SVM</a></li>
+
+
+
+
+
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/App_1/README.html">Appendix 1: Getting Set Up</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/App_1/A_01-1_OS.html">Appendix 1.1: Linux &amp; WSL</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/App_10/README.html">Appendix 10: Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/App_10/A_10-1AID_Selector.html">A10.1 BioAssay Screening: Enough Actives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/App_10/A_10-2NaiveBayes.html">A10.2 Bayes’ Theorem: From Inference to Models</a></li>
+
+
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://nanohub.org/tools/datachemolcc/hub/user-redirect/git-pull?repo=https%3A//github.com/rebelford/2026Cheminformatics&urlpath=lab/tree/2026Cheminformatics/content/modules/10_SupervisedML/10_6_LR_SVM_Modeling.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/rebelford/2026Cheminformatics" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rebelford/2026Cheminformatics/issues/new?title=Issue%20on%20page%20%2Fcontent/modules/10_SupervisedML/10_6_LR_SVM_Modeling.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/content/modules/10_SupervisedML/10_6_LR_SVM_Modeling.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>10.6 Logistic Regression and SVM</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">10.6 Logistic Regression and SVM</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#why-study-logistic-regression-and-svm">1 Why Study Logistic Regression and SVM?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-aromatase-maccs-data">2 Load the Aromatase MACCS Data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pipelines-revisited">3 Pipelines Revisited</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">4 Logistic Regression</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-logistic-regression">4.1 What Is Logistic Regression?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-logistic-sigmoid-function">4.1.2 The Logistic (Sigmoid) Function</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-sigmoid-function">Visualizing the Sigmoid Function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-probability-to-classification">4.1.3 From Probability to Classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-the-model">4.1.4 Interpreting the Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-are-the-weights-learned">How Are the Weights Learned?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-vs-earlier-models">4.1.5 Logistic Regression vs Earlier Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-logistic-regression-pipeline">4.2 Build the Logistic Regression Pipeline</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-parameters">Logistic Regression Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-class-weight">Understanding <code class="docutils literal notranslate"><span class="pre">class_weight</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-the-model">4.3 Fit the Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predict-classes-and-probabilities">4.4 Predict Classes and Probabilities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-logistic-regression">4.5 Evaluate Logistic Regression</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machine">5 Support Vector Machine</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-an-svm">5.1 What Is an SVM?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vectors-the-critical-data-points">Support Vectors: The Critical Data Points</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-svm-pipeline">5.2 Build the SVM Pipeline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.3 Fit the Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reload-data-and-create-train-test-split">Reload data and create train/test split</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Fit the Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-fit-summary">Model Fit Summary</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5.4 Predict Classes and Probabilities</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-svm-performance">Interpreting SVM Performance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-an-optimal-threshold-youdens-j">Selecting an Optimal Threshold (Youden’s J)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-after-threshold-optimization">Performance After Threshold Optimization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#roc-curve-with-optimal-threshold">ROC Curve with Optimal Threshold</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-support-vectors">5.5 Inspect Support Vectors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-support-vector-distribution">Interpreting Support Vector Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vectors-as-molecules">Support Vectors as Molecules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-linearsvc">Note on LinearSVC</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-across-models">6. Comparison Across Models</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-did-these-models-learn-from-the-fingerprints">7 What Did These Models Learn from the Fingerprints?</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="logistic-regression-and-svm">
+<h1>10.6 Logistic Regression and SVM<a class="headerlink" href="#logistic-regression-and-svm" title="Link to this heading">#</a></h1>
+<div class="alert alert-block alert-warning">
+<h1>Learning Objectives</h1>
+* Understand the role of **Logistic Regression** as a linear classifier for binary classification.
+* Understand the role of a **Support Vector Machine** as a margin-based classifier.
+* Build sklearn **pipelines** for both methods using the same MACCS input used in earlier notebooks.
+* Generate **predicted classes** and **class probabilities or scores**.
+* Evaluate the models using:
+<ul class="simple">
+<li><p>confusion matrices</p></li>
+<li><p>ROC curves</p></li>
+<li><p>AUC</p></li>
+<li><p>standard classification metrics</p></li>
+<li><p>Compare LR and SVM to previously studied models.</p></li>
+</ul>
+</div></section>
+<section class="tex2jax_ignore mathjax_ignore" id="why-study-logistic-regression-and-svm">
+<h1>1 Why Study Logistic Regression and SVM?<a class="headerlink" href="#why-study-logistic-regression-and-svm" title="Link to this heading">#</a></h1>
+<p>In previous notebooks, we explored two major approaches to classification:</p>
+<ul class="simple">
+<li><p>Naïve Bayes, which estimates class probabilities based on feature evidence</p></li>
+<li><p>Decision Trees and Random Forests, which partition feature space through hierarchical rules</p></li>
+</ul>
+<p>In this notebook, we introduce two additional classifier families:</p>
+<ul class="simple">
+<li><p>Logistic Regression, which models the probability of class membership using a weighted linear combination of features</p></li>
+<li><p>Support Vector Machines (SVMs), which focus on finding a decision boundary that maximizes separation between classes</p></li>
+</ul>
+<p>These models approach the same fingerprint data from a different perspective. Instead of building trees or combining independent probabilities, they define decision boundaries in feature space. This allows us to ask an important question: How does the choice of learning algorithm affect what we can extract from the same molecular fingerprint representation?</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Model Type</p></th>
+<th class="head"><p>Core Idea</p></th>
+<th class="head"><p>What It Learns</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Naïve Bayes</p></td>
+<td><p>Probabilistic independence</p></td>
+<td><p>Feature evidence for each class</p></td>
+</tr>
+<tr class="row-odd"><td><p>Decision Tree</p></td>
+<td><p>Recursive splitting</p></td>
+<td><p>Rule-based partitions</p></td>
+</tr>
+<tr class="row-even"><td><p>Random Forest</p></td>
+<td><p>Ensemble of trees</p></td>
+<td><p>Robust nonlinear patterns</p></td>
+</tr>
+<tr class="row-odd"><td><p>Logistic Regression</p></td>
+<td><p>Linear weighted model</p></td>
+<td><p>Additive feature contributions</p></td>
+</tr>
+<tr class="row-even"><td><p>SVM</p></td>
+<td><p>Maximum-margin boundary</p></td>
+<td><p>Optimal separating hyperplane</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="load-the-aromatase-maccs-data">
+<h1>2 Load the Aromatase MACCS Data<a class="headerlink" href="#load-the-aromatase-maccs-data" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load MACCS fingerprint dataset</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">data_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span>
+    <span class="s2">&quot;data/AID743139/features/&quot;</span>
+    <span class="s2">&quot;AID743139_MACCS_activities_noSalt_20260205.csv&quot;</span>
+<span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_path</span><span class="p">)</span>
+
+<span class="c1"># Separate features and labels</span>
+<span class="n">label_column</span> <span class="o">=</span> <span class="s2">&quot;activity&quot;</span>
+<span class="n">maccs_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;maccs&quot;</span><span class="p">)]</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">maccs_columns</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">label_column</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Feature matrix shape:&quot;</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Label vector shape:&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Feature matrix shape: (6793, 167)
+Label vector shape: (6793,)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="pipelines-revisited">
+<h1>3 Pipelines Revisited<a class="headerlink" href="#pipelines-revisited" title="Link to this heading">#</a></h1>
+<p>Although the MACCS fingerprints have already been generated, we still need to think carefully about how those features are passed into a machine-learning model. In earlier notebooks, we introduced the idea of a pipeline as a structured workflow that connects preprocessing steps to a classifier.</p>
+<p>That same idea remains important here. Even when the feature matrix is already available, we may still want to apply preprocessing steps such as removing invariant fingerprint bits. More importantly, we want to ensure that any transformation learned from the training data is applied to the test data in exactly the same way.</p>
+<p>In scikit-learn, a <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> allows us to bundle preprocessing and model fitting into a single object. This improves reproducibility, reduces the risk of accidentally treating training and test data differently, and makes it easy to swap one classifier for another while keeping the rest of the workflow unchanged.</p>
+<p>In this notebook, we will continue using pipelines so that Logistic Regression and Support Vector Machine models can be compared fairly on the same fingerprint representation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="c1"># Create reproducible stratified train/test split</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span>
+    <span class="n">y</span><span class="p">,</span>
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.10</span><span class="p">,</span>
+    <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">3100</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X_train shape:&quot;</span><span class="p">,</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X_test shape: &quot;</span><span class="p">,</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y_train shape:&quot;</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y_test shape: &quot;</span><span class="p">,</span> <span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Class distribution&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Full dataset:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Training set:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_train</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Test set:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X_train shape: (6113, 167)
+X_test shape:  (680, 167)
+y_train shape: (6113,)
+y_test shape:  (680,)
+
+Class distribution
+Full dataset:
+activity
+0    0.890623
+1    0.109377
+Name: proportion, dtype: float64
+
+Training set:
+activity
+0    0.890561
+1    0.109439
+Name: proportion, dtype: float64
+
+Test set:
+activity
+0    0.891176
+1    0.108824
+Name: proportion, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="logistic-regression">
+<h1>4 Logistic Regression<a class="headerlink" href="#logistic-regression" title="Link to this heading">#</a></h1>
+<section id="what-is-logistic-regression">
+<h2>4.1 What Is Logistic Regression?<a class="headerlink" href="#what-is-logistic-regression" title="Link to this heading">#</a></h2>
+<p>Logistic Regression is a classification model that estimates the probability that a sample belongs to a particular class.</p>
+<p>In our case, the task is binary classification:</p>
+<ul class="simple">
+<li><p>0 → inactive compound</p></li>
+<li><p>1 → active compound</p></li>
+</ul>
+<p>At its core, Logistic Regression begins with a <strong>linear combination of features</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+z = w_1 x_1 + w_2 x_2 + \cdots + w_n x_n + b
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_i\)</span> = fingerprint bits (MACCS keys: 0 or 1)</p></li>
+<li><p><span class="math notranslate nohighlight">\(w_i\)</span> = learned weights for each feature</p></li>
+<li><p><span class="math notranslate nohighlight">\(b\)</span> = intercept (bias term)</p></li>
+</ul>
+<p>This looks similar to a linear regression model. However, the output <span class="math notranslate nohighlight">\(z\)</span> can take any real value, from <span class="math notranslate nohighlight">\(-\infty\)</span> to <span class="math notranslate nohighlight">\(+\infty\)</span>, which is not suitable for representing probabilities.</p>
+</section>
+<section id="the-logistic-sigmoid-function">
+<h2>4.1.2 The Logistic (Sigmoid) Function<a class="headerlink" href="#the-logistic-sigmoid-function" title="Link to this heading">#</a></h2>
+<p>To convert the linear output into a probability, Logistic Regression applies the logistic (sigmoid) function:
+$<span class="math notranslate nohighlight">\(P(y=1|x) = \frac{1}{1 + e^{-z}}\)</span>$
+The sigmoid function transforms any real-valued input into a value between 0 and 1. This allows the model to interpret its output as a probability.</p>
+<p>Conceptually, the sigmoid acts as a smooth threshold:</p>
+<ul class="simple">
+<li><p>When <span class="math notranslate nohighlight">\(z\)</span> is very large and positive, <span class="math notranslate nohighlight">\(e^{-z}\)</span> becomes very small<br />
+→ the probability approaches 1</p></li>
+<li><p>When <span class="math notranslate nohighlight">\(z\)</span> is very large and negative, <span class="math notranslate nohighlight">\(e^{-z}\)</span> becomes very large<br />
+→ the probability approaches 0</p></li>
+<li><p>When <span class="math notranslate nohighlight">\(z = 0\)</span>:
+$<span class="math notranslate nohighlight">\(
+P(y=1|x) = \frac{1}{1 + e^0} = \frac{1}{2}
+\)</span>$
+→ the model is maximally uncertain (50% probability)</p></li>
+</ul>
+<p>This gives the sigmoid an S-shaped curve:</p>
+<ul class="simple">
+<li><p>small changes near <span class="math notranslate nohighlight">\(z = 0\)</span> strongly affect the probability</p></li>
+<li><p>very large positive or negative values “saturate” near 1 or 0</p></li>
+</ul>
+<p>So the model works in two steps:</p>
+<ol class="arabic simple">
+<li><p>Compute a weighted sum of fingerprint features (<span class="math notranslate nohighlight">\(z\)</span>)</p></li>
+<li><p>Convert that value into a probability using the sigmoid function</p></li>
+</ol>
+<section id="visualizing-the-sigmoid-function">
+<h3>Visualizing the Sigmoid Function<a class="headerlink" href="#visualizing-the-sigmoid-function" title="Link to this heading">#</a></h3>
+<p>To better understand how the sigmoid function behaves, we can plot it over a range of values for <span class="math notranslate nohighlight">\(z\)</span>.</p>
+<p>This plot shows how the linear model output (<span class="math notranslate nohighlight">\(z\)</span>) is transformed into a probability between 0 and 1. Notice how:</p>
+<ul class="simple">
+<li><p>The curve is S-shaped</p></li>
+<li><p>The steepest region occurs near <span class="math notranslate nohighlight">\(z = 0\)</span></p></li>
+<li><p>The output approaches 0 and 1 asymptotically</p></li>
+</ul>
+<p>This visualization helps explain how Logistic Regression converts a linear score into a probability.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Define sigmoid function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="p">))</span>
+
+<span class="c1"># Generate range of z values</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+<span class="c1"># Compute sigmoid values</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+
+<span class="c1"># Plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;z (linear model output)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;P(y=1 | x)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Sigmoid Function&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>  <span class="c1"># threshold line</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>    <span class="c1"># decision boundary</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/52f66fc1a145badfd2296a235847b44c5b0b507ee0fecf14688b2bd25705f301.png" src="../../../_images/52f66fc1a145badfd2296a235847b44c5b0b507ee0fecf14688b2bd25705f301.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="from-probability-to-classification">
+<h2>4.1.3 From Probability to Classification<a class="headerlink" href="#from-probability-to-classification" title="Link to this heading">#</a></h2>
+<p>Once the probability is computed, the model must decide:</p>
+<blockquote>
+<div><p>Should this compound be classified as active or inactive?</p>
+</div></blockquote>
+<p>By default, scikit-learn uses a threshold of 0.5:</p>
+<ul class="simple">
+<li><p>P<span class="math notranslate nohighlight">\(\text{active}\)</span> <span class="math notranslate nohighlight">\(\geq 0.5\)</span> → predict active</p></li>
+<li><p>P<span class="math notranslate nohighlight">\(\text{active}\)</span> &lt; 0.5$ → predict inactive</p></li>
+</ul>
+<p>This connects directly to earlier discussions of:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.predict()</span></code> → applies a threshold</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.predict_proba()</span></code> → returns the probability</p></li>
+</ul>
+<p>This also ties into ROC curves and threshold selection:</p>
+<ul class="simple">
+<li><p>different thresholds produce different confusion matrices</p></li>
+<li><p>Logistic Regression naturally provides the probability scores needed for ROC analysis</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="interpreting-the-model">
+<h2>4.1.4 Interpreting the Model<a class="headerlink" href="#interpreting-the-model" title="Link to this heading">#</a></h2>
+<p>Each weight <span class="math notranslate nohighlight">\(w_i\)</span> represents how strongly a fingerprint bit contributes to predicting activity:</p>
+<ul class="simple">
+<li><p>Positive weight → increases probability of being active</p></li>
+<li><p>Negative weight → decreases probability</p></li>
+<li><p>Larger magnitude → stronger influence</p></li>
+</ul>
+<p>In this sense, Logistic Regression provides an additive model of evidence, each fingerprint bit contributes independently to the final prediction. This is conceptually similar to Naïve Bayes, but instead of multiplying probabilities, Logistic Regression adds weighted contributions.</p>
+<section id="how-are-the-weights-learned">
+<h3>How Are the Weights Learned?<a class="headerlink" href="#how-are-the-weights-learned" title="Link to this heading">#</a></h3>
+<p>The weights in Logistic Regression are not assigned manually. They are learned from the training data during the fitting process.</p>
+<p>At a high level, the model works as follows:</p>
+<ol class="arabic simple">
+<li><p>The model begins with initial guesses for the weights</p></li>
+<li><p>It uses these weights to compute predicted probabilities for each training example</p></li>
+<li><p>It compares those predictions to the true labels (active or inactive)</p></li>
+<li><p>It adjusts the weights to reduce the difference between predicted and actual values</p></li>
+<li><p>This process is repeated until the model converges to a stable set of weights</p></li>
+</ol>
+<p>The goal is to find the set of weights that best explain the relationship between molecular fingerprints and activity.</p>
+<p>In practical terms:</p>
+<ul class="simple">
+<li><p>Features that frequently appear in active compounds tend to receive positive weights</p></li>
+<li><p>Features that are associated with inactive compounds tend to receive negative weights</p></li>
+<li><p>Features that do not help distinguish between classes tend to receive weights near zero</p></li>
+</ul>
+<p>This process is similar to fitting parameters in a scientific model: the weights are adjusted to minimize the difference between model predictions and observed data.</p>
+</section>
+</section>
+<section id="logistic-regression-vs-earlier-models">
+<h2>4.1.5 Logistic Regression vs Earlier Models<a class="headerlink" href="#logistic-regression-vs-earlier-models" title="Link to this heading">#</a></h2>
+<p>It is helpful to contrast Logistic Regression with the models we have already studied:</p>
+<ul class="simple">
+<li><p>Naïve Bayes: Combines feature evidence using probability rules (with independence assumptions)</p></li>
+<li><p>Decision Trees / Random Forests: Learn rules that partition feature space into regions</p></li>
+<li><p>Logistic Regression: Learns a single global decision boundary defined by a weighted sum of features</p></li>
+</ul>
+<p>Logistic Regression is often used as a baseline model because it provides a simple and interpretable reference point. By comparing more complex models to this baseline, we can determine whether additional model complexity actually improves predictive performance on the same fingerprint data.</p>
+<p>In the next section, we will build a pipeline that applies Logistic Regression to the MACCS fingerprint dataset and</p>
+</section>
+<section id="build-the-logistic-regression-pipeline">
+<h2>4.2 Build the Logistic Regression Pipeline<a class="headerlink" href="#build-the-logistic-regression-pipeline" title="Link to this heading">#</a></h2>
+<section id="logistic-regression-parameters">
+<h3>Logistic Regression Parameters<a class="headerlink" href="#logistic-regression-parameters" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">LogisticRegression()</span></code> classifier has many parameters, but only a few are especially important at this stage. In this notebook, we begin with a simple version of the model and postpone more extensive hyperparameter tuning until later.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>What it controls</p></th>
+<th class="head"><p>Typical role in this notebook</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">penalty</span></code></p></td>
+<td><p>Type of regularization applied to the model coefficients</p></td>
+<td><p>Usually left at the default (<code class="docutils literal notranslate"><span class="pre">'l2'</span></code>) for a stable first model</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">C</span></code></p></td>
+<td><p>Inverse of regularization strength</p></td>
+<td><p>Smaller values give stronger regularization; default is often a good starting point</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">solver</span></code></p></td>
+<td><p>Optimization algorithm used to fit the model</p></td>
+<td><p>The default solver usually works well for moderate-sized problems</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">max_iter</span></code></p></td>
+<td><p>Maximum number of optimization iterations</p></td>
+<td><p>Often increased (for example to <code class="docutils literal notranslate"><span class="pre">1000</span></code>) to avoid convergence warnings</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">class_weight</span></code></p></td>
+<td><p>Adjusts importance of each class during training</p></td>
+<td><p>Can be <code class="docutils literal notranslate"><span class="pre">None</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;balanced&quot;</span></code>, or a custom dictionary</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">random_state</span></code></p></td>
+<td><p>Controls randomness for solvers that use randomization</p></td>
+<td><p>Helps reproducibility when relevant</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fit_intercept</span></code></p></td>
+<td><p>Whether to include an intercept term</p></td>
+<td><p>Usually left as <code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tol</span></code></p></td>
+<td><p>Tolerance for stopping the optimization</p></td>
+<td><p>Smaller values may require more iterations</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="understanding-class-weight">
+<h4>Understanding <code class="docutils literal notranslate"><span class="pre">class_weight</span></code><a class="headerlink" href="#understanding-class-weight" title="Link to this heading">#</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">class_weight</span></code> parameter is different from the feature weights learned by the model. While feature weights (<span class="math notranslate nohighlight">\(w_i\)</span>) determine how individual fingerprint bits influence the prediction, <code class="docutils literal notranslate"><span class="pre">class_weight</span></code> controls how much importance is given to each class during training.</p>
+<p>This is particularly important for imbalanced datasets, where one class (such as inactive compounds) may be much more common than the other.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>When to use</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p>No weighting</p></td>
+<td><p>Baseline model</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;balanced&quot;</span></code></p></td>
+<td><p>Auto-adjust based on class frequency</p></td>
+<td><p>Most common starting point for imbalance</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">{0:</span> <span class="pre">w0,</span> <span class="pre">1:</span> <span class="pre">w1}</span></code></p></td>
+<td><p>Manual weighting</p></td>
+<td><p>When you want control over trade-offs</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For this first Logistic Regression model, we use:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">VarianceThreshold</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
+
+<span class="c1"># Logistic Regression pipeline</span>
+<span class="n">lr_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;var_filter&quot;</span><span class="p">,</span> <span class="n">VarianceThreshold</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s2">&quot;classifier&quot;</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">))</span>
+<span class="p">])</span>
+
+<span class="c1"># Fit pipeline</span>
+<span class="n">lr_pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Predict classes and probabilities on test set</span>
+<span class="n">y_pred_lr</span> <span class="o">=</span> <span class="n">lr_pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">y_prob_lr</span> <span class="o">=</span> <span class="n">lr_pipeline</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First 10 predicted classes:&quot;</span><span class="p">,</span> <span class="n">y_pred_lr</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First 10 predicted probabilities:&quot;</span><span class="p">,</span> <span class="n">y_prob_lr</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+<span class="n">lr_pipeline</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>First 10 predicted classes: [0 0 1 0 0 0 0 0 0 0]
+First 10 predicted probabilities: [0.00717629 0.03504803 0.55400672 0.03626497 0.17991293 0.00233865
+ 0.35529472 0.02754376 0.03755857 0.30729229]
+</pre></div>
+</div>
+<div class="output text_html"><style>#sk-container-id-1 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: #000;
+  --sklearn-color-text-muted: #666;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-1 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-1 pre {
+  padding: 0;
+}
+
+#sk-container-id-1 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-1 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-1 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-1 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-1 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-1 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-1 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-1 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-1 label.sk-toggleable__label {
+  cursor: pointer;
+  display: flex;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+  align-items: start;
+  justify-content: space-between;
+  gap: 0.5em;
+}
+
+#sk-container-id-1 label.sk-toggleable__label .caption {
+  font-size: 0.6rem;
+  font-weight: lighter;
+  color: var(--sklearn-color-text-muted);
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-1 div.sk-toggleable__content {
+  display: none;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label label.sk-toggleable__label,
+#sk-container-id-1 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-1 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-1 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-1 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-1 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-1 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 0.5em;
+  text-align: center;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-1 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-1 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+
+.estimator-table summary {
+    padding: .5rem;
+    font-family: monospace;
+    cursor: pointer;
+}
+
+.estimator-table details[open] {
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+    padding-bottom: 0.3rem;
+}
+
+.estimator-table .parameters-table {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.estimator-table .parameters-table tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.estimator-table .parameters-table tr:nth-child(even) {
+    background-color: #f6f6f6;
+}
+
+.estimator-table .parameters-table tr:hover {
+    background-color: #e0e0e0;
+}
+
+.estimator-table table td {
+    border: 1px solid rgba(106, 105, 104, 0.232);
+}
+
+.user-set td {
+    color:rgb(255, 94, 0);
+    text-align: left;
+}
+
+.user-set td.value pre {
+    color:rgb(255, 94, 0) !important;
+    background-color: transparent !important;
+}
+
+.default td {
+    color: black;
+    text-align: left;
+}
+
+.user-set td i,
+.default td i {
+    color: black;
+}
+
+.copy-paste-icon {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDggNTEyIj48IS0tIUZvbnQgQXdlc29tZSBGcmVlIDYuNy4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgQ29weXJpZ2h0IDIwMjUgRm9udGljb25zLCBJbmMuLS0+PHBhdGggZD0iTTIwOCAwTDMzMi4xIDBjMTIuNyAwIDI0LjkgNS4xIDMzLjkgMTQuMWw2Ny45IDY3LjljOSA5IDE0LjEgMjEuMiAxNC4xIDMzLjlMNDQ4IDMzNmMwIDI2LjUtMjEuNSA0OC00OCA0OGwtMTkyIDBjLTI2LjUgMC00OC0yMS41LTQ4LTQ4bDAtMjg4YzAtMjYuNSAyMS41LTQ4IDQ4LTQ4ek00OCAxMjhsODAgMCAwIDY0LTY0IDAgMCAyNTYgMTkyIDAgMC0zMiA2NCAwIDAgNDhjMCAyNi41LTIxLjUgNDgtNDggNDhMNDggNTEyYy0yNi41IDAtNDgtMjEuNS00OC00OEwwIDE3NmMwLTI2LjUgMjEuNS00OCA0OC00OHoiLz48L3N2Zz4=);
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+    background-position: 0;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+}
+</style><body><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;var_filter&#x27;, VarianceThreshold()),
+                (&#x27;classifier&#x27;,
+                 LogisticRegression(max_iter=1000, random_state=42))])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" ><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>Pipeline</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.pipeline.Pipeline.html">?<span>Documentation for Pipeline</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
+        <div class="estimator-table">
+            <details>
+                <summary>Parameters</summary>
+                <table class="parameters-table">
+                  <tbody>
+                    
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('steps',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">steps&nbsp;</td>
+            <td class="value">[(&#x27;var_filter&#x27;, ...), (&#x27;classifier&#x27;, ...)]</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('transform_input',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">transform_input&nbsp;</td>
+            <td class="value">None</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('memory',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">memory&nbsp;</td>
+            <td class="value">None</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('verbose',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">verbose&nbsp;</td>
+            <td class="value">False</td>
+        </tr>
+    
+                  </tbody>
+                </table>
+            </details>
+        </div>
+    </div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" ><label for="sk-estimator-id-2" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>VarianceThreshold</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.feature_selection.VarianceThreshold.html">?<span>Documentation for VarianceThreshold</span></a></div></label><div class="sk-toggleable__content fitted" data-param-prefix="var_filter__">
+        <div class="estimator-table">
+            <details>
+                <summary>Parameters</summary>
+                <table class="parameters-table">
+                  <tbody>
+                    
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('threshold',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">threshold&nbsp;</td>
+            <td class="value">0.0</td>
+        </tr>
+    
+                  </tbody>
+                </table>
+            </details>
+        </div>
+    </div></div></div><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" ><label for="sk-estimator-id-3" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>LogisticRegression</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.linear_model.LogisticRegression.html">?<span>Documentation for LogisticRegression</span></a></div></label><div class="sk-toggleable__content fitted" data-param-prefix="classifier__">
+        <div class="estimator-table">
+            <details>
+                <summary>Parameters</summary>
+                <table class="parameters-table">
+                  <tbody>
+                    
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('penalty',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">penalty&nbsp;</td>
+            <td class="value">&#x27;l2&#x27;</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('dual',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">dual&nbsp;</td>
+            <td class="value">False</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('tol',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">tol&nbsp;</td>
+            <td class="value">0.0001</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('C',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">C&nbsp;</td>
+            <td class="value">1.0</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('fit_intercept',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">fit_intercept&nbsp;</td>
+            <td class="value">True</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('intercept_scaling',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">intercept_scaling&nbsp;</td>
+            <td class="value">1</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('class_weight',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">class_weight&nbsp;</td>
+            <td class="value">None</td>
+        </tr>
+    
+
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('random_state',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">random_state&nbsp;</td>
+            <td class="value">42</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('solver',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">solver&nbsp;</td>
+            <td class="value">&#x27;lbfgs&#x27;</td>
+        </tr>
+    
+
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('max_iter',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">max_iter&nbsp;</td>
+            <td class="value">1000</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('multi_class',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">multi_class&nbsp;</td>
+            <td class="value">&#x27;deprecated&#x27;</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('verbose',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">verbose&nbsp;</td>
+            <td class="value">0</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('warm_start',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">warm_start&nbsp;</td>
+            <td class="value">False</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('n_jobs',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">n_jobs&nbsp;</td>
+            <td class="value">None</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('l1_ratio',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">l1_ratio&nbsp;</td>
+            <td class="value">None</td>
+        </tr>
+    
+                  </tbody>
+                </table>
+            </details>
+        </div>
+    </div></div></div></div></div></div></div><script>function copyToClipboard(text, element) {
+    // Get the parameter prefix from the closest toggleable content
+    const toggleableContent = element.closest('.sk-toggleable__content');
+    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
+    const fullParamName = paramPrefix ? `${paramPrefix}${text}` : text;
+
+    const originalStyle = element.style;
+    const computedStyle = window.getComputedStyle(element);
+    const originalWidth = computedStyle.width;
+    const originalHTML = element.innerHTML.replace('Copied!', '');
+
+    navigator.clipboard.writeText(fullParamName)
+        .then(() => {
+            element.style.width = originalWidth;
+            element.style.color = 'green';
+            element.innerHTML = "Copied!";
+
+            setTimeout(() => {
+                element.innerHTML = originalHTML;
+                element.style = originalStyle;
+            }, 2000);
+        })
+        .catch(err => {
+            console.error('Failed to copy:', err);
+            element.style.color = 'red';
+            element.innerHTML = "Failed!";
+            setTimeout(() => {
+                element.innerHTML = originalHTML;
+                element.style = originalStyle;
+            }, 2000);
+        });
+    return false;
+}
+
+document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
+    const toggleableContent = element.closest('.sk-toggleable__content');
+    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
+    const paramName = element.parentElement.nextElementSibling.textContent.trim();
+    const fullParamName = paramPrefix ? `${paramPrefix}${paramName}` : paramName;
+
+    element.setAttribute('title', fullParamName);
+});
+</script></body></div></div>
+</div>
+</section>
+</section>
+</section>
+<section id="fit-the-model">
+<h2>4.3 Fit the Model<a class="headerlink" href="#fit-the-model" title="Link to this heading">#</a></h2>
+<p>We now fit the Logistic Regression pipeline using the training data. During this step:</p>
+<ul class="simple">
+<li><p>The variance filter identifies and removes invariant MACCS bits</p></li>
+<li><p>The Logistic Regression model learns weights for the remaining features</p></li>
+</ul>
+<p>The fitted pipeline stores both the preprocessing and the trained model, allowing us to apply the same transformations when making predictions on new data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fit the Logistic Regression pipeline</span>
+<span class="n">lr_pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Access the fitted classifier</span>
+<span class="n">lr_model</span> <span class="o">=</span> <span class="n">lr_pipeline</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s2">&quot;classifier&quot;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model fitted successfully.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of features used:&quot;</span><span class="p">,</span> <span class="n">lr_model</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model fitted successfully.
+Number of features used: 162
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="predict-classes-and-probabilities">
+<h2>4.4 Predict Classes and Probabilities<a class="headerlink" href="#predict-classes-and-probabilities" title="Link to this heading">#</a></h2>
+<p>Once the pipeline has been fit, we can use it to generate predictions for the test set.
+Logistic Regression provides two types of outputs:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.predict()</span></code><br />
+Returns the predicted class labels (0 = inactive, 1 = active) using a default threshold of 0.5</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.predict_proba()</span></code><br />
+Returns the predicted probabilities for each class</p></li>
+</ul>
+<p>For binary classification, <code class="docutils literal notranslate"><span class="pre">predict_proba()</span></code> returns two columns:</p>
+<ul class="simple">
+<li><p>probability of class 0 (inactive)</p></li>
+<li><p>probability of class 1 (active)</p></li>
+</ul>
+<p>We will extract the probability of the active class (class = 1), which will be used for ROC analysis and threshold-based evaluation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predict class labels</span>
+<span class="n">y_pred_lr</span> <span class="o">=</span> <span class="n">lr_pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Predict class probabilities</span>
+<span class="n">y_prob_lr</span> <span class="o">=</span> <span class="n">lr_pipeline</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Extract probability of the positive class (active = 1)</span>
+<span class="n">y_score_lr</span> <span class="o">=</span> <span class="n">y_prob_lr</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Display a few results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First 10 predicted classes:&quot;</span><span class="p">,</span> <span class="n">y_pred_lr</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First 10 predicted probabilities (active):&quot;</span><span class="p">,</span> <span class="n">y_score_lr</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>First 10 predicted classes: [0 0 1 0 0 0 0 0 0 0]
+First 10 predicted probabilities (active): [0.00717629 0.03504803 0.55400672 0.03626497 0.17991293 0.00233865
+ 0.35529472 0.02754376 0.03755857 0.30729229]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First 5 full probability rows:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_prob_lr</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>First 5 full probability rows:
+
+[[0.99282371 0.00717629]
+ [0.96495197 0.03504803]
+ [0.44599328 0.55400672]
+ [0.96373503 0.03626497]
+ [0.82008707 0.17991293]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The predicted class labels are derived from the probabilities using a threshold (default = 0.5). This means that:</p>
+<ul class="simple">
+<li><p>Changing the threshold would change the predicted classes</p></li>
+<li><p>The probabilities themselves contain more information than the final class labels</p></li>
+</ul>
+<p>This is why probability outputs are essential for ROC curves and AUC calculations.</p>
+</section>
+<section id="evaluate-logistic-regression">
+<h2>4.5 Evaluate Logistic Regression<a class="headerlink" href="#evaluate-logistic-regression" title="Link to this heading">#</a></h2>
+<p>We now evaluate the Logistic Regression model using the test set.</p>
+<p>As in earlier notebooks, we use multiple metrics to assess model performance:</p>
+<ul class="simple">
+<li><p><strong>Confusion Matrix</strong><br />
+Summarizes correct and incorrect classifications (TN, FP, FN, TP)</p></li>
+<li><p><strong>Classification Report</strong><br />
+Provides precision, recall, and F1-score for each class</p></li>
+<li><p><strong>ROC Curve and AUC</strong><br />
+Evaluate how well the model separates active and inactive compounds across all classification thresholds</p></li>
+</ul>
+<p>Together, these metrics provide a more complete view of model performance than any single measure.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">confusion_matrix</span><span class="p">,</span>
+    <span class="n">ConfusionMatrixDisplay</span><span class="p">,</span>
+    <span class="n">classification_report</span><span class="p">,</span>
+    <span class="n">roc_curve</span><span class="p">,</span>
+    <span class="n">roc_auc_score</span>
+<span class="p">)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># --- Confusion Matrix ---</span>
+<span class="n">cm_lr</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lr</span><span class="p">)</span>
+
+<span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">cm_lr</span><span class="p">)</span>
+<span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Logistic Regression Confusion Matrix&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Optional: unpack values</span>
+<span class="n">tn</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="n">tp</span> <span class="o">=</span> <span class="n">cm_lr</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;TN=</span><span class="si">{</span><span class="n">tn</span><span class="si">}</span><span class="s2">, FP=</span><span class="si">{</span><span class="n">fp</span><span class="si">}</span><span class="s2">, FN=</span><span class="si">{</span><span class="n">fn</span><span class="si">}</span><span class="s2">, TP=</span><span class="si">{</span><span class="n">tp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- Classification Report ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Classification Report:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lr</span><span class="p">))</span>
+
+<span class="c1"># --- ROC Curve and AUC ---</span>
+<span class="n">fpr_lr</span><span class="p">,</span> <span class="n">tpr_lr</span><span class="p">,</span> <span class="n">thresholds_lr</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_score_lr</span><span class="p">)</span>
+<span class="n">auc_lr</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_score_lr</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr_lr</span><span class="p">,</span> <span class="n">tpr_lr</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Logistic Regression (AUC = </span><span class="si">{</span><span class="n">auc_lr</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;False Positive Rate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;True Positive Rate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;ROC Curve - Logistic Regression&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AUC: </span><span class="si">{</span><span class="n">auc_lr</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/18131879d69192cdc244b4613fdeda96638a47bad739e3edd4386273aa00f6b0.png" src="../../../_images/18131879d69192cdc244b4613fdeda96638a47bad739e3edd4386273aa00f6b0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TN=592, FP=14, FN=60, TP=14
+
+Classification Report:
+
+              precision    recall  f1-score   support
+
+           0       0.91      0.98      0.94       606
+           1       0.50      0.19      0.27        74
+
+    accuracy                           0.89       680
+   macro avg       0.70      0.58      0.61       680
+weighted avg       0.86      0.89      0.87       680
+</pre></div>
+</div>
+<img alt="../../../_images/2cdd8fd22b4f7d50404a540fb34343fa5575f55fd54521ca148af04e015f541c.png" src="../../../_images/2cdd8fd22b4f7d50404a540fb34343fa5575f55fd54521ca148af04e015f541c.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AUC: 0.788
+</pre></div>
+</div>
+</div>
+</div>
+<p>Discuss imbalance</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">VarianceThreshold</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">confusion_matrix</span><span class="p">,</span>
+    <span class="n">accuracy_score</span><span class="p">,</span>
+    <span class="n">precision_score</span><span class="p">,</span>
+    <span class="n">recall_score</span><span class="p">,</span>
+    <span class="n">f1_score</span><span class="p">,</span>
+    <span class="n">roc_auc_score</span>
+<span class="p">)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># ---------------------------</span>
+<span class="c1"># Build both pipelines</span>
+<span class="c1"># ---------------------------</span>
+<span class="n">lr_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;var_filter&quot;</span><span class="p">,</span> <span class="n">VarianceThreshold</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s2">&quot;classifier&quot;</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">(</span>
+        <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+        <span class="n">solver</span><span class="o">=</span><span class="s2">&quot;lbfgs&quot;</span><span class="p">,</span>
+        <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+    <span class="p">))</span>
+<span class="p">])</span>
+
+<span class="n">lr_pipeline_bal</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;var_filter&quot;</span><span class="p">,</span> <span class="n">VarianceThreshold</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s2">&quot;classifier&quot;</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">(</span>
+        <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+        <span class="n">solver</span><span class="o">=</span><span class="s2">&quot;lbfgs&quot;</span><span class="p">,</span>
+        <span class="n">class_weight</span><span class="o">=</span><span class="s2">&quot;balanced&quot;</span><span class="p">,</span>
+        <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+    <span class="p">))</span>
+<span class="p">])</span>
+
+<span class="c1"># ---------------------------</span>
+<span class="c1"># Fit both models</span>
+<span class="c1"># ---------------------------</span>
+<span class="n">lr_pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">lr_pipeline_bal</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># ---------------------------</span>
+<span class="c1"># Predict classes and probabilities</span>
+<span class="c1"># ---------------------------</span>
+<span class="n">y_pred_lr</span> <span class="o">=</span> <span class="n">lr_pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">y_score_lr</span> <span class="o">=</span> <span class="n">lr_pipeline</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="n">y_pred_lr_bal</span> <span class="o">=</span> <span class="n">lr_pipeline_bal</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">y_score_lr_bal</span> <span class="o">=</span> <span class="n">lr_pipeline_bal</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># ---------------------------</span>
+<span class="c1"># Confusion matrices</span>
+<span class="c1"># ---------------------------</span>
+<span class="n">cm_lr</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lr</span><span class="p">)</span>
+<span class="n">cm_lr_bal</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lr_bal</span><span class="p">)</span>
+
+<span class="n">tn_lr</span><span class="p">,</span> <span class="n">fp_lr</span><span class="p">,</span> <span class="n">fn_lr</span><span class="p">,</span> <span class="n">tp_lr</span> <span class="o">=</span> <span class="n">cm_lr</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<span class="n">tn_bal</span><span class="p">,</span> <span class="n">fp_bal</span><span class="p">,</span> <span class="n">fn_bal</span><span class="p">,</span> <span class="n">tp_bal</span> <span class="o">=</span> <span class="n">cm_lr_bal</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+<span class="c1"># ---------------------------</span>
+<span class="c1"># Metric summary table</span>
+<span class="c1"># ---------------------------</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Model&quot;</span><span class="p">:</span> <span class="s2">&quot;LR Default&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;TN&quot;</span><span class="p">:</span> <span class="n">tn_lr</span><span class="p">,</span>
+        <span class="s2">&quot;FP&quot;</span><span class="p">:</span> <span class="n">fp_lr</span><span class="p">,</span>
+        <span class="s2">&quot;FN&quot;</span><span class="p">:</span> <span class="n">fn_lr</span><span class="p">,</span>
+        <span class="s2">&quot;TP&quot;</span><span class="p">:</span> <span class="n">tp_lr</span><span class="p">,</span>
+        <span class="s2">&quot;Accuracy&quot;</span><span class="p">:</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lr</span><span class="p">),</span>
+        <span class="s2">&quot;Precision (Active)&quot;</span><span class="p">:</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lr</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+        <span class="s2">&quot;Recall (Active)&quot;</span><span class="p">:</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lr</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+        <span class="s2">&quot;F1 (Active)&quot;</span><span class="p">:</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lr</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+        <span class="s2">&quot;AUC&quot;</span><span class="p">:</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_score_lr</span><span class="p">)</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Model&quot;</span><span class="p">:</span> <span class="s2">&quot;LR Balanced&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;TN&quot;</span><span class="p">:</span> <span class="n">tn_bal</span><span class="p">,</span>
+        <span class="s2">&quot;FP&quot;</span><span class="p">:</span> <span class="n">fp_bal</span><span class="p">,</span>
+        <span class="s2">&quot;FN&quot;</span><span class="p">:</span> <span class="n">fn_bal</span><span class="p">,</span>
+        <span class="s2">&quot;TP&quot;</span><span class="p">:</span> <span class="n">tp_bal</span><span class="p">,</span>
+        <span class="s2">&quot;Accuracy&quot;</span><span class="p">:</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lr_bal</span><span class="p">),</span>
+        <span class="s2">&quot;Precision (Active)&quot;</span><span class="p">:</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lr_bal</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+        <span class="s2">&quot;Recall (Active)&quot;</span><span class="p">:</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lr_bal</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+        <span class="s2">&quot;F1 (Active)&quot;</span><span class="p">:</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lr_bal</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+        <span class="s2">&quot;AUC&quot;</span><span class="p">:</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_score_lr_bal</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">])</span>
+
+<span class="c1"># Round numeric columns for readability</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Comparison of Logistic Regression models:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Confusion Matrix - LR Default&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cm_lr</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Confusion Matrix - LR Balanced&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cm_lr_bal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Comparison of Logistic Regression models:
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Model</th>
+      <th>TN</th>
+      <th>FP</th>
+      <th>FN</th>
+      <th>TP</th>
+      <th>Accuracy</th>
+      <th>Precision (Active)</th>
+      <th>Recall (Active)</th>
+      <th>F1 (Active)</th>
+      <th>AUC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>LR Default</td>
+      <td>592</td>
+      <td>14</td>
+      <td>60</td>
+      <td>14</td>
+      <td>0.891</td>
+      <td>0.500</td>
+      <td>0.189</td>
+      <td>0.275</td>
+      <td>0.788</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>LR Balanced</td>
+      <td>469</td>
+      <td>137</td>
+      <td>23</td>
+      <td>51</td>
+      <td>0.765</td>
+      <td>0.271</td>
+      <td>0.689</td>
+      <td>0.389</td>
+      <td>0.781</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Confusion Matrix - LR Default
+[[592  14]
+ [ 60  14]]
+
+Confusion Matrix - LR Balanced
+[[469 137]
+ [ 23  51]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The default Logistic Regression model achieves high accuracy, but this performance is driven primarily by correctly identifying inactive compounds. The recall for active compounds is low (0.19), indicating that most active compounds are missed.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">class_weight=&quot;balanced&quot;</span></code> is applied, the model shifts its behavior. The recall for active compounds increases substantially (0.69), meaning that most actives are now detected. However, this comes at the cost of an increase in false positives and a decrease in overall accuracy.</p>
+<p>The AUC remains nearly unchanged, indicating that the model’s ability to distinguish between active and inactive compounds has not significantly changed. Instead, the difference lies in how the model makes classification decisions.</p>
+<p>In cheminformatics missing actives (FN) is often worse than having extra candidates (FP), and so the balanced model is probably preferred.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="support-vector-machine">
+<h1>5 Support Vector Machine<a class="headerlink" href="#support-vector-machine" title="Link to this heading">#</a></h1>
+<section id="what-is-an-svm">
+<h2>5.1 What Is an SVM?<a class="headerlink" href="#what-is-an-svm" title="Link to this heading">#</a></h2>
+<p>Support Vector Machines (SVMs) are supervised learning models that classify data by finding a decision boundary that maximizes the margin between classes. Unlike Logistic Regression, which focuses on modeling probabilities, SVM focuses on the geometry of the data.</p>
+<p>Only a subset of the training data—called “support vectors” determines the position of the boundary. This makes SVM particularly effective in high-dimensional spaces, such as those created by molecular fingerprints.</p>
+<p>In scikit-learn, two primary implementations are available:</p>
+<ul class="simple">
+<li><p><strong>SVC</strong>: A flexible implementation that supports kernels and probability estimates</p></li>
+<li><p><strong>LinearSVC</strong>: A faster implementation optimized for large, high-dimensional datasets, but without probability outputs</p></li>
+</ul>
+<p>In this section, we begin with a linear SVM using SVC to maintain consistency with earlier probabilistic evaluation methods.</p>
+<section id="support-vectors-the-critical-data-points">
+<h3>Support Vectors: The Critical Data Points<a class="headerlink" href="#support-vectors-the-critical-data-points" title="Link to this heading">#</a></h3>
+<p>In a Support Vector Machine, the decision boundary is not determined by all training data. Instead, it is defined by a small subset of points called support vectors.</p>
+<p>These are the data points closest to the boundary—typically those that are hardest to classify. Points far from the boundary do not influence the model once it is trained.</p>
+<p>Although this may resemble unsupervised methods that identify structure in data, SVM is fully supervised. The boundary is constructed using known class labels, and the support vectors arise from the constraints imposed by those labels.</p>
+<p>In cheminformatics applications, support vectors often correspond to molecules with ambiguous or borderline activity, making them especially important for understanding model behavior.</p>
+</section>
+</section>
+<section id="build-the-svm-pipeline">
+<h2>5.2 Build the SVM Pipeline<a class="headerlink" href="#build-the-svm-pipeline" title="Link to this heading">#</a></h2>
+<p>In this step, we define a machine learning pipeline for the Support Vector Machine (SVM) model. As in previous sections, the pipeline combines feature preprocessing with the classifier into a single, reproducible workflow.</p>
+<p>We first apply a variance threshold to remove features that do not vary across the dataset, ensuring that only informative MACCS keys are passed to the model. The classifier is a linear SVM implemented using <code class="docutils literal notranslate"><span class="pre">SVC</span></code> from <code class="docutils literal notranslate"><span class="pre">sklearn.svm</span></code>, which allows us to compute class probabilities for downstream evaluation (e.g., ROC and AUC).</p>
+<p>At this stage, we are only defining the structure of the model. No learning has occurred yet—the identification of support vectors and the optimization of the decision boundary will take place during the fitting step.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">VarianceThreshold</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.svm</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVC</span>
+
+<span class="n">svm_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;var&#39;</span><span class="p">,</span> <span class="n">VarianceThreshold</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s1">&#39;clf&#39;</span><span class="p">,</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">3100</span><span class="p">))</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h2>5.3 Fit the Model<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="reload-data-and-create-train-test-split">
+<h3>Reload data and create train/test split<a class="headerlink" href="#reload-data-and-create-train-test-split" title="Link to this heading">#</a></h3>
+<p>After restarting the kernel, we reload the MACCS fingerprint dataset and recreate the same stratified train/test split used in earlier sections. This ensures that model training and evaluation remain consistent across algorithms, allowing for direct comparison of results.</p>
+<p>The feature matrix (X) contains the MACCS keys, and the label vector (y) contains the activity classification. A stratified split is used to preserve the class distribution in both the training and test sets</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reload data and create train/test split</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="c1"># Load dataset</span>
+<span class="n">data_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span>
+    <span class="s2">&quot;data/AID743139/features/&quot;</span>
+    <span class="s2">&quot;AID743139_MACCS_activities_noSalt_20260205.csv&quot;</span>
+<span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_path</span><span class="p">)</span>
+
+<span class="c1"># Separate features and labels</span>
+<span class="n">label_column</span> <span class="o">=</span> <span class="s2">&quot;activity&quot;</span>
+<span class="n">maccs_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;maccs&quot;</span><span class="p">)]</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">maccs_columns</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">label_column</span><span class="p">]</span>
+
+<span class="c1"># Stratified train/test split</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span>
+    <span class="n">y</span><span class="p">,</span>
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.10</span><span class="p">,</span>
+    <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">3100</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X_train:&quot;</span><span class="p">,</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s2">&quot;| X_test:&quot;</span><span class="p">,</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y_train:&quot;</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s2">&quot;| y_test:&quot;</span><span class="p">,</span> <span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X_train: (6113, 167) | X_test: (680, 167)
+y_train: (6113,) | y_test: (680,)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h3>Fit the Model<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>We now fit the SVM pipeline using the training data. During this step, the model learns the optimal decision boundary that separates active and inactive compounds by maximizing the margin between classes.</p>
+<p>Unlike Logistic Regression, where all data points contribute to the model, the SVM identifies a subset of critical points—called <strong>support vectors</strong>—that define this boundary. These support vectors are determined during the fitting process and will be examined after training.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fit the SVM pipeline</span>
+<span class="n">svm_pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Access the fitted classifier</span>
+<span class="n">svm_model</span> <span class="o">=</span> <span class="n">svm_pipeline</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s2">&quot;clf&quot;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model fitted successfully.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Basic diagnostic output</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of support vectors:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">svm_model</span><span class="o">.</span><span class="n">support_</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Support vectors per class:&quot;</span><span class="p">,</span> <span class="n">svm_model</span><span class="o">.</span><span class="n">n_support_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model fitted successfully.
+Number of support vectors: 1662
+Support vectors per class: [993 669]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="model-fit-summary">
+<h3>Model Fit Summary<a class="headerlink" href="#model-fit-summary" title="Link to this heading">#</a></h3>
+<p>The SVM model has been successfully trained. The output shows the total number of support vectors and how they are distributed across the two classes.</p>
+<p>A relatively large number of support vectors indicates that many data points lie near the decision boundary or within the margin. This suggests that the classes are not cleanly separable and that the model must rely on a substantial portion of the data to define the boundary.</p>
+<p>In this case, the imbalance in support vectors between classes reflects the underlying class distribution and the complexity of separating active and inactive compounds in this dataset.</p>
+</section>
+</section>
+<section id="id3">
+<h2>5.4 Predict Classes and Probabilities<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>We now evaluate the performance of the trained SVM model on the test set. As in previous sections, we compute classification metrics derived from the confusion matrix, along with ROC and AUC to assess the model’s ability to distinguish between active and inactive compounds across different thresholds.</p>
+<p>Because we used an SVM implementation that supports probability estimates, we can directly compare these results to those obtained from Logistic Regression.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate predictions and probabilities</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">confusion_matrix</span><span class="p">,</span>
+    <span class="n">accuracy_score</span><span class="p">,</span>
+    <span class="n">precision_score</span><span class="p">,</span>
+    <span class="n">recall_score</span><span class="p">,</span>
+    <span class="n">f1_score</span><span class="p">,</span>
+    <span class="n">roc_auc_score</span>
+<span class="p">)</span>
+
+<span class="c1"># Predictions (default threshold = 0.5)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">svm_pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Probabilities for ROC/AUC</span>
+<span class="n">y_prob</span> <span class="o">=</span> <span class="n">svm_pipeline</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Confusion matrix</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">tn</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="n">tp</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+<span class="c1"># Metrics</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">precision</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">recall</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">f1</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_prob</span><span class="p">)</span>
+
+<span class="c1"># Print results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Metrics:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy : </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Precision: </span><span class="si">{</span><span class="n">precision</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recall   : </span><span class="si">{</span><span class="n">recall</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;F1 Score : </span><span class="si">{</span><span class="n">f1</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AUC      : </span><span class="si">{</span><span class="n">auc</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Confusion Matrix:
+[[606   0]
+ [ 74   0]]
+
+Metrics:
+Accuracy : 0.891
+Precision: 0.000
+Recall   : 0.000
+F1 Score : 0.000
+AUC      : 0.774
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/rebelford/miniconda3/envs/nbi/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1731: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f&quot;{metric.capitalize()} is&quot;, result.shape[0])
+</pre></div>
+</div>
+</div>
+</div>
+<section id="interpreting-svm-performance">
+<h3>Interpreting SVM Performance<a class="headerlink" href="#interpreting-svm-performance" title="Link to this heading">#</a></h3>
+<p>The confusion matrix shows that the model predicts all compounds as inactive at the default decision threshold of 0.5. As a result, no active compounds are identified, leading to precision, recall, and F1 scores of zero.</p>
+<p>This behavior triggers a warning because precision is undefined when no positive predictions are made.</p>
+<p>However, the AUC value (0.774) indicates that the model still has meaningful discriminatory power. This suggests that the predicted probabilities contain useful information, but the default threshold is too strict for identifying active compounds.</p>
+<p>This highlights an important distinction: classification metrics depend on a chosen threshold, while AUC reflects overall ranking performance across all possible thresholds.</p>
+</section>
+<section id="selecting-an-optimal-threshold-youdens-j">
+<h3>Selecting an Optimal Threshold (Youden’s J)<a class="headerlink" href="#selecting-an-optimal-threshold-youdens-j" title="Link to this heading">#</a></h3>
+<p>The previous results showed that the default threshold of 0.5 leads to poor classification performance, even though the model has reasonable AUC. This indicates that the predicted probabilities contain useful information, but the decision threshold is not appropriate.</p>
+<p>To address this, we use <strong>Youden’s J statistic</strong>, defined as:</p>
+<p>J = TPR − FPR</p>
+<p>This metric identifies the threshold that maximizes the difference between the true positive rate and false positive rate, providing a balanced trade-off between sensitivity and specificity.</p>
+<p>We now compute the optimal threshold and re-evaluate the model using this value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">,</span> <span class="n">f1_score</span>
+
+<span class="c1"># Compute ROC curve</span>
+<span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">thresholds</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_prob</span><span class="p">)</span>
+
+<span class="c1"># Compute Youden&#39;s J statistic</span>
+<span class="n">j_scores</span> <span class="o">=</span> <span class="n">tpr</span> <span class="o">-</span> <span class="n">fpr</span>
+
+<span class="c1"># Find optimal threshold</span>
+<span class="n">best_idx</span> <span class="o">=</span> <span class="n">j_scores</span><span class="o">.</span><span class="n">argmax</span><span class="p">()</span>
+<span class="n">best_threshold</span> <span class="o">=</span> <span class="n">thresholds</span><span class="p">[</span><span class="n">best_idx</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Optimal threshold (Youden&#39;s J): </span><span class="si">{</span><span class="n">best_threshold</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Apply new threshold</span>
+<span class="n">y_pred_opt</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_prob</span> <span class="o">&gt;=</span> <span class="n">best_threshold</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="c1"># Confusion matrix</span>
+<span class="n">cm_opt</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_opt</span><span class="p">)</span>
+<span class="n">tn</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="n">tp</span> <span class="o">=</span> <span class="n">cm_opt</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+<span class="c1"># Metrics</span>
+<span class="n">accuracy_opt</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_opt</span><span class="p">)</span>
+<span class="n">precision_opt</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_opt</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">recall_opt</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_opt</span><span class="p">)</span>
+<span class="n">f1_opt</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_opt</span><span class="p">)</span>
+
+<span class="c1"># Print results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Confusion Matrix (Optimized Threshold):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cm_opt</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Metrics (Optimized Threshold):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy : </span><span class="si">{</span><span class="n">accuracy_opt</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Precision: </span><span class="si">{</span><span class="n">precision_opt</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recall   : </span><span class="si">{</span><span class="n">recall_opt</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;F1 Score : </span><span class="si">{</span><span class="n">f1_opt</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimal threshold (Youden&#39;s J): 0.114
+
+Confusion Matrix (Optimized Threshold):
+[[503 103]
+ [ 24  50]]
+
+Metrics (Optimized Threshold):
+Accuracy : 0.813
+Precision: 0.327
+Recall   : 0.676
+F1 Score : 0.441
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="performance-after-threshold-optimization">
+<h3>Performance After Threshold Optimization<a class="headerlink" href="#performance-after-threshold-optimization" title="Link to this heading">#</a></h3>
+<p>Using Youden’s J statistic, we identified an optimal decision threshold of 0.114, which is substantially lower than the default value of 0.5.</p>
+<p>At this optimized threshold, the model now correctly identifies a large portion of active compounds (recall = 0.676), compared to zero recall at the default threshold. However, this improvement comes with an increase in false positives, resulting in a lower precision (0.327).</p>
+<p>The overall F1 score (0.441) reflects a more balanced performance between precision and recall, and the accuracy (0.813) remains reasonably high.</p>
+<p>This comparison highlights a critical concept: while the underlying model has not changed, adjusting the decision threshold can dramatically alter classification performance. The default threshold is not always appropriate, particularly for imbalanced datasets or when the cost of false negatives is high.</p>
+<p>In this context, lowering the threshold makes the model more sensitive to identifying potentially active compounds, which may be desirable in early-stage screening where missing an active compound is costly.</p>
+</section>
+<section id="roc-curve-with-optimal-threshold">
+<h3>ROC Curve with Optimal Threshold<a class="headerlink" href="#roc-curve-with-optimal-threshold" title="Link to this heading">#</a></h3>
+<p>We now visualize the ROC curve for the SVM model and highlight the point corresponding to the optimal threshold identified using Youden’s J statistic.</p>
+<p>This point represents the balance between the true positive rate (sensitivity) and false positive rate at the selected threshold, providing a visual interpretation of the trade-off made during threshold optimization.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># --- Find threshold closest to 0.5 ---</span>
+<span class="n">default_threshold</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">default_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">thresholds</span> <span class="o">-</span> <span class="n">default_threshold</span><span class="p">))</span>
+
+<span class="n">default_fpr</span> <span class="o">=</span> <span class="n">fpr</span><span class="p">[</span><span class="n">default_idx</span><span class="p">]</span>
+<span class="n">default_tpr</span> <span class="o">=</span> <span class="n">tpr</span><span class="p">[</span><span class="n">default_idx</span><span class="p">]</span>
+
+<span class="c1"># --- Already computed ---</span>
+<span class="c1"># best_idx, best_fpr, best_tpr</span>
+
+<span class="c1"># --- Plot ---</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="c1"># ROC curve</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;SVM (AUC = </span><span class="si">{</span><span class="n">auc</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Random line</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+<span class="c1"># Optimal threshold (Youden J)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">best_fpr</span><span class="p">,</span> <span class="n">best_tpr</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Youden J (thr=</span><span class="si">{</span><span class="n">best_threshold</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Default threshold (0.5)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">default_fpr</span><span class="p">,</span> <span class="n">default_tpr</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Default (thr=0.5)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Labels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;False Positive Rate (FPR)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;True Positive Rate (TPR)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;ROC Curve with Threshold Comparison&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Draw vertical line to diagonal</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">best_fpr</span><span class="p">,</span> <span class="n">best_fpr</span><span class="p">],</span> <span class="p">[</span><span class="n">best_fpr</span><span class="p">,</span> <span class="n">best_tpr</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Print both points</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Default threshold (0.5):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;FPR: </span><span class="si">{</span><span class="n">default_fpr</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, TPR: </span><span class="si">{</span><span class="n">default_tpr</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Youden&#39;s J threshold:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Threshold: </span><span class="si">{</span><span class="n">best_threshold</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;FPR: </span><span class="si">{</span><span class="n">best_fpr</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, TPR: </span><span class="si">{</span><span class="n">best_tpr</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/5efddf01b15a945af7fdc004710214d129146fde8506d3c9ddc53d2f83f5ba5c.png" src="../../../_images/5efddf01b15a945af7fdc004710214d129146fde8506d3c9ddc53d2f83f5ba5c.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Default threshold (0.5):
+FPR: 0.000, TPR: 0.014
+
+Youden&#39;s J threshold:
+Threshold: 0.114
+FPR: 0.170, TPR: 0.676
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="inspect-support-vectors">
+<h2>5.5 Inspect Support Vectors<a class="headerlink" href="#inspect-support-vectors" title="Link to this heading">#</a></h2>
+<p>Support vectors are the subset of training data that define the SVM decision boundary. These are typically the most difficult-to-classify points—those near the boundary between active and inactive compounds.</p>
+<p>We begin by identifying which training samples were selected as support vectors by the model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Indices of support vectors (relative to X_train)</span>
+<span class="n">sv_indices</span> <span class="o">=</span> <span class="n">svm_model</span><span class="o">.</span><span class="n">support_</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of support vectors:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sv_indices</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First 10 support vector indices:&quot;</span><span class="p">,</span> <span class="n">sv_indices</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+
+<span class="c1"># Extract support vector feature rows</span>
+<span class="n">X_sv</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">sv_indices</span><span class="p">]</span>
+
+<span class="c1"># Extract corresponding labels</span>
+<span class="n">y_sv</span> <span class="o">=</span> <span class="n">y_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">sv_indices</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Support vector feature matrix shape:&quot;</span><span class="p">,</span> <span class="n">X_sv</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of support vectors: 1662
+First 10 support vector indices: [10 18 19 23 25 32 36 38 49 52]
+Support vector feature matrix shape: (1662, 167)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Examine Class Distribution</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Support vector class distribution:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_sv</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Support vector class distribution:
+activity
+0    993
+1    669
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svm_model</span><span class="o">.</span><span class="n">n_support_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([993, 669], dtype=int32)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="interpreting-support-vector-distribution">
+<h2>Interpreting Support Vector Distribution<a class="headerlink" href="#interpreting-support-vector-distribution" title="Link to this heading">#</a></h2>
+<p>As discussed in <a class="reference external" href="https://rebelford.github.io/2026Cheminformatics/content/modules/10_SupervisedML/10_2_NB_model_construction_workflow.html#measuring-class-imbalance-in-the-training-set">module 2.2.2 Class Imbalance</a>, there were 669 active compounds in the Aromatose training set and all active compounds are identified as support vectors by the SVM model. This indicates that every active lies near or within the decision boundary, and none are easily separable from the inactive class.</p>
+<p>In contrast, only a subset of inactive compounds are support vectors, suggesting that many inactives are clearly distinguishable and lie far from the boundary.</p>
+<p>This pattern reveals that the active compounds occupy a region of feature space that overlaps significantly with inactives. As a result, the model must rely on all active samples to define the decision boundary, reflecting the difficulty of separating these classes based on the available features.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get original dataframe rows</span>
+<span class="n">df_sv</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">X_sv</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+
+<span class="c1"># If you have a CID column:</span>
+<span class="k">if</span> <span class="s2">&quot;CID&quot;</span> <span class="ow">in</span> <span class="n">df_sv</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">df_sv</span><span class="p">[[</span><span class="s2">&quot;CID&quot;</span><span class="p">,</span> <span class="s2">&quot;activity&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">df_sv</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           cid  activity                                       clean_smiles  \
+2610      5994         0  CC(=O)[C@H]1CC[C@H]2[C@@H]3CCC4=CC(=O)CC[C@]4(...   
+2012     33919         0              O=S(=O)(O)c1ccc2nc(-c3ccccc3)[nH]c2c1   
+6310  11556911         0  CS(=O)(=O)c1ccc(C(=O)C2C(=O)CCCC2=O)c(Cl)c1COC...   
+1238     65999         0  CCCc1nc2c(C)cc(-c3nc4ccccc4n3C)cc2n1Cc1ccc(-c2...   
+163       4054         0                        CC12CC3CC(C)(C1)CC(N)(C3)C2   
+
+      maccs000  maccs001  maccs002  maccs003  maccs004  maccs005  maccs006  \
+2610         0         0         0         0         0         0         0   
+2012         0         0         0         0         0         0         0   
+6310         0         0         0         0         0         0         0   
+1238         0         0         0         0         0         0         0   
+163          0         0         0         0         0         0         0   
+
+      ...  maccs157  maccs158  maccs159  maccs160  maccs161  maccs162  \
+2610  ...         0         0         1         1         0         0   
+2012  ...         0         0         1         0         1         1   
+6310  ...         1         0         1         1         0         1   
+1238  ...         1         1         1         1         1         1   
+163   ...         0         1         0         1         1         0   
+
+      maccs163  maccs164  maccs165  maccs166  
+2610         1         1         1         0  
+2012         1         1         1         0  
+6310         1         1         1         0  
+1238         1         1         1         0  
+163          1         0         1         0  
+
+[5 rows x 170 columns]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="support-vectors-as-molecules">
+<h2>Support Vectors as Molecules<a class="headerlink" href="#support-vectors-as-molecules" title="Link to this heading">#</a></h2>
+<p>The table above shows the compounds corresponding to the support vectors identified by the SVM model. Each CID represents a molecule from the training set that lies near the decision boundary and plays a critical role in defining the model.</p>
+<p>These compounds are often the most difficult to classify, and may represent structurally ambiguous or borderline cases. In this way, the SVM model is effectively defined by a subset of chemically informative molecules rather than the entire dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create DataFrame of support vectors with CID and activity</span>
+<span class="n">sv_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">X_sv</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;cid&quot;</span><span class="p">,</span> <span class="s2">&quot;activity&quot;</span><span class="p">]]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sv_df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Total support vectors:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sv_df</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           cid  activity
+2610      5994         0
+2012     33919         0
+6310  11556911         0
+1238     65999         0
+163       4054         0
+
+Total support vectors: 1662
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="note-on-linearsvc">
+<h2>Note on LinearSVC<a class="headerlink" href="#note-on-linearsvc" title="Link to this heading">#</a></h2>
+<p>In addition to <code class="docutils literal notranslate"><span class="pre">SVC</span></code>, scikit-learn provides an alternative implementation called <code class="docutils literal notranslate"><span class="pre">LinearSVC</span></code>, which is optimized for large, high-dimensional datasets. While it is computationally more efficient, it does not provide probability estimates and does not expose support vectors directly.</p>
+<p>In this module, we use <code class="docutils literal notranslate"><span class="pre">SVC</span></code> because it supports probability-based evaluation (ROC/AUC) and allows us to inspect support vectors, which are central to understanding how the model works.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="comparison-across-models">
+<h1>6. Comparison Across Models<a class="headerlink" href="#comparison-across-models" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.naive_bayes</span><span class="w"> </span><span class="kn">import</span> <span class="n">BernoulliNB</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.svm</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVC</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">VarianceThreshold</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">accuracy_score</span><span class="p">,</span>
+    <span class="n">balanced_accuracy_score</span><span class="p">,</span>
+    <span class="n">precision_score</span><span class="p">,</span>
+    <span class="n">recall_score</span><span class="p">,</span>
+    <span class="n">f1_score</span><span class="p">,</span>
+    <span class="n">roc_auc_score</span><span class="p">,</span>
+    <span class="n">roc_curve</span>
+<span class="p">)</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+
+<span class="c1"># -------------------------------------------------</span>
+<span class="c1"># User-defined threshold for SVM from earlier Youden&#39;s J analysis</span>
+<span class="c1"># -------------------------------------------------</span>
+
+<span class="n">svm_youden_threshold</span> <span class="o">=</span> <span class="mf">0.114</span>
+
+
+<span class="c1"># -------------------------------------------------</span>
+<span class="c1"># Define model pipelines</span>
+<span class="c1"># -------------------------------------------------</span>
+
+<span class="n">models</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Naive Bayes&quot;</span><span class="p">:</span> <span class="n">Pipeline</span><span class="p">([</span>
+        <span class="p">(</span><span class="s2">&quot;var&quot;</span><span class="p">,</span> <span class="n">VarianceThreshold</span><span class="p">()),</span>
+        <span class="p">(</span><span class="s2">&quot;clf&quot;</span><span class="p">,</span> <span class="n">BernoulliNB</span><span class="p">())</span>
+    <span class="p">]),</span>
+
+    <span class="s2">&quot;Logistic Regression&quot;</span><span class="p">:</span> <span class="n">Pipeline</span><span class="p">([</span>
+        <span class="p">(</span><span class="s2">&quot;var&quot;</span><span class="p">,</span> <span class="n">VarianceThreshold</span><span class="p">()),</span>
+        <span class="p">(</span><span class="s2">&quot;clf&quot;</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">(</span>
+            <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+            <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+        <span class="p">))</span>
+    <span class="p">]),</span>
+
+    <span class="s2">&quot;SVM (default 0.5)&quot;</span><span class="p">:</span> <span class="n">Pipeline</span><span class="p">([</span>
+        <span class="p">(</span><span class="s2">&quot;var&quot;</span><span class="p">,</span> <span class="n">VarianceThreshold</span><span class="p">()),</span>
+        <span class="p">(</span><span class="s2">&quot;clf&quot;</span><span class="p">,</span> <span class="n">SVC</span><span class="p">(</span>
+            <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+            <span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+        <span class="p">))</span>
+    <span class="p">]),</span>
+
+    <span class="s2">&quot;SVM (Youden J = 0.114)&quot;</span><span class="p">:</span> <span class="n">Pipeline</span><span class="p">([</span>
+        <span class="p">(</span><span class="s2">&quot;var&quot;</span><span class="p">,</span> <span class="n">VarianceThreshold</span><span class="p">()),</span>
+        <span class="p">(</span><span class="s2">&quot;clf&quot;</span><span class="p">,</span> <span class="n">SVC</span><span class="p">(</span>
+            <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+            <span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+        <span class="p">))</span>
+    <span class="p">]),</span>
+
+    <span class="s2">&quot;Decision Tree&quot;</span><span class="p">:</span> <span class="n">Pipeline</span><span class="p">([</span>
+        <span class="p">(</span><span class="s2">&quot;var&quot;</span><span class="p">,</span> <span class="n">VarianceThreshold</span><span class="p">()),</span>
+        <span class="p">(</span><span class="s2">&quot;clf&quot;</span><span class="p">,</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">))</span>
+    <span class="p">]),</span>
+
+    <span class="s2">&quot;Random Forest&quot;</span><span class="p">:</span> <span class="n">Pipeline</span><span class="p">([</span>
+        <span class="p">(</span><span class="s2">&quot;var&quot;</span><span class="p">,</span> <span class="n">VarianceThreshold</span><span class="p">()),</span>
+        <span class="p">(</span><span class="s2">&quot;clf&quot;</span><span class="p">,</span> <span class="n">RandomForestClassifier</span><span class="p">(</span>
+            <span class="n">n_estimators</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+            <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+        <span class="p">))</span>
+    <span class="p">])</span>
+<span class="p">}</span>
+
+
+<span class="c1"># -------------------------------------------------</span>
+<span class="c1"># Train models and collect metrics</span>
+<span class="c1"># -------------------------------------------------</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+    <span class="c1"># Probability scores for ROC/AUC</span>
+    <span class="n">y_prob</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+    <span class="c1"># -------------------------------------------------</span>
+    <span class="c1"># Apply model-specific prediction rule</span>
+    <span class="c1"># -------------------------------------------------</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;SVM (Youden J = 0.114)&quot;</span><span class="p">:</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_prob</span> <span class="o">&gt;=</span> <span class="n">svm_youden_threshold</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="n">threshold_used</span> <span class="o">=</span> <span class="n">svm_youden_threshold</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+        <span class="n">threshold_used</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+    <span class="c1"># -------------------------------------------------</span>
+    <span class="c1"># Metrics</span>
+    <span class="c1"># -------------------------------------------------</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">bal_acc</span> <span class="o">=</span> <span class="n">balanced_accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">prec</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">rec</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">f1_val</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_prob</span><span class="p">)</span>
+
+    <span class="n">results</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Threshold Used&quot;</span><span class="p">:</span> <span class="n">threshold_used</span><span class="p">,</span>
+        <span class="s2">&quot;Accuracy&quot;</span><span class="p">:</span> <span class="n">acc</span><span class="p">,</span>
+        <span class="s2">&quot;Balanced Accuracy&quot;</span><span class="p">:</span> <span class="n">bal_acc</span><span class="p">,</span>
+        <span class="s2">&quot;Precision&quot;</span><span class="p">:</span> <span class="n">prec</span><span class="p">,</span>
+        <span class="s2">&quot;Recall&quot;</span><span class="p">:</span> <span class="n">rec</span><span class="p">,</span>
+        <span class="s2">&quot;F1&quot;</span><span class="p">:</span> <span class="n">f1_val</span><span class="p">,</span>
+        <span class="s2">&quot;AUC&quot;</span><span class="p">:</span> <span class="n">auc</span>
+    <span class="p">}</span>
+
+    <span class="c1"># -------------------------------------------------</span>
+    <span class="c1"># ROC curve</span>
+    <span class="c1"># Note: both SVM rows will generate the same ROC curve,</span>
+    <span class="c1"># because ROC depends on y_prob, not the chosen threshold.</span>
+    <span class="c1"># -------------------------------------------------</span>
+    <span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_prob</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;SVM&quot;</span><span class="p">):</span>
+        <span class="c1"># Only plot one ROC curve for the two SVM variants</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;SVM (default 0.5)&quot;</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;SVM (AUC = </span><span class="si">{</span><span class="n">auc</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> (AUC = </span><span class="si">{</span><span class="n">auc</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># -------------------------------------------------</span>
+<span class="c1"># Plot ROC comparison</span>
+<span class="c1"># -------------------------------------------------</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;k--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Random&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;False Positive Rate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;True Positive Rate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;ROC Comparison of Models&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="c1"># -------------------------------------------------</span>
+<span class="c1"># Display comparison table</span>
+<span class="c1"># -------------------------------------------------</span>
+
+<span class="n">comparison_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">comparison_df</span> <span class="o">=</span> <span class="n">comparison_df</span><span class="p">[</span>
+    <span class="p">[</span><span class="s2">&quot;Threshold Used&quot;</span><span class="p">,</span> <span class="s2">&quot;Accuracy&quot;</span><span class="p">,</span> <span class="s2">&quot;Balanced Accuracy&quot;</span><span class="p">,</span> <span class="s2">&quot;Precision&quot;</span><span class="p">,</span> <span class="s2">&quot;Recall&quot;</span><span class="p">,</span> <span class="s2">&quot;F1&quot;</span><span class="p">,</span> <span class="s2">&quot;AUC&quot;</span><span class="p">]</span>
+<span class="p">]</span>
+<span class="n">comparison_df</span> <span class="o">=</span> <span class="n">comparison_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;AUC&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">comparison_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/fb3beebd3514f7ff62b4f0eca2e0c454e66ff0b7a55112bc9ad6acb85c518a5f.png" src="../../../_images/fb3beebd3514f7ff62b4f0eca2e0c454e66ff0b7a55112bc9ad6acb85c518a5f.png" />
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Threshold Used</th>
+      <th>Accuracy</th>
+      <th>Balanced Accuracy</th>
+      <th>Precision</th>
+      <th>Recall</th>
+      <th>F1</th>
+      <th>AUC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Random Forest</th>
+      <td>0.500</td>
+      <td>0.911765</td>
+      <td>0.647980</td>
+      <td>0.718750</td>
+      <td>0.310811</td>
+      <td>0.433962</td>
+      <td>0.832832</td>
+    </tr>
+    <tr>
+      <th>Logistic Regression</th>
+      <td>0.500</td>
+      <td>0.891176</td>
+      <td>0.583043</td>
+      <td>0.500000</td>
+      <td>0.189189</td>
+      <td>0.274510</td>
+      <td>0.788400</td>
+    </tr>
+    <tr>
+      <th>SVM (Youden J = 0.114)</th>
+      <td>0.114</td>
+      <td>0.891176</td>
+      <td>0.500000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.774418</td>
+    </tr>
+    <tr>
+      <th>SVM (default 0.5)</th>
+      <td>0.500</td>
+      <td>0.891176</td>
+      <td>0.500000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.774418</td>
+    </tr>
+    <tr>
+      <th>Naive Bayes</th>
+      <td>0.500</td>
+      <td>0.755882</td>
+      <td>0.661359</td>
+      <td>0.232558</td>
+      <td>0.540541</td>
+      <td>0.325203</td>
+      <td>0.728682</td>
+    </tr>
+    <tr>
+      <th>Decision Tree</th>
+      <td>0.500</td>
+      <td>0.883824</td>
+      <td>0.656030</td>
+      <td>0.457627</td>
+      <td>0.364865</td>
+      <td>0.406015</td>
+      <td>0.688041</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Copy</span> <span class="n">the</span> <span class="n">above</span> <span class="n">code</span> <span class="n">into</span> <span class="n">this</span> <span class="n">cell</span> <span class="ow">and</span> <span class="n">alter</span> <span class="n">so</span> <span class="n">it</span> <span class="n">also</span> <span class="n">prints</span> <span class="n">precision</span><span class="p">,</span> <span class="n">recall</span> <span class="ow">and</span> <span class="n">f1</span> <span class="n">score</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="discussion">
+<h2>Discussion<a class="headerlink" href="#discussion" title="Link to this heading">#</a></h2>
+<p>The table above compares the performance of multiple models trained on the same MACCS fingerprint representation. While overall accuracy is relatively high for most models, important differences emerge when considering recall, precision, and AUC.</p>
+<p>Random Forest achieves the highest AUC (0.833) and overall accuracy, indicating strong ability to distinguish between active and inactive compounds. It also has the highest precision (0.719), suggesting that when it predicts a compound as active, it is often correct. However, its recall (0.311) remains moderate, indicating a conservative tendency that misses many actives.</p>
+<p>Naive Bayes shows the highest recall (0.541) and balanced accuracy (0.661), meaning it identifies a larger fraction of active compounds. This comes at the cost of lower precision, reflecting a higher rate of false positives.</p>
+<p>Logistic Regression provides a middle-ground performance, with moderate AUC (0.788) and relatively low recall (0.189), again indicating conservative predictions at the default threshold.</p>
+<p>The SVM model presents an important contrast. At the default threshold of 0.5, it predicts no active compounds, resulting in zero recall and F1 score, despite having a reasonable AUC (0.774). This demonstrates that the model is capable of ranking compounds but fails to convert those rankings into useful classifications under the default decision rule.</p>
+<p>When an optimized threshold is applied (Youden’s J = 0.114), the underlying SVM model remains unchanged, and the AUC is identical. However, the classification behavior changes because a different threshold is used to convert probabilities into class labels. This highlights that model evaluation depends not only on the algorithm, but also on the choice of decision threshold.</p>
+<p>Overall, these results show that different models emphasize different aspects of performance, and that no single metric fully captures model behavior.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="what-did-these-models-learn-from-the-fingerprints">
+<h1>7 What Did These Models Learn from the Fingerprints?<a class="headerlink" href="#what-did-these-models-learn-from-the-fingerprints" title="Link to this heading">#</a></h1>
+<p>All models in this comparison were trained on the same MACCS fingerprint representation, yet their performance differs significantly. This indicates that the choice of algorithm influences how the same structural information is interpreted.</p>
+<p>Linear models such as Logistic Regression and SVM attempt to separate active and inactive compounds using a linear boundary in fingerprint space. The difficulty these models have in identifying actives suggests that the classes are not cleanly separable using simple linear relationships.</p>
+<p>Naive Bayes treats each fingerprint bit as largely independent, allowing it to identify more actives but reducing precision. Tree-based models, particularly Random Forest, capture interactions between fingerprint features, leading to improved overall discrimination as reflected in higher AUC values.</p>
+<p>The fact that no model achieves both high recall and high precision suggests that the MACCS fingerprints do not fully capture the structural patterns associated with activity in this dataset. Instead, activity appears to arise from more complex or subtle relationships that are only partially represented by these features.</p>
+<p>This comparison highlights that model performance depends not only on the algorithm, but also on how well the chosen molecular representation encodes the underlying chemistry.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "nbi"
+        },
+        kernelOptions: {
+            name: "nbi",
+            path: "./content/modules/10_SupervisedML"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'nbi'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="10_5_RD_Model_Complexity.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">10.5 Random Forest and Model Complexity</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../appendices/App_1/README.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Appendix 1: Getting Set Up</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">10.6 Logistic Regression and SVM</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#why-study-logistic-regression-and-svm">1 Why Study Logistic Regression and SVM?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-aromatase-maccs-data">2 Load the Aromatase MACCS Data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pipelines-revisited">3 Pipelines Revisited</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">4 Logistic Regression</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-logistic-regression">4.1 What Is Logistic Regression?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-logistic-sigmoid-function">4.1.2 The Logistic (Sigmoid) Function</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-sigmoid-function">Visualizing the Sigmoid Function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-probability-to-classification">4.1.3 From Probability to Classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-the-model">4.1.4 Interpreting the Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-are-the-weights-learned">How Are the Weights Learned?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-vs-earlier-models">4.1.5 Logistic Regression vs Earlier Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-logistic-regression-pipeline">4.2 Build the Logistic Regression Pipeline</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-parameters">Logistic Regression Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-class-weight">Understanding <code class="docutils literal notranslate"><span class="pre">class_weight</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-the-model">4.3 Fit the Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predict-classes-and-probabilities">4.4 Predict Classes and Probabilities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-logistic-regression">4.5 Evaluate Logistic Regression</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machine">5 Support Vector Machine</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-an-svm">5.1 What Is an SVM?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vectors-the-critical-data-points">Support Vectors: The Critical Data Points</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-the-svm-pipeline">5.2 Build the SVM Pipeline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.3 Fit the Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reload-data-and-create-train-test-split">Reload data and create train/test split</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Fit the Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-fit-summary">Model Fit Summary</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5.4 Predict Classes and Probabilities</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-svm-performance">Interpreting SVM Performance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-an-optimal-threshold-youdens-j">Selecting an Optimal Threshold (Youden’s J)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-after-threshold-optimization">Performance After Threshold Optimization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#roc-curve-with-optimal-threshold">ROC Curve with Optimal Threshold</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-support-vectors">5.5 Inspect Support Vectors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-support-vector-distribution">Interpreting Support Vector Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vectors-as-molecules">Support Vectors as Molecules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-linearsvc">Note on LinearSVC</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-across-models">6. Comparison Across Models</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-did-these-models-learn-from-the-fingerprints">7 What Did These Models Learn from the Fingerprints?</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Robert Belford
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright CC 4.0 2026 Robert Belford, additional info on each notebook.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <script async src="https://hypothes.is/embed.js"></script>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

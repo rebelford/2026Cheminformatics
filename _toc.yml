@@ -17,6 +17,7 @@ parts:
       - file: content/modules/10_SupervisedML/10_4_Pipelines
       - file: content/modules/10_SupervisedML/10_5_RD_Model_Complexity
       - file: content/modules/10_SupervisedML/10_6_LR_SVM_Modeling
+      - file: content/modules/10_SupervisedML/10_7_MLP_Neural_Networks
 
   - caption: Appendices
     chapters:

@@ -16,37 +16,40 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -64,6 +67,7 @@
     <link rel="prev" title="1.1 Python Basics" href="01_1_python-basics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -79,19 +83,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../../search.html"
       method="get">
@@ -99,7 +92,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -107,8 +99,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -124,7 +116,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -154,21 +147,17 @@
     
     
     <img src="../../../_static/logo.png" class="logo__image only-light" alt="2026 Cheminformatics OLCC - Home"/>
-    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="2026 Cheminformatics OLCC - Home"/>`);</script>
+    <img src="../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="2026 Cheminformatics OLCC - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -279,9 +268,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -442,7 +436,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -456,25 +450,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -621,6 +607,23 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ketones &lt;class &#39;str&#39;&gt;
+
+1 &lt;class &#39;int&#39;&gt;
+
+hydrogen &lt;class &#39;str&#39;&gt;
+1 &lt;class &#39;int&#39;&gt;
+1.008 &lt;class &#39;float&#39;&gt;
+helium &lt;class &#39;str&#39;&gt;
+2 &lt;class &#39;int&#39;&gt;
+4.0 &lt;class &#39;float&#39;&gt;
+lithium &lt;class &#39;str&#39;&gt;
+3 &lt;class &#39;int&#39;&gt;
+6.94 &lt;class &#39;float&#39;&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <p>In the last notebook, you used the append() method to add to your lists:</p>
 <div class="cell docutils container">
@@ -629,6 +632,13 @@ document.write(`
 <span class="n">compoundClass</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;ethrs&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">compoundClass</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">compoundClass</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+6
+ethrs
 </pre></div>
 </div>
 </div>
@@ -667,6 +677,14 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ethrs
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;ethrs&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -679,6 +697,13 @@ document.write(`
 <span class="c1"># example of removing an item from a list using remove()</span>
 <span class="n">solvents</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;ethanol&quot;</span><span class="p">)</span> 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;List after removing ethanol:&quot;</span><span class="p">,</span> <span class="n">solvents</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Removed solvent: acetone
+Updated list: [&#39;methanol&#39;, &#39;ethanol&#39;, &#39;dichloromethane&#39;, &#39;ethanol&#39;]
+List after removing ethanol: [&#39;methanol&#39;, &#39;dichloromethane&#39;, &#39;ethanol&#39;]
 </pre></div>
 </div>
 </div>
@@ -716,6 +741,18 @@ document.write(`
 <span class="n">elements</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Elements after clear:&quot;</span><span class="p">,</span> <span class="n">elements</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Original list remains unchanged:&quot;</span><span class="p">,</span> <span class="n">originalList</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;carbon&#39;, &#39;oxygen&#39;, &#39;hydrogen&#39;, &#39;nitrogen&#39;, &#39;oxygen&#39;, &#39;sulfur&#39;, &#39;hydrogen&#39;]
+First occurrence of &#39;oxygen&#39; is at index: 1
+Elements after changing &#39;oxygen&#39; to &#39;fluorine&#39;: [&#39;carbon&#39;, &#39;fluorine&#39;, &#39;hydrogen&#39;, &#39;nitrogen&#39;, &#39;oxygen&#39;, &#39;sulfur&#39;, &#39;hydrogen&#39;]
+Number of occurrences of &#39;hydrogen&#39;: 2
+Sorted elements: [&#39;carbon&#39;, &#39;fluorine&#39;, &#39;hydrogen&#39;, &#39;hydrogen&#39;, &#39;nitrogen&#39;, &#39;oxygen&#39;, &#39;sulfur&#39;]
+Reversed elements: [&#39;sulfur&#39;, &#39;oxygen&#39;, &#39;nitrogen&#39;, &#39;hydrogen&#39;, &#39;hydrogen&#39;, &#39;fluorine&#39;, &#39;carbon&#39;]
+Elements after clear: []
+Original list remains unchanged: [&#39;carbon&#39;, &#39;oxygen&#39;, &#39;hydrogen&#39;, &#39;nitrogen&#39;, &#39;oxygen&#39;, &#39;sulfur&#39;, &#39;hydrogen&#39;]
 </pre></div>
 </div>
 </div>
@@ -779,6 +816,16 @@ print(drugs)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>benzene: 78.11 g/mol
+benzene has a molecular weight less than or equal to 90 g/mol
+toluene: 92.14 g/mol
+toluene has a molecular weight greater than 90 g/mol
+phenol: 94.11 g/mol
+phenol has a molecular weight greater than 90 g/mol
+</pre></div>
+</div>
+</div>
 </div>
 <div class="alert alert-block alert-warning">
 <strong>Check your understanding</strong>
@@ -786,8 +833,10 @@ print(drugs)
 <details>
 <summary>Solution</summary>
 <p>Tuples are ideal here because:</p>
-<p>The molecule name and molecular weight are tightly linked.</p>
-<p>You don’t want these values to change accidentally (immutability protects them).</p>
+<ul class="simple">
+<li><p>The molecule name and molecular weight are tightly linked.</p></li>
+<li><p>You don’t want these values to change accidentally (immutability protects them).</p></li>
+</ul>
 </div></section>
 <section id="sets">
 <h3>Sets<a class="headerlink" href="#sets" title="Link to this heading">#</a></h3>
@@ -797,6 +846,11 @@ print(drugs)
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">molecules</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;acetone&quot;</span><span class="p">,</span> <span class="s2">&quot;ethanol&quot;</span><span class="p">,</span> <span class="s2">&quot;acetone&quot;</span><span class="p">,</span> <span class="s2">&quot;methanol&quot;</span><span class="p">,</span> <span class="s2">&quot;ethanol&quot;</span><span class="p">]</span>
 <span class="n">unique_molecules</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">molecules</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">unique_molecules</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;acetone&#39;, &#39;ethanol&#39;, &#39;methanol&#39;}
 </pre></div>
 </div>
 </div>
@@ -857,6 +911,17 @@ print(drugs)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Common drugs in both groups: {&#39;naproxen&#39;}
+Unique drugs in group1: {&#39;aspirin&#39;, &#39;ibuprofen&#39;}
+Unique drugs in group2: {&#39;acetaminophen&#39;}
+All unique drugs from both groups: {&#39;aspirin&#39;, &#39;acetaminophen&#39;, &#39;naproxen&#39;, &#39;ibuprofen&#39;}
+All unique drugs after adding diclofenac: {&#39;aspirin&#39;, &#39;acetaminophen&#39;, &#39;naproxen&#39;, &#39;ibuprofen&#39;, &#39;diclofenac&#39;}
+Molecules as a List: [&#39;aspirin&#39;, &#39;acetaminophen&#39;, &#39;naproxen&#39;, &#39;ibuprofen&#39;, &#39;diclofenac&#39;]
+Sorted Molecules List: [&#39;acetaminophen&#39;, &#39;aspirin&#39;, &#39;diclofenac&#39;, &#39;ibuprofen&#39;, &#39;naproxen&#39;]
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="dictionaries">
@@ -881,6 +946,12 @@ print(drugs)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Molecular Weights:
+{&#39;water&#39;: 18.02, &#39;ethanol&#39;: 50.0, &#39;acetone&#39;: 58.08}
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -900,6 +971,18 @@ print(drugs)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Example: misspelled variable name</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">mol_weight</span> <span class="o">=</span> <span class="mf">46.07</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">mol_wieght</span><span class="p">)</span>  <span class="c1"># Typo!</span>
+
+<span class="ne">NameError</span>: name &#39;mol_wieght&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="syntaxerror-your-code-breaks-pythons-grammar-rules">
@@ -910,6 +993,14 @@ print(drugs)
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compoundClass</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;alkanes&quot;</span><span class="p">,</span> <span class="s2">&quot;alkenes&quot;</span><span class="p">,</span> <span class="s2">&quot;alcohols&quot;</span><span class="p">,</span> <span class="s2">&quot;ketones&quot;</span><span class="p">,</span> <span class="s2">&quot;alkyl halides&quot;</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">compoundClass</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">compoundClass</span>
+                             <span class="o">^</span>
+<span class="ne">SyntaxError</span>: expected &#39;:&#39;
 </pre></div>
 </div>
 </div>
@@ -928,6 +1019,20 @@ print(drugs)
 <span class="p">}</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">molecular_weights</span><span class="p">[</span><span class="n">dichloromethane</span><span class="p">])</span>  <span class="c1"># KeyError: &#39;dichloromethane&#39; not in dictionary</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="s2">&quot;acetone&quot;</span><span class="p">:</span> <span class="mf">58.08</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="s2">&quot;methanol&quot;</span><span class="p">:</span> <span class="mf">32.04</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="p">}</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="nb">print</span><span class="p">(</span><span class="n">molecular_weights</span><span class="p">[</span><span class="n">dichloromethane</span><span class="p">])</span>  <span class="c1"># KeyError: &#39;dichloromethane&#39; not in dictionary</span>
+
+<span class="ne">NameError</span>: name &#39;dichloromethane&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -953,6 +1058,16 @@ print(drugs)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Key Not found
+methanol has a molecular weight of 32.04 g/mol
+ethanol has a molecular weight of 46.07 g/mol
+water has a molecular weight of 18.02 g/mol
+dichloromethane is not in the molecular weights dictionary
+acetone has a molecular weight of 58.08 g/mol
+</pre></div>
+</div>
+</div>
 </div>
 <p>Notice that the code above also shows you can access the dictionary by key and the order you access them does not matter.</p>
 </section>
@@ -963,6 +1078,17 @@ print(drugs)
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elements</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;O&quot;</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">elements</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">elements</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;O&quot;</span><span class="p">]</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">elements</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+
+<span class="ne">IndexError</span>: list index out of range
 </pre></div>
 </div>
 </div>
@@ -977,6 +1103,18 @@ A <code class="docutils literal notranslate"><span class="pre">TypeError</span><
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">mass1</span> <span class="o">=</span> <span class="mf">18.02</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">mass2</span> <span class="o">=</span> <span class="s2">&quot;18.02&quot;</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">mass1</span> <span class="o">+</span> <span class="n">mass2</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: unsupported operand type(s) for +: &#39;float&#39; and &#39;str&#39;
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="indentationerror-incorrect-indentation-spacing-in-the-code">
@@ -988,6 +1126,14 @@ A <code class="docutils literal notranslate"><span class="pre">TypeError</span><
 
 <span class="k">for</span> <span class="n">solvent</span> <span class="ow">in</span> <span class="n">solvents</span><span class="p">:</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">solvent</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">solvent</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">17</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">solvent</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">solvent</span><span class="p">))</span>
+    <span class="o">^</span>
+<span class="ne">IndentationError</span>: expected an indented block after &#39;for&#39; statement on line 3
 </pre></div>
 </div>
 </div>
@@ -1026,6 +1172,12 @@ A <code class="docutils literal notranslate"><span class="pre">TypeError</span><
 <span class="c1">#if not os.path.exists(folder_name):</span>
 <span class="c1">#    os.makedirs(folder_name)  # Safe recursive folder creation</span>
 <span class="c1">#    print(f&quot;Created directory: {folder_name}&quot;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files in this folder: [&#39;README.md&#39;, &#39;01_2_python-intermediate.ipynb&#39;, &#39;.ipynb_checkpoints&#39;, &#39;01_1_python-basics.ipynb&#39;]
+Current working directory: /home/bob/projects/classes/CINF2026/content/modules/01_PythonPrimer
 </pre></div>
 </div>
 </div>
@@ -1089,6 +1241,30 @@ A <code class="docutils literal notranslate"><span class="pre">TypeError</span><
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generate a random float between 0 and 1
+Random float: 0.6011044680670112
+
+generate a random integer between 1 and 10 including 1 and 10
+Random number: 3
+Random number: 9
+Random number: 1
+Random number: 8
+Random number: 10
+
+generate a random integer between 1 and 10 selecting only even numbers
+Random number: 8
+Random number: 8
+Random number: 4
+Random number: 0
+Random number: 4
+
+randomly select a compound from a list
+[&#39;ethanol&#39;, &#39;acetone&#39;, &#39;toluene&#39;, &#39;chloroform&#39;]
+Randomly selected compound: ethanol
+</pre></div>
+</div>
+</div>
 </div>
 <section id="controlling-randomness-with-random-seed">
 <h4>Controlling Randomness with <code class="docutils literal notranslate"><span class="pre">random.seed()</span></code><a class="headerlink" href="#controlling-randomness-with-random-seed" title="Link to this heading">#</a></h4>
@@ -1119,6 +1295,20 @@ A <code class="docutils literal notranslate"><span class="pre">TypeError</span><
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Without setting a seed we should get different results:
+First run: ethanol
+Second run: methanol
+Third run: hexane
+
+With setting a seed we should get the same results:
+First run: acetone
+Second run: acetone
+Third run: acetone
+Fourth run with new random seed: ethanol
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -1142,6 +1332,19 @@ where:</p>
 <span class="n">solvents</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ethanol&quot;</span><span class="p">,</span> <span class="s2">&quot;acetone&quot;</span><span class="p">,</span> <span class="s2">&quot;toluene&quot;</span><span class="p">,</span> <span class="s2">&quot;methanol&quot;</span><span class="p">,</span> <span class="s2">&quot;chloroform&quot;</span><span class="p">,</span><span class="s2">&quot;dichloromethane&quot;</span><span class="p">,</span> <span class="s2">&quot;benzene&quot;</span><span class="p">,</span> <span class="s2">&quot;hexane&quot;</span><span class="p">,</span> <span class="s2">&quot;cyclohexane&quot;</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">solvent</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">solvents</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">solvent</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># add one to index for human-readable numbering</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1. ethanol
+2. acetone
+3. toluene
+4. methanol
+5. chloroform
+6. dichloromethane
+7. benzene
+8. hexane
+9. cyclohexane
 </pre></div>
 </div>
 </div>
@@ -1253,6 +1456,19 @@ where:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Status code: 200
+The molecular formula for water is: H2O
+
+
+Status code: 404
+Compound not found.
+
+Status code: 400
+Unexpected error: 400
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="time-tracking-and-delaying-execution">
@@ -1271,6 +1487,20 @@ where:</p>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">.2</span><span class="p">)</span>  <span class="c1"># wait for 0.2 seconds before the next request</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Status code: 200
+{&quot;year&quot;:2026,&quot;month&quot;:5,&quot;day&quot;:23,&quot;hour&quot;:17,&quot;minute&quot;:21,&quot;seconds&quot;:53,&quot;milliSeconds&quot;:288,&quot;dateTime&quot;:&quot;2026-05-23T17:21:53.2880238&quot;,&quot;date&quot;:&quot;05/23/2026&quot;,&quot;time&quot;:&quot;17:21&quot;,&quot;timeZone&quot;:&quot;America/Chicago&quot;,&quot;dayOfWeek&quot;:&quot;Saturday&quot;,&quot;dstActive&quot;:true}
+Status code: 200
+{&quot;year&quot;:2026,&quot;month&quot;:5,&quot;day&quot;:23,&quot;hour&quot;:17,&quot;minute&quot;:21,&quot;seconds&quot;:53,&quot;milliSeconds&quot;:986,&quot;dateTime&quot;:&quot;2026-05-23T17:21:53.9869647&quot;,&quot;date&quot;:&quot;05/23/2026&quot;,&quot;time&quot;:&quot;17:21&quot;,&quot;timeZone&quot;:&quot;America/Chicago&quot;,&quot;dayOfWeek&quot;:&quot;Saturday&quot;,&quot;dstActive&quot;:true}
+Status code: 200
+{&quot;year&quot;:2026,&quot;month&quot;:5,&quot;day&quot;:23,&quot;hour&quot;:17,&quot;minute&quot;:21,&quot;seconds&quot;:54,&quot;milliSeconds&quot;:661,&quot;dateTime&quot;:&quot;2026-05-23T17:21:54.6618998&quot;,&quot;date&quot;:&quot;05/23/2026&quot;,&quot;time&quot;:&quot;17:21&quot;,&quot;timeZone&quot;:&quot;America/Chicago&quot;,&quot;dayOfWeek&quot;:&quot;Saturday&quot;,&quot;dstActive&quot;:true}
+Status code: 200
+{&quot;year&quot;:2026,&quot;month&quot;:5,&quot;day&quot;:23,&quot;hour&quot;:17,&quot;minute&quot;:21,&quot;seconds&quot;:55,&quot;milliSeconds&quot;:378,&quot;dateTime&quot;:&quot;2026-05-23T17:21:55.3789456&quot;,&quot;date&quot;:&quot;05/23/2026&quot;,&quot;time&quot;:&quot;17:21&quot;,&quot;timeZone&quot;:&quot;America/Chicago&quot;,&quot;dayOfWeek&quot;:&quot;Saturday&quot;,&quot;dstActive&quot;:true}
+Status code: 200
+{&quot;year&quot;:2026,&quot;month&quot;:5,&quot;day&quot;:23,&quot;hour&quot;:17,&quot;minute&quot;:21,&quot;seconds&quot;:56,&quot;milliSeconds&quot;:56,&quot;dateTime&quot;:&quot;2026-05-23T17:21:56.0562436&quot;,&quot;date&quot;:&quot;05/23/2026&quot;,&quot;time&quot;:&quot;17:21&quot;,&quot;timeZone&quot;:&quot;America/Chicago&quot;,&quot;dayOfWeek&quot;:&quot;Saturday&quot;,&quot;dstActive&quot;:true}
 </pre></div>
 </div>
 </div>
@@ -1293,6 +1523,17 @@ where:</p>
 
 <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file_like</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Parsed line:&quot;</span><span class="p">,</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="c1"># we add .strip() to remove any leading or trailing whitespace characters including newlines</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/2244,3672,1983,5288826,5284371/property/Title/TXT
+
+Parsed line: Aspirin
+Parsed line: Ibuprofen, (+-)-
+Parsed line: Acetaminophen
+Parsed line: Morphine
+Parsed line: Codeine
 </pre></div>
 </div>
 </div>
@@ -1473,7 +1714,7 @@ Title: Cyclohexanol, 4-(4-(4-fluorophenyl)-5-(2-methoxy-4-pyrimidinyl)-1H-imidaz
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="acknowledgements">
 <h1>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Link to this heading">#</a></h1>
-<p>This notebook was developed by Ehren Bucholtz (Ehren.Bucholtz&#64;uhsp.edu) and takes inspiration from Chapter 1: Basic Python from Charlie Weiss’s book Scientific Computing for Chemists with Python, license (CC BY-NC-SA 4.0).</p>
+<p>This notebook modifiec by Robert Belford from work developed by Ehren Bucholtz (Ehren.Bucholtz&#64;uhsp.edu) that took inspiration from Chapter 1: Basic Python from Charlie Weiss’s book Scientific Computing for Chemists with Python, license (CC BY-NC-SA 4.0).</p>
 <p>This work is licensed under CC BY-NC-SA 4.0.</p>
 </section>
 
@@ -1486,16 +1727,16 @@ Title: Cyclohexanol, 4-(4-(4-fluorophenyl)-5-(2-methoxy-4-pyrimidinyl)-1H-imidaz
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "datachem"
+            mode: "cinf26"
         },
         kernelOptions: {
-            name: "datachem",
+            name: "cinf26",
             path: "./content/modules/01_PythonPrimer"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'datachem'</script>
+    <script>kernelName = 'cinf26'</script>
 
                 </article>
               
@@ -1532,14 +1773,16 @@ Title: Cyclohexanol, 4-(4-(4-fluorophenyl)-5-(2-methoxy-4-pyrimidinyl)-1H-imidaz
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1.2 Intermediate Python</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Intermediate Python</a><ul class="visible nav section-nav flex-column">
@@ -1630,8 +1873,8 @@ By Robert Belford
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,0 +1,1364 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Public Compound Databases &#8212; 2026 Cheminformatics OLCC</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/modules/03_Public_Chemical_Databases/03_01_Survey_Public_Chemical_Databases';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Module 10: Supervised Machine Learning" href="../10_SupervisedML/README.html" />
+    <link rel="prev" title="Module 3: Survey of Chemical Databases" href="README.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="2026 Cheminformatics OLCC - Home"/>
+    <img src="../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="2026 Cheminformatics OLCC - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_PythonPrimer/README.html">Module 1: Python Primers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_PythonPrimer/01_1_python-basics.html">1.1 Python Basics</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../01_PythonPrimer/01_2_python-intermediate.html">1.2 Intermediate Python</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_Introduction/README.html">Module 2: Introduction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_Introduction/02-1-PubChemDataTypes.html">PubChem Training Course</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../02_Introduction/02_2_PUG_REST_activity.html">2.0 PubChem PUG-REST</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="README.html">Module 3: Survey of Chemical Databases</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Public Compound Databases</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../10_SupervisedML/README.html">Module 10: Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_0_Intro.html">10.0: Introduction</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_1_data_prep.html">10.1: Data Preparation and Feature Engineering</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_2_NB_model_construction_workflow.html">10.2: Naive Bayes and Model Construction</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_3_model_evaluation.html">10.3: Evaluating and Interpreting Models</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_4_Pipelines.html">10.4: Pipelines, Persistence, and Reproducible Inference</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_5_RD_Model_Complexity.html">10.5 Random Forest and Model Complexity</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_6_LR_SVM_Modeling.html">10.6 Logistic Regression and SVM</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_7_MLP_Neural_Networks.html">10.7  Neural Networks</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/App_1/README.html">Appendix 1: Getting Set Up</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/App_1/A_01-1_OS.html">Appendix 1.1: Linux &amp; WSL</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/App_10/README.html">Appendix 10: Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/App_10/A_10-1AID_Selector.html">A10.1 BioAssay Screening: Enough Actives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/App_10/A_10-2NaiveBayes.html">A10.2 Bayes’ Theorem: From Inference to Models</a></li>
+
+
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://nanohub.org/tools/datachemolcc/hub/user-redirect/git-pull?repo=https%3A//github.com/rebelford/2026Cheminformatics&urlpath=lab/tree/2026Cheminformatics/content/modules/03_Public_Chemical_Databases/03_01_Survey_Public_Chemical_Databases.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/rebelford/2026Cheminformatics" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rebelford/2026Cheminformatics/issues/new?title=Issue%20on%20page%20%2Fcontent/modules/03_Public_Chemical_Databases/03_01_Survey_Public_Chemical_Databases.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/content/modules/03_Public_Chemical_Databases/03_01_Survey_Public_Chemical_Databases.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Public Compound Databases</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Public Compound Databases</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-1-public-chemical-databases-with-api-resources">Table 1: Public Chemical Databases (with API Resources)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pubchem">1.1 PubChem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#epa-comptox-chemicals-dashboard">1.2 EPA CompTox Chemicals Dashboard</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chemspider">1.3 ChemSpider</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chembl">1.5 ChEMBL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drugbank">1.6 DrugBank</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protein-data-bank-rcsb-pdb">1.7 Protein Data Bank (RCSB PDB)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uniprot">1.8 UniProt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#massbank-europe">1.9 MassBank Europe</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zinc-database">1.10 ZINC Database</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hmdb-human-metabolome-database">1.11 HMDB (Human Metabolome Database)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-2-crystallography-materials-science-and-spectroscopy-databases">Table 2: Crystallography, Materials Science and Spectroscopy Databases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crystallography-open-database-cod">2.1 Crystallography Open Database (COD)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#materials-project">2.2Materials Project</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nist-chemistry-webbook">2.3 NIST Chemistry WebBook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ccdc-access-structures">2.4CCDC Access Structures</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aflowlib">2.5AFLOWlib</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nomad-repository">2.6 NOMAD Repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-database-for-organic-compounds-sdbs">2.7 Spectral Database for Organic Compounds (SDBS)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#irug-spectral-database">2.8 IRUG Spectral Database</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-crystallography-database-ocd">2.9 Open Crystallography Database (OCD)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-3-natural-products-and-bioactive-compounds">Table 3: Natural Products and Bioactive Compounds</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npatlas">3.1 NPAtlas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coconut">3.2 COCONUT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lotus">3.3 LOTUS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supernatural-ii">3.4 SuperNatural II</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npass">3.5 NPASS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-4-environmental-and-toxicology-databases">Table 4: Environmental and Toxicology Databases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.1 NPAtlas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.2 COCONUT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.3 LOTUS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.4 SuperNatural II</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4.5 NPASS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-5-analytical-chemistry-and-spectral-repositories">Table 5: Analytical Chemistry and Spectral Repositories</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#massbank">5.1 MassBank</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gnps-global-natural-products-social">5.2 GNPS (Global Natural Products Social)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sdbs-spectral-database-for-organic-compounds">5.3 SDBS (Spectral Database for Organic Compounds)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nmrshiftdb2">5.4 NMRShiftDB2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metabolights">5.5 MetaboLights</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-6-chemical-reactions-and-synthesis-databases">Table 6: Chemical Reactions and Synthesis Databases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-reaction-database-ord">6.1 Open Reaction Database (ORD)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uspto-bulk-data">6.2 USPTO Bulk Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nextmove-namerxn-dataset">6.3 NextMove NameRxn Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#synthia-free-trial">6.4 SYNTHIA Free Trial</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-7-biochemical-pathways-and-systems-biology-databases">Table 7: Biochemical Pathways and Systems Biology Databases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kegg">7.1 KEGG</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reactome">7.2 Reactome</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#biocyc">7.3 BioCyc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metanetx">7.4 MetaNetX</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pathbank">7.5 PathBank</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#public-vs-fee-based-chemical-databases">⚖️ Public vs. Fee-Based Chemical Databases</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-fee-based-databases">Table of Fee Based Databases</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="public-compound-databases">
+<h1>Public Compound Databases<a class="headerlink" href="#public-compound-databases" title="Link to this heading">#</a></h1>
+<p>This course will focus on PubChem but we will start with a survey of public compound databases. In the following tables the name of the database links to the database, and the API Available column links to API resource guides when available. This should assist you in discovering new data and methods for programmatic integration of the data into your workflow. But due to time constraints, we will focus on PubChem during this class.</p>
+<section id="table-1-public-chemical-databases-with-api-resources">
+<h2>Table 1: Public Chemical Databases (with API Resources)<a class="headerlink" href="#table-1-public-chemical-databases-with-api-resources" title="Link to this heading">#</a></h2>
+<p>The following table highlights a set of widely used, freely accessible chemical databases that serve as foundational resources for modern cheminformatics, bioinformatics, and data-driven chemistry. These platforms are hosted by academic institutions, government agencies, or non-profit organizations. Each database has a distinct focus and most offer programmatic access through APIs, enabling integration into computational workflows.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Database Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>API Available</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://pubchem.ncbi.nlm.nih.gov/">PubChem</a></p></td>
+<td><p>The largest open chemistry database, hosted by NCBI/NIH. Includes chemical structures, properties, bioactivity, safety data, and links to literature and patents.</p></td>
+<td><p>Yes – <a class="reference external" href="https://pubchemdocs.ncbi.nlm.nih.gov/pug-rest">PUG REST API Guide</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://comptox.epa.gov/dashboard">EPA CompTox Chemicals Dashboard</a></p></td>
+<td><p>Provides environmental chemistry and toxicology data, including experimental and predicted properties, exposure pathways, and use cases.</p></td>
+<td><p>Yes – <a class="reference external" href="https://comptox.epa.gov/dashboard/help#help-api">CompTox API Overview</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="http://www.chemspider.com/">ChemSpider</a></p></td>
+<td><p>Aggregates chemical data from many sources including structures, spectra, and literature references. Managed by the Royal Society of Chemistry.</p></td>
+<td><p>Yes – <a class="reference external" href="https://developer.rsc.org/compounds-v1-apis">ChemSpider API Guide (SOAP/XML)</a> <em>(registration required)</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.ebi.ac.uk/chembl/">ChEMBL</a></p></td>
+<td><p>A database of bioactive drug-like small molecules and their targets, curated from the scientific literature. Includes activity and assay data.</p></td>
+<td><p>Yes – <a class="reference external" href="https://www.ebi.ac.uk/chembl/ws">ChEMBL API Docs</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://go.drugbank.com/">DrugBank</a></p></td>
+<td><p>Integrates drug and drug target information with detailed pharmacology, interactions, and mechanisms of action. Free for academic use.</p></td>
+<td><p>Yes – <a class="reference external" href="https://go.drugbank.com/documentation/api">DrugBank API</a> <em>(free account required)</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.rcsb.org/">Protein Data Bank (RCSB PDB)</a></p></td>
+<td><p>Repository of 3D structural data of biomolecules such as proteins, DNA, and small ligands. Essential for structural bioinformatics.</p></td>
+<td><p>Yes – <a class="reference external" href="https://search.rcsb.org/">RCSB PDB API Docs</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.uniprot.org/">UniProt</a></p></td>
+<td><p>A comprehensive protein sequence and functional information resource, integrating data from genomics, proteomics, and structural biology.</p></td>
+<td><p>Yes – <a class="reference external" href="https://www.uniprot.org/help/api">UniProt API Docs</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://massbank.eu/MassBank/">MassBank Europe</a></p></td>
+<td><p>Open access database of mass spectra for small chemical compounds, useful for metabolomics and analytical chemistry.</p></td>
+<td><p>Yes – <a class="reference external" href="https://massbank.eu/MassBank/API-Reference.html">MassBank API</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://zinc15.docking.org/">ZINC Database</a></p></td>
+<td><p>A free database of commercially available compounds for virtual screening. Hosted by the Irwin and Shoichet labs at UCSF.</p></td>
+<td><p>Yes – <a class="reference external" href="https://zinc15.docking.org/api/">ZINC API (Subset)</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://hmdb.ca/">HMDB (Human Metabolome Database)</a></p></td>
+<td><p>Contains detailed information about human metabolites including spectral data, pathways, and concentrations in biological fluids.</p></td>
+<td><p>Yes – <a class="reference external" href="https://hmdb.ca/help/downloads">HMDB API Guide</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="pubchem">
+<h3>1.1 <a class="reference external" href="https://pubchem.ncbi.nlm.nih.gov/">PubChem</a><a class="headerlink" href="#pubchem" title="Link to this heading">#</a></h3>
+<p>Launched in 2004 by the U.S. National Institutes of Health (NIH), PubChem was originally created to support the NIH Molecular Libraries Program and the wider biomedical research community. It has since evolved into one of the largest public repositories of chemical information in the world, integrating data on chemical structures, bioactivities, toxicology, and literature links. Managed by the National Center for Biotechnology Information (NCBI), its mission is to provide open access to high-quality chemical data and facilitate structure-based search and computational reuse.</p>
+</section>
+<section id="epa-comptox-chemicals-dashboard">
+<h3>1.2 <a class="reference external" href="https://comptox.epa.gov/dashboard">EPA CompTox Chemicals Dashboard</a><a class="headerlink" href="#epa-comptox-chemicals-dashboard" title="Link to this heading">#</a></h3>
+<p>Developed and maintained by the U.S. Environmental Protection Agency (EPA), the CompTox Dashboard emerged from the ToxCast and Tox21 initiatives in the early 2010s. Its goal is to provide integrated access to environmental and toxicological data for tens of thousands of chemicals. It supports chemical safety assessments and green chemistry research by combining QSAR models, in vitro bioassays, predicted physicochemical properties, and regulatory data in a single, searchable platform.</p>
+</section>
+<section id="chemspider">
+<h3>1.3 <a class="reference external" href="http://www.chemspider.com/">ChemSpider</a><a class="headerlink" href="#chemspider" title="Link to this heading">#</a></h3>
+<p>Initially developed by Antony Williams as a hobby project and formally announced in 2007, and then acquired and developed by the Royal Society of Chemistry (RSC) in 2009, ChemSpider is a curated chemical structure database that aggregates data from over 270 data sources, including chemical vendors, academic repositories, and publications. It supports structure and substructure searching, links to spectral and biological data, and offers a community curation model. It was built to bridge the gap between chemical publication and chemical search, offering identifier resolution, structure drawing, and compound annotation tools.</p>
+</section>
+<section id="chembl">
+<h3>1.5 <a class="reference external" href="https://www.ebi.ac.uk/chembl/">ChEMBL</a><a class="headerlink" href="#chembl" title="Link to this heading">#</a></h3>
+<p>Originally developed by Galapagos NV and later adopted by the European Bioinformatics Institute (EBI), ChEMBL has been publicly available since 2009. It is a manually curated database of bioactive small molecules and their biological targets, extracted primarily from peer-reviewed medicinal chemistry literature. Its mission is to support drug discovery, cheminformatics, and predictive modeling by making SAR and assay data machine-readable and openly accessible.</p>
+</section>
+<section id="drugbank">
+<h3>1.6 <a class="reference external" href="https://go.drugbank.com/">DrugBank</a><a class="headerlink" href="#drugbank" title="Link to this heading">#</a></h3>
+<p>First released in 2006 by researchers at the University of Alberta, DrugBank is a hybrid database that combines chemical, pharmacological, and molecular biology data about drugs and their targets. It integrates FDA-approved drugs, experimental compounds, pharmacokinetic data, and biochemical interactions. While commercial licensing is available, DrugBank remains freely accessible for academic use and is a staple in bioinformatics pipelines and drug repurposing studies.</p>
+</section>
+<section id="protein-data-bank-rcsb-pdb">
+<h3>1.7 <a class="reference external" href="https://www.rcsb.org/">Protein Data Bank (RCSB PDB)</a><a class="headerlink" href="#protein-data-bank-rcsb-pdb" title="Link to this heading">#</a></h3>
+<p>Founded in 1971 and now managed by the Worldwide Protein Data Bank (wwPDB) consortium, the PDB is the definitive open-access archive of 3D structures of biological macromolecules, including proteins, DNA, RNA, and small ligand complexes. Originally hosted at Brookhaven National Laboratory, its U.S. operations are now coordinated by RCSB. It serves structural biologists, chemists, and drug designers by enabling structure-based drug design and molecular docking research.</p>
+</section>
+<section id="uniprot">
+<h3>1.8 <a class="reference external" href="https://www.uniprot.org/">UniProt</a><a class="headerlink" href="#uniprot" title="Link to this heading">#</a></h3>
+<p>UniProt (Universal Protein Resource) is a globally recognized protein sequence and annotation database co-managed by EMBL-EBI (Europe), SIB (Switzerland), and PIR (USA). It evolved from earlier efforts like Swiss-Prot and TrEMBL, consolidating them into a single resource in 2002. UniProt is dedicated to the systematic curation of protein function, structure, domain architecture, and evolutionary relationships, supporting a wide spectrum of bioinformatics workflows.</p>
+</section>
+<section id="massbank-europe">
+<h3>1.9 <a class="reference external" href="https://massbank.eu/MassBank/">MassBank Europe</a><a class="headerlink" href="#massbank-europe" title="Link to this heading">#</a></h3>
+<p>MassBank is an open-access spectral database launched in Japan and expanded into Europe through collaborative efforts. The MassBank Europe node provides high-resolution mass spectra for small molecules, including environmental chemicals, metabolites, and synthetic compounds. Its mission is to support metabolomics, environmental analysis, and analytical chemistry through community-contributed, validated mass spectral records.</p>
+</section>
+<section id="zinc-database">
+<h3>1.10 <a class="reference external" href="https://zinc15.docking.org/">ZINC Database</a><a class="headerlink" href="#zinc-database" title="Link to this heading">#</a></h3>
+<p>Created by the Irwin and Shoichet labs at UCSF, ZINC is a curated collection of commercially available chemical compounds optimized for virtual screening. First launched in 2004 and now in its ZINC15 and ZINC20 iterations, the database focuses on delivering ready-to-dock 3D structures and annotations to computational chemists and drug discovery researchers. Its mission is to make molecular docking more accessible and reproducible in the academic and biotech space.</p>
+</section>
+<section id="hmdb-human-metabolome-database">
+<h3>1.11 <a class="reference external" href="https://hmdb.ca/">HMDB (Human Metabolome Database)</a><a class="headerlink" href="#hmdb-human-metabolome-database" title="Link to this heading">#</a></h3>
+<p>Launched in 2007 by the University of Alberta, HMDB is a comprehensive resource for human endogenous metabolites, including their biological roles, spectral signatures, disease associations, and concentrations in fluids and tissues. It was developed under the Metabolomics Innovation Centre and supports clinical metabolomics, nutritional biochemistry, and systems biology. Its goal is to bridge the gap between metabolomics data generation and biomedical interpretation.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="table-2-crystallography-materials-science-and-spectroscopy-databases">
+<h2>Table 2: Crystallography, Materials Science and Spectroscopy Databases<a class="headerlink" href="#table-2-crystallography-materials-science-and-spectroscopy-databases" title="Link to this heading">#</a></h2>
+<p>Table 2 highlights a selection of public databases that support research in solid-state chemistry, crystallography, computational materials science, and molecular spectroscop*. These resources are essential for understanding the structural, electronic, and vibrational properties of chemical compounds and materials. Many originated from national laboratories, research consortia, or international collaborations, and they provide access to both experimental and computed data, including CIF files, DFT calculations, and reference spectra. These databases enable researchers to reproduce results, benchmark computational methods, and explore the relationship between structure and function in materials and molecules.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Database Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>API Available</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="http://www.crystallography.net/cod/">Crystallography Open Database (COD)</a></p></td>
+<td><p>A repository of crystal structure data for small molecules and minerals. Freely available CIF files.</p></td>
+<td><p>Partial – <a class="reference external" href="http://www.crystallography.net/cod/ftp.html">COD FTP Access</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://materialsproject.org/">Materials Project</a></p></td>
+<td><p>Provides computed materials properties using high-throughput density functional theory (DFT) calculations. Great for solid-state chemistry.</p></td>
+<td><p>Yes – <a class="reference external" href="https://materialsproject.org/docs/api">Materials API Docs</a> <em>(free account required)</em></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://webbook.nist.gov/chemistry/">NIST Chemistry WebBook</a></p></td>
+<td><p>Contains thermochemical, IR spectra, mass spectra, and other data for thousands of substances.</p></td>
+<td><p>No traditional API, but <a class="reference external" href="https://webbook.nist.gov/chemistry/download/">bulk downloads</a> and URL query interface exist.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.ccdc.cam.ac.uk/structures/">CCDC Access Structures</a></p></td>
+<td><p>Offers free access to individual crystal structures from the Cambridge Structural Database (CSD).</p></td>
+<td><p>Limited – structure lookup and download via web interface only.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="http://www.aflowlib.org/">AFLOWlib</a></p></td>
+<td><p>A repository of ab initio calculated materials data, including elastic, electronic, and thermodynamic properties.</p></td>
+<td><p>Yes – <a class="reference external" href="http://www.aflowlib.org/API/">AFLOW API Docs</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://nomad-lab.eu/">NOMAD Repository</a></p></td>
+<td><p>European-hosted repository of raw and processed materials science data from electronic structure calculations.</p></td>
+<td><p>Yes – <a class="reference external" href="https://nomad-lab.eu/prod/v1/docs/index.html">NOMAD API</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://sdbs.db.aist.go.jp/sdbs/cgi-bin/cre_index.cgi">Spectral Database for Organic Compounds (SDBS)</a></p></td>
+<td><p>NMR, IR, MS, and UV-VIS spectra for thousands of organic compounds. Hosted by AIST Japan.</p></td>
+<td><p>No API, but individual spectra can be accessed via parameterized URLs.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.irug.org/search-spectral-database">IRUG Spectral Database</a></p></td>
+<td><p>Infrared and Raman spectra of artist materials (pigments, binders, resins), useful in conservation science.</p></td>
+<td><p>No API, search via web interface.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://opencod.org/">Open Crystallography Database (OCD)</a></p></td>
+<td><p>A newer, open initiative to unify crystallographic data sharing.</p></td>
+<td><p>In development – <a class="reference external" href="https://opencod.org/#about">Project site</a> outlines roadmap.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="crystallography-open-database-cod">
+<h3>2.1 <a class="reference external" href="http://www.crystallography.net/cod/">Crystallography Open Database (COD)</a><a class="headerlink" href="#crystallography-open-database-cod" title="Link to this heading">#</a></h3>
+<p>Established in 2003, COD is a fully open-access database of crystallographic information files (CIFs) for organic, inorganic, and metal-organic compounds. It was created in response to the growing need for a free and transparent alternative to commercial crystallography databases, such as the Cambridge Structural Database (CSD). Its mission is to promote reproducible science by making crystal structures available to all researchers without licensing restrictions. COD is maintained by an international team of scientists and relies on community contributions.</p>
+</section>
+<section id="materials-project">
+<h3>2.2<a class="reference external" href="https://materialsproject.org/">Materials Project</a><a class="headerlink" href="#materials-project" title="Link to this heading">#</a></h3>
+<p>Launched in 2011 by the Lawrence Berkeley National Laboratory (LBNL) and the Department of Energy (DOE), the Materials Project aims to accelerate materials discovery through high-throughput density functional theory (DFT) calculations. It provides computed properties for thousands of materials, including band gaps, elastic constants, and formation energies. Its web interface and API make computational data accessible to experimentalists, theorists, and machine learning researchers alike. The platform is a flagship of the Materials Genome Initiative.</p>
+</section>
+<section id="nist-chemistry-webbook">
+<h3>2.3 <a class="reference external" href="https://webbook.nist.gov/chemistry/">NIST Chemistry WebBook</a><a class="headerlink" href="#nist-chemistry-webbook" title="Link to this heading">#</a></h3>
+<p>Developed and maintained by the National Institute of Standards and Technology (NIST), this web resource has been online since 1996. It provides access to a wide range of reference data for gas-phase thermochemistry, IR spectra, UV/Vis spectra, mass spectra, and more. The WebBook is built on the long history of NIST’s physical chemistry data programs and is aimed at serving both educational and industrial research needs. It has become a gold standard for validated spectroscopic and thermochemical reference data.</p>
+</section>
+<section id="ccdc-access-structures">
+<h3>2.4<a class="reference external" href="https://www.ccdc.cam.ac.uk/structures/">CCDC Access Structures</a><a class="headerlink" href="#ccdc-access-structures" title="Link to this heading">#</a></h3>
+<p>The Cambridge Crystallographic Data Centre (CCDC) is home to the Cambridge Structural Database (CSD), the world’s most comprehensive repository of small-molecule organic and metal-organic crystal structures. While full access to CSD is subscription-based, Access Structures offers free downloads of individual crystal structures deposited by researchers. This service supports open science, reproducibility, and transparency in crystallography by making peer-reviewed structural data freely available on a case-by-case basis.</p>
+</section>
+<section id="aflowlib">
+<h3>2.5<a class="reference external" href="http://www.aflowlib.org/">AFLOWlib</a><a class="headerlink" href="#aflowlib" title="Link to this heading">#</a></h3>
+<p>The Automatic FLOW for Materials Discovery (AFLOW) database is a high-throughput repository of ab initio calculations for thousands of crystalline compounds. Founded by Stefano Curtarolo’s group at Duke University, AFLOW grew from the need to systematically explore the materials design space using automation and machine learning. It provides computed data such as elastic moduli, electronic band structures, and thermal properties, all freely accessible through a RESTful API.</p>
+</section>
+<section id="nomad-repository">
+<h3>2.6 <a class="reference external" href="https://nomad-lab.eu/">NOMAD Repository</a><a class="headerlink" href="#nomad-repository" title="Link to this heading">#</a></h3>
+<p>The Novel Materials Discovery (NOMAD) repository is a European open science platform funded by the EU’s Horizon 2020 program. It collects, processes, and shares raw and derived data from electronic structure calculations, making it one of the most comprehensive platforms for FAIR (Findable, Accessible, Interoperable, Reusable) computational materials science. It supports standardization efforts in computational chemistry and offers tools for visualization and data mining.</p>
+</section>
+<section id="spectral-database-for-organic-compounds-sdbs">
+<h3>2.7 <a class="reference external" href="https://sdbs.db.aist.go.jp/sdbs/cgi-bin/cre_index.cgi">Spectral Database for Organic Compounds (SDBS)</a><a class="headerlink" href="#spectral-database-for-organic-compounds-sdbs" title="Link to this heading">#</a></h3>
+<p>Developed by the National Institute of Advanced Industrial Science and Technology (AIST), Japan, SDBS is a long-standing online repository of experimental NMR, IR, MS, and UV/Vis spectra for thousands of organic compounds. It has served the analytical chemistry community since the early 2000s and is designed for use in chemical education, structure elucidation, and instrument calibration. Though it lacks an API, spectra are individually accessible through URL parameters.</p>
+</section>
+<section id="irug-spectral-database">
+<h3>2.8 <a class="reference external" href="https://www.irug.org/search-spectral-database">IRUG Spectral Database</a><a class="headerlink" href="#irug-spectral-database" title="Link to this heading">#</a></h3>
+<p>Managed by the Infrared and Raman Users Group (IRUG), this specialized database focuses on vibrational spectra of artist materials, including pigments, binders, and resins. It supports the conservation science and cultural heritage communities by enabling non-destructive analysis of artworks and archaeological materials. IRUG’s mission is to foster collaboration and data sharing among museums, universities, and conservation labs worldwide.</p>
+</section>
+<section id="open-crystallography-database-ocd">
+<h3>2.9 <a class="reference external" href="https://opencod.org/">Open Crystallography Database (OCD)</a><a class="headerlink" href="#open-crystallography-database-ocd" title="Link to this heading">#</a></h3>
+<p>Still under development, OCD is a next-generation initiative aiming to unify and expand the accessibility of crystallographic data through an open framework. It builds on lessons from COD and other projects and seeks to provide more consistent metadata, linked data integration, and programmatic access. Its long-term goal is to enable interoperable and machine-readable crystallographic knowledge for the next era of data-driven chemistry and materials science.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="table-3-natural-products-and-bioactive-compounds">
+<h2>Table 3: Natural Products and Bioactive Compounds<a class="headerlink" href="#table-3-natural-products-and-bioactive-compounds" title="Link to this heading">#</a></h2>
+<p>Natural products have long served as a foundation for pharmaceutical discovery, agrochemical innovation, and chemical ecology. Table 3 presents a selection of public databases that catalog the chemical structures, biological activities, species origins, and commercial availability of natural compounds. These resources are especially valuable in drug discovery, biodiversity studies, and cheminformatics workflows. Several are the result of collaborative academic projects, while others serve as centralized hubs for previously fragmented data sources. The emphasis here is on open-access resources that support exploration of natural chemical diversity across microbial, plant, and marine origins.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Database Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>API Available</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.npatlas.org/">NPAtlas</a></p></td>
+<td><p>A manually curated collection of microbial natural products with chemical structures, taxonomy, and references.</p></td>
+<td><p>No formal API, but <a class="reference external" href="https://www.npatlas.org/download/">data downloads</a> are available.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://coconut.naturalproducts.net/">COCONUT</a></p></td>
+<td><p>The largest open-source collection of natural products, integrated from many sources with structure, taxonomy, and metadata.</p></td>
+<td><p>Yes – <a class="reference external" href="https://coconut.naturalproducts.net/api/">COCONUT API Docs</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://lotus.naturalproducts.net/">LOTUS</a></p></td>
+<td><p>Linked Open Data for natural products, combining multiple repositories and Wikidata links.</p></td>
+<td><p>Yes – <a class="reference external" href="https://query.wikidata.org/">SPARQL Endpoint</a> for linked data queries.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://bioinf-applied.charite.de/supernatural_new/index.php">SuperNatural II</a></p></td>
+<td><p>A curated database of purchasable natural products, optimized for virtual screening and drug discovery.</p></td>
+<td><p>No API; search available via web interface.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="http://bidd2.nus.edu.sg/NPASS/">NPASS</a></p></td>
+<td><p>Natural Product Activity and Species Source database with quantitative bioactivity data and species origin.</p></td>
+<td><p>No API, but batch search and bulk downloads are available.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="npatlas">
+<h3>3.1 <a class="reference external" href="https://www.npatlas.org/">NPAtlas</a><a class="headerlink" href="#npatlas" title="Link to this heading">#</a></h3>
+<p>The Natural Products Atlas (NPAtlas) was launched in 2019 by researchers from the University of Aberdeen and collaborators in the microbial natural products community. It focuses specifically on microbial metabolites, including those produced by bacteria and fungi. The data is manually curated from peer-reviewed literature and includes chemical structures, taxonomy, and links to the original references. The mission of NPAtlas is to provide a transparent, open-access, and up-to-date database to support microbial natural products research, particularly in the context of antibiotics and bioactive discovery.</p>
+</section>
+<section id="coconut">
+<h3>3.2 <a class="reference external" href="https://coconut.naturalproducts.net/">COCONUT</a><a class="headerlink" href="#coconut" title="Link to this heading">#</a></h3>
+<p>COlleCtion of Open NatUral producTs (COCONUT) is the largest freely accessible repository of natural product structures. It was created by a consortium of researchers in the cheminformatics and drug discovery community, with the goal of aggregating structures from disparate public and semi-public sources. Launched around 2019–2020, it provides standardized, deduplicated chemical structure data along with **metadata such as taxonomic source, publication references, and vendor availability. COCONUT is an essential tool for virtual screening and scaffold diversity analysis in natural product chemistry.</p>
+</section>
+<section id="lotus">
+<h3>3.3 <a class="reference external" href="https://lotus.naturalproducts.net/">LOTUS</a><a class="headerlink" href="#lotus" title="Link to this heading">#</a></h3>
+<p>LOTUS (Linked Open data for Taxonomy and Organic Substances) is a Wikidata-integrated initiative launched by the same team behind COCONUT, in partnership with the Wikidata and cheminformatics communities. The database seeks to represent natural product knowledge in a linked open data format, enabling semantic querying across species, compound classes, and biological functions. LOTUS builds on SPARQL queries and RDF triples to allow users to query information on natural product occurrences and provenance. Its long-term vision is to **make natural product data machine-interoperable within the Semantic Web.</p>
+</section>
+<section id="supernatural-ii">
+<h3>3.4 <a class="reference external" href="https://bioinf-applied.charite.de/supernatural_new/index.php">SuperNatural II</a><a class="headerlink" href="#supernatural-ii" title="Link to this heading">#</a></h3>
+<p>Developed by researchers at Charité – Universitätsmedizin Berlin, SuperNatural II is a curated library of purchasable natural product-like compounds, optimized for computational drug discovery and virtual screening**. The current version (SuperNatural II) includes over 300,000 entries, combining true natural products with their synthetic analogs. Though it lacks an API, the resource supports structure-based search and physicochemical property filtering, making it useful for pharmacophore modeling and early-stage screening.</p>
+</section>
+<section id="npass">
+<h3>3.5 <a class="reference external" href="http://bidd2.nus.edu.sg/NPASS/">NPASS</a><a class="headerlink" href="#npass" title="Link to this heading">#</a></h3>
+<p>The Natural Product Activity and Species Source (NPASS) database was developed by the Bioinformatics and Drug Design (BIDD) Group at the National University of Singapore. It provides a unique focus on the quantitative bioactivities of natural products, such as IC₅₀, Kd, and MIC values, and ties these to their species of origin. The database supports both compound-based and species-based searches and offers batch retrieval tools. NPASS helps bridge the gap between biodiversity and pharmacological activity, aiding in lead prioritization and mechanism-of-action studies.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="table-4-environmental-and-toxicology-databases">
+<h2>Table 4: Environmental and Toxicology Databases<a class="headerlink" href="#table-4-environmental-and-toxicology-databases" title="Link to this heading">#</a></h2>
+<p>Natural products have long served as a foundation for pharmaceutical discovery, agrochemical innovation, and chemical ecology. Table 3 presents a selection of public databases that catalog the chemical structures, biological activities, species origins, and commercial availability of natural compounds. These resources are especially valuable in drug discovery, biodiversity studies, and cheminformatics workflows. Several are the result of collaborative academic projects, while others serve as centralized hubs for previously fragmented data sources. The emphasis here is on open-access resources that support exploration of natural chemical diversity across microbial, plant, and marine origins.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Database Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>API Available</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://comptox.epa.gov/dashboard">EPA CompTox Dashboard</a></p></td>
+<td><p>Environmental chemicals with toxicity, exposure, and use data. Integrates QSAR, experimental, and regulatory sources.</p></td>
+<td><p>Yes – <a class="reference external" href="https://comptox.epa.gov/dashboard/help#help-api">CompTox API</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.nlm.nih.gov/databases/download/toxnet.html">TOXNET Archive</a></p></td>
+<td><p>Legacy databases on toxicology and environmental health (e.g., HSDB, IRIS). Now archived, with some data available through other services.</p></td>
+<td><p>No current API (TOXNET retired); data preserved in <a class="reference external" href="https://www.nlm.nih.gov/databases/download/toxnet.html">downloadable format</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://cfpub.epa.gov/ecotox/">ECOTOX</a></p></td>
+<td><p>US EPA database with curated ecological toxicity data for aquatic and terrestrial organisms.</p></td>
+<td><p>No public API; CSV downloads and search available.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://comptox.epa.gov/dashboard/chemical_lists/TOXCAST">ToxCast Dashboard</a></p></td>
+<td><p>High-throughput screening data on thousands of chemicals across hundreds of assays.</p></td>
+<td><p>Yes – <a class="reference external" href="https://comptox.epa.gov/dashboard/help#help-api">TOXCAST in CompTox API</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.helm-data.org/">HELM</a></p></td>
+<td><p>Health and environmental low dose data for emerging materials. Supports green chemistry and risk reduction.</p></td>
+<td><p>No API, but metadata tools and documents downloadable.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="id1">
+<h3>4.1 <a class="reference external" href="https://www.npatlas.org/">NPAtlas</a><a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>The Natural Products Atlas (NPAtlas) was launched in 2019 by researchers from the University of Aberdeen and collaborators in the microbial natural products community. It focuses specifically on microbial metabolites, including those produced by bacteria and fungi. The data is manually curated from peer-reviewed literature and includes chemical structures, taxonomy, and links to the original references. The mission of NPAtlas is to provide a transparent, open-access, and up-to-date database to support microbial natural products research, particularly in the context of antibiotics and bioactive discovery.</p>
+</section>
+<section id="id2">
+<h3>4.2 <a class="reference external" href="https://coconut.naturalproducts.net/">COCONUT</a><a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>COlleCtion of Open Natural prodUcTs (COCONUT) is the largest freely accessible repository of natural product structures. It was created by a consortium of researchers in the cheminformatics and drug discovery community, with the goal of aggregating structures from disparate public and semi-public sources. Launched around 2019–2020, it provides standardized, deduplicated chemical structure data along with metadata such as taxonomic source, publication references, and vendor availability. COCONUT is an essential tool for virtual screening and scaffold diversity analysis in natural product chemistry.</p>
+</section>
+<section id="id3">
+<h3>4.3 <a class="reference external" href="https://lotus.naturalproducts.net/">LOTUS</a><a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>LOTUS (Linked Open data for Taxonomy and Organic Substances) is a Wikidata-integrated initiative launched by the same team behind COCONUT, in partnership with the Wikidata and cheminformatics communities. The database seeks to represent natural product knowledge in a linked open data format, enabling semantic querying across species, compound classes, and biological functions. LOTUS builds on SPARQL queries and RDF triples to allow users to query information on natural product occurrences and provenance. Its long-term vision is to make natural product data machine-interoperable within the Semantic Web.</p>
+</section>
+<section id="id4">
+<h3>4.4 <a class="reference external" href="https://bioinf-applied.charite.de/supernatural_new/index.php">SuperNatural II</a><a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>Developed by researchers at Charité – Universitätsmedizin Berlin, SuperNatural II is a curated library of purchasable natural product-like compounds, optimized for computational drug discovery and virtual screening. The current version (SuperNatural II) includes over 300,000 entries, combining true natural products with their synthetic analogs. Though it lacks an API, the resource supports structure-based search and physicochemical property filtering, making it useful for pharmacophore modeling and early-stage screening.</p>
+</section>
+<section id="id5">
+<h3>4.5 <a class="reference external" href="http://bidd2.nus.edu.sg/NPASS/">NPASS</a><a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>The Natural Product Activity and Species Source (NPASS) database was developed by the Bioinformatics and Drug Design (BIDD) Group at the National University of Singapore. It provides a unique focus on the quantitative bioactivities of natural products, such as IC₅₀, Kd, and MIC values, and ties these to their species of origin. The database supports both compound-based and species-based searches and offers batch retrieval tools. NPASS helps bridge the gap between biodiversity and pharmacological activity, aiding in lead prioritization and mechanism-of-action studies.</p>
+</section>
+</section>
+<section id="table-5-analytical-chemistry-and-spectral-repositories">
+<h2>Table 5: Analytical Chemistry and Spectral Repositories<a class="headerlink" href="#table-5-analytical-chemistry-and-spectral-repositories" title="Link to this heading">#</a></h2>
+<p>Spectral data play a foundational role in identifying, characterizing, and quantifying chemical compounds. Table 5 introduces a range of public databases that specialize in mass spectrometry (MS), nuclear magnetic resonance (NMR), infrared (IR), UV/Vis, and other analytical techniques. These repositories serve a variety of fields, including metabolomics, pharmacology, natural product chemistry, and analytical instrumentation. Some are community-curated and crowd-sourced, while others are developed by government or academic institutions. Together, they reflect a global effort to make spectral reference data freely available for chemical identification and validation.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Database Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>API Available</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://massbank.eu/MassBank/">MassBank</a></p></td>
+<td><p>High-quality mass spectral database for metabolites, drugs, and other small molecules.</p></td>
+<td><p>Yes – <a class="reference external" href="https://massbank.eu/MassBank/API-Reference.html">MassBank API Docs</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://gnps.ucsd.edu/">GNPS (Global Natural Products Social)</a></p></td>
+<td><p>Crowdsourced MS/MS spectral library for natural products and metabolomics with workflow tools.</p></td>
+<td><p>Yes – <a class="reference external" href="https://ccms-ucsd.github.io/GNPSDocumentation/api/">GNPS REST API</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://sdbs.db.aist.go.jp/">SDBS</a></p></td>
+<td><p>Japanese spectral database including NMR, IR, MS, and UV-VIS for organic compounds.</p></td>
+<td><p>No API; individual spectra accessible via parameterized queries.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://nmrshiftdb.nmr.uni-koeln.de/">NMRShiftDB2</a></p></td>
+<td><p>Open NMR database with chemical structure-based query and prediction tools.</p></td>
+<td><p>Yes – <a class="reference external" href="https://www.nfdi4chem.de/platforms/">NMRShiftDB2 API (via NFDI4Chem)</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.ebi.ac.uk/metabolights/">MetaboLights</a></p></td>
+<td><p>European metabolomics repository with experimental metadata, raw and processed data.</p></td>
+<td><p>Yes – <a class="reference external" href="https://www.ebi.ac.uk/metabolights/ws/api-docs/">MetaboLights API</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="massbank">
+<h3>5.1 <a class="reference external" href="https://massbank.eu/MassBank/">MassBank</a><a class="headerlink" href="#massbank" title="Link to this heading">#</a></h3>
+<p>MassBank was launched in 2006 as the first public repository for high-resolution mass spectra of small molecules. Initially developed in Japan and later expanded through European collaborations, MassBank is now a core part of the MassBank Europe initiative. It supports the needs of metabolomics, environmental chemistry, and drug screening by providing validated MS/MS spectra, with full metadata on instruments, ionization modes, and collision energies. Its mission is to promote reproducibility and transparency in analytical science by enabling researchers to search, compare, and download high-quality reference spectra.</p>
+</section>
+<section id="gnps-global-natural-products-social">
+<h3>5.2 <a class="reference external" href="https://gnps.ucsd.edu/">GNPS (Global Natural Products Social)</a><a class="headerlink" href="#gnps-global-natural-products-social" title="Link to this heading">#</a></h3>
+<p>GNPS is a community-driven platform launched by the Dorrestein and Bandeira labs at UC San Diego, designed to support MS/MS-based natural products and metabolomics research. Introduced in 2016, GNPS stands out for its interactive spectral networking tools, which allow researchers to group structurally related compounds by their fragmentation patterns. The platform hosts tens of thousands of curated and user-submitted spectra, and integrates analysis workflows that are now standard in modern metabolomics. GNPS fosters open science and collaborative annotation, and has become one of the most important tools in untargeted metabolomics.</p>
+</section>
+<section id="sdbs-spectral-database-for-organic-compounds">
+<h3>5.3 <a class="reference external" href="https://sdbs.db.aist.go.jp/">SDBS (Spectral Database for Organic Compounds)</a><a class="headerlink" href="#sdbs-spectral-database-for-organic-compounds" title="Link to this heading">#</a></h3>
+<p>Developed and maintained by the **National Institute of Advanced Industrial Science and Technology (AIST) in Japan, the SDBS is one of the oldest and most comprehensive web-based spectral databases. It was made public in the early 2000s and offers NMR (¹H and ¹³C), IR, MS, and UV/Vis spectra for thousands of organic compounds. The data are collected under controlled experimental conditions and accompanied by detailed metadata. While it does not offer a modern API, individual spectra can be retrieved via parameterized URLs, making it a go-to resource for students and educators in analytical chemistry.</p>
+</section>
+<section id="nmrshiftdb2">
+<h3>5.4 <a class="reference external" href="https://nmrshiftdb.nmr.uni-koeln.de/">NMRShiftDB2</a><a class="headerlink" href="#nmrshiftdb2" title="Link to this heading">#</a></h3>
+<p>NMRShiftDB was originally started in the early 2000s as an academic project to crowdsource NMR shift data for organic molecules, enabling prediction and validation of chemical structures. The second-generation platform, NMRShiftDB2, is now part of the German NFDI4Chem initiative, which aims to build FAIR (Findable, Accessible, Interoperable, and Reusable) infrastructures for chemical research. The database includes prediction algorithms, chemical structure search, and user-contributed data. Its mission is to improve accessibility and interoperability of NMR reference data for computational and bench chemists alike.</p>
+</section>
+<section id="metabolights">
+<h3>5.5 <a class="reference external" href="https://www.ebi.ac.uk/metabolights/">MetaboLights</a><a class="headerlink" href="#metabolights" title="Link to this heading">#</a></h3>
+<p>MetaboLights is a metabolomics data repository hosted by the European Bioinformatics Institute (EBI). It was launched in 2012 to support the archiving and sharing of experimental metabolomics data, including raw instrument files, processed spectra, and associated metadata such as experimental design, organism, and analytical method. It is cross-linked with other omics resources (e.g., ChEBI, UniProt) and supports both targeted and untargeted studies. MetaboLights facilitates data reuse, method validation, and meta-analyses in systems biology, environmental science, and nutrition research.</p>
+</section>
+</section>
+<section id="table-6-chemical-reactions-and-synthesis-databases">
+<h2>Table 6: Chemical Reactions and Synthesis Databases<a class="headerlink" href="#table-6-chemical-reactions-and-synthesis-databases" title="Link to this heading">#</a></h2>
+<p>Chemical reaction databases vary widely in their accessibility and purpose. Some, like the Open Reaction Database and USPTO bulk data, are fully public, supporting open science and machine learning applications. Others, such as SYNTHIA or NextMove’s NameRxn, are proprietary commercial tools, though some offer limited academic trials or free user accounts. When working with these resources, it’s important to consider licensing, usage rights, and availability of structured data formats or APIs. The table below includes an access column to help distinguish open-access tools from subscription-based platforms.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Database Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>API Available</p></th>
+<th class="head"><p>Access</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://open-reaction-database.org/">Open Reaction Database (ORD)</a></p></td>
+<td><p>Structured open repository of chemical reactions, optimized for machine learning and informatics.</p></td>
+<td><p>Yes – <a class="reference external" href="https://docs.open-reaction-database.org/">ORD API Docs</a></p></td>
+<td><p>Public</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://bulkdata.uspto.gov/data/patent/grant/redbook/fulltext/">USPTO Bulk Data</a></p></td>
+<td><p>Reaction and compound information extracted from US patent filings.</p></td>
+<td><p>No API; bulk XML/JSON downloads.</p></td>
+<td><p>Public</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.nextmovesoftware.com/namerxn.html">NextMove NameRxn Dataset</a></p></td>
+<td><p>Annotated reaction types from patents and literature; limited academic use.</p></td>
+<td><p>No API; available as downloadable files.</p></td>
+<td><p>Commercial</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://synthia.info/">SYNTHIA Free Trial</a></p></td>
+<td><p>AI-guided retrosynthesis tool with proprietary algorithms. Offers limited public access for academic users.</p></td>
+<td><p>No public API; account required.</p></td>
+<td><p>Academic Trial</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://rxn.res.ibm.com/">IBM RXN for Chemistry</a></p></td>
+<td><p>AI-based reaction prediction and retrosynthesis tool with a graphical interface and programmatic access.</p></td>
+<td><p>Yes – <a class="reference external" href="https://rxn.res.ibm.com/rxn-api">IBM RXN API Docs</a> <em>(account required)</em></p></td>
+<td><p>Free with Account</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="open-reaction-database-ord">
+<h3>6.1 <a class="reference external" href="https://open-reaction-database.org/">Open Reaction Database (ORD)</a><a class="headerlink" href="#open-reaction-database-ord" title="Link to this heading">#</a></h3>
+<p>The Open Reaction Database (ORD) was launched in 2021 by a consortium of academics and industry partners (including Pfizer and MIT) with the goal of creating a structured, open-access repository of chemical reactions. It was designed from the ground up to support machine learning and cheminformatics applications, using standardized data schemas to capture reaction conditions, yields, and substrates. ORD’s mission is to break the cycle of reaction data being locked away in private corporate archives by making high-quality, machine-readable data available to the broader community.</p>
+</section>
+<section id="uspto-bulk-data">
+<h3>6.2 <a class="reference external" href="https://bulkdata.uspto.gov/data/patent/grant/redbook/fulltext/">USPTO Bulk Data</a><a class="headerlink" href="#uspto-bulk-data" title="Link to this heading">#</a></h3>
+<p>The United States Patent and Trademark Office (USPTO) provides bulk downloads of full-text patent grants and applications, which include a vast amount of reaction and compound information. These datasets are published in XML and JSON formats and have been widely mined for reaction databases and text-mining projects. Although USPTO data is not structured for chemistry natively, it remains a crucial open source of synthetic precedent because it covers a huge swath of the chemical patent literature.</p>
+</section>
+<section id="nextmove-namerxn-dataset">
+<h3>6.3 <a class="reference external" href="https://www.nextmovesoftware.com/namerxn.html">NextMove NameRxn Dataset</a><a class="headerlink" href="#nextmove-namerxn-dataset" title="Link to this heading">#</a></h3>
+<p>Developed by NextMove Software, the NameRxn dataset is a collection of annotated reaction types extracted from literature and patent sources. It classifies reactions into well-known transformations (e.g., Suzuki coupling, Friedel-Crafts alkylation) using a proprietary classification engine. Although primarily commercial, NameRxn has been used in academic collaborations and projects. Its mission is to help chemists quickly identify and categorize reactions for synthetic planning and knowledge management.</p>
+</section>
+<section id="synthia-free-trial">
+<h3>6.4 <a class="reference external" href="https://synthia.info/">SYNTHIA Free Trial</a><a class="headerlink" href="#synthia-free-trial" title="Link to this heading">#</a></h3>
+<p>SYNTHIA (formerly Chematica) is an AI-guided retrosynthesis platform originally developed by Prof. Bartosz Grzybowski and now commercialized by MilliporeSigma. It uses a curated set of reaction rules and algorithms to design optimized synthetic routes. The free academic trial allows students and researchers to explore retrosynthetic strategies for common targets. SYNTHIA’s mission is to combine chemical knowledge and computational heuristics to <strong>accelerate synthesis planning</strong>.</p>
+</section>
+</section>
+<section id="table-7-biochemical-pathways-and-systems-biology-databases">
+<h2>Table 7: Biochemical Pathways and Systems Biology Databases<a class="headerlink" href="#table-7-biochemical-pathways-and-systems-biology-databases" title="Link to this heading">#</a></h2>
+<p>Biochemical pathway databases are essential for understanding the networked nature of metabolism, signal transduction, and cellular regulation. These resources provide curated or computationally inferred pathways that map how molecules interact in living systems. They are used in systems biology, pharmacology, metabolic engineering, and bioinformatics. Table 7 features a set of databases that offer interactive maps, cross-species data integration, and API access, helping researchers explore metabolism at both molecular and systems levels.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Database Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>API Available</p></th>
+<th class="head"><p>Access</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.genome.jp/kegg/">KEGG</a></p></td>
+<td><p>Kyoto Encyclopedia of Genes and Genomes for metabolic pathways, compounds, reactions, and enzymes.</p></td>
+<td><p>Yes – <a class="reference external" href="https://rest.kegg.jp/">KEGG REST API</a></p></td>
+<td><p>⚠️ Free for academic use; some tools restricted</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://reactome.org/">Reactome</a></p></td>
+<td><p>Curated biological pathways and reactions across many species; includes human metabolism and disease maps.</p></td>
+<td><p>Yes – <a class="reference external" href="https://reactome.org/ContentService/">Reactome Content Service API</a></p></td>
+<td><p>✅ Fully Open</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://biocyc.org/">BioCyc</a></p></td>
+<td><p>Collection of pathway/genome databases for many organisms, including EcoCyc and MetaCyc.</p></td>
+<td><p>Yes – <a class="reference external" href="https://biocyc.org/web-services.shtml">BioCyc Web Services</a> <em>(free for public tier)</em></p></td>
+<td><p>⚠️ Tiered: Public + subscription options</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.metanetx.org/">MetaNetX</a></p></td>
+<td><p>Reconciles metabolites and reactions across multiple genome-scale metabolic networks.</p></td>
+<td><p>No API; downloadable TSVs for integration.</p></td>
+<td><p>✅ Fully Open</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://pathbank.org/">PathBank</a></p></td>
+<td><p>Visual, searchable pathway database for small molecule and metabolite interactions.</p></td>
+<td><p>Yes – <a class="reference external" href="https://www.pathbank.org/downloads">PathBank API Info</a></p></td>
+<td><p>✅ Fully Open</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="kegg">
+<h3>7.1 <a class="reference external" href="https://www.genome.jp/kegg/">KEGG</a><a class="headerlink" href="#kegg" title="Link to this heading">#</a></h3>
+<p>The Kyoto Encyclopedia of Genes and Genomes (KEGG) was initiated in 1995 by Dr. Minoru Kanehisa in Japan to support genome interpretation and annotation. It is one of the earliest and most influential bioinformatics projects and provides metabolic and signaling pathways, gene/protein annotations, compound libraries, and reaction networks. KEGG pathways are manually curated and extensively referenced in genomics, metabolomics, and pharmacology. Its mission is to transform genome data into system-level functional information using standardized, graphical pathway maps.</p>
+</section>
+<section id="reactome">
+<h3>7.2 <a class="reference external" href="https://reactome.org/">Reactome</a><a class="headerlink" href="#reactome" title="Link to this heading">#</a></h3>
+<p>Reactome is an open-source, manually curated pathway database launched in 2003 and managed by a collaboration of the Ontario Institute for Cancer Research (OICR), EMBL-EBI, and other institutions. It focuses on human biology, but also includes inferred pathways for other species. Reactome’s strength lies in its high-quality curation of biochemical reactions, gene-protein-pathway relationships, and disease mechanisms. It integrates with omics tools for pathway enrichment and is designed to support reproducible and interoperable systems biology research.</p>
+</section>
+<section id="biocyc">
+<h3>7.3 <a class="reference external" href="https://biocyc.org/">BioCyc</a><a class="headerlink" href="#biocyc" title="Link to this heading">#</a></h3>
+<p>Developed by SRI International, the BioCyc collection includes over 20,000 pathway/genome databases, ranging from curated resources like EcoCyc (for <em>E. coli</em>) and MetaCyc (a reference for metabolism) to automatically generated databases for thousands of organisms. First launched in the 1990s, BioCyc’s goal is to link genomic data with metabolic and regulatory network models. It offers visualization tools, downloadable data, and computational modeling interfaces. Access is tiered: many features are free in the public tier, with enhanced features for subscribers.</p>
+</section>
+<section id="metanetx">
+<h3>7.4 <a class="reference external" href="https://www.metanetx.org/">MetaNetX</a><a class="headerlink" href="#metanetx" title="Link to this heading">#</a></h3>
+<p>MetaNetX is a project from the Swiss Institute of Bioinformatics (SIB) that aims to reconcile differences between various metabolic network reconstructions. It provides a unified namespace to map metabolites, reactions, and pathways across models such as KEGG, BioCyc, and ModelSEED. MetaNetX supports genome-scale metabolic modeling and comparative systems biology by providing downloadable TSVs for integration with metabolic network simulators. Though it lacks an API, it plays a vital role in harmonizing biochemical knowledge across platforms.</p>
+</section>
+<section id="pathbank">
+<h3>7.5 <a class="reference external" href="https://pathbank.org/">PathBank</a><a class="headerlink" href="#pathbank" title="Link to this heading">#</a></h3>
+<p>Launched in 2019 by The Metabolomics Innovation Centre (TMIC) in Canada, PathBank is a visual and searchable repository of over 100,000 small-molecule and metabolite-centric pathways across multiple organisms. It includes metabolism, drug action, nutrition, and disease pathways, integrating with other TMIC resources like HMDB and DrugBank. Its mission is to provide highly detailed, manually curated visualizations for educators, clinical researchers, and bioinformaticians. API access and bulk downloads support integration into pathway analysis pipelines.</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="public-vs-fee-based-chemical-databases">
+<h1>⚖️ Public vs. Fee-Based Chemical Databases<a class="headerlink" href="#public-vs-fee-based-chemical-databases" title="Link to this heading">#</a></h1>
+<p>In the predigital era databases were printed documents with the data often being excerpted from the primary literature and evolving out of the Gutenberg era of scientific communication where information was disseminated through printed journals. There are a variety of databases that evolved out of this model and most of these are fee based.  The following table goes over some of the differences between public and fee based databases.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>Public Databases (e.g., PubChem, ChEMBL)</p></th>
+<th class="head"><p>Fee-Based Databases (e.g., SciFinderⁿ, Reaxys)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Access</strong></p></td>
+<td><p>Free, open access (no subscription required)</p></td>
+<td><p>Institutional or personal subscription required</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Hosting Organizations</strong></p></td>
+<td><p>Government agencies, academic consortia, open science communities</p></td>
+<td><p>Commercial publishers (ACS, Elsevier, Clarivate, Wiley)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Primary Content Source</strong></p></td>
+<td><p>Voluntarily submitted data, open literature, patents, regulatory databases</p></td>
+<td><p>Manually curated and extracted from paywalled literature and patents</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Coverage of Literature</strong></p></td>
+<td><p>Limited or indirect (open-access journals, PubMed, patent offices)</p></td>
+<td><p>Comprehensive, including legacy journals and full-text patents</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Structure Searching</strong></p></td>
+<td><p>Available (e.g., PubChem, ChemSpider)</p></td>
+<td><p>Available, often with more advanced search filters and algorithms</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Reaction Data</strong></p></td>
+<td><p>Available (e.g., Open Reaction Database, ChEMBL assays)</p></td>
+<td><p>Comprehensive (e.g., CASREACT, Reaxys synthetic pathways)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Bioactivity &amp; SAR</strong></p></td>
+<td><p>Available (e.g., ChEMBL, BindingDB)</p></td>
+<td><p>Deeply curated and linked with pharmacological context</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Spectral Data</strong></p></td>
+<td><p>Available (e.g., MassBank, NIST WebBook)</p></td>
+<td><p>Often not included directly; sometimes linked</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Export &amp; Reuse Licensing</strong></p></td>
+<td><p>Open licenses (e.g., CC-BY, CC0), often downloadable</p></td>
+<td><p>Restricted reuse; data often under publisher copyright</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>APIs &amp; Interoperability</strong></p></td>
+<td><p>Well-documented APIs, bulk downloads, linked data support</p></td>
+<td><p>Often proprietary formats; limited interoperability</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Update Frequency</strong></p></td>
+<td><p>Varies (some real-time, others infrequent)</p></td>
+<td><p>Regular updates, with professional curation teams</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Learning Curve</strong></p></td>
+<td><p>Easier for newcomers; more open documentation</p></td>
+<td><p>High functionality, but requires training or institutional onboarding</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="table-of-fee-based-databases">
+<h2>Table of Fee Based Databases<a class="headerlink" href="#table-of-fee-based-databases" title="Link to this heading">#</a></h2>
+<p>The following is an incomplete list of some of the most common fee-based databases.  These databases typically require institutional subscriptions and can be accessed through university libraries.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Database Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.cas.org/products/scifinder">SciFinderⁿ (CAS)</a></p></td>
+<td><p>Produced by the American Chemical Society’s Chemical Abstracts Service. Offers curated chemical and bibliographic data from journals, patents, reactions, bioactivity, spectra, and regulatory info. Includes CAS Registry (substances) and CASREACT (reactions).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.reaxys.com/">Reaxys (Elsevier)</a></p></td>
+<td><p>A comprehensive chemistry database indexing millions of reactions, compounds, and experimental procedures extracted from journals and patents. Includes chemical structures, properties, and synthesis routes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.apa.org/pubs/databases/psycinfo">PsycINFO (APA) with Chemical Supplementation</a></p></td>
+<td><p>Although psychology-focused, this database sometimes includes chemical or pharmacological context in behavioral studies. (Not a core chemistry DB, but intersects with neurochemistry and psychopharmacology.)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://clarivate.com/products/derwent/">Derwent Innovation (Clarivate)</a></p></td>
+<td><p>Proprietary patent database with advanced chemical indexing, including Derwent Chemistry Resource (DCR). Focused on innovation tracking across chemical/pharma sectors.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.minesoft.com/patbase/">Minesoft PatBase</a></p></td>
+<td><p>Global patent database with chemical structure search capabilities. Especially useful for competitive intelligence in pharma and materials sectors.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.excelra.com/gostar/">GOSTAR (Excelra)</a></p></td>
+<td><p>Comprehensive database of structure–activity relationships (SAR), pharmacokinetics, and bioactivity data, curated from literature and patents.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.morganclaypoolpublishers.com/catalog_Orig/synthesis/1">Synthesis Digital Library (Morgan &amp; Claypool)</a></p></td>
+<td><p>Fee-based access to digital monographs in chemistry and engineering with a focus on advanced education and research. Not a data repository per se, but highly relevant.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.perkinelmer.com/category/informatics-signals-notebook">PerkinElmer Signals Notebook</a></p></td>
+<td><p>Commercial ELN (Electronic Lab Notebook) with chemistry data indexing, internal data management, and integration with proprietary or public datasets.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.wiley.com/en-us/chemical-research-synthesis-tools">Wiley ChemPlanner (formerly InfoChem)</a></p></td>
+<td><p>A retrosynthetic analysis tool incorporating curated reaction data, reaction prediction, and synthesis route planning.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="acknowledgements">
+<h1>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Link to this heading">#</a></h1>
+<p>This content was developed with assistance from Chat GPT. Multiple queries were made during the Summer of 2025 and this material is in the Public Domain.  Please contact Bob Belford (rebelford&#64;ualr.edu) if you have any questions or concerns about this content.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "cinf26"
+        },
+        kernelOptions: {
+            name: "cinf26",
+            path: "./content/modules/03_Public_Chemical_Databases"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'cinf26'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="README.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Module 3: Survey of Chemical Databases</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../10_SupervisedML/README.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Module 10: Supervised Machine Learning</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Public Compound Databases</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-1-public-chemical-databases-with-api-resources">Table 1: Public Chemical Databases (with API Resources)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pubchem">1.1 PubChem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#epa-comptox-chemicals-dashboard">1.2 EPA CompTox Chemicals Dashboard</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chemspider">1.3 ChemSpider</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chembl">1.5 ChEMBL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drugbank">1.6 DrugBank</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protein-data-bank-rcsb-pdb">1.7 Protein Data Bank (RCSB PDB)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uniprot">1.8 UniProt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#massbank-europe">1.9 MassBank Europe</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zinc-database">1.10 ZINC Database</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hmdb-human-metabolome-database">1.11 HMDB (Human Metabolome Database)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-2-crystallography-materials-science-and-spectroscopy-databases">Table 2: Crystallography, Materials Science and Spectroscopy Databases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crystallography-open-database-cod">2.1 Crystallography Open Database (COD)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#materials-project">2.2Materials Project</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nist-chemistry-webbook">2.3 NIST Chemistry WebBook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ccdc-access-structures">2.4CCDC Access Structures</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aflowlib">2.5AFLOWlib</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nomad-repository">2.6 NOMAD Repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-database-for-organic-compounds-sdbs">2.7 Spectral Database for Organic Compounds (SDBS)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#irug-spectral-database">2.8 IRUG Spectral Database</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-crystallography-database-ocd">2.9 Open Crystallography Database (OCD)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-3-natural-products-and-bioactive-compounds">Table 3: Natural Products and Bioactive Compounds</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npatlas">3.1 NPAtlas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coconut">3.2 COCONUT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lotus">3.3 LOTUS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supernatural-ii">3.4 SuperNatural II</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npass">3.5 NPASS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-4-environmental-and-toxicology-databases">Table 4: Environmental and Toxicology Databases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.1 NPAtlas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.2 COCONUT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.3 LOTUS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.4 SuperNatural II</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4.5 NPASS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-5-analytical-chemistry-and-spectral-repositories">Table 5: Analytical Chemistry and Spectral Repositories</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#massbank">5.1 MassBank</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gnps-global-natural-products-social">5.2 GNPS (Global Natural Products Social)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sdbs-spectral-database-for-organic-compounds">5.3 SDBS (Spectral Database for Organic Compounds)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nmrshiftdb2">5.4 NMRShiftDB2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metabolights">5.5 MetaboLights</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-6-chemical-reactions-and-synthesis-databases">Table 6: Chemical Reactions and Synthesis Databases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-reaction-database-ord">6.1 Open Reaction Database (ORD)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uspto-bulk-data">6.2 USPTO Bulk Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nextmove-namerxn-dataset">6.3 NextMove NameRxn Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#synthia-free-trial">6.4 SYNTHIA Free Trial</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-7-biochemical-pathways-and-systems-biology-databases">Table 7: Biochemical Pathways and Systems Biology Databases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kegg">7.1 KEGG</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reactome">7.2 Reactome</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#biocyc">7.3 BioCyc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metanetx">7.4 MetaNetX</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pathbank">7.5 PathBank</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#public-vs-fee-based-chemical-databases">⚖️ Public vs. Fee-Based Chemical Databases</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-fee-based-databases">Table of Fee Based Databases</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Robert Belford
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright CC 4.0 2026 Robert Belford, additional info on each notebook.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <script async src="https://hypothes.is/embed.js"></script>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

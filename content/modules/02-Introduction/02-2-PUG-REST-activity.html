@@ -1,0 +1,1281 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2.0 PubChem PUG-REST &#8212; 2026 Cheminformatics OLCC</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/modules/02-Introduction/02-2-PUG-REST-activity';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="2026 Cheminformatics OLCC - Home"/>
+    <img src="../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="2026 Cheminformatics OLCC - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_PythonPrimer/README.html">Module 1 Python Primers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_PythonPrimer/01_1_python-basics.html">1.1 Python Basics</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../01_PythonPrimer/01_2_python-intermediate.html">1.2 Intermediate Python</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../10_SupervisedML/README.html">Module 10: Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_0_Intro.html">10.0: Introduction</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_1_data_prep.html">10.1: Data Preparation and Feature Engineering</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_2_NB_model_construction_workflow.html">10.2: Naive Bayes and Model Construction</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_3_model_evaluation.html">10.3: Evaluating and Interpreting Models</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_4_Pipelines.html">10.4: Pipelines, Persistence, and Reproducible Inference</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_5_RD_Model_Complexity.html">10.5 Random Forest and Model Complexity</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_6_LR_SVM_Modeling.html">10.6 Logistic Regression and SVM</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_7_MLP_Neural_Networks.html">10.7  Neural Networks</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/App_1/README.html">Appendix 1: Getting Set Up</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/App_1/A_01-1_OS.html">Appendix 1.1: Linux &amp; WSL</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/App_10/README.html">Appendix 10: Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/App_10/A_10-1AID_Selector.html">A10.1 BioAssay Screening: Enough Actives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/App_10/A_10-2NaiveBayes.html">A10.2 Bayes’ Theorem: From Inference to Models</a></li>
+
+
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://nanohub.org/tools/datachemolcc/hub/user-redirect/git-pull?repo=https%3A//github.com/rebelford/2026Cheminformatics&urlpath=lab/tree/2026Cheminformatics/content/modules/02-Introduction/02-2-PUG-REST-activity.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/rebelford/2026Cheminformatics" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rebelford/2026Cheminformatics/issues/new?title=Issue%20on%20page%20%2Fcontent/modules/02-Introduction/02-2-PUG-REST-activity.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/content/modules/02-Introduction/02-2-PUG-REST-activity.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>2.0 PubChem PUG-REST</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2.0 PubChem PUG-REST</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-molecular-properties-through-pubchem-s-pug-rest-web-interface">Getting Molecular Properties through PubChem’s PUG REST Web Interface</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-shortest-code-to-get-pubchem-data">1. The Shortest Code to Get PubChem Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formulating-pug-rest-request-urls-using-variables">2. Formulating PUG-REST request URLs using variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-multiple-requests-using-a-for-loop">3. Making multiple requests using a for loop</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-multiple-molecular-properties">4. Getting multiple molecular properties</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgment">Acknowledgment</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pubchem-pug-rest">
+<span id="modules-02-introduction-02-2-pug-rest-activity"></span><h1>2.0 PubChem PUG-REST<a class="headerlink" href="#pubchem-pug-rest" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="getting-molecular-properties-through-pubchem-s-pug-rest-web-interface">
+<h1>Getting Molecular Properties through PubChem’s PUG REST Web Interface<a class="headerlink" href="#getting-molecular-properties-through-pubchem-s-pug-rest-web-interface" title="Link to this heading">#</a></h1>
+<p>PubChem’s Power User Gateway(PUG) REST interface is a web-based Application Programming Interface (API) that allows for programmatic access to PubChem’s chemical database. Specifically it is a RESTful API, meaning it follows the Representational State Transfer (REST) interface. REST uses standard web protocols (like HTTP) to enable users to retrieve information using simple URL-based queries.</p>
+<p>As a REST API, each request for data sent to the server is independent and contains all the information required to fulfill the request. The server does not retain any information from previous requests or even other user sessions. Therefore, it can be easily automated programmatically since connections or sessions do not need to be maintained.</p>
+<p>In this notebook, we will explore the API and retrieve chemical data from PubChem programmatically.</p>
+<div class="alert alert-block alert-info">
+<strong>Overview</h/strong>
+<section id="objectives">
+<h2>Objectives<a class="headerlink" href="#objectives" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Learn the basic approach to getting data from PubChem through PUG-REST</p></li>
+<li><p>Retrieve a single property of a single compound.</p></li>
+<li><p>Retrieve a single property of multiple compounds</p></li>
+<li><p>Retrieve multiple properties of multiple compounds.</p></li>
+<li><p>Write a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to make the same kind of requests.</p></li>
+<li><p>Process a large amount of data by splitting them into smaller chunks</p></li>
+</ul>
+</section>
+<section id="the-shortest-code-to-get-pubchem-data">
+<h2>1. The Shortest Code to Get PubChem Data<a class="headerlink" href="#the-shortest-code-to-get-pubchem-data" title="Link to this heading">#</a></h2>
+<p>Let’s suppose that we want to get the molecular formula of prednisone (a synthetic steroid that reduces inflammation).  You can get this by doing a search for predinsone at PubChem or you can get this data direct from your web browser (Chrome, Safari, Internet Explorer, etc) by typing in the following URL:</p>
+<p>https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/prednisone/property/MolecularFormula/txt</p>
+<p>Getting the same data using a computer program is not very difficult.  This task can be with three lines of Python code.</p>
+<p><strong>Line 1:</strong> First, we import the <code class="docutils literal notranslate"><span class="pre">requests</span></code> library (https://3.python-requests.org/), which is a collection of pre-written Python code that makes it easy to access information from the web. This library allows us to send requests for information to PubChem and handle the response in our Python code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Line 2:</strong> Second, we need to ask the server for data. We use the <code class="docutils literal notranslate"><span class="pre">get()</span></code> function from the requests library. This kind of request is called a GET request, which is a common way to ask a web service for information. The PUG-REST request URL (enclosed within a pair of quotes <code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">'</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;</span> <span class="pre">&quot;</span></code> ) is provided as the argument inside the parentheses.  The result will be stored in a variable called <code class="docutils literal notranslate"><span class="pre">res</span></code> which is short for “result” or “response”. This creates a <strong>Response object</strong>, which contains all the data sent back from the server, including the actual information we asked for.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/prednisone/property/MolecularFormula/txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Line 3:</strong> The <code class="docutils literal notranslate"><span class="pre">res</span></code> variable contains not only the requested data but also some additional information about the request itself.  To view the actual data returned by the server, we need to access the text of the response. This is done using <code class="docutils literal notranslate"><span class="pre">res.text</span></code>, which gives us the response as a string. The <code class="docutils literal notranslate"><span class="pre">text</span></code> is a property of the <strong>Response object</strong> we created in line 2. To view the response data, we can use the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function to display the result in the notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C21H26O5
+</pre></div>
+</div>
+</div>
+</div>
+<p>As another example, the following code retrieves the number of heavy (non-hydrogen) atoms of butadiene. (Note: we don’t need to import the requests library here as we have done so already. All we need to do is make the request and print out the result)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/butadiene/property/HeavyAtomCount/txt&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<p>While many of the properties you can retrieve from PubChem are fairly intuitive, it’s important to use the exact property names that PubChem recognizes (the correct <strong>syntax</strong>.) For example, we have used <code class="docutils literal notranslate"><span class="pre">HeavyAtomCount</span></code> and <code class="docutils literal notranslate"><span class="pre">MolecularFormula</span></code>. You can find a list of available properties and their correct syntax in the PubChem documentation.  <a href= "https://pubchem.ncbi.nlm.nih.gov/docs/pug-rest#section=Compound-Property-Tables:~:text=Available%20properties%20are%3A-,Property,Notes,-MolecularFormula"> Click here to open a browser window with a list of properties in the PubChem database.</a></p>
+<div class="alert alert-block alert-success">
+<strong>Exercise 1a:</strong>
+<p>Retrieve the molecular weight of ethanol in a “text” format.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code in this cell:</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-success">
+<strong>Exercise 1b:</strong>
+<p>Retrieve the number of hydrogen-bond acceptors of aspirin in a “text” format.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code in this cell:</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="formulating-pug-rest-request-urls-using-variables">
+<h2>2. Formulating PUG-REST request URLs using variables<a class="headerlink" href="#formulating-pug-rest-request-urls-using-variables" title="Link to this heading">#</a></h2>
+<p>In the earlier examples, we passed the PUG REST request URL directly into the <code class="docutils literal notranslate"><span class="pre">requests.get()</span></code> function by typing the full URL inside the parentheses. However, it’s also possible to build the URL using variables. The example below shows how you can create a request URL by <strong>combining (concatenating)</strong> smaller variables into a complete URL, which is then passed to <code class="docutils literal notranslate"><span class="pre">requests.get()</span></code>. This approach makes it easier to change parts of the request—such as the compound name or property without rewriting the whole URL.</p>
+<p>A PUG-REST request URL encodes three pieces of information (input, operation, output), preceded by the prologue common to all requests.  In the follwoing code cell, these pieces of information are stored in four different variables (<code class="docutils literal notranslate"><span class="pre">pugrest</span></code>, <code class="docutils literal notranslate"><span class="pre">pugin</span></code>, <code class="docutils literal notranslate"><span class="pre">pugoper</span></code>, <code class="docutils literal notranslate"><span class="pre">pugout</span></code>) and combined into a new variable <code class="docutils literal notranslate"><span class="pre">url</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pugrest</span> <span class="o">=</span> <span class="s2">&quot;https://pubchem.ncbi.nlm.nih.gov/rest/pug&quot;</span>
+<span class="n">pugin</span>   <span class="o">=</span> <span class="s2">&quot;compound/name/water&quot;</span>
+<span class="n">pugoper</span> <span class="o">=</span> <span class="s2">&quot;property/MolecularFormula&quot;</span>
+<span class="n">pugout</span>  <span class="o">=</span> <span class="s2">&quot;txt&quot;</span>
+
+<span class="n">url</span>     <span class="o">=</span> <span class="n">pugrest</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">pugin</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">pugoper</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">pugout</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/water/property/MolecularFormula/txt
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice in the code cell above that we built the URL by concatenating variables and manually adding ‘/’ between each part. An alternative way to do this is by using Python’s <code class="docutils literal notranslate"><span class="pre">join()</span></code>  function, which is used to combine a list of strings into a single string inserting a specified separator between each element. This can make your code cleaner and more flexible when working with multiple pieces of a URL.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="p">[</span><span class="n">pugrest</span><span class="p">,</span> <span class="n">pugin</span><span class="p">,</span> <span class="n">pugoper</span><span class="p">,</span> <span class="n">pugout</span><span class="p">]</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/water/property/MolecularFormula/txt
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here, the strings stored in the four variables are joined by the <code class="docutils literal notranslate"><span class="pre">/</span></code> character as a separator.  Notice that the four variables are placed inside square brackets <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code>, which creates a list containing those strings. The list is passed to the <code class="docutils literal notranslate"><span class="pre">.join()</span></code> function, which combines the elements into a single URL with <code class="docutils literal notranslate"><span class="pre">/</span></code> inserted between each part.</p>
+<p>Now we can pass the url to <code class="docutils literal notranslate"><span class="pre">request.get()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>H2O
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-danger">
+<strong>Warning</strong>
+<p>Avoid using <code class="docutils literal notranslate"><span class="pre">in</span></code> or <code class="docutils literal notranslate"><span class="pre">input</span></code> as a variable name in python.  The word <code class="docutils literal notranslate"><span class="pre">in</span></code> is a <strong>reserved keyword</strong> and <code class="docutils literal notranslate"><span class="pre">input</span></code> is the name of a <strong>built-in function</strong>. See  <strong><a href="https://rebelford.github.io/py4scibook/content/module2-oop-data-structures/02-2-py-calculator.html#python-reserved-words" target="_blank">Python Reserved Words</a> </strong>for a list of reserved words. In the example above, the variables are prefixed with <code class="docutils literal notranslate"><span class="pre">pug</span></code> to avoid these naming conflicts.</p>
+</div><div class="alert alert-block alert-success">
+<strong>Exercise 2a:</strong>
+<p>Retrieve the rotatable bond count of phenylalanine in a “text” format using variables to generate the URL.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code in this cell:</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-success">
+<strong>Exercise 2b:</strong>
+<p>Retrieve the charge of phosphate in a “text” format using variables to generate the URL.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code in this cell:</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="making-multiple-requests-using-a-for-loop">
+<h2>3. Making multiple requests using a for loop<a class="headerlink" href="#making-multiple-requests-using-a-for-loop" title="Link to this heading">#</a></h2>
+<p>It might seem unneccesarily complicated to use variables to build a request URL compared to typing in one full URL directly into <code class="docutils literal notranslate"><span class="pre">requests.get()</span></code>. If you are only making <strong>one request</strong>, it definitely is easier to write the one full URL.</p>
+<p>However, if you are making <strong>many similar requests</strong>, manually typing each URL would be time-consuming and very error-prone. In this case, it is much more efficient to store the <strong>common parts</strong> of the url as variables and use a loop to generate full URLs for the part that changes. For example, suppose you want to retrieve the SMILES strings for <strong>five different molecules</strong>. This approach would save a lot of repetitive typing and make your code easier to modify and reuse.</p>
+<p><em>Note: In PubChem the ConnectivitySMILES property contains the connectivity layer only, and does NOT include stereochemistry or isotope, while the SMILES property includes both stereochemical and isotopic information</em>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a list of compound names that we would like SMILES for</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;cytosine&#39;</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">,</span> <span class="s1">&#39;motrin&#39;</span><span class="p">,</span> <span class="s1">&#39;aspirin&#39;</span><span class="p">,</span> <span class="s1">&#39;zolpidem&#39;</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now the chemical names are stored in a <strong>list</strong> called <code class="docutils literal notranslate"><span class="pre">names</span></code>.</p>
+<p>Using a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, we can go through each chemical name in the list, create a request URL by updating the name in the appropriate spot, and then retrieve the desired data for each molecule. This allows us to automate multiple requests efficiently, as shown in the example below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pugrest</span> <span class="o">=</span> <span class="s2">&quot;https://pubchem.ncbi.nlm.nih.gov/rest/pug&quot;</span>
+<span class="n">pugoper</span> <span class="o">=</span> <span class="s2">&quot;property/ConnectivitySMILES&quot;</span>
+<span class="n">pugout</span>  <span class="o">=</span> <span class="s2">&quot;txt&quot;</span>
+
+<span class="k">for</span> <span class="n">myname</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>    <span class="c1"># loop over each element in the &quot;names&quot; list</span>
+    
+    <span class="n">pugin</span> <span class="o">=</span> <span class="s2">&quot;compound/name/&quot;</span> <span class="o">+</span> <span class="n">myname</span>
+    
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="p">[</span><span class="n">pugrest</span><span class="p">,</span> <span class="n">pugin</span><span class="p">,</span> <span class="n">pugoper</span><span class="p">,</span> <span class="n">pugout</span><span class="p">]</span> <span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">myname</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cytosine : C1=C(NC(=O)N=C1)N
+
+benzene : C1=CC=CC=C1
+
+motrin : CC(C)CC1=CC=C(C=C1)C(C)C(=O)O
+
+aspirin : CC(=O)OC1=CC=CC=C1C(=O)O
+
+zolpidem : CC1=CC=C(C=C1)C2=C(N3C=C(C=CC3=N2)C)CC(=O)N(C)C
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-danger">
+<strong>Warning</strong>
+<span style="color:black">
+<p>When you make a lot of programmatic access requests using a loop, you should limit your request rate to or below <strong>five requests per second</strong>.  Please read the following document to learn more about PubChem’s usage policies:
+https://pubchemdocs.ncbi.nlm.nih.gov/programmatic-access$_RequestVolumeLimitations<br></p>
+<p><strong>Violation of usage policies</strong> may result in the user being <strong>temporarily blocked</strong> from accessing PubChem (or NCBI) resources**</span></p>
+</div><p>In the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop example above, we are only processing five chemical names, so it’s unlikely that we’ll exceed PubChem’s limit of <em><strong>five requests per second</strong></em>. However, it is much more common to work with hundreds or thousands of chemical names and it is very likely that the code will exceed this limit.</p>
+<p>To prevent overloading the server and to follow PubChem’s usage guidelines, it is a good idea to <strong>slow down the request rate</strong> by adding short delay to each request. This can be done using the <code class="docutils literal notranslate"><span class="pre">sleep()</span></code> function from Python’s <code class="docutils literal notranslate"><span class="pre">time</span></code> module.</p>
+<p>For example, let’s suppose you have 12 chemical names to process (though in a real project, you will have many more). Rather than sending these requests immediately one after another, we will add a short pause to ensure we stay under the limit and be a good API user.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;water&#39;</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">,</span> <span class="s1">&#39;methanol&#39;</span><span class="p">,</span> <span class="s1">&#39;ethene&#39;</span><span class="p">,</span> <span class="s1">&#39;ethanol&#39;</span><span class="p">,</span> \
+          <span class="s1">&#39;propene&#39;</span><span class="p">,</span><span class="s1">&#39;1-propanol&#39;</span><span class="p">,</span> <span class="s1">&#39;2-propanol&#39;</span><span class="p">,</span> <span class="s1">&#39;butadiene&#39;</span><span class="p">,</span> <span class="s1">&#39;1-butanol&#39;</span><span class="p">,</span> \
+          <span class="s1">&#39;2-butanol&#39;</span><span class="p">,</span> <span class="s1">&#39;tert-butanol&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="n">pugrest</span> <span class="o">=</span> <span class="s2">&quot;https://pubchem.ncbi.nlm.nih.gov/rest/pug&quot;</span>
+<span class="n">pugoper</span> <span class="o">=</span> <span class="s2">&quot;property/ConnectivitySMILES&quot;</span>
+<span class="n">pugout</span>  <span class="o">=</span> <span class="s2">&quot;txt&quot;</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)):</span>    <span class="c1"># loop over each index (position) in the &quot;names&quot; list</span>
+    
+    <span class="n">pugin</span> <span class="o">=</span> <span class="s2">&quot;compound/name/&quot;</span> <span class="o">+</span> <span class="n">names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>    <span class="c1"># names[i] = the ith element in the names list.</span>
+    
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="p">[</span><span class="n">pugrest</span><span class="p">,</span> <span class="n">pugin</span><span class="p">,</span> <span class="n">pugoper</span><span class="p">,</span> <span class="n">pugout</span><span class="p">]</span> <span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>   <span class="c1"># pause for 0.2 seconds between requests to be polite to the server</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>water : O
+
+benzene : C1=CC=CC=C1
+
+methanol : CO
+
+ethene : C=C
+
+ethanol : CCO
+
+propene : CC=C
+
+1-propanol : CCCO
+
+2-propanol : CC(C)O
+
+butadiene : C=CC=C
+
+1-butanol : CCCCO
+
+2-butanol : CCC(C)O
+
+tert-butanol : CC(C)(C)O
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are three noteworthy items in the above example:</p>
+<ul class="simple">
+<li><p>First, the for loop interates from 0 to [<code class="docutils literal notranslate"><span class="pre">len(names)</span></code> − 1], that is, [0, 1, 2, 3, …,11]. (Recall python counts start at 0)</p></li>
+<li><p>The variable <code class="docutils literal notranslate"><span class="pre">i</span></code> is used (in <code class="docutils literal notranslate"><span class="pre">names[i]</span></code>) to generate the input part (<code class="docutils literal notranslate"><span class="pre">pugin</span></code>) of the PUG-REST request URL.</p></li>
+<li><p>After each request we pause for 0.2 seconds to ensure we are only making 5 requests per second (0.2sec x 5/sec = 1 sec)</p></li>
+</ul>
+<p>The following is another method for breaking up the requests. In this case after every 5 requsts, we will pause the program for 1 second to ensure we don’t overload the server.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="n">pugrest</span> <span class="o">=</span> <span class="s2">&quot;https://pubchem.ncbi.nlm.nih.gov/rest/pug&quot;</span>
+<span class="n">pugoper</span> <span class="o">=</span> <span class="s2">&quot;property/ConnectivitySMILES&quot;</span>
+<span class="n">pugout</span>  <span class="o">=</span> <span class="s2">&quot;txt&quot;</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)):</span>    <span class="c1"># loop over each index (position) in the &quot;names&quot; list</span>
+    
+    <span class="n">pugin</span> <span class="o">=</span> <span class="s2">&quot;compound/name/&quot;</span> <span class="o">+</span> <span class="n">names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>    <span class="c1"># names[i] = the ith element in the names list.</span>
+    
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="p">[</span><span class="n">pugrest</span><span class="p">,</span> <span class="n">pugin</span><span class="p">,</span> <span class="n">pugoper</span><span class="p">,</span> <span class="n">pugout</span><span class="p">]</span> <span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="p">(</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">4</span> <span class="p">)</span> <span class="p">:</span>  <span class="c1"># the % is the modulo operator and returns the remainder of a calculation (if i = 4, 9, ...)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>water : O
+
+benzene : C1=CC=CC=C1
+
+methanol : CO
+
+ethene : C=C
+
+ethanol : CCO
+
+propene : CC=C
+
+1-propanol : CCCO
+
+2-propanol : CC(C)O
+
+butadiene : C=CC=C
+
+1-butanol : CCCCO
+
+2-butanol : CCC(C)O
+
+tert-butanol : CC(C)(C)O
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this version of the code, we are still looping through the list of molecule names and updating the <code class="docutils literal notranslate"><span class="pre">pugin</span></code> variable each time. However, we’ve introduced a new variable <code class="docutils literal notranslate"><span class="pre">i</span></code>, which keeps track of how many requests have been made. Using an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement, we check wether <code class="docutils literal notranslate"><span class="pre">i</span></code> is a multiple of 5. If <code class="docutils literal notranslate"><span class="pre">i</span></code> is, we pause the program for one second using <code class="docutils literal notranslate"><span class="pre">time.sleep(1)</span></code>. This method also helps us stay within PubChem’s limit of 5 requests per second by introducing a short break after every 5 requests.</p>
+<p>It’s important to note that PubChem’s request volume limit can be lowered during times of high server load. This process is called <a href="https://pubchemdocs.ncbi.nlm.nih.gov/dynamic-request-throttling">dynamic request throttling.</a> When throttling is active, the server includes information in the HTTP response headers indicating the current system load and any temporary per-user limits. Based on this information, users are expected to adjust the speed at which they send requests to avoid overwhelming the system. We’ll explore how to interpret and respond to this throttling information later in the course.</p>
+<div class="alert alert-block alert-success">
+<strong>Exercise 3a:</strong>
+<p>Retrieve the XlogP values of linear alkanes with 1 ~ 12 carbons.</p>
+<ul class="simple">
+<li><p>Use the chemical names as inputs</p></li>
+<li><p>Use a for loop to retrieve the XlogP value for each alkane.</p></li>
+<li><p>Use the sleep() function to stop the program for one second for every <strong>five</strong> requests.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code in this cell:</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-success">
+<strong>Exercise 3b:</strong>
+Retrieve the **stereochemical** SMILES of the 20 common amino acids.
+<ul class="simple">
+<li><p>Use the chemical names as inputs. Because the 20 common amino acids in living organisms predominantly exist as one chrial form (the L-form), the names should be prefixed with <strong>“L-”</strong> (e.g., “L-alanine”, rather than “alanine”), except for “glycine” (which does not have a chiral center).</p></li>
+<li><p>Use a for loop to retrieve the stereochemical SMILES for each amino acid.</p></li>
+<li><p>Use the sleep() function to stop the program for one second for every <strong>five</strong> requests.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code in this cell</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="getting-multiple-molecular-properties">
+<h2>4. Getting multiple molecular properties<a class="headerlink" href="#getting-multiple-molecular-properties" title="Link to this heading">#</a></h2>
+<p>So far, all the examples in this notebook show how to retrieve a single molecular property for a single compound. We were able to automate this by using a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to repeat this process for a series of comounds.</p>
+<p>In this example, we are going to request four properties: the hydrogen-bond donor count, the hydrogen-bond acceptor count, the XLogP, and the topological polar surface area(TPSA) for 5 compounds. Rather than request by name, we are specifying by their PubChem Compound ID (CID) listed in a comma-separated format (CSV withing the URL.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pugrest</span> <span class="o">=</span> <span class="s2">&quot;https://pubchem.ncbi.nlm.nih.gov/rest/pug&quot;</span>
+<span class="n">pugin</span>   <span class="o">=</span> <span class="s2">&quot;compound/cid/4485,4499,5026,5734,8082&quot;</span>
+<span class="n">pugoper</span> <span class="o">=</span> <span class="s2">&quot;property/HBondDonorCount,HBondDonorCount,XLogP,TPSA&quot;</span>
+<span class="n">pugout</span>  <span class="o">=</span> <span class="s2">&quot;csv&quot;</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="p">[</span><span class="n">pugrest</span><span class="p">,</span> <span class="n">pugin</span><span class="p">,</span> <span class="n">pugoper</span><span class="p">,</span> <span class="n">pugout</span><span class="p">]</span> <span class="p">)</span>   <span class="c1"># Construct the URL</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">55</span><span class="p">)</span>   <span class="c1"># Print &quot;-&quot; 55 times (to print a line for readability)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/4485,4499,5026,5734,8082/property/HBondDonorCount,HBondDonorCount,XLogP,TPSA/csv
+-------------------------------------------------------
+&quot;CID&quot;,&quot;HBondDonorCount&quot;,&quot;HBondDonorCount&quot;,&quot;XLogP&quot;,&quot;TPSA&quot;
+4485,1,1,2.200,110.0
+4499,1,1,3.300,110.0
+5026,1,1,4.300,123.0
+5734,1,1,0.2,94.6
+8082,1,1,0.800,12.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>PubChem enforces a standard time limit of 30 seconds per request. If you try to retrieve too many properties for too many compounds all at once, the request might take longer than this limit, resulting in a timeout error.</p>
+<p>To avoid this, it’s a good idea to split your list of compounds into smaller chunks and process each chunk separately. This keeps each request fast enough to complete within the time limit and helps ensure successful data retrieval.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cids</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">443422</span><span class="p">,</span>  <span class="mi">72301</span><span class="p">,</span>   <span class="mi">8082</span><span class="p">,</span>    <span class="mi">4485</span><span class="p">,</span>    <span class="mi">5353740</span><span class="p">,</span> <span class="mi">5282230</span><span class="p">,</span> <span class="mi">5282138</span><span class="p">,</span> <span class="mi">1547484</span><span class="p">,</span> <span class="mi">941361</span><span class="p">,</span> <span class="mi">5734</span><span class="p">,</span>  \
+         <span class="mi">5494</span><span class="p">,</span>    <span class="mi">5422</span><span class="p">,</span>    <span class="mi">5417</span><span class="p">,</span>    <span class="mi">5290</span><span class="p">,</span>    <span class="mi">5245</span><span class="p">,</span>    <span class="mi">5026</span><span class="p">,</span>    <span class="mi">4746</span><span class="p">,</span>    <span class="mi">4507</span><span class="p">,</span>    <span class="mi">4499</span><span class="p">,</span>   <span class="mi">4497</span><span class="p">,</span>  \
+         <span class="mi">4494</span><span class="p">,</span>    <span class="mi">4474</span><span class="p">,</span>    <span class="mi">4418</span><span class="p">,</span>    <span class="mi">4386</span><span class="p">,</span>    <span class="mi">4009</span><span class="p">,</span>    <span class="mi">4008</span><span class="p">,</span>    <span class="mi">3949</span><span class="p">,</span>    <span class="mi">3926</span><span class="p">,</span>    <span class="mi">3878</span><span class="p">,</span>   <span class="mi">3784</span><span class="p">,</span>  \
+         <span class="mi">3698</span><span class="p">,</span>    <span class="mi">3547</span><span class="p">,</span>    <span class="mi">3546</span><span class="p">,</span>    <span class="mi">3336</span><span class="p">,</span>    <span class="mi">3333</span><span class="p">,</span>    <span class="mi">3236</span><span class="p">,</span>    <span class="mi">3076</span><span class="p">,</span>    <span class="mi">2585</span><span class="p">,</span>    <span class="mi">2520</span><span class="p">,</span>   <span class="mi">2351</span><span class="p">,</span>  \
+         <span class="mi">2312</span><span class="p">,</span>    <span class="mi">2162</span><span class="p">,</span>    <span class="mi">1236</span><span class="p">,</span>    <span class="mi">1234</span><span class="p">,</span>    <span class="mi">292331</span><span class="p">,</span>  <span class="mi">275182</span><span class="p">,</span>  <span class="mi">235244</span><span class="p">,</span>  <span class="mi">108144</span><span class="p">,</span>  <span class="mi">104972</span><span class="p">,</span> <span class="mi">77157</span><span class="p">,</span> \
+         <span class="mi">5942250</span><span class="p">,</span> <span class="mi">5311217</span><span class="p">,</span> <span class="mi">4564402</span><span class="p">,</span> <span class="mi">4715169</span><span class="p">,</span> <span class="mi">5311501</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We will break the list of CIDs into chunks of 10 CIDs each</span>
+<span class="n">chunk_size</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">if</span> <span class="p">(</span> <span class="nb">len</span><span class="p">(</span><span class="n">cids</span><span class="p">)</span> <span class="o">%</span> <span class="n">chunk_size</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">:</span> <span class="c1"># check if total number of cids is divisible by 10 with no remainder</span>
+    <span class="n">num_chunks</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">cids</span><span class="p">)</span> <span class="o">//</span> <span class="n">chunk_size</span> <span class="c1"># sets number of chunks</span>
+<span class="k">else</span> <span class="p">:</span> <span class="c1"># if divide by 10 results in remainder</span>
+    <span class="n">num_chunks</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">cids</span><span class="p">)</span> <span class="o">//</span> <span class="n">chunk_size</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1"># add one more chunk</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;# Number of CIDs:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">cids</span><span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;# Number of chunks:&quot;</span><span class="p">,</span> <span class="n">num_chunks</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># Number of CIDs: 55
+# Number of chunks: 6
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pugrest</span> <span class="o">=</span> <span class="s2">&quot;https://pubchem.ncbi.nlm.nih.gov/rest/pug&quot;</span>
+<span class="n">pugoper</span> <span class="o">=</span> <span class="s2">&quot;property/HBondDonorCount,HBondAcceptorCount,XLogP,TPSA&quot;</span>
+<span class="n">pugout</span>  <span class="o">=</span> <span class="s2">&quot;csv&quot;</span>
+
+<span class="n">csv</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>   <span class="c1">#sets a variable called csv to save the comma separated output</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_chunks</span><span class="p">)</span> <span class="p">:</span> <span class="c1"># sets number of requests to number of data chunks as determined above</span>
+    
+    <span class="n">idx1</span> <span class="o">=</span> <span class="n">chunk_size</span> <span class="o">*</span> <span class="n">i</span>        <span class="c1"># sets a variable for a moving window of cids to start in a data chunk</span>
+    <span class="n">idx2</span> <span class="o">=</span> <span class="n">chunk_size</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># sets a variable for a moving window of cids to end in a data chunk</span>
+
+    <span class="n">pugin</span> <span class="o">=</span> <span class="s2">&quot;compound/cid/&quot;</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cids</span><span class="p">[</span><span class="n">idx1</span><span class="p">:</span><span class="n">idx2</span><span class="p">]</span> <span class="p">])</span> <span class="c1"># build pug input for chunks of data</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="p">[</span><span class="n">pugrest</span><span class="p">,</span> <span class="n">pugin</span><span class="p">,</span> <span class="n">pugoper</span><span class="p">,</span> <span class="n">pugout</span><span class="p">]</span> <span class="p">)</span>   <span class="c1"># Construct the URL</span>
+    
+    <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="p">(</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">:</span> <span class="c1"># if this is the first request, store result in empty csv variable</span>
+        <span class="n">csv</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">text</span> 
+    <span class="k">else</span> <span class="p">:</span>          <span class="c1"># if this is a subsequent request, add the request to the csv variable adding a new line between chunks</span>
+        <span class="n">csv</span> <span class="o">=</span> <span class="n">csv</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> 
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">4</span><span class="p">):</span>  
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">csv</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()))</span>  <span class="c1"># count the number of lines in the output</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;CID&quot;,&quot;HBondDonorCount&quot;,&quot;HBondAcceptorCount&quot;,&quot;XLogP&quot;,&quot;TPSA&quot;
+443422,0,5,3.1,40.2
+72301,0,5,3.2,40.2
+8082,1,1,0.800,12.0
+4485,1,7,2.200,110.0
+5353740,2,5,3.5,76.0
+5282230,2,5,3.2,84.9
+5282138,1,8,4.400,120.0
+1547484,0,2,5.800,6.5
+941361,0,4,6.000,6.5
+5734,1,5,0.2,94.6
+5494,0,6,5.0,57.2
+5422,0,8,6.4,61.9
+5417,0,5,3.2,40.2
+5290,2,5,2.6,62.2
+5245,5,8,-3.1,148.0
+5026,1,8,4.300,123.0
+4746,1,1,6.8,12.0
+4507,1,7,2.900,110.0
+4499,1,7,3.300,110.0
+4497,1,8,3.100,120.0
+4494,1,8,2.900,134.0
+4474,1,8,3.800,114.0
+4418,1,5,4.100,45.2
+4386,2,3,4.400,49.3
+4009,2,5,3.5,76.0
+4008,1,9,5.600,117.0
+3949,0,7,4.9,34.2
+3926,1,5,6.0,35.6
+3878,2,5,1.4,90.7
+3784,1,8,4.300,104.0
+3698,2,3,-0.2,68.0
+3547,1,5,1.0,70.7
+3546,3,5,-0.5,132.0
+3336,1,1,5.5,12.0
+3333,1,5,3.900,64.6
+3236,0,2,3.8,20.3
+3076,0,6,3.1,84.4
+2585,3,5,4.200,75.7
+2520,0,6,3.800,64.0
+2351,0,3,5.3,15.7
+2312,0,2,4.6,12.5
+2162,2,7,3.000,99.9
+1236,1,8,6.800,114.0
+1234,0,7,3.800,73.2
+292331,2,3,3.900,49.3
+275182,1,8,6.1,72.9
+235244,1,8,6.7,72.9
+108144,2,5,3.9,117.0
+104972,1,6,3.300,72.7
+77157,1,4,3.2,49.8
+5942250,2,5,3.5,76.0
+5311217,1,7,4.500,90.9
+4564402,0,4,4.1,45.5
+4715169,2,3,-1.6,63.3
+5311501,0,4,4.4,43.7
+
+56
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pugrest</span> <span class="o">=</span> <span class="s2">&quot;https://pubchem.ncbi.nlm.nih.gov/rest/pug&quot;</span>
+<span class="n">pugin</span>   <span class="o">=</span> <span class="s2">&quot;compound/cid/4485,4499,5026,5734,8082&quot;</span>
+<span class="n">pugoper</span> <span class="o">=</span> <span class="s2">&quot;property/HBondDonorCount,HBondDonorCount,XLogP,TPSA&quot;</span>
+<span class="n">pugout</span>  <span class="o">=</span> <span class="s2">&quot;csv&quot;</span>
+
+<span class="n">chunk_size</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">csv2</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="k">for</span> <span class="n">start</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">cids</span><span class="p">),</span> <span class="n">chunk_size</span><span class="p">):</span>
+    <span class="n">chunk</span> <span class="o">=</span> <span class="n">cids</span><span class="p">[</span><span class="n">start</span> <span class="p">:</span> <span class="n">start</span> <span class="o">+</span> <span class="n">chunk_size</span><span class="p">]</span>  <span class="c1"># last chunk is shorter; slicing is safe</span>
+    <span class="n">pugin</span> <span class="o">=</span> <span class="s2">&quot;compound/cid/&quot;</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">chunk</span><span class="p">))</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">pugrest</span><span class="p">,</span> <span class="n">pugin</span><span class="p">,</span> <span class="n">pugoper</span><span class="p">,</span> <span class="n">pugout</span><span class="p">])</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">start</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">csv2</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">text</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">csv2</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+    <span class="c1"># optional throttling</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">start</span> <span class="o">//</span> <span class="n">chunk_size</span><span class="p">)</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">csv2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">csv2</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()))</span>  <span class="c1"># count the number of lines in the output</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;CID&quot;,&quot;HBondDonorCount&quot;,&quot;HBondDonorCount&quot;,&quot;XLogP&quot;,&quot;TPSA&quot;
+443422,0,0,3.1,40.2
+72301,0,0,3.2,40.2
+8082,1,1,0.800,12.0
+4485,1,1,2.200,110.0
+5353740,2,2,3.5,76.0
+5282230,2,2,3.2,84.9
+5282138,1,1,4.400,120.0
+1547484,0,0,5.800,6.5
+941361,0,0,6.000,6.5
+5734,1,1,0.2,94.6
+5494,0,0,5.0,57.2
+5422,0,0,6.4,61.9
+5417,0,0,3.2,40.2
+5290,2,2,2.6,62.2
+5245,5,5,-3.1,148.0
+5026,1,1,4.300,123.0
+4746,1,1,6.8,12.0
+4507,1,1,2.900,110.0
+4499,1,1,3.300,110.0
+4497,1,1,3.100,120.0
+4494,1,1,2.900,134.0
+4474,1,1,3.800,114.0
+4418,1,1,4.100,45.2
+4386,2,2,4.400,49.3
+4009,2,2,3.5,76.0
+4008,1,1,5.600,117.0
+3949,0,0,4.9,34.2
+3926,1,1,6.0,35.6
+3878,2,2,1.4,90.7
+3784,1,1,4.300,104.0
+3698,2,2,-0.2,68.0
+3547,1,1,1.0,70.7
+3546,3,3,-0.5,132.0
+3336,1,1,5.5,12.0
+3333,1,1,3.900,64.6
+3236,0,0,3.8,20.3
+3076,0,0,3.1,84.4
+2585,3,3,4.200,75.7
+2520,0,0,3.800,64.0
+2351,0,0,5.3,15.7
+2312,0,0,4.6,12.5
+2162,2,2,3.000,99.9
+1236,1,1,6.800,114.0
+1234,0,0,3.800,73.2
+292331,2,2,3.900,49.3
+275182,1,1,6.1,72.9
+235244,1,1,6.7,72.9
+108144,2,2,3.9,117.0
+104972,1,1,3.300,72.7
+77157,1,1,3.2,49.8
+5942250,2,2,3.5,76.0
+5311217,1,1,4.500,90.9
+4564402,0,0,4.1,45.5
+4715169,2,2,-1.6,63.3
+5311501,0,0,4.4,43.7
+
+56
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-success">
+<center><H1>Homework</H1></center>
+<p>Below is the list of CIDs of known antiinflmatory agents (obtained from PubChem via the URL: https://www.ncbi.nlm.nih.gov/pccompound?LinkName=mesh_pccompound&amp;from_uid=68000893).  Download the following properties of those compounds in a comma-separated format: Heavy atom count, rotatable bond count, molecular weight, XLogP, hydrogen bond donor count, hydrogen bond acceptor count, TPSA, and stereochemical SMILES.</p>
+<ul class="simple">
+<li><p>Split the input CID list into smaller chunks (with a chunk size of 100 CIDs).</p></li>
+<li><p>Process one chunk at a time using a for loop.</p></li>
+<li><p>Do not forget to add sleep() to comply with the usage policy.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cids</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">471</span><span class="p">,</span> <span class="mi">1981</span><span class="p">,</span> <span class="mi">2005</span><span class="p">,</span> <span class="mi">2097</span><span class="p">,</span> <span class="mi">2151</span><span class="p">,</span> <span class="mi">2198</span><span class="p">,</span> <span class="mi">2206</span><span class="p">,</span> <span class="mi">2214</span><span class="p">,</span> <span class="mi">2244</span><span class="p">,</span> <span class="mi">2307</span><span class="p">,</span> <span class="mi">2308</span><span class="p">,</span> <span class="mi">2313</span><span class="p">,</span> <span class="mi">2355</span><span class="p">,</span> <span class="mi">2396</span><span class="p">,</span> <span class="mi">2449</span><span class="p">,</span> <span class="mi">2462</span><span class="p">,</span> <span class="mi">2466</span><span class="p">,</span> <span class="mi">2581</span><span class="p">,</span> <span class="mi">2662</span><span class="p">,</span> <span class="mi">2794</span><span class="p">,</span> <span class="mi">2863</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="mi">3003</span><span class="p">,</span> <span class="mi">3033</span><span class="p">,</span> <span class="mi">3056</span><span class="p">,</span> <span class="mi">3059</span><span class="p">,</span> <span class="mi">3111</span><span class="p">,</span> <span class="mi">3177</span><span class="p">,</span> <span class="mi">3194</span><span class="p">,</span> <span class="mi">3230</span><span class="p">,</span> <span class="mi">3242</span><span class="p">,</span> <span class="mi">3282</span><span class="p">,</span> <span class="mi">3308</span><span class="p">,</span> <span class="mi">3332</span><span class="p">,</span> <span class="mi">3335</span><span class="p">,</span> <span class="mi">3342</span><span class="p">,</span> <span class="mi">3360</span><span class="p">,</span> <span class="mi">3371</span><span class="p">,</span> <span class="mi">3379</span><span class="p">,</span> <span class="mi">3382</span><span class="p">,</span> <span class="mi">3384</span><span class="p">,</span> <span class="mi">3394</span><span class="p">,</span> <span class="mi">3495</span><span class="p">,</span> <span class="mi">3553</span><span class="p">,</span> <span class="mi">3612</span><span class="p">,</span> <span class="mi">3672</span><span class="p">,</span> <span class="mi">3715</span><span class="p">,</span> <span class="mi">3716</span><span class="p">,</span> <span class="mi">3718</span><span class="p">,</span> <span class="mi">3778</span><span class="p">,</span> <span class="mi">3824</span><span class="p">,</span> <span class="mi">3825</span><span class="p">,</span> <span class="mi">3826</span><span class="p">,</span> <span class="mi">3935</span><span class="p">,</span> <span class="mi">3946</span><span class="p">,</span> <span class="mi">3965</span><span class="p">,</span> <span class="mi">4009</span><span class="p">,</span> <span class="mi">4037</span><span class="p">,</span> <span class="mi">4038</span><span class="p">,</span> <span class="mi">4044</span><span class="p">,</span> <span class="mi">4075</span><span class="p">,</span> <span class="mi">4159</span><span class="p">,</span> <span class="mi">4237</span><span class="p">,</span> <span class="mi">4386</span><span class="p">,</span> <span class="mi">4409</span><span class="p">,</span> <span class="mi">4413</span><span class="p">,</span> <span class="mi">4487</span><span class="p">,</span> <span class="mi">4488</span><span class="p">,</span> <span class="mi">4495</span><span class="p">,</span> <span class="mi">4534</span><span class="p">,</span> <span class="mi">4553</span><span class="p">,</span> <span class="mi">4614</span><span class="p">,</span> <span class="mi">4641</span><span class="p">,</span> <span class="mi">4671</span><span class="p">,</span> <span class="mi">4692</span><span class="p">,</span> <span class="mi">4781</span><span class="p">,</span> <span class="mi">4888</span><span class="p">,</span> <span class="mi">4895</span><span class="p">,</span> <span class="mi">4921</span><span class="p">,</span> <span class="mi">5059</span><span class="p">,</span> <span class="mi">5090</span><span class="p">,</span> <span class="mi">5147</span><span class="p">,</span> <span class="mi">5161</span><span class="p">,</span> <span class="mi">5208</span><span class="p">,</span> <span class="mi">5228</span><span class="p">,</span> <span class="mi">5339</span><span class="p">,</span> <span class="mi">5352</span><span class="p">,</span> <span class="mi">5359</span><span class="p">,</span> <span class="mi">5362</span><span class="p">,</span> <span class="mi">5468</span><span class="p">,</span> <span class="mi">5469</span><span class="p">,</span> <span class="mi">5475</span><span class="p">,</span> <span class="mi">5480</span><span class="p">,</span> <span class="mi">5509</span><span class="p">,</span> <span class="mi">5733</span><span class="p">,</span> <span class="mi">5743</span><span class="p">,</span> <span class="mi">5744</span><span class="p">,</span> <span class="mi">5745</span><span class="p">,</span> <span class="mi">5753</span><span class="p">,</span> <span class="mi">5754</span><span class="p">,</span> <span class="mi">5755</span><span class="p">,</span> <span class="mi">5834</span><span class="p">,</span> <span class="mi">5865</span><span class="p">,</span> <span class="mi">5875</span><span class="p">,</span> <span class="mi">5876</span><span class="p">,</span> <span class="mi">5877</span><span class="p">,</span> <span class="mi">6094</span><span class="p">,</span> <span class="mi">6213</span><span class="p">,</span> <span class="mi">6215</span><span class="p">,</span> <span class="mi">6247</span><span class="p">,</span> <span class="mi">6436</span><span class="p">,</span> <span class="mi">6741</span><span class="p">,</span> <span class="mi">7090</span><span class="p">,</span> <span class="mi">7497</span><span class="p">,</span> <span class="mi">8522</span><span class="p">,</span> <span class="mi">9053</span><span class="p">,</span> <span class="mi">9231</span><span class="p">,</span> <span class="mi">9642</span><span class="p">,</span> <span class="mi">9782</span><span class="p">,</span> <span class="mi">9878</span><span class="p">,</span> <span class="mi">10114</span><span class="p">,</span> <span class="mi">10154</span><span class="p">,</span> <span class="mi">10170</span><span class="p">,</span> <span class="mi">10185</span><span class="p">,</span> <span class="mi">10206</span><span class="p">,</span> <span class="mi">12555</span><span class="p">,</span> <span class="mi">12938</span><span class="p">,</span> <span class="mi">13802</span><span class="p">,</span> <span class="mi">14982</span><span class="p">,</span> <span class="mi">15209</span><span class="p">,</span> <span class="mi">16490</span><span class="p">,</span> <span class="mi">16533</span><span class="p">,</span> <span class="mi">16623</span><span class="p">,</span> <span class="mi">16639</span><span class="p">,</span> <span class="mi">16752</span><span class="p">,</span> <span class="mi">16923</span><span class="p">,</span> <span class="mi">17198</span><span class="p">,</span> <span class="mi">19161</span><span class="p">,</span> <span class="mi">20469</span><span class="p">,</span> <span class="mi">21102</span><span class="p">,</span> <span class="mi">21700</span><span class="p">,</span> <span class="mi">21800</span><span class="p">,</span> <span class="mi">21826</span><span class="p">,</span> <span class="mi">21975</span><span class="p">,</span> <span class="mi">22419</span><span class="p">,</span> <span class="mi">23205</span><span class="p">,</span> <span class="mi">26098</span><span class="p">,</span> <span class="mi">26248</span><span class="p">,</span> <span class="mi">26318</span><span class="p">,</span> <span class="mi">28718</span><span class="p">,</span> <span class="mi">28871</span><span class="p">,</span> <span class="mi">30869</span><span class="p">,</span> <span class="mi">30870</span><span class="p">,</span> <span class="mi">30951</span><span class="p">,</span> <span class="mi">31307</span><span class="p">,</span> <span class="mi">31378</span><span class="p">,</span> <span class="mi">31508</span><span class="p">,</span> <span class="mi">31635</span><span class="p">,</span> <span class="mi">31799</span><span class="p">,</span> <span class="mi">31800</span><span class="p">,</span> <span class="mi">32153</span><span class="p">,</span> <span class="mi">32327</span><span class="p">,</span> <span class="mi">32798</span><span class="p">,</span> <span class="mi">33958</span><span class="p">,</span> <span class="mi">35375</span><span class="p">,</span> <span class="mi">35455</span><span class="p">,</span> <span class="mi">35935</span><span class="p">,</span> <span class="mi">36833</span><span class="p">,</span> <span class="mi">37425</span><span class="p">,</span> <span class="mi">38081</span><span class="p">,</span> <span class="mi">38503</span><span class="p">,</span> <span class="mi">39212</span><span class="p">,</span> <span class="mi">39941</span><span class="p">,</span> <span class="mi">40000</span><span class="p">,</span> <span class="mi">40632</span><span class="p">,</span> <span class="mi">41643</span><span class="p">,</span> <span class="mi">43261</span><span class="p">,</span> <span class="mi">44219</span><span class="p">,</span> <span class="mi">47462</span><span class="p">,</span> <span class="mi">47795</span><span class="p">,</span> <span class="mi">50294</span><span class="p">,</span> <span class="mi">50295</span><span class="p">,</span> <span class="mi">51717</span><span class="p">,</span> <span class="mi">54445</span><span class="p">,</span> <span class="mi">54585</span><span class="p">,</span> <span class="mi">57782</span><span class="p">,</span> <span class="mi">59757</span><span class="p">,</span> <span class="mi">60164</span><span class="p">,</span> <span class="mi">60490</span><span class="p">,</span> <span class="mi">60542</span><span class="p">,</span> <span class="mi">60712</span><span class="p">,</span> <span class="mi">60726</span><span class="p">,</span> <span class="mi">60864</span><span class="p">,</span> <span class="mi">61486</span><span class="p">,</span> <span class="mi">62074</span><span class="p">,</span> <span class="mi">62924</span><span class="p">,</span> <span class="mi">63006</span><span class="p">,</span> <span class="mi">63019</span><span class="p">,</span> <span class="mi">64704</span><span class="p">,</span> <span class="mi">64738</span><span class="p">,</span> <span class="mi">64746</span><span class="p">,</span> <span class="mi">64747</span><span class="p">,</span> <span class="mi">64927</span><span class="p">,</span> <span class="mi">64945</span><span class="p">,</span> <span class="mi">64971</span><span class="p">,</span> <span class="mi">64982</span><span class="p">,</span> <span class="mi">65394</span><span class="p">,</span> <span class="mi">65464</span><span class="p">,</span> <span class="mi">65655</span><span class="p">,</span> <span class="mi">65679</span><span class="p">,</span> <span class="mi">65762</span><span class="p">,</span> <span class="mi">66249</span><span class="p">,</span> <span class="mi">67417</span><span class="p">,</span> <span class="mi">68700</span><span class="p">,</span> <span class="mi">68704</span><span class="p">,</span> <span class="mi">68706</span><span class="p">,</span> <span class="mi">68731</span><span class="p">,</span> <span class="mi">68749</span><span class="p">,</span> <span class="mi">68819</span><span class="p">,</span> <span class="mi">68865</span><span class="p">,</span> <span class="mi">68869</span><span class="p">,</span> <span class="mi">68917</span><span class="p">,</span> <span class="mi">71246</span><span class="p">,</span> <span class="mi">71354</span><span class="p">,</span> <span class="mi">71364</span><span class="p">,</span> <span class="mi">71386</span><span class="p">,</span> <span class="mi">71398</span><span class="p">,</span> <span class="mi">71414</span><span class="p">,</span> <span class="mi">71415</span><span class="p">,</span> <span class="mi">71771</span><span class="p">,</span> <span class="mi">72158</span><span class="p">,</span> <span class="mi">72300</span><span class="p">,</span> <span class="mi">73400</span><span class="p">,</span> <span class="mi">82153</span><span class="p">,</span> <span class="mi">84003</span><span class="p">,</span> <span class="mi">84429</span><span class="p">,</span> <span class="mi">90763</span><span class="p">,</span> <span class="mi">91626</span><span class="p">,</span> <span class="mi">91670</span><span class="p">,</span> <span class="mi">100472</span><span class="p">,</span> <span class="mi">102011</span><span class="p">,</span> <span class="mi">104762</span><span class="p">,</span> <span class="mi">104943</span><span class="p">,</span> <span class="mi">107641</span><span class="p">,</span> <span class="mi">107738</span><span class="p">,</span> <span class="mi">107793</span><span class="p">,</span> <span class="mi">108068</span><span class="p">,</span> <span class="mi">108130</span><span class="p">,</span> <span class="mi">114753</span><span class="p">,</span> <span class="mi">114840</span><span class="p">,</span> <span class="mi">114917</span><span class="p">,</span> <span class="mi">114999</span><span class="p">,</span> <span class="mi">115239</span><span class="p">,</span> <span class="mi">119032</span><span class="p">,</span> <span class="mi">119286</span><span class="p">,</span> <span class="mi">119365</span><span class="p">,</span> <span class="mi">119607</span><span class="p">,</span> <span class="mi">119828</span><span class="p">,</span> <span class="mi">119871</span><span class="p">,</span> <span class="mi">121928</span><span class="p">,</span> <span class="mi">121957</span><span class="p">,</span> <span class="mi">122139</span><span class="p">,</span> <span class="mi">122179</span><span class="p">,</span> <span class="mi">122182</span><span class="p">,</span> <span class="mi">123619</span><span class="p">,</span> <span class="mi">123673</span><span class="p">,</span> <span class="mi">123723</span><span class="p">,</span> <span class="mi">124978</span><span class="p">,</span> <span class="mi">128191</span><span class="p">,</span> <span class="mi">128229</span><span class="p">,</span> <span class="mi">128571</span><span class="p">,</span> <span class="mi">133021</span><span class="p">,</span> <span class="mi">134896</span><span class="p">,</span> <span class="mi">146364</span><span class="p">,</span> <span class="mi">151075</span><span class="p">,</span> <span class="mi">151166</span><span class="p">,</span> <span class="mi">152165</span><span class="p">,</span> <span class="mi">155354</span><span class="p">,</span> <span class="mi">155761</span><span class="p">,</span> <span class="mi">156391</span><span class="p">,</span> <span class="mi">158103</span><span class="p">,</span> <span class="mi">159557</span><span class="p">,</span> <span class="mi">162666</span><span class="p">,</span> <span class="mi">164676</span><span class="p">,</span> <span class="mi">167928</span><span class="p">,</span> <span class="mi">168928</span><span class="p">,</span> <span class="mi">174093</span><span class="p">,</span> <span class="mi">174277</span><span class="p">,</span> <span class="mi">176155</span><span class="p">,</span> <span class="mi">177976</span><span class="p">,</span> <span class="mi">180604</span><span class="p">,</span> <span class="mi">183088</span><span class="p">,</span> <span class="mi">189821</span><span class="p">,</span> <span class="mi">192156</span><span class="p">,</span> <span class="mi">196122</span><span class="p">,</span> <span class="mi">196840</span><span class="p">,</span> <span class="mi">196841</span><span class="p">,</span> <span class="mi">200674</span><span class="p">,</span> <span class="mi">201587</span><span class="p">,</span> <span class="mi">219121</span><span class="p">,</span> <span class="mi">222786</span><span class="p">,</span> <span class="mi">229860</span><span class="p">,</span> <span class="mi">235244</span><span class="p">,</span> <span class="mi">236702</span><span class="p">,</span> <span class="mi">259846</span><span class="p">,</span> <span class="mi">263373</span><span class="p">,</span> <span class="mi">275182</span><span class="p">,</span> <span class="mi">292331</span><span class="p">,</span> <span class="mi">425990</span><span class="p">,</span> <span class="mi">439503</span><span class="p">,</span> <span class="mi">439533</span><span class="p">,</span> <span class="mi">441335</span><span class="p">,</span> <span class="mi">441336</span><span class="p">,</span> <span class="mi">442534</span><span class="p">,</span> <span class="mi">442993</span><span class="p">,</span> <span class="mi">443943</span><span class="p">,</span> <span class="mi">443949</span><span class="p">,</span> <span class="mi">443967</span><span class="p">,</span> <span class="mi">444036</span><span class="p">,</span> <span class="mi">445154</span><span class="p">,</span> <span class="mi">445858</span><span class="p">,</span> <span class="mi">446925</span><span class="p">,</span> <span class="mi">479503</span><span class="p">,</span> <span class="mi">485711</span><span class="p">,</span> <span class="mi">490428</span><span class="p">,</span> <span class="mi">501254</span><span class="p">,</span> <span class="mi">522325</span><span class="p">,</span> <span class="mi">546807</span><span class="p">,</span> <span class="mi">578771</span><span class="p">,</span> <span class="mi">584547</span><span class="p">,</span> <span class="mi">610479</span><span class="p">,</span> <span class="mi">633091</span><span class="p">,</span> <span class="mi">633097</span><span class="p">,</span> <span class="mi">636374</span><span class="p">,</span> <span class="mi">636398</span><span class="p">,</span> <span class="mi">656604</span><span class="p">,</span> <span class="mi">656656</span><span class="p">,</span> <span class="mi">656852</span><span class="p">,</span> <span class="mi">657238</span><span class="p">,</span> <span class="mi">667550</span><span class="p">,</span> <span class="mi">927704</span><span class="p">,</span> <span class="mi">969510</span><span class="p">,</span> <span class="mi">969516</span><span class="p">,</span> <span class="mi">1548887</span><span class="p">,</span> <span class="mi">1548910</span><span class="p">,</span> <span class="mi">2737488</span><span class="p">,</span> <span class="mi">3033890</span><span class="p">,</span> <span class="mi">3033980</span><span class="p">,</span> <span class="mi">3045402</span><span class="p">,</span> <span class="mi">3051696</span><span class="p">,</span> <span class="mi">3055172</span><span class="p">,</span> <span class="mi">4129359</span><span class="p">,</span> <span class="mi">4306515</span><span class="p">,</span> <span class="mi">4483645</span><span class="p">,</span> <span class="mi">5018304</span><span class="p">,</span> <span class="mi">5185849</span><span class="p">,</span> <span class="mi">5280802</span><span class="p">,</span> <span class="mi">5280914</span><span class="p">,</span> <span class="mi">5280915</span><span class="p">,</span> <span class="mi">5281004</span><span class="p">,</span> <span class="mi">5281071</span><span class="p">,</span> <span class="mi">5281515</span><span class="p">,</span> <span class="mi">5281522</span><span class="p">,</span> <span class="mi">5281792</span><span class="p">,</span> <span class="mi">5282183</span><span class="p">,</span> <span class="mi">5282193</span><span class="p">,</span> <span class="mi">5282230</span><span class="p">,</span> <span class="mi">5282387</span><span class="p">,</span> <span class="mi">5282402</span><span class="p">,</span> <span class="mi">5282492</span><span class="p">,</span> <span class="mi">5283542</span><span class="p">,</span> <span class="mi">5283734</span><span class="p">,</span> <span class="mi">5284538</span><span class="p">,</span> <span class="mi">5284539</span><span class="p">,</span> <span class="mi">5311051</span><span class="p">,</span> <span class="mi">5311052</span><span class="p">,</span> <span class="mi">5311066</span><span class="p">,</span> <span class="mi">5311067</span><span class="p">,</span> <span class="mi">5311093</span><span class="p">,</span> <span class="mi">5311101</span><span class="p">,</span> <span class="mi">5311108</span><span class="p">,</span> <span class="mi">5311169</span><span class="p">,</span> <span class="mi">5311180</span><span class="p">,</span> <span class="mi">5318517</span><span class="p">,</span> <span class="mi">5320420</span><span class="p">,</span> <span class="mi">5322111</span><span class="p">,</span> <span class="mi">5352624</span><span class="p">,</span> <span class="mi">5353725</span><span class="p">,</span> <span class="mi">5353726</span><span class="p">,</span> <span class="mi">5353740</span><span class="p">,</span> <span class="mi">5353864</span><span class="p">,</span> <span class="mi">5354499</span><span class="p">,</span> <span class="mi">5377381</span><span class="p">,</span> <span class="mi">5420804</span><span class="p">,</span> <span class="mi">5420805</span><span class="p">,</span> <span class="mi">5458396</span><span class="p">,</span> <span class="mi">5472495</span><span class="p">,</span> <span class="mi">5481958</span><span class="p">,</span> <span class="mi">5701991</span><span class="p">,</span> <span class="mi">5702036</span><span class="p">,</span> <span class="mi">5702148</span><span class="p">,</span> <span class="mi">5702212</span><span class="p">,</span> <span class="mi">5702252</span><span class="p">,</span> <span class="mi">5702287</span><span class="p">,</span> <span class="mi">5745214</span><span class="p">,</span> <span class="mi">5942250</span><span class="p">,</span> <span class="mi">6420050</span><span class="p">,</span> <span class="mi">6429274</span><span class="p">,</span> <span class="mi">6437368</span><span class="p">,</span> <span class="mi">6437387</span><span class="p">,</span> <span class="mi">6438873</span><span class="p">,</span> <span class="mi">6447131</span><span class="p">,</span> <span class="mi">6453785</span><span class="p">,</span> <span class="mi">6473881</span><span class="p">,</span> <span class="mi">6509979</span><span class="p">,</span> <span class="mi">6708733</span><span class="p">,</span> <span class="mi">6710677</span><span class="p">,</span> <span class="mi">6714002</span><span class="p">,</span> <span class="mi">6917783</span><span class="p">,</span> <span class="mi">6917852</span><span class="p">,</span> <span class="mi">6917894</span><span class="p">,</span> <span class="mi">6918172</span><span class="p">,</span> <span class="mi">6918173</span><span class="p">,</span> <span class="mi">6918332</span><span class="p">,</span> <span class="mi">6918445</span><span class="p">,</span> <span class="mi">6918452</span><span class="p">,</span> <span class="mi">6918612</span><span class="p">,</span> <span class="mi">6925666</span><span class="p">,</span> <span class="mi">7060958</span><span class="p">,</span> <span class="mi">7251185</span><span class="p">,</span> <span class="mi">9554199</span><span class="p">,</span> <span class="mi">9798098</span><span class="p">,</span> <span class="mi">9799453</span><span class="p">,</span> <span class="mi">9841438</span><span class="p">,</span> <span class="mi">9843941</span><span class="p">,</span> <span class="mi">9846332</span><span class="p">,</span> <span class="mi">9865808</span><span class="p">,</span> <span class="mi">9868219</span><span class="p">,</span> <span class="mi">9869053</span><span class="p">,</span> <span class="mi">9871508</span><span class="p">,</span> <span class="mi">9875547</span><span class="p">,</span> <span class="mi">9883509</span><span class="p">,</span> <span class="mi">9897518</span><span class="p">,</span> <span class="mi">9897771</span><span class="p">,</span> <span class="mi">9907157</span><span class="p">,</span> <span class="mi">9913795</span><span class="p">,</span> <span class="mi">9919776</span><span class="p">,</span> <span class="mi">9926694</span><span class="p">,</span> <span class="mi">9934547</span><span class="p">,</span> <span class="mi">10363606</span><span class="p">,</span> <span class="mi">10918539</span><span class="p">,</span> <span class="mi">11158972</span><span class="p">,</span> <span class="mi">11513733</span><span class="p">,</span> <span class="mi">11561674</span><span class="p">,</span> <span class="mi">11616712</span><span class="p">,</span> <span class="mi">11870423</span><span class="p">,</span> <span class="mi">11949636</span><span class="p">,</span> <span class="mi">11954221</span><span class="p">,</span> <span class="mi">11954316</span><span class="p">,</span> <span class="mi">11954353</span><span class="p">,</span> <span class="mi">11954369</span><span class="p">,</span> <span class="mi">11957468</span><span class="p">,</span> <span class="mi">11961431</span><span class="p">,</span> <span class="mi">11972243</span><span class="p">,</span> <span class="mi">11972532</span><span class="p">,</span> <span class="mi">12300053</span><span class="p">,</span> <span class="mi">12313906</span><span class="p">,</span> <span class="mi">12313911</span><span class="p">,</span> <span class="mi">12606303</span><span class="p">,</span> <span class="mi">12634263</span><span class="p">,</span> <span class="mi">12714644</span><span class="p">,</span> <span class="mi">12874922</span><span class="p">,</span> <span class="mi">13018150</span><span class="p">,</span> <span class="mi">13020033</span><span class="p">,</span> <span class="mi">13041095</span><span class="p">,</span> <span class="mi">14010989</span><span class="p">,</span> <span class="mi">14515707</span><span class="p">,</span> <span class="mi">14798494</span><span class="p">,</span> <span class="mi">15895902</span><span class="p">,</span> <span class="mi">16051947</span><span class="p">,</span> <span class="mi">16132369</span><span class="p">,</span> <span class="mi">16213022</span><span class="p">,</span> <span class="mi">16213698</span><span class="p">,</span> <span class="mi">16218996</span><span class="p">,</span> <span class="mi">16219353</span><span class="p">,</span> <span class="mi">16220118</span><span class="p">,</span> <span class="mi">16759566</span><span class="p">,</span> <span class="mi">16760658</span><span class="p">,</span> <span class="mi">17750985</span><span class="p">,</span> <span class="mi">17753757</span><span class="p">,</span> <span class="mi">18526330</span><span class="p">,</span> <span class="mi">18632363</span><span class="p">,</span> <span class="mi">18647121</span><span class="p">,</span> <span class="mi">18943026</span><span class="p">,</span> <span class="mi">20054915</span><span class="p">,</span> <span class="mi">21120116</span><span class="p">,</span> <span class="mi">21637635</span><span class="p">,</span> <span class="mi">21637642</span><span class="p">,</span> <span class="mi">21893738</span><span class="p">,</span> <span class="mi">21893804</span><span class="p">,</span> <span class="mi">21982135</span><span class="p">,</span> <span class="mi">22141508</span><span class="p">,</span> <span class="mi">22811280</span><span class="p">,</span> <span class="mi">23509770</span><span class="p">,</span> <span class="mi">23631982</span><span class="p">,</span> <span class="mi">23653552</span><span class="p">,</span> <span class="mi">23657872</span><span class="p">,</span> <span class="mi">23663407</span><span class="p">,</span> <span class="mi">23663409</span><span class="p">,</span> <span class="mi">23663418</span><span class="p">,</span> <span class="mi">23663959</span><span class="p">,</span> <span class="mi">23663989</span><span class="p">,</span> <span class="mi">23665411</span><span class="p">,</span> <span class="mi">23665999</span><span class="p">,</span> <span class="mi">23667642</span><span class="p">,</span> <span class="mi">23669636</span><span class="p">,</span> <span class="mi">23674183</span><span class="p">,</span> <span class="mi">23674255</span><span class="p">,</span> <span class="mi">23674745</span><span class="p">,</span> <span class="mi">23675763</span><span class="p">,</span> <span class="mi">23680530</span><span class="p">,</span> <span class="mi">23681059</span><span class="p">,</span> <span class="mi">23684814</span><span class="p">,</span> <span class="mi">23688663</span><span class="p">,</span> <span class="mi">23693301</span><span class="p">,</span> <span class="mi">23694214</span><span class="p">,</span> <span class="mi">23702389</span><span class="p">,</span> <span class="mi">24181458</span><span class="p">,</span> <span class="mi">24721429</span><span class="p">,</span> <span class="mi">24761485</span><span class="p">,</span> <span class="mi">24799587</span><span class="p">,</span> <span class="mi">24847961</span><span class="p">,</span> <span class="mi">24847981</span><span class="p">,</span> <span class="mi">24867460</span><span class="p">,</span> <span class="mi">24867465</span><span class="p">,</span> <span class="mi">24867475</span><span class="p">,</span> <span class="mi">24883465</span><span class="p">,</span> <span class="mi">24916955</span><span class="p">,</span> <span class="mi">25077872</span><span class="p">,</span> <span class="mi">25113755</span><span class="p">,</span> <span class="mi">25796773</span><span class="p">,</span> <span class="mi">40469526</span><span class="p">,</span> <span class="mi">44119558</span><span class="p">,</span> <span class="mi">44202892</span><span class="p">,</span> <span class="mi">44260118</span><span class="p">,</span> <span class="mi">44266812</span><span class="p">,</span> <span class="mi">44386560</span><span class="p">,</span> <span class="mi">45006151</span><span class="p">,</span> <span class="mi">45006158</span><span class="p">,</span> <span class="mi">45039955</span><span class="p">,</span> <span class="mi">45356876</span><span class="p">,</span> <span class="mi">45356931</span><span class="p">,</span> <span class="mi">45357558</span><span class="p">,</span> <span class="mi">45357932</span><span class="p">,</span> <span class="mi">45358013</span><span class="p">,</span> <span class="mi">45358120</span><span class="p">,</span> <span class="mi">45358130</span><span class="p">,</span> <span class="mi">45358140</span><span class="p">,</span> <span class="mi">45358148</span><span class="p">,</span> <span class="mi">45358149</span><span class="p">,</span> <span class="mi">45488525</span><span class="p">,</span> <span class="mi">46174093</span><span class="p">,</span> <span class="mi">46397498</span><span class="p">,</span> <span class="mi">46780650</span><span class="p">,</span> <span class="mi">46780910</span><span class="p">,</span> <span class="mi">46783539</span><span class="p">,</span> <span class="mi">46783786</span><span class="p">,</span> <span class="mi">46783814</span><span class="p">,</span> <span class="mi">46863906</span><span class="p">,</span> <span class="mi">46878350</span><span class="p">,</span> <span class="mi">46882877</span><span class="p">,</span> <span class="mi">50989825</span><span class="p">,</span> <span class="mi">51026956</span><span class="p">,</span> <span class="mi">51340230</span><span class="p">,</span> <span class="mi">51398089</span><span class="p">,</span> <span class="mi">53384387</span><span class="p">,</span> <span class="mi">53394893</span><span class="p">,</span> <span class="mi">53486221</span><span class="p">,</span> <span class="mi">53486290</span><span class="p">,</span> <span class="mi">53486322</span><span class="p">,</span> <span class="mi">54194814</span><span class="p">,</span> <span class="mi">54605501</span><span class="p">,</span> <span class="mi">54675840</span><span class="p">,</span> <span class="mi">54676228</span><span class="p">,</span> <span class="mi">54677470</span><span class="p">,</span> <span class="mi">54677971</span><span class="p">,</span> <span class="mi">54677972</span><span class="p">,</span> <span class="mi">54677977</span><span class="p">,</span> <span class="mi">54682045</span><span class="p">,</span> <span class="mi">54684589</span><span class="p">,</span> <span class="mi">54690031</span><span class="p">,</span> <span class="mi">54697648</span><span class="p">,</span> <span class="mi">54708862</span><span class="p">,</span> <span class="mi">54714524</span><span class="p">,</span> <span class="mi">56841932</span><span class="p">,</span> <span class="mi">56842111</span><span class="p">,</span> <span class="mi">56845155</span><span class="p">,</span> <span class="mi">57347755</span><span class="p">,</span> <span class="mi">57486087</span><span class="p">,</span> <span class="mi">67668959</span><span class="p">,</span> <span class="mi">67804972</span><span class="p">,</span> <span class="mi">67986221</span><span class="p">,</span> <span class="mi">70470286</span><span class="p">,</span> <span class="mi">70678885</span><span class="p">,</span> <span class="mi">71306882</span><span class="p">,</span> <span class="mi">71587162</span><span class="p">,</span> <span class="mi">72774967</span><span class="p">,</span> <span class="mi">72941490</span><span class="p">,</span> <span class="mi">72941625</span><span class="p">,</span> <span class="mi">73758129</span><span class="p">,</span> <span class="mi">73759663</span><span class="p">,</span> <span class="mi">73759808</span><span class="p">,</span> <span class="mi">74787565</span><span class="p">,</span> <span class="mi">77906397</span><span class="p">,</span> <span class="mi">78577433</span><span class="p">,</span> <span class="mi">90488794</span><span class="p">,</span> <span class="mi">91711382</span><span class="p">,</span> <span class="mi">91826463</span><span class="p">,</span> <span class="mi">91873711</span><span class="p">,</span> <span class="mi">91881846</span><span class="p">,</span> <span class="mi">92131836</span><span class="p">,</span> <span class="mi">92462493</span><span class="p">,</span> <span class="mi">102004404</span><span class="p">,</span> <span class="mi">102601886</span><span class="p">,</span> <span class="mi">117072385</span><span class="p">,</span> <span class="mi">117072403</span><span class="p">,</span> <span class="mi">117072410</span><span class="p">,</span> <span class="mi">118701141</span><span class="p">,</span> <span class="mi">118701402</span><span class="p">,</span> <span class="mi">118984459</span><span class="p">,</span> <span class="mi">122130078</span><span class="p">,</span> <span class="mi">122130111</span><span class="p">,</span> <span class="mi">122130185</span><span class="p">,</span> <span class="mi">122130213</span><span class="p">,</span> <span class="mi">122130768</span><span class="p">,</span> <span class="mi">122173054</span><span class="p">,</span> <span class="mi">122173183</span><span class="p">,</span> <span class="mi">122361610</span><span class="p">,</span> <span class="mi">123134657</span><span class="p">,</span> <span class="mi">124081055</span><span class="p">,</span> <span class="mi">124463365</span><span class="p">,</span> <span class="mi">126968472</span><span class="p">,</span> <span class="mi">126968501</span><span class="p">,</span> <span class="mi">126968801</span><span class="p">,</span> <span class="mi">126969212</span><span class="p">,</span> <span class="mi">126969455</span><span class="p">,</span> <span class="mi">129009998</span><span class="p">,</span> <span class="mi">129010022</span><span class="p">,</span> <span class="mi">129010033</span><span class="p">,</span> <span class="mi">129010043</span><span class="p">,</span> <span class="mi">129316829</span><span class="p">,</span> <span class="mi">129317859</span><span class="p">,</span> <span class="mi">129317898</span><span class="p">,</span> <span class="mi">129628207</span><span class="p">,</span> <span class="mi">129628892</span><span class="p">,</span> <span class="mi">129670532</span><span class="p">,</span> <span class="mi">129735029</span><span class="p">,</span> <span class="mi">131632430</span><span class="p">,</span> <span class="mi">131635023</span><span class="p">,</span> <span class="mi">131676243</span><span class="p">,</span> <span class="mi">131750284</span><span class="p">,</span> <span class="mi">131954647</span><span class="p">,</span> <span class="mi">131954667</span><span class="p">,</span> <span class="mi">132399051</span><span class="p">,</span> <span class="mi">132399058</span><span class="p">,</span> <span class="mi">133112890</span><span class="p">,</span> <span class="mi">133126366</span><span class="p">,</span> <span class="mi">133126370</span><span class="p">,</span> <span class="mi">133562807</span><span class="p">,</span> <span class="mi">133659920</span><span class="p">,</span> <span class="mi">133687604</span><span class="p">,</span> <span class="mi">134129698</span><span class="p">,</span> <span class="mi">134159361</span><span class="p">,</span> <span class="mi">134460917</span><span class="p">,</span> <span class="mi">134612785</span><span class="p">,</span> <span class="mi">134687786</span><span class="p">,</span> <span class="mi">134688123</span><span class="p">,</span> <span class="mi">134688323</span><span class="p">,</span> <span class="mi">134688977</span><span class="p">,</span> <span class="mi">134689786</span><span class="p">,</span> <span class="mi">134693106</span><span class="p">,</span> <span class="mi">134693125</span><span class="p">,</span> <span class="mi">134693234</span><span class="p">,</span> <span class="mi">134694728</span><span class="p">,</span> <span class="mi">134694860</span><span class="p">,</span> <span class="mi">135413496</span><span class="p">,</span> <span class="mi">135413505</span><span class="p">,</span> <span class="mi">135414247</span><span class="p">,</span> <span class="mi">135484078</span><span class="p">,</span> <span class="mi">135515521</span><span class="p">,</span> <span class="mi">135565709</span><span class="p">,</span> <span class="mi">136040192</span><span class="p">,</span> <span class="mi">137177332</span><span class="p">,</span> <span class="mi">137699687</span><span class="p">,</span> <span class="mi">137705034</span><span class="p">,</span> <span class="mi">137705717</span><span class="p">,</span> <span class="mi">137705725</span><span class="p">,</span> <span class="mi">137705994</span><span class="p">,</span> <span class="mi">137706376</span><span class="p">,</span> <span class="mi">137706400</span><span class="p">,</span> <span class="mi">137795135</span><span class="p">,</span> <span class="mi">138059757</span><span class="p">,</span> <span class="mi">138107776</span><span class="p">,</span> <span class="mi">138113311</span><span class="p">,</span> <span class="mi">138113507</span><span class="p">,</span> <span class="mi">138113581</span><span class="p">,</span> <span class="mi">138114182</span><span class="p">,</span> <span class="mi">138114743</span><span class="p">]</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">cids</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>708
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your code in this cell.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="acknowledgment">
+<h1>Acknowledgment<a class="headerlink" href="#acknowledgment" title="Link to this heading">#</a></h1>
+<p>This module is essentially a copy of the 2019 Cheminformatics module 1: <a class="reference external" href="https://chem.libretexts.org/Courses/Intercollegiate_Courses/Cheminformatics/01%3A_Introduction/1.10%3A_Python_Assignment_1">“Getting Molecular Properties through PUG-REST”</a> created by Sunghwan Kim with a Public Domain copyright by Robert Belford. Minor edits are made by Ehren Bucholtz, including fixing some <a class="reference external" href="https://pubchem.ncbi.nlm.nih.gov/docs/glossary#section=SMILES">deprecated SMILES definitions</a> within PubChem’s glossary.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "cinf26"
+        },
+        kernelOptions: {
+            name: "cinf26",
+            path: "./content/modules/02-Introduction"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'cinf26'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2.0 PubChem PUG-REST</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-molecular-properties-through-pubchem-s-pug-rest-web-interface">Getting Molecular Properties through PubChem’s PUG REST Web Interface</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-shortest-code-to-get-pubchem-data">1. The Shortest Code to Get PubChem Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formulating-pug-rest-request-urls-using-variables">2. Formulating PUG-REST request URLs using variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-multiple-requests-using-a-for-loop">3. Making multiple requests using a for loop</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-multiple-molecular-properties">4. Getting multiple molecular properties</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgment">Acknowledgment</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Robert Belford
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright CC 4.0 2026 Robert Belford, additional info on each notebook.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <script async src="https://hypothes.is/embed.js"></script>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

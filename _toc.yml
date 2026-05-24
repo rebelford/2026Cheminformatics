@@ -8,6 +8,10 @@ parts:
       sections:
       - file: content/modules/01_PythonPrimer/01_1_python-basics
       - file: content/modules/01_PythonPrimer/01_2_python-intermediate
+    - file: content/modules/02_Introduction/README
+      sections:
+      - file: content/modules/02_Introduction/02-1-PubChemDataTypes
+      - file: content/modules/02_Introduction/02_2_PUG_REST_activity
     - file: content/modules/10_SupervisedML/README
       sections:
       - file: content/modules/10_SupervisedML/10_0_Intro

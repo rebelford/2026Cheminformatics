@@ -177,6 +177,8 @@
 <li class="toctree-l2"><a class="reference internal" href="01_2_python-intermediate.html">1.2 Intermediate Python</a></li>
 
 
+
+
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../02_Introduction/README.html">Module 2: Introduction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -192,6 +194,14 @@
 <li class="toctree-l2"><a class="reference internal" href="../03_Public_Chemical_Databases/03_01_Survey_Public_Chemical_Databases.html">Public Compound Databases</a></li>
 
 
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_Chemical_Representations/README.html">Module3: Chemical Representation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04_Chemical_Representations/04-01-introduction_chemical_representations.html">Chemical Representations and Introduction to RDKit</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../04_Chemical_Representations/04-02-PubChem3D_update.html">PubChem3D</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../04_Chemical_Representations/04-3-Substructure_Searching_with_SMARTS.html">Substructure Searching with SMARTS</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../10_SupervisedML/README.html">Module 10: Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -703,12 +713,18 @@ Press the Shift Key and the Enter Key (<code class="docutils literal notranslate
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">deltaG</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The value of delta G is&quot;</span><span class="p">,</span><span class="n">deltaG</span><span class="p">,</span><span class="s2">&quot;kJ/mol&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The value of delta G is </span><span class="si">{</span><span class="n">deltaG</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kJ/mol&quot;</span><span class="p">)</span> 
+<span class="c1"># the last print statement is an example of an f-string </span>
+<span class="c1"># with the variable in {}. </span>
+<span class="c1"># In this case, we are telling python to round the value of deltaG </span>
+<span class="c1"># to 2 decimal places.</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-3640.7000000000003
 The value of delta G is -3640.7000000000003 kJ/mol
+The value of delta G is -3640.70 kJ/mol
 </pre></div>
 </div>
 </div>
@@ -724,21 +740,23 @@ Functions have a name that is followed by parenthesis containing the function in
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># run this code cell</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">deltaG</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="n">deltaG</span><span class="o">*</span><span class="mi">1000</span><span class="p">,</span> <span class="s1">&#39;.2f&#39;</span><span class="p">))</span>
 <span class="n">deltaG</span> <span class="o">*</span> <span class="mi">1000</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">deltaG</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">deltaG</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="n">deltaG</span><span class="o">*</span><span class="mi">1000</span><span class="p">,</span> <span class="s1">&#39;.2f&#39;</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">deltaG</span><span class="p">)</span>
 <span class="n">deltaG</span> <span class="o">=</span> <span class="n">deltaG</span> <span class="o">*</span> <span class="mi">1000</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">deltaG</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="n">deltaG</span><span class="p">,</span> <span class="s1">&#39;.2f&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-3640.7000000000003
+-3640700.00
 -3640.7000000000003
--3640700.0000000005
+-3640700.00
 -3640.7000000000003
--3640700.0000000005
+-3640700.00
 </pre></div>
 </div>
 </div>
@@ -924,12 +942,11 @@ Explain the output in the the above code cell:
 <li><p>What happens when you add two strings?</p></li>
 </ul>
 <p>Predict the following:</p>
-<ul>
+<ul class="simple">
 <li><p>What do you think will happen if you add a float to an integer?</p></li>
 <li><p>What do you think will happen if you add an interger to a string?</p></li>
-<li></div></li>
 </ul>
-<div class="cell docutils container">
+</div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first</span> <span class="o">=</span> <span class="mf">3.0</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">firstNumber</span><span class="o">+</span><span class="n">secondNumber</span><span class="p">)</span>
@@ -1163,10 +1180,8 @@ In python counting starts at zero, so the first element of the list is list[0]. 
 <section id="repeating-an-operation-many-times-for-loops">
 <h2>Repeating an operation many times: for loops<a class="headerlink" href="#repeating-an-operation-many-times-for-loops" title="Link to this heading">#</a></h2>
 <p>Often, you will want to do something to every element of a list. The structure to do this is called a for loop. The general structure of a for loop is</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-<span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">:</span>
     <span class="n">do</span> <span class="n">things</span> <span class="n">using</span> <span class="n">variable</span>
-
 </pre></div>
 </div>
 <p>There are two very important pieces of syntax for the for loop. Notice the colon : after the word list. You will always have a colon at the end of a for statement. If you forget the colon, you will get an error when you try to run your code.</p>

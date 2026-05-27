@@ -1,0 +1,1322 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Substructure Searching with SMARTS &#8212; 2026 Cheminformatics OLCC</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/modules/04_Chemical_Representations/04-3-Substructure_Searching_with_SMARTS';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Module 10: Supervised Machine Learning" href="../10_SupervisedML/README.html" />
+    <link rel="prev" title="PubChem3D" href="04-02-PubChem3D_update.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="2026 Cheminformatics OLCC - Home"/>
+    <img src="../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="2026 Cheminformatics OLCC - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_PythonPrimer/README.html">Module 1: Python Primers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_PythonPrimer/01_1_python-basics.html">1.1 Python Basics</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../01_PythonPrimer/01_2_python-intermediate.html">1.2 Intermediate Python</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_Introduction/README.html">Module 2: Introduction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_Introduction/02-1-PubChemDataTypes.html">PubChem Training Course</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../02_Introduction/02_2_PUG_REST_activity.html">2.0 PubChem PUG-REST</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03_Public_Chemical_Databases/README.html">Module 3: Survey of Chemical Databases</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03_Public_Chemical_Databases/03_01_Survey_Public_Chemical_Databases.html">Public Compound Databases</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="README.html">Module3: Chemical Representation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="04-01-introduction_chemical_representations.html">Chemical Representations and Introduction to RDKit</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="04-02-PubChem3D_update.html">PubChem3D</a></li>
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Substructure Searching with SMARTS</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../10_SupervisedML/README.html">Module 10: Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_0_Intro.html">10.0: Introduction</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_1_data_prep.html">10.1: Data Preparation and Feature Engineering</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_2_NB_model_construction_workflow.html">10.2: Naive Bayes and Model Construction</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_3_model_evaluation.html">10.3: Evaluating and Interpreting Models</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_4_Pipelines.html">10.4: Pipelines, Persistence, and Reproducible Inference</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_5_RD_Model_Complexity.html">10.5 Random Forest and Model Complexity</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_6_LR_SVM_Modeling.html">10.6 Logistic Regression and SVM</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_7_MLP_Neural_Networks.html">10.7  Neural Networks</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/App_1/README.html">Appendix 1: Getting Set Up</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/App_1/A_01-1_OS.html">Appendix 1.1: Linux &amp; WSL</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/App_10/README.html">Appendix 10: Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/App_10/A_10-1AID_Selector.html">A10.1 BioAssay Screening: Enough Actives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/App_10/A_10-2NaiveBayes.html">A10.2 Bayes’ Theorem: From Inference to Models</a></li>
+
+
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://nanohub.org/tools/datachemolcc/hub/user-redirect/git-pull?repo=https%3A//github.com/rebelford/2026Cheminformatics&urlpath=lab/tree/2026Cheminformatics/content/modules/04_Chemical_Representations/04-3-Substructure_Searching_with_SMARTS.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/rebelford/2026Cheminformatics" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rebelford/2026Cheminformatics/issues/new?title=Issue%20on%20page%20%2Fcontent/modules/04_Chemical_Representations/04-3-Substructure_Searching_with_SMARTS.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/content/modules/04_Chemical_Representations/04-3-Substructure_Searching_with_SMARTS.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Substructure Searching with SMARTS</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-smarts">Introduction to SMARTS</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="substructure-searching-with-smarts">
+<h1>Substructure Searching with SMARTS<a class="headerlink" href="#substructure-searching-with-smarts" title="Link to this heading">#</a></h1>
+<p>This notebook is inspired by, borrows from and expands upon <a href = "https://colab.research.google.com/github/PatWalters/practical_cheminformatics_tutorials/blob/main/fundamentals/SMARTS_tutorial.ipynb"> An introduction to the SMILES ARbitrary Target Specification (SMARTS)</a> from Pat Walter’s <a href="https://github.com/PatWalters/practical_cheminformatics_tutorials?tab=readme-ov-file"> Cheminformatics Tutorials Github.</a></p>
+<div class="alert alert-block alert-info">
+<h2>Learning Objectives</h2>
+<ul class="simple">
+<li><p>Explore Substructure Searching:</p>
+<ul>
+<li><p>Review SMILES (Simplified Molecular Input Line Entry System)</p></li>
+<li><p>SMARTS (SMILES Arbitrary Target Specification)</p></li>
+</ul>
+</li>
+<li><p>Explore RDKit and SMARTS</p>
+<ul>
+<li><p>Chem.MolFromSmarts() method</p></li>
+<li><p>Chem.HasSubstructMatch() method</p></li>
+<li><p>Chem.GetSubstructMatch() method</p></li>
+</ul>
+</li>
+<li><p>Practice code from previous notebooks</p></li>
+</ul>
+</div>
+<section id="introduction-to-smarts">
+<h2>Introduction to SMARTS<a class="headerlink" href="#introduction-to-smarts" title="Link to this heading">#</a></h2>
+<p>In the previous notebook, we explored how compounds can be stored in chemical databases using line notations such as SMILES, InChI, and InChIKeys. Each method has its benefits and challenges. We found that SMILES are non-canonical, meaning that a single molecule can be represented by multiple different SMILES strings. As a result, searching for a specific SMILES string may not yield a match if the database stores a different valid representation of the same molecule. This issue was addressed by the InChI format, which is canonical but not easily human-readable. Finally, we looked at InChIKeys, which are excellent for database searching due to their fixed-length, hash-like format. However, InChIKeys are one-way encodings, so the original structural data must be stored separately if reconstruction is needed.</p>
+<p>In cheminformatics, searching for exact molecule matches isn’t the only goal when interacting with a database. Frequently, we want to search for parts of molecules or “substructures” that contain specific chemical patterns or functional groups. This is particularly important for drug discovery, where known structural motifs may be required for biological activity at a given target. we would like to be able to search for similar molecules that contain those motifs. Being able to identify other molecules that contain such motifs allows researchers to prioritize compounds for synthesis, testing, or elimination based on the presence or absence of key substructures.</p>
+<p>While SMILES presented challenges to searching for specific molecules, a extension of that system called SMARTS (SMILES Arbitrary Target Specification) was developed. Unlike SMILES, which encodes full molecules, SMARTS allows the specification of generalized substructures using a flexible, rule-based syntax. SMARTS share a lot of the same syntax as SMILES but there are a number of critical differences. At a simple level, any SMILES is also a valid SMARTS. This enables highly customizable pattern matching for substructure queries.</p>
+<p>In this notebook, you will learn how to define SMARTS queries, apply them to molecular datasets using RDKit, and visualize the results. Whether you’re designing a drug lead or mining a large chemical database, substructure searching with SMARTS is a powerful skill in your cheminformatics toolkit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># setting up the environment for RDKit visualization in Jupyter notebooks</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>  
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem.Draw</span><span class="w"> </span><span class="kn">import</span> <span class="n">IPythonConsole</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Draw</span>
+<span class="n">IPythonConsole</span><span class="o">.</span><span class="n">ipython_useSVG</span><span class="o">=</span><span class="kc">True</span>  <span class="c1">#&lt; set this to False if you want PNGs instead of SVGs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>When performing a substructure search, we need two pieces of data:</p>
+<ol class="arabic simple">
+<li><p>The <em>query</em>, which is the substructure or pattern we are searching for</p></li>
+<li><p>The <em>target molecule</em>, often referred to as the <em>superstructure</em>, which is the molecule being searched</p></li>
+</ol>
+<p>In RDKit, both the query and the target must first be converted into molecule objects. The query is typically defined using SMARTS, which allows for flexible and detailed pattern specification, while the target is usually defined using SMILES or read from a structure (MOL) file.</p>
+<p>Once both are defined, RDKit provides tools to determine whether the query pattern exists within the target molecule. This allows us to search for a wide variety of structural features (such as functional groups, ring systems, or atom types) within larger chemical structures.</p>
+<p>In the next example, we will demonstrate how to define both a query and a target, and use RDKit to check for the presence of a substructure match.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example to search for presence of a chlorine atom in a molecule</span>
+
+<span class="c1"># Define the query SMARTS for a chlorine atom</span>
+<span class="n">chlorine_query</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmarts</span><span class="p">(</span><span class="s1">&#39;[Cl]&#39;</span><span class="p">)</span>
+
+<span class="c1"># Define the target molecule (butane in example 1)</span>
+<span class="n">butane</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s1">&#39;CCCC&#39;</span><span class="p">)</span>
+<span class="n">chlorobutane</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s1">&#39;CC(Cl)CC&#39;</span><span class="p">)</span>
+<span class="n">bromobutane</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s1">&#39;CC(Br)CC&#39;</span><span class="p">)</span>
+
+<span class="c1"># Check if the chlorine query matches the butane molecule</span>
+<span class="n">butane_match</span> <span class="o">=</span> <span class="n">butane</span><span class="o">.</span><span class="n">HasSubstructMatch</span><span class="p">(</span><span class="n">chlorine_query</span><span class="p">)</span>
+<span class="n">chlorobutane_match</span> <span class="o">=</span> <span class="n">chlorobutane</span><span class="o">.</span><span class="n">HasSubstructMatch</span><span class="p">(</span><span class="n">chlorine_query</span><span class="p">)</span>
+<span class="n">bromobutane_match</span> <span class="o">=</span> <span class="n">bromobutane</span><span class="o">.</span><span class="n">HasSubstructMatch</span><span class="p">(</span><span class="n">chlorine_query</span><span class="p">)</span>
+
+<span class="c1"># Display the results</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Does butane contain a chlorine atom? </span><span class="si">{</span><span class="n">butane_match</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Does chlorobutane contain a chlorine atom? </span><span class="si">{</span><span class="n">chlorobutane_match</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Does bromobutane contain a chlorine atom? </span><span class="si">{</span><span class="n">bromobutane_match</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice how the syntax places Cl in brackets to define the SMARTS query. Brackets are essential for writing robust and flexible substructure queries in cheminformatics. In the following code cell we will use SMARTS to determine if there are any halogens present in the target molecule.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example to search for presence of a halogen atom in a molecule</span>
+
+<span class="c1"># Define the query SMARTS for a halogen atom</span>
+<span class="n">halogen_query</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmarts</span><span class="p">(</span><span class="s1">&#39;[F,Cl,Br,I]&#39;</span><span class="p">)</span> 
+
+<span class="c1"># Check if the halogen query matches the butane molecule</span>
+<span class="n">butane_match</span> <span class="o">=</span> <span class="n">butane</span><span class="o">.</span><span class="n">HasSubstructMatch</span><span class="p">(</span><span class="n">halogen_query</span><span class="p">)</span>
+<span class="n">chlorobutane_match</span> <span class="o">=</span> <span class="n">chlorobutane</span><span class="o">.</span><span class="n">HasSubstructMatch</span><span class="p">(</span><span class="n">halogen_query</span><span class="p">)</span>
+<span class="n">bromobutane_match</span> <span class="o">=</span> <span class="n">bromobutane</span><span class="o">.</span><span class="n">HasSubstructMatch</span><span class="p">(</span><span class="n">halogen_query</span><span class="p">)</span>
+
+<span class="c1"># Display the results</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Does butane contain a halogen atom? </span><span class="si">{</span><span class="n">butane_match</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Does chlorobutane contain a halogen atom? </span><span class="si">{</span><span class="n">chlorobutane_match</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Does bromobutane contain a halogen atom? </span><span class="si">{</span><span class="n">bromobutane_match</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that you are getting a feel for the code, let’s explore other patterns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example SMILES strings to search against</span>
+<span class="n">smiles_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;CCOCC&quot;</span><span class="p">,</span>        <span class="c1"># diethyl ether</span>
+    <span class="s2">&quot;CC(=O)O&quot;</span><span class="p">,</span>      <span class="c1"># acetic acid</span>
+    <span class="s2">&quot;CCO&quot;</span><span class="p">,</span>          <span class="c1"># ethanol</span>
+    <span class="s2">&quot;c1ccccc1&quot;</span><span class="p">,</span>     <span class="c1"># benzene</span>
+    <span class="s2">&quot;CC(N)C(=O)O&quot;</span><span class="p">,</span>  <span class="c1"># alanine</span>
+    <span class="s2">&quot;CN&quot;</span><span class="p">,</span>           <span class="c1"># methylamine</span>
+    <span class="s2">&quot;C1CCCCC1&quot;</span><span class="p">,</span>     <span class="c1"># cyclohexane</span>
+    <span class="s2">&quot;C1=NC=CC=C1&quot;</span><span class="p">,</span>  <span class="c1"># pyridine</span>
+    <span class="s2">&quot;C1CCNCC1  &quot;</span><span class="p">,</span>   <span class="c1"># piperidine</span>
+    <span class="s2">&quot;CC#N&quot;</span><span class="p">,</span>         <span class="c1"># acetonitrile</span>
+<span class="p">]</span>
+<span class="c1"># Convert SMILES strings to RDKit molecules and visualize them</span>
+<span class="n">molecules</span> <span class="o">=</span> <span class="p">[</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smi</span><span class="p">)</span> <span class="k">for</span> <span class="n">smi</span> <span class="ow">in</span> <span class="n">smiles_list</span><span class="p">]</span>
+<span class="n">Draw</span><span class="o">.</span><span class="n">MolsToGridImage</span><span class="p">(</span><span class="n">molecules</span><span class="p">,</span> <span class="n">molsPerRow</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-warning">
+<strong>Check your understanding</strong><br>
+<p>What do the following RDKit methods do?</p>
+<ul class="simple">
+<li><p>Chem.MolFromSmiles()</p></li>
+<li><p>Chem.MolFromSmarts()</p></li>
+</ul>
+<p>Before we explore SMARTS, make a note of the types of atoms present, functional groups present, rings and bond orders in molecules list that is displayed above.</p>
+<details>
+<summary>Extra information about these methods</summary>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">Chem.MolFromSmiles()</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">Chem.MolFromSmarts()</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Purpose</strong></p></td>
+<td><p>Creates a full molecule from a SMILES string</p></td>
+<td><p>Creates a substructure query from a SMARTS string</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Use case</strong></p></td>
+<td><p>Used for defining complete molecules</p></td>
+<td><p>Used for searching or matching substructures</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Supports wildcards</strong></p></td>
+<td><p>No wildcards or logical operators</p></td>
+<td><p>Supports wildcards, atom/bond logic</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Canonical structure</strong></p></td>
+<td><p>Often canonicalized on input</p></td>
+<td><p>Not canonicalized—intended for pattern-matching</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Atom interpretation</strong></p></td>
+<td><p>Assumes implicit atoms and bonds</p></td>
+<td><p>Requires more explicit atom typing</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Aliphatic nitrogen compounds are organic molecules in which the nitrogen atom is bonded to carbon atoms in an open chain or a non-aromatic ring structure, rather than directly to an aromatic ring.</p>
+<p>In SMARTS, we can distinguish between aliphatic and aromatic nitrogen atoms using specific syntax:</p>
+<ul class="simple">
+<li><p>An aliphatic nitrogen is represented as [N],</p></li>
+<li><p>An aromatic nitrogen is represented as [n].</p></li>
+</ul>
+<p>This distinction allows us to search selectively for different types of nitrogen environments within a target molecule. This can be an important capability when analyzing reactivity, functional group behavior, or biological activity.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Query to search for aliphatic nitrogen atoms</span>
+<span class="n">query_smarts</span> <span class="o">=</span> <span class="s2">&quot;N&quot;</span> <span class="c1"># SMARTS for aliphatic nitrogen atoms</span>
+<span class="n">query_mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmarts</span><span class="p">(</span><span class="n">query_smarts</span><span class="p">)</span> <span class="c1"># Convert SMARTS to RDKit molecule</span>
+
+<span class="n">matches</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># List to store matching molecules</span>
+<span class="c1"># Perform substructure search</span>
+<span class="k">for</span> <span class="n">mol</span> <span class="ow">in</span> <span class="n">molecules</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">mol</span><span class="o">.</span><span class="n">HasSubstructMatch</span><span class="p">(</span><span class="n">query_mol</span><span class="p">):</span>  <span class="c1"># Check if the molecule contains the substructure</span>
+        <span class="n">matches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>  <span class="c1"># If it does, add it to the matches list   </span>
+        
+
+
+<span class="c1"># Visualize the matches</span>
+<span class="n">Draw</span><span class="o">.</span><span class="n">MolsToGridImage</span><span class="p">(</span><span class="n">matches</span><span class="p">,</span> <span class="n">molsPerRow</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">subImgSize</span><span class="o">=</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="n">legends</span><span class="o">=</span><span class="p">[</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolToSmiles</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span> <span class="k">for</span> <span class="n">mol</span> <span class="ow">in</span> <span class="n">matches</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Query to search for aromatic nitrogen atoms</span>
+<span class="n">query_smarts</span> <span class="o">=</span> <span class="s2">&quot;n&quot;</span> <span class="c1"># SMARTS for aromatic nitrogen atoms</span>
+<span class="n">query_mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmarts</span><span class="p">(</span><span class="n">query_smarts</span><span class="p">)</span> <span class="c1"># Convert SMARTS to RDKit molecule</span>
+
+<span class="n">matches</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># List to store matching molecules</span>
+<span class="c1"># Perform substructure search</span>
+<span class="k">for</span> <span class="n">mol</span> <span class="ow">in</span> <span class="n">molecules</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">mol</span><span class="o">.</span><span class="n">HasSubstructMatch</span><span class="p">(</span><span class="n">query_mol</span><span class="p">):</span>  <span class="c1"># Check if the molecule contains the substructure</span>
+        <span class="n">matches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>  <span class="c1"># If it does, add it to the matches list   </span>
+        
+
+
+<span class="c1"># Visualize the matches</span>
+<span class="n">Draw</span><span class="o">.</span><span class="n">MolsToGridImage</span><span class="p">(</span><span class="n">matches</span><span class="p">,</span> <span class="n">molsPerRow</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">subImgSize</span><span class="o">=</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="n">legends</span><span class="o">=</span><span class="p">[</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolToSmiles</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span> <span class="k">for</span> <span class="n">mol</span> <span class="ow">in</span> <span class="n">matches</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In our SMILES list we had 10 molecules, and each search limited us to finding either aliphatic or aromatic nitrogens. If we wanted to find <strong>either</strong> type of nitrogen, we can search by indicating the general atom by using its atomic number.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query_smarts</span> <span class="o">=</span> <span class="s2">&quot;[#7]&quot;</span> <span class="c1"># SMARTS for any nitrogen atoms</span>
+<span class="n">query_mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmarts</span><span class="p">(</span><span class="n">query_smarts</span><span class="p">)</span> <span class="c1"># Convert SMARTS to RDKit molecule</span>
+
+<span class="n">matches</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># List to store matching molecules</span>
+<span class="c1"># Perform substructure search</span>
+<span class="k">for</span> <span class="n">mol</span> <span class="ow">in</span> <span class="n">molecules</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">mol</span><span class="o">.</span><span class="n">HasSubstructMatch</span><span class="p">(</span><span class="n">query_mol</span><span class="p">):</span>  <span class="c1"># Check if the molecule contains the substructure</span>
+        <span class="n">matches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>  <span class="c1"># If it does, add it to the matches list   </span>
+
+<span class="c1"># Visualize the matches</span>
+<span class="n">Draw</span><span class="o">.</span><span class="n">MolsToGridImage</span><span class="p">(</span><span class="n">matches</span><span class="p">,</span> <span class="n">molsPerRow</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">subImgSize</span><span class="o">=</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="n">legends</span><span class="o">=</span><span class="p">[</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolToSmiles</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span> <span class="k">for</span> <span class="n">mol</span> <span class="ow">in</span> <span class="n">matches</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example SMARTS patterns</span>
+<span class="n">smarts_patterns</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Hydroxyl&#39;</span><span class="p">:</span> <span class="s1">&#39;[OX2H]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Carbonyl&#39;</span><span class="p">:</span> <span class="s1">&#39;[CX3]=[OX1]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;6 membered aromatic ring&#39;</span><span class="p">:</span> <span class="s1">&#39;a1aaaaa1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Primary amine&#39;</span><span class="p">:</span> <span class="s1">&#39;[NX3;H2]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Carboxylic acid&#39;</span><span class="p">:</span> <span class="s1">&#39;[CX3](=O)[OX2H1]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Nitrile&#39;</span><span class="p">:</span> <span class="s1">&#39;[NX1]#[CX2]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ether&#39;</span><span class="p">:</span> <span class="s1">&#39;[O;D2]&#39;</span>
+<span class="p">}</span>
+
+<span class="c1"># Randomly select a SMARTS pattern</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="n">selected_smarts</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">smarts_patterns</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span> 
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selected SMARTS pattern: </span><span class="si">{</span><span class="n">selected_smarts</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-warning">
+<strong>Check your understanding</strong><br>
+<p>The above code cell contains a list of SMARTS patterns and a randomly selected SMARTS pattern. In the code cell below write code to search the molcules list for your randomly selected SMARTS pattern.</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here to search the molecules list for your randomly selected SMARTS pattern</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Another method for querying a target molecule in RDKit is the <code class="docutils literal notranslate"><span class="pre">GetSubstructMatch()</span></code> function. This method allows us to identify which atoms in the target molecule match a given substructure pattern. To use it, we first create a Mol object for the target molecule from a SMILES string, and define a query pattern using <code class="docutils literal notranslate"><span class="pre">MolFromSmarts()</span></code>.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">GetSubstructMatch()</span></code> is called on the target molecule with the SMARTS query as an argument, it returns a tuple of atom indices that match the substructure. These indices can then be used to highlight the matching atoms when the molecule is displayed.</p>
+<p>This is especially useful when visualizing functional groups or patterns directly on complex molecular structures.</p>
+<p>In the following we are looking to find the methylenedioxy substructure in methylenedioxymethamphetamine(MDMA). Let’s visualize MDMA first so we are familiar with the molecule’s structure.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mdma</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s1">&#39;CC(CC1=CC2=C(C=C1)OCO2)NC&#39;</span><span class="p">)</span>  <span class="c1"># Example SMILES for MDMA</span>
+<span class="n">IPythonConsole</span><span class="o">.</span><span class="n">drawOptions</span><span class="o">.</span><span class="n">addAtomIndices</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">mdma</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we need to generate the SMARTS query. A methylenedioxy group is a functional group consisting of a –O–CH₂–O– bridge connecting two adjacent positions on an aromatic ring. It looks like a 1,3-dioxole fused to a benzene ring.</p>
+<p>The pattern we are looking for is:</p>
+<ul class="simple">
+<li><p>two ring oxygen atoms</p></li>
+<li><p>connected by a methylene bridge</p></li>
+</ul>
+<p>SMARTS allows for detailed specification of atomic properties using atom expressions, which can include both element type and structural context. For example, <code class="docutils literal notranslate"><span class="pre">[O;R1]</span></code> represents an oxygen atom that is part of a ring. The <code class="docutils literal notranslate"><span class="pre">O</span></code> indicates the atom is oxygen, while the <code class="docutils literal notranslate"><span class="pre">R1</span></code> is a ring membership descriptor specifying that the atom belongs to exactly one ring system.</p>
+<p>To ensure we have a methylene, rather than using <code class="docutils literal notranslate"><span class="pre">[C]</span></code> we want to make sure we have an aliphatic carbon with two hydrogens attached. This is achieved with <code class="docutils literal notranslate"><span class="pre">[CH2]</span></code>.</p>
+<p>In the case of a methylenedioxy group, <code class="docutils literal notranslate"><span class="pre">[O;R1][CH2][O;R1]</span></code> is used to match the –O–CH₂–O– bridge where both oxygens are part of a ring, helping distinguish it from non-cyclic ethers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mdma</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s1">&#39;CC(CC1=CC2=C(C=C1)OCO2)NC&#39;</span><span class="p">)</span>  <span class="c1"># Example SMILES for MDMA</span>
+<span class="n">query_smarts</span> <span class="o">=</span> <span class="s2">&quot;[O;R1][CH2][O;R1]&quot;</span>  <span class="c1"># SMARTS for methylenedioxy group</span>
+<span class="n">new_query</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmarts</span><span class="p">(</span><span class="n">query_smarts</span><span class="p">)</span>  <span class="c1"># Set up SMARTS query for methylenedioxy group</span>
+<span class="n">mdma_matches</span> <span class="o">=</span> <span class="n">mdma</span><span class="o">.</span><span class="n">GetSubstructMatch</span><span class="p">(</span><span class="n">new_query</span><span class="p">)</span>  <span class="c1"># Get indices of matching</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MDMA matches for methylenedioxy group: </span><span class="si">{</span><span class="n">mdma_matches</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">IPythonConsole</span><span class="o">.</span><span class="n">drawOptions</span><span class="o">.</span><span class="n">addAtomIndices</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">mdma</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-warning">
+<strong>Check your understanding</strong><br>
+<p>In the code cell below, show that benzene is a substructure of MDMA.</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s go one step deeper. In the case of MDMA, we can see that there are two oxygens connected to an aromatic ring. Run the following code cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mdma</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s1">&#39;CC(CC1=CC2=C(C=C1)OCO2)NC&#39;</span><span class="p">)</span>  <span class="c1"># Example SMILES for MDMA</span>
+<span class="n">query_smarts</span> <span class="o">=</span> <span class="s2">&quot;c1ccccc1[#8]&quot;</span>  <span class="c1"># SMARTS for phenol</span>
+<span class="n">new_query</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmarts</span><span class="p">(</span><span class="n">query_smarts</span><span class="p">)</span>  <span class="c1"># Example SMARTS for methylenedioxy group</span>
+<span class="n">mdma_matches</span> <span class="o">=</span> <span class="n">mdma</span><span class="o">.</span><span class="n">GetSubstructMatch</span><span class="p">(</span><span class="n">new_query</span><span class="p">)</span>  <span class="c1"># Get indices of matching</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MDMA matches for phenol group: </span><span class="si">{</span><span class="n">mdma_matches</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">IPythonConsole</span><span class="o">.</span><span class="n">drawOptions</span><span class="o">.</span><span class="n">addAtomIndices</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">mdma</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that the highlighted part of the molecule only shows one match even though the other oxygen could match as well. If you want to find all matching substructures you can use RDKit’s <code class="docutils literal notranslate"><span class="pre">GetSubstructMatches()</span></code> method. This will return a tuple of all atom indices.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mdma</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s1">&#39;CC(CC1=CC2=C(C=C1)OCO2)NC&#39;</span><span class="p">)</span>  <span class="c1"># Example SMILES for MDMA</span>
+<span class="n">query_smarts</span> <span class="o">=</span> <span class="s2">&quot;c1ccccc1[#8]&quot;</span>  <span class="c1"># SMARTS for henol</span>
+<span class="n">new_query</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmarts</span><span class="p">(</span><span class="n">query_smarts</span><span class="p">)</span>  <span class="c1"># Example SMARTS for methylenedioxy group</span>
+<span class="n">mdma_matches</span> <span class="o">=</span> <span class="n">mdma</span><span class="o">.</span><span class="n">GetSubstructMatches</span><span class="p">(</span><span class="n">new_query</span><span class="p">)</span>  <span class="c1"># Get indices of matching</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MDMA matches for phenol group: </span><span class="si">{</span><span class="n">mdma_matches</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">IPythonConsole</span><span class="o">.</span><span class="n">drawOptions</span><span class="o">.</span><span class="n">addAtomIndices</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">mdma</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Alternatively, we could have indicated that we are looking for any oxygen connected to an aromatic carbon.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mdma</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s1">&#39;CC(CC1=CC2=C(C=C1)OCO2)NC&#39;</span><span class="p">)</span>  <span class="c1"># Example SMILES for MDMA</span>
+<span class="n">query_smarts</span> <span class="o">=</span> <span class="s2">&quot;c[O]&quot;</span>  <span class="c1"># # SMARTS for oxygen connected to an aromatic carbon</span>
+<span class="n">new_query</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmarts</span><span class="p">(</span><span class="n">query_smarts</span><span class="p">)</span>  <span class="c1"># Example SMARTS for methylenedioxy group</span>
+<span class="n">mdma_matches</span> <span class="o">=</span> <span class="n">mdma</span><span class="o">.</span><span class="n">GetSubstructMatches</span><span class="p">(</span><span class="n">new_query</span><span class="p">)</span>  <span class="c1"># Get indices of matching</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MDMA matches for oxygen connected to an aromatic carbon: </span><span class="si">{</span><span class="n">mdma_matches</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">IPythonConsole</span><span class="o">.</span><span class="n">drawOptions</span><span class="o">.</span><span class="n">addAtomIndices</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">mdma</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Curiously, the earlier visualization shows a highlight between atoms 5 and 6, which should not be highlighted based on our SMARTS pattern. This appears to be an artifact or misinterpretation. Our pattern is intended to match an aromatic carbon bonded to an oxygen, not a bond between two aromatic carbons.</p>
+<p>To resolve this, we can redraw the molecule and manually specify the atoms and bonds to highlight. This approach gives us full control over what is visualized and avoids accidental highlights due to automatic matching behavior.</p>
+<p>The variable <code class="docutils literal notranslate"><span class="pre">mdma_matches</span></code> is a list of tuples, where each tuple contains the atom indices for a substructure match. To highlight all matched atoms, we first need to flatten the tuples as a list:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[(5, 11), (6, 9)]  →  [5, 11, 6, 9]
+</pre></div>
+</div>
+<p>With the flattened list of atoms, we can tell RDKit which atoms to highlight. Then, to highlight the correct bonds, we search for bonds between adjacent atoms within each match. This ensures we highlight the bond between atoms 5 and 11 (which are part of the same match), and not between atoms 5 and 6 (which are in different matches).</p>
+<p>Finally, we redraw the molecule using RDKit’s more flexible drawing tools, specifying the atoms and bonds to highlight exactly as intended.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem.Draw</span><span class="w"> </span><span class="kn">import</span> <span class="n">rdMolDraw2D</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVG</span>
+
+<span class="c1"># Create new mol object and Kekulize</span>
+<span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">Mol</span><span class="p">(</span><span class="n">mdma</span><span class="p">)</span>
+
+
+<span class="c1"># Flatten list of matched atoms</span>
+<span class="n">highlight_atoms</span> <span class="o">=</span> <span class="nb">list</span><span class="p">({</span><span class="n">atom_idx</span> <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">mdma_matches</span> <span class="k">for</span> <span class="n">atom_idx</span> <span class="ow">in</span> <span class="n">match</span><span class="p">})</span>
+
+<span class="c1"># Find bonds between all *adjacent* atoms in each match</span>
+<span class="n">highlight_bonds</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">mdma_matches</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">match</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">bond</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">GetBondBetweenAtoms</span><span class="p">(</span><span class="n">match</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">match</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">bond</span><span class="p">:</span>  <span class="c1"># Make sure a bond exists between the two atoms</span>
+            <span class="n">highlight_bonds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bond</span><span class="o">.</span><span class="n">GetIdx</span><span class="p">())</span>
+
+<span class="c1"># Draw</span>
+<span class="n">drawer</span> <span class="o">=</span> <span class="n">rdMolDraw2D</span><span class="o">.</span><span class="n">MolDraw2DSVG</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="n">drawer</span><span class="o">.</span><span class="n">DrawMolecule</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">highlightAtoms</span><span class="o">=</span><span class="n">highlight_atoms</span><span class="p">,</span> <span class="n">highlightBonds</span><span class="o">=</span><span class="n">highlight_bonds</span><span class="p">)</span>
+<span class="n">drawer</span><span class="o">.</span><span class="n">FinishDrawing</span><span class="p">()</span>
+<span class="n">svg</span> <span class="o">=</span> <span class="n">drawer</span><span class="o">.</span><span class="n">GetDrawingText</span><span class="p">()</span>
+<span class="n">SVG</span><span class="p">(</span><span class="n">svg</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;svg:&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>  <span class="c1"># Display SVG</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-success">
+<details>
+<summary>Why this matters</summary>
+Visualizing chemical substructures accurately is essential in cheminformatics and drug discovery. When RDKit highlights atoms and bonds based on a query, it’s easy to assume the output is always correct. But sometimes, unexpected highlights can occur due to default settings or overlapping matches.<br><br> By taking control of how atoms and bonds are highlighted, you’re not just fixing a display issue. You are learning how to verify results, debug molecular queries, and communicate chemical meaning more precisely. These are the same skills computational chemists use when developing structure-based filters, similarity searches, or pattern-based property prediction tools.<br><br> In short: <b>knowing what your code is highlighting, and why, helps you trust your results.</b><p>In many situations, we want to define a query that matches more than one type of atom. For example, suppose we want a pattern that can match both benzene and pyridine (both are six-membered aromatic rings) but with different atoms at one position. This can be accomplished in SMARTS by using a comma-separated list of atom types enclosed in square brackets. To match either a carbon or nitrogen at the final ring position, we can use the SMARTS pattern:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c1cccc</span><span class="p">[</span><span class="n">c</span><span class="p">,</span><span class="n">n</span><span class="p">]</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>This pattern matches both benzene (where the final atom is <code class="docutils literal notranslate"><span class="pre">c</span></code>) and pyridine (where it’s <code class="docutils literal notranslate"><span class="pre">n</span></code>). Notice that we are using lowercase <code class="docutils literal notranslate"><span class="pre">c</span></code> and <code class="docutils literal notranslate"><span class="pre">n</span></code> as we are indicating this is an aromatic ring.</p>
+<p>One last thing about <code class="docutils literal notranslate"><span class="pre">GetSubstructMatches()</span></code> that you should be aware of. When displaying a single molecule in a Jupyter notebook, RDKit automatically highlights the matched atoms because <code class="docutils literal notranslate"><span class="pre">GetSubstructMatch()</span></code> sets the internal match information and Jupyter’s IPython integration checks for a stored match and highlights it using <code class="docutils literal notranslate"><span class="pre">__sssAtoms</span></code> behind the scenes.</p>
+<p>Therefore, this only works for single molecules, because when you call a <code class="docutils literal notranslate"><span class="pre">mol</span></code> object alone, IPython draws it using special hooks behind the scenes.</p>
+<p>The following code shows you how to do this for a group.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">antihistamines</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;chlorpheniramine&#39;</span><span class="p">:</span> <span class="s1">&#39;InChI=1S/C16H19ClN2/c1-19(2)12-10-15(16-5-3-4-11-18-16)13-6-8-14(17)9-7-13/h3-9,11,15H,10,12H2,1-2H3&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;diphenhydramine&#39;</span><span class="p">:</span> <span class="s1">&#39;InChI=1S/C17H21NO/c1-18(2)13-14-19-17(15-9-5-3-6-10-15)16-11-7-4-8-12-16/h3-12,17H,13-14H2,1-2H3&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ketotifen&#39;</span><span class="p">:</span> <span class="s1">&#39;InChI=1S/C19H19NOS/c1-20-9-6-13(7-10-20)18-15-5-3-2-4-14(15)12-17(21)19-16(18)8-11-22-19/h2-5,8,11H,6-7,9-10,12H2,1H3&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;promethazine&#39;</span><span class="p">:</span> <span class="s1">&#39;InChI=1S/C17H20N2S/c1-13(18(2)3)12-19-14-8-4-6-10-16(14)20-17-11-7-5-9-15(17)19/h4-11,13H,12H2,1-3H3&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ebastine&#39;</span><span class="p">:</span> <span class="s1">&#39;InChI=1S/C32H39NO2/c1-32(2,3)28-18-16-25(17-19-28)30(34)15-10-22-33-23-20-29(21-24-33)35-31(26-11-6-4-7-12-26)27-13-8-5-9-14-27/h4-9,11-14,16-19,29,31H,10,15,20-24H2,1-3H3&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;loratidine&#39;</span><span class="p">:</span> <span class="s1">&#39;InChI=1S/C22H23ClN2O2/c1-2-27-22(26)25-12-9-15(10-13-25)20-19-8-7-18(23)14-17(19)6-5-16-4-3-11-24-21(16)20/h3-4,7-8,11,14H,2,5-6,9-10,12-13H2,1H3&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;cyproheptadine&#39;</span><span class="p">:</span> <span class="s1">&#39;InChI=1S/C21H21N/c1-22-14-12-18(13-15-22)21-19-8-4-2-6-16(19)10-11-17-7-3-5-9-20(17)21/h2-11H,12-15H2,1H3&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;triprolidine&#39;</span><span class="p">:</span> <span class="s1">&#39;InChI=1S/C19H22N2/c1-16-7-9-17(10-8-16)18(19-6-2-3-12-20-19)11-15-21-13-4-5-14-21/h2-3,6-12H,4-5,13-15H2,1H3/b18-11+&#39;</span>
+<span class="p">}</span>
+
+<span class="c1"># convert InChI strings to RDKit molecules</span>
+<span class="n">antihistamines_mols</span> <span class="o">=</span> <span class="p">[</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolFromInchi</span><span class="p">(</span><span class="n">inchi</span><span class="p">)</span> <span class="k">for</span> <span class="n">inchi</span> <span class="ow">in</span> <span class="n">antihistamines</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+
+<span class="n">query_smarts</span> <span class="o">=</span> <span class="s2">&quot;c1cccc[c,n]1&quot;</span>  <span class="c1"># SMARTS for benzene or pyridine ring</span>
+<span class="n">query</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmarts</span><span class="p">(</span><span class="n">query_smarts</span><span class="p">)</span>
+
+<span class="n">mols_copy</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Make editable copies</span>
+<span class="n">highlight_atom_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">highlight_bond_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">mol</span> <span class="ow">in</span> <span class="n">antihistamines_mols</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">mol</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">mols_copy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="n">highlight_atom_list</span><span class="o">.</span><span class="n">append</span><span class="p">([])</span>
+        <span class="n">highlight_bond_list</span><span class="o">.</span><span class="n">append</span><span class="p">([])</span>
+        <span class="k">continue</span>
+        
+        <span class="c1"># Create a copy so original molecule isn&#39;t altered</span>
+    <span class="n">mol_copy</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">Mol</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
+    <span class="n">mols_copy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mol_copy</span><span class="p">)</span>
+
+
+
+    <span class="n">matches</span> <span class="o">=</span> <span class="n">mol_copy</span><span class="o">.</span><span class="n">GetSubstructMatches</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+    <span class="n">atoms</span> <span class="o">=</span> <span class="p">{</span><span class="n">atom</span> <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">matches</span> <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">match</span><span class="p">}</span>
+    <span class="n">bonds</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">matches</span><span class="p">:</span>
+        <span class="n">match_atoms</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">match</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">match_atoms</span><span class="p">)):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">match_atoms</span><span class="p">)):</span>
+                <span class="n">bond</span> <span class="o">=</span> <span class="n">mol_copy</span><span class="o">.</span><span class="n">GetBondBetweenAtoms</span><span class="p">(</span><span class="n">match_atoms</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">match_atoms</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+                <span class="k">if</span> <span class="n">bond</span><span class="p">:</span>
+                    <span class="n">bonds</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bond</span><span class="o">.</span><span class="n">GetIdx</span><span class="p">())</span>
+
+
+
+    <span class="n">highlight_atom_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">atoms</span><span class="p">))</span>
+    <span class="n">highlight_bond_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">bonds</span><span class="p">))</span>
+
+<span class="n">IPythonConsole</span><span class="o">.</span><span class="n">drawOptions</span><span class="o">.</span><span class="n">addAtomIndices</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Optional</span>
+<span class="n">molsPerRow</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># Number of molecules per row in the grid</span>
+<span class="n">subImgSize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>  <span class="c1"># Size of each sub-image in the</span>
+<span class="n">legends</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">antihistamines</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+             
+<span class="n">Draw</span><span class="o">.</span><span class="n">MolsToGridImage</span><span class="p">(</span>
+        <span class="n">mols_copy</span><span class="p">,</span>
+        <span class="n">molsPerRow</span><span class="o">=</span><span class="n">molsPerRow</span><span class="p">,</span>
+        <span class="n">subImgSize</span><span class="o">=</span><span class="n">subImgSize</span><span class="p">,</span>
+        <span class="n">highlightAtomLists</span><span class="o">=</span><span class="n">highlight_atom_list</span><span class="p">,</span>
+        <span class="n">highlightBondLists</span><span class="o">=</span><span class="n">highlight_bond_list</span><span class="p">,</span>
+        <span class="n">legends</span><span class="o">=</span><span class="n">legends</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>There is alot of code for making the highlighting, which we don’t want to type over and over. We can create a user defined function that does this for us. After defining the function, we can just send the information to the function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">highlight_substructures_with_bonds</span><span class="p">(</span><span class="n">mols</span><span class="p">,</span> <span class="n">smarts</span><span class="p">,</span> <span class="n">legends</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">molsPerRow</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">subImgSize</span><span class="o">=</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">)):</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmarts</span><span class="p">(</span><span class="n">smarts</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">query</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid SMARTS pattern: </span><span class="si">{</span><span class="n">smarts</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">mols_copy</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">highlight_atom_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">highlight_bond_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">filtered_legends</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">mol_idx</span><span class="p">,</span> <span class="n">mol</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">mols</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mol</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="n">mol_copy</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">Mol</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
+        <span class="n">matches</span> <span class="o">=</span> <span class="n">mol_copy</span><span class="o">.</span><span class="n">GetSubstructMatches</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">matches</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="n">atoms</span> <span class="o">=</span> <span class="p">{</span><span class="n">atom</span> <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">matches</span> <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">match</span><span class="p">}</span>
+        <span class="n">bonds</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">matches</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">match</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">match</span><span class="p">)):</span>
+                    <span class="n">a1</span> <span class="o">=</span> <span class="n">match</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+                    <span class="n">a2</span> <span class="o">=</span> <span class="n">match</span><span class="p">[(</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">match</span><span class="p">)]</span>
+                    <span class="n">bond</span> <span class="o">=</span> <span class="n">mol_copy</span><span class="o">.</span><span class="n">GetBondBetweenAtoms</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">bond</span><span class="p">:</span>
+                        <span class="n">bonds</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bond</span><span class="o">.</span><span class="n">GetIdx</span><span class="p">())</span>
+
+        <span class="n">mols_copy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mol_copy</span><span class="p">)</span>
+        <span class="n">highlight_atom_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">atoms</span><span class="p">))</span>
+        <span class="n">highlight_bond_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">bonds</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">legends</span><span class="p">:</span>
+            <span class="n">filtered_legends</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">legends</span><span class="p">[</span><span class="n">mol_idx</span><span class="p">])</span>
+
+    <span class="n">IPythonConsole</span><span class="o">.</span><span class="n">drawOptions</span><span class="o">.</span><span class="n">addAtomIndices</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">return</span> <span class="n">Draw</span><span class="o">.</span><span class="n">MolsToGridImage</span><span class="p">(</span>
+        <span class="n">mols_copy</span><span class="p">,</span>
+        <span class="n">molsPerRow</span><span class="o">=</span><span class="n">molsPerRow</span><span class="p">,</span>
+        <span class="n">subImgSize</span><span class="o">=</span><span class="n">subImgSize</span><span class="p">,</span>
+        <span class="n">highlightAtomLists</span><span class="o">=</span><span class="n">highlight_atom_list</span><span class="p">,</span>
+        <span class="n">highlightBondLists</span><span class="o">=</span><span class="n">highlight_bond_list</span><span class="p">,</span>
+        <span class="n">legends</span><span class="o">=</span><span class="n">filtered_legends</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following code cell redoes our search for benzene or pyridine in the ring, but uses the new <code class="docutils literal notranslate"> <span class="pre">highlight_substructures_with_bonds()</span></code> function to get our substructure matches and display.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">antihistamines</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;chlorpheniramine&#39;</span><span class="p">:</span> <span class="s1">&#39;InChI=1S/C16H19ClN2/c1-19(2)12-10-15(16-5-3-4-11-18-16)13-6-8-14(17)9-7-13/h3-9,11,15H,10,12H2,1-2H3&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;diphenhydramine&#39;</span><span class="p">:</span> <span class="s1">&#39;InChI=1S/C17H21NO/c1-18(2)13-14-19-17(15-9-5-3-6-10-15)16-11-7-4-8-12-16/h3-12,17H,13-14H2,1-2H3&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ketotifen&#39;</span><span class="p">:</span> <span class="s1">&#39;InChI=1S/C19H19NOS/c1-20-9-6-13(7-10-20)18-15-5-3-2-4-14(15)12-17(21)19-16(18)8-11-22-19/h2-5,8,11H,6-7,9-10,12H2,1H3&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;promethazine&#39;</span><span class="p">:</span> <span class="s1">&#39;InChI=1S/C17H20N2S/c1-13(18(2)3)12-19-14-8-4-6-10-16(14)20-17-11-7-5-9-15(17)19/h4-11,13H,12H2,1-3H3&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ebastine&#39;</span><span class="p">:</span> <span class="s1">&#39;InChI=1S/C32H39NO2/c1-32(2,3)28-18-16-25(17-19-28)30(34)15-10-22-33-23-20-29(21-24-33)35-31(26-11-6-4-7-12-26)27-13-8-5-9-14-27/h4-9,11-14,16-19,29,31H,10,15,20-24H2,1-3H3&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;loratidine&#39;</span><span class="p">:</span> <span class="s1">&#39;InChI=1S/C22H23ClN2O2/c1-2-27-22(26)25-12-9-15(10-13-25)20-19-8-7-18(23)14-17(19)6-5-16-4-3-11-24-21(16)20/h3-4,7-8,11,14H,2,5-6,9-10,12-13H2,1H3&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;cyproheptadine&#39;</span><span class="p">:</span> <span class="s1">&#39;InChI=1S/C21H21N/c1-22-14-12-18(13-15-22)21-19-8-4-2-6-16(19)10-11-17-7-3-5-9-20(17)21/h2-11H,12-15H2,1H3&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;triprolidine&#39;</span><span class="p">:</span> <span class="s1">&#39;InChI=1S/C19H22N2/c1-16-7-9-17(10-8-16)18(19-6-2-3-12-20-19)11-15-21-13-4-5-14-21/h2-3,6-12H,4-5,13-15H2,1H3/b18-11+&#39;</span>
+<span class="p">}</span>
+
+<span class="c1"># convert InChI strings to RDKit molecules</span>
+<span class="n">antihistamines_mols</span> <span class="o">=</span> <span class="p">[</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolFromInchi</span><span class="p">(</span><span class="n">inchi</span><span class="p">)</span> <span class="k">for</span> <span class="n">inchi</span> <span class="ow">in</span> <span class="n">antihistamines</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+
+<span class="n">query_smarts</span> <span class="o">=</span> <span class="s2">&quot;c1cccc[c,n]1&quot;</span>  <span class="c1"># SMARTS for benzene or pyridine ring</span>
+<span class="c1">#query_smarts = &#39;[$(c1ccccc1),$(c1ccccn1)]&#39;  # another way to query SMARTS for benzene or pyridine ring</span>
+<span class="c1"># the above uses recursive SMARTS which allos you to query for either benzene or pyridine in the same query</span>
+
+<span class="n">highlight_substructures_with_bonds</span><span class="p">(</span><span class="n">antihistamines_mols</span><span class="p">,</span> <span class="n">query_smarts</span><span class="p">,</span> <span class="n">legends</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">antihistamines</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="n">molsPerRow</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">subImgSize</span><span class="o">=</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Recursive SMARTS is a feature of the language that allows you to build complex atom-level queries by embedding entire substructure patterns inside a single atom definition.</p>
+<p>The syntax is <code class="docutils literal notranslate"><span class="pre">[$(&lt;SMARTS&gt;)]</span></code></p>
+<p>Where:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">$</span></code> indicates a recursive SMARTS query.</p></li>
+<li><p>The inner(…) is a full SMARTS pattern.</p></li>
+</ul>
+<p>The following code will search for any molecule that includes a piperidine or a pyrrolidine ring. Note that the way our function works, it will highlight the nitrogen atom of interest and not all the bonds.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># embedded substructure search for piperidine or pyrrolidine rings in antihistamines</span>
+<span class="n">query_smarts</span> <span class="o">=</span> <span class="s1">&#39;[$(N1CCCCC1),$(N1CCCC1)]&#39;</span> 
+
+<span class="n">highlight_substructures_with_bonds</span><span class="p">(</span><span class="n">antihistamines_mols</span><span class="p">,</span> <span class="n">query_smarts</span><span class="p">,</span> <span class="n">legends</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">antihistamines</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="n">molsPerRow</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">subImgSize</span><span class="o">=</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following query seeks to identify any aromatic carbon in a ring that is separated from an aromatic nitrogen, or any nitrogen in a pyrrolidine ring.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query_smarts</span> <span class="o">=</span> <span class="s1">&#39;[$(c1cnccc1),$(N1CCCC1)]&#39;</span>  <span class="c1"># another way</span>
+
+<span class="n">highlight_substructures_with_bonds</span><span class="p">(</span><span class="n">antihistamines_mols</span><span class="p">,</span> <span class="n">query_smarts</span><span class="p">,</span> <span class="n">legends</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">antihistamines</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="n">molsPerRow</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">subImgSize</span><span class="o">=</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-warning">
+<strong>Check your understanding</strong><br>
+<p>Look up the SMARTS for an ester. Display all antihistamines that contain an ester.</p>
+<details>
+<summary>Answer</summary>
+Your code should display only the molecules that contain esters: loratidine
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following widget allows us to interact with a list of molecules and practice using SMARTS to find molecules that incorporate substructures of our choosing. If you click on the magnifying glass icon 🔎 below, you can search by SMARTS.</p>
+<p>Try the following SMARTS:</p>
+<ul class="simple">
+<li><p>[Nr6]  Non-armoatic nitrogen in a 6 membered non-aromatic ring</p></li>
+<li><p>[sr5]  Aromatic sulfur in a 5 membered ring</p></li>
+<li><p>[CX4]  Carbon with bonds to any four other atoms</p></li>
+<li><p>[CD4]  Quaternary carbon</p></li>
+<li><p>[#7,#8] Hydrogen bond acceptors</p></li>
+<li><p>[#7,#8;!H0] Hydrogen bond donors (oxygen or nitrogen must have hydrogen bonded to it)</p></li>
+<li><p>[#6^2] sp<sup>2</sup> hybridized carbon</p></li>
+<li><p>[#6z] carbpn with a heteroatom neighbor</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">mols2grid</span>
+<span class="c1">#mols2grid.display(molecules)</span>
+<span class="n">mols2grid</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">antihistamines_mols</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-success">
+<center><H1>Homework</H1></center>
+<p>Some resources for SMARTS include:</p>
+<p>The canonical reference for SMARTS is the <a class="reference external" href="https://www.daylight.com/dayhtml/doc/theory/">Daylight Theory Manual</a>.
+The <a class="reference external" href="https://www.rdkit.org/docs/RDKit_Book.html">RDKit Book</a> which explain how it is implemented in RDKit</p>
+<p>Use it as a guide and any other internet resources to help you define SMARTS queries for this homework assignment.</p>
+<div class="alert alert-block alert-success">
+<ol class="arabic simple">
+<li><p>The following code cell has three molecules that contain carbon oxygen bonds. Only one of them is an alcohol. A student proposed the following code to display all alcohols in the list (based on the SMILES string for an alcohol). Change the SMARTS, and rerun the cell to only return a true value for the alcohol.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">InChiList</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;InChI=1S/C12H18BrOSe/c1-3-4-9-15(13)12-8-6-5-7-11(12)10-14(15)2/h5-8H,3-4,9-10H2,1-2H3/q+1&quot;</span><span class="p">,</span><span class="s2">&quot;InChI=1S/C7H13NO2/c1-3-8-4-2-7(1)9-5-6-10-7/h8H,1-6H2&quot;</span><span class="p">,</span><span class="s2">&quot;InChI=1S/C4H9NO/c6-4-1-2-5-3-4/h4-6H,1-3H2&quot;</span><span class="p">]</span>
+<span class="n">myMols</span> <span class="o">=</span> <span class="p">[</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolFromInchi</span><span class="p">(</span><span class="n">inchi</span><span class="p">)</span> <span class="k">for</span> <span class="n">inchi</span> <span class="ow">in</span> <span class="n">InChiList</span><span class="p">]</span>
+<span class="n">alchohol_SMARTS</span> <span class="o">=</span> <span class="s2">&quot;CO&quot;</span>  <span class="c1"># incorrect SMARTS for alcohol functional group</span>
+<span class="n">alcoholquery</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmarts</span><span class="p">(</span><span class="n">alchohol_SMARTS</span><span class="p">)</span> 
+<span class="n">matches</span> <span class="o">=</span> <span class="p">[]</span> 
+<span class="k">for</span> <span class="n">mol</span> <span class="ow">in</span> <span class="n">myMols</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">mol</span><span class="o">.</span><span class="n">HasSubstructMatch</span><span class="p">(</span><span class="n">alcoholquery</span><span class="p">):</span>  
+        <span class="n">matches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>  
+<span class="n">Draw</span><span class="o">.</span><span class="n">MolsToGridImage</span><span class="p">(</span><span class="n">matches</span><span class="p">,</span> <span class="n">molsPerRow</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">subImgSize</span><span class="o">=</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-success">
+<ol class="arabic simple" start="2">
+<li><p>Using the following code block, write a SMARTS query to identify any molecules in <code class="docutils literal notranslate"><span class="pre">myMols</span></code> that have a positive charge.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">positive_SMARTS</span> <span class="o">=</span> <span class="s2">&quot;Add your SMARTS here&quot;</span> 
+<span class="n">positivequery</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmarts</span><span class="p">(</span><span class="n">positive_SMARTS</span><span class="p">)</span> 
+<span class="n">matches</span> <span class="o">=</span> <span class="p">[]</span> 
+<span class="k">for</span> <span class="n">mol</span> <span class="ow">in</span> <span class="n">myMols</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">mol</span><span class="o">.</span><span class="n">HasSubstructMatch</span><span class="p">(</span><span class="n">positivequery</span><span class="p">):</span>  
+        <span class="n">matches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>  
+<span class="n">Draw</span><span class="o">.</span><span class="n">MolsToGridImage</span><span class="p">(</span><span class="n">matches</span><span class="p">,</span> <span class="n">molsPerRow</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">subImgSize</span><span class="o">=</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-success">
+<ol class="arabic simple" start="3">
+<li><p>Change the following code cell so that it highlights any ether or dialkyl amino substructures in <code class="docutils literal notranslate"><span class="pre">myMols</span></code>.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mySMARTS</span> <span class="o">=</span> <span class="s2">&quot;Add your SMARTS here&quot;</span> 
+
+<span class="n">highlight_substructures_with_bonds</span><span class="p">(</span><span class="n">myMols</span><span class="p">,</span> <span class="n">mySMARTS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-success">
+4) The following cell contains a list of CIDs from PubChem. Find matches for the following criteria in the list, and return all CIDs that match that criteria.
+<ul class="simple">
+<li><p>all molecules that contain a carboxylate</p></li>
+<li><p>all molecules that contain a triple bond</p></li>
+<li><p>all molecules that contain heterocycles</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CIDs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">119389</span><span class="p">,</span><span class="mi">5991</span><span class="p">,</span><span class="mi">135519560</span><span class="p">,</span><span class="mi">50994057</span><span class="p">,</span><span class="mi">3016</span><span class="p">,</span><span class="mi">68617</span><span class="p">,</span><span class="mi">2764</span><span class="p">,</span><span class="mi">1983</span><span class="p">,</span><span class="mi">5288826</span><span class="p">,</span><span class="mi">5460164</span><span class="p">,</span><span class="mi">242</span><span class="p">,</span><span class="mi">5462328</span><span class="p">,</span><span class="mi">3386</span><span class="p">,</span><span class="mi">2912</span><span class="p">,</span><span class="mi">26757</span><span class="p">,</span><span class="mi">89594</span><span class="p">,</span><span class="mi">145352036</span><span class="p">]</span>
+<span class="c1"># write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/modules/04_Chemical_Representations"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="04-02-PubChem3D_update.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">PubChem3D</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../10_SupervisedML/README.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Module 10: Supervised Machine Learning</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-smarts">Introduction to SMARTS</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Robert Belford
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright CC 4.0 2026 Robert Belford, additional info on each notebook.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <script async src="https://hypothes.is/embed.js"></script>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

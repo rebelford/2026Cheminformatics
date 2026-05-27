@@ -1,0 +1,939 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>PubChem3D &#8212; 2026 Cheminformatics OLCC</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/modules/04_Chemical_Representations/04-02-PubChem3D_update';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Substructure Searching with SMARTS" href="04-3-Substructure_Searching_with_SMARTS.html" />
+    <link rel="prev" title="Chemical Representations and Introduction to RDKit" href="04-01-introduction_chemical_representations.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="2026 Cheminformatics OLCC - Home"/>
+    <img src="../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="2026 Cheminformatics OLCC - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_PythonPrimer/README.html">Module 1: Python Primers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_PythonPrimer/01_1_python-basics.html">1.1 Python Basics</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../01_PythonPrimer/01_2_python-intermediate.html">1.2 Intermediate Python</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_Introduction/README.html">Module 2: Introduction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_Introduction/02-1-PubChemDataTypes.html">PubChem Training Course</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../02_Introduction/02_2_PUG_REST_activity.html">2.0 PubChem PUG-REST</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03_Public_Chemical_Databases/README.html">Module 3: Survey of Chemical Databases</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03_Public_Chemical_Databases/03_01_Survey_Public_Chemical_Databases.html">Public Compound Databases</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="README.html">Module3: Chemical Representation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="04-01-introduction_chemical_representations.html">Chemical Representations and Introduction to RDKit</a></li>
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">PubChem3D</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="04-3-Substructure_Searching_with_SMARTS.html">Substructure Searching with SMARTS</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../10_SupervisedML/README.html">Module 10: Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_0_Intro.html">10.0: Introduction</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_1_data_prep.html">10.1: Data Preparation and Feature Engineering</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_2_NB_model_construction_workflow.html">10.2: Naive Bayes and Model Construction</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_3_model_evaluation.html">10.3: Evaluating and Interpreting Models</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_4_Pipelines.html">10.4: Pipelines, Persistence, and Reproducible Inference</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_5_RD_Model_Complexity.html">10.5 Random Forest and Model Complexity</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_6_LR_SVM_Modeling.html">10.6 Logistic Regression and SVM</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../10_SupervisedML/10_7_MLP_Neural_Networks.html">10.7  Neural Networks</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/App_1/README.html">Appendix 1: Getting Set Up</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/App_1/A_01-1_OS.html">Appendix 1.1: Linux &amp; WSL</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/App_10/README.html">Appendix 10: Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/App_10/A_10-1AID_Selector.html">A10.1 BioAssay Screening: Enough Actives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/App_10/A_10-2NaiveBayes.html">A10.2 Bayes’ Theorem: From Inference to Models</a></li>
+
+
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://nanohub.org/tools/datachemolcc/hub/user-redirect/git-pull?repo=https%3A//github.com/rebelford/2026Cheminformatics&urlpath=lab/tree/2026Cheminformatics/content/modules/04_Chemical_Representations/04-02-PubChem3D_update.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/rebelford/2026Cheminformatics" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rebelford/2026Cheminformatics/issues/new?title=Issue%20on%20page%20%2Fcontent/modules/04_Chemical_Representations/04-02-PubChem3D_update.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/content/modules/04_Chemical_Representations/04-02-PubChem3D_update.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>PubChem3D</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">PubChem3D</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-data-through-the-compound-summary-page">Accessing data through the compound summary page</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgments">Acknowledgments</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pubchem3d">
+<h1>PubChem3D<a class="headerlink" href="#pubchem3d" title="Link to this heading">#</a></h1>
+<p>The <a class="reference external" href="https://pubchem.ncbi.nlm.nih.gov/docs/pubchem3d">PubChem3D Project</a> is an initiative to provide computed 3D structures and conformer models for millions of small molecules in the PubChem database. Using structure generation algorithms and energy minimization tools, PubChem3D generates multiple low-energy conformers for each compound to better reflect their potential shapes in biological systems. These 3D models are valuable for structure-based drug design, molecular docking, and cheminformatics research, offering users standardized, accessible 3D information directly from PubChem’s web services and programmatic (PUG REST) interfaces.</p>
+<p>Each computed 3D conformer is not necessarily at a global or local energy minimum and may not represent the lowest-energy form in vacuum, solvent, or within a binding site. Instead, the 3D conformers are computationally generated as part of a conformer model as a set of diverse, low-energy structures that reflect the molecule’s conformational flexibility. These conformers are sampled using average atom pairwise RMSD (root mean squared distance) thresholds to capture a range of energetically accessible and potentially biologically relevant shapes.</p>
+<p>For each molecule up to 500 conformers are made per molecule, however, this is too much data to be made available for PubChem services. Therefore, a maximum of 10 diverse conformations are available for download. These first 10 conformers are ordered in such that they represent the overall diversity of the model of the compound.</p>
+<div class="alert alert-block alert-info">
+<h2>Learning Objectives</h2>
+<ul class="simple">
+<li><p>Explore PubChem3D Compound Records:</p>
+<ul>
+<li><p>The web interface</p></li>
+<li><p>Obtaining SDF data through PUG REST</p></li>
+</ul>
+</li>
+<li><p>Explore ipywidgets</p>
+<ul>
+<li><p>Create dropdown menus</p></li>
+<li><p>Use Hbox to display two outputs side by side</p></li>
+</ul>
+</li>
+<li><p>Review PubChem’s PUG REST Web Interface</p>
+<ul>
+<li><p>Getting data from PubChem through PUG-REST</p></li>
+</ul>
+</li>
+<li><p>Practice code from previous notebooks</p></li>
+</ul>
+</div>
+<section id="accessing-data-through-the-compound-summary-page">
+<h2>Accessing data through the compound summary page<a class="headerlink" href="#accessing-data-through-the-compound-summary-page" title="Link to this heading">#</a></h2>
+<p>To access 3D conformer data for a compound on PubChem, navigate to the compound’s summary page and scroll to Section 1.3: Structure. Within this section, you’ll find options to view the 2D and 3D structures of the molecule. If 3D conformers are available, a “3D Conformer” viewer will be embedded, allowing interactive visualization directly in the browser. A dropdown or slider may be present to explore different conformers. Links are provided to download conformers in formats such as SDF, JSON, or XYZ.</p>
+<p>Click on the link below to view 3D conformers of Atorvastatin.
+https://pubchem.ncbi.nlm.nih.gov/compound/60823#section=3D-Conformer</p>
+<div class="alert alert-block alert-warning">
+<Strong>Explore the web interface</Strong>
+<p>In the browswer window for the 3D conformer section:</p>
+<ul class="simple">
+<li><p>confirm there are 10 publicly available conformers</p></li>
+<li><p>change the model structure for viewing</p></li>
+<li><p>Display the SDF file for conformer 8 in a new web browser window</p></li>
+<li><p>In the SDF file, identify the <strong>&lt;PUBCHEM_CONFORMER_DIVERSEORDER&gt;</strong> section. These are the conformer IDs for each molecule. The first 10 are the ones that are publicly available for download.</p></li>
+</ul>
+<p>Do the conformations look different?</p>
+<p>Another interactive web-based tool is the <a class="reference external" href="https://pubchem.ncbi.nlm.nih.gov/vw3d/vw3d.cgi?#">PubChem 3D Viewer</a> Users can load conformers directly by CID (Compound ID) or conformer ID, and can choose among available conformers for a compound to compare different low-energy 3D geometries.</p>
+<p>Click on the PubChem 3D viwer link above.</p>
+<div class="alert alert-block alert-warning">
+<Strong>Explore the PubChem 3D Viewer</Strong>
+<ul class="simple">
+<li><p>In the browser window for the PubChem 3D Viewer:</p>
+<ul>
+<li><p>Add CID 60823 (Atorvastatin) to the CID list. Click View at the bottom of the page.</p></li>
+<li><p>Confirm there are 10 conformers to view</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://pubchem.ncbi.nlm.nih.gov/vw3d/vw3d.cgi?disp=algn#">Click here to view the conformation superposition tool</a></p>
+<ul>
+<li><p>In the Pairs by: box, choose Conformer ID</p></li>
+<li><p>Enter the following two conformers of atorvastatin  0000ED9700000002 0000ED9700000014</p></li>
+<li><p>Click View</p></li>
+<li><p>On the left side of the viewer confirm you have Reference of LID 2 and Fit of LID 20 (LID = Local Conformer Identifier).</p></li>
+<li><p>We won’t go into detail until later this semester, but make note of the Shape and Feature similarity percentages. They will give us a way of assessing how similar the 3D shape and pharmacophoric elements align.</p></li>
+<li><p>Go back to the conformation superposition tool and enter this conformation pair 0000ED9700000002 0000ED970000000E</p></li>
+<li><p>Make note of the Shape and Feature similarity percentages for LID 2 and LID 14.</p></li>
+<li><p>Download the superposition of these two molecules as SDF.</p></li>
+</ul>
+</li>
+</ul>
+<p>Can you conclude that the conformers are different from this assessment?
+The only 3D viewer only provides a visualization with rocking between set views. Wouldn’t it be nice to view this in a 3D viewer? <em>(foreshadowing to homework)</em></p>
+<p>PubChem provides programmatic access to conformer data through its PUG REST interface, enabling users to retrieve 3D structural information in an automated and reproducible manner. The following code shows how to download the 10 publicly accessible conformers of atorvastatin and display them through py3Dmol.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># New code for getting the 10 publicly available conformers of any CID from PubChem</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">py3Dmol</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">clear_output</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_colwidth&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>  <span class="c1"># Ensure full URL is displayed</span>
+
+<span class="c1"># Define input data </span>
+<span class="n">cid</span> <span class="o">=</span> <span class="mi">60823</span> <span class="c1"># Atorvastatin&#39;s PubChem Compound ID</span>
+
+<span class="c1"># Fetch conformers from PubChem </span>
+<span class="n">pugrest</span> <span class="o">=</span> <span class="s2">&quot;https://pubchem.ncbi.nlm.nih.gov/rest/pug&quot;</span>
+<span class="n">pugin</span>   <span class="o">=</span> <span class="s2">&quot;compound/cid/&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">cid</span><span class="p">)</span>
+<span class="n">pugoper</span> <span class="o">=</span> <span class="s2">&quot;conformers&quot;</span>
+<span class="n">pugout</span>  <span class="o">=</span> <span class="s2">&quot;TXT&quot;</span>
+<span class="n">url</span>     <span class="o">=</span> <span class="s2">&quot;/&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="p">[</span><span class="n">pugrest</span><span class="p">,</span> <span class="n">pugin</span><span class="p">,</span> <span class="n">pugoper</span><span class="p">,</span> <span class="n">pugout</span><span class="p">]</span> <span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">res</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to fetch conformers: </span><span class="si">{</span><span class="n">res</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">res</span><span class="o">.</span><span class="n">reason</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  
+
+<span class="c1"># Parse the response text to get conformer IDs</span>
+
+<span class="n">conformers</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+<span class="n">conformers</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">conformers</span> <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()]</span>  
+
+<span class="c1"># Helper function to generate conformer URL fpr SDF format for each conformer ID</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">make_conformer_url</span><span class="p">(</span><span class="n">conformer_id</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;https://pubchem.ncbi.nlm.nih.gov/rest/pug/conformers/</span><span class="si">{</span><span class="n">conformer_id</span><span class="si">}</span><span class="s2">/SDF?response_type=display&quot;</span>
+
+<span class="c1"># Build DataFrame with conformer IDs and URLs</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Conformer_ID&quot;</span><span class="p">:</span> <span class="n">conformers</span><span class="p">,</span>
+    <span class="s2">&quot;Conformer_URL&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">make_conformer_url</span><span class="p">(</span><span class="n">conf_id</span><span class="p">)</span> <span class="k">for</span> <span class="n">conf_id</span> <span class="ow">in</span> <span class="n">conformers</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Display dataframe</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># Interactive viewer setup with two dropdown widgets side by side to compare conformers</span>
+
+<span class="c1"># Dropdowns </span>
+<span class="n">dropdown1</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+    <span class="n">options</span><span class="o">=</span><span class="p">[(</span><span class="sa">f</span><span class="s2">&quot;Conformer </span><span class="si">{</span><span class="n">row</span><span class="o">.</span><span class="n">Conformer_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">()],</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Left:&#39;</span><span class="p">,</span>
+    <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;45%&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">dropdown2</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+    <span class="n">options</span><span class="o">=</span><span class="p">[(</span><span class="sa">f</span><span class="s2">&quot;Conformer </span><span class="si">{</span><span class="n">row</span><span class="o">.</span><span class="n">Conformer_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">()],</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Right:&#39;</span><span class="p">,</span>
+    <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;45%&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># Output containers </span>
+<span class="n">output1</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+<span class="n">output2</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">render_conformer</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+    <span class="n">conf_id</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;Conformer_ID&quot;</span><span class="p">]</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;Conformer_URL&quot;</span><span class="p">]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">sdf_data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+        <span class="n">view</span> <span class="o">=</span> <span class="n">py3Dmol</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+        <span class="n">view</span><span class="o">.</span><span class="n">addModel</span><span class="p">(</span><span class="n">sdf_data</span><span class="p">,</span> <span class="s2">&quot;sdf&quot;</span><span class="p">)</span>
+        <span class="n">view</span><span class="o">.</span><span class="n">setStyle</span><span class="p">({</span><span class="s1">&#39;stick&#39;</span><span class="p">:</span> <span class="p">{}})</span>
+        <span class="n">view</span><span class="o">.</span><span class="n">zoomTo</span><span class="p">()</span>
+        <span class="k">with</span> <span class="n">output</span><span class="p">:</span>
+            <span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Conformer </span><span class="si">{</span><span class="n">conf_id</span><span class="si">}</span><span class="s2"> (Index </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">output</span><span class="p">:</span>
+            <span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to load conformer </span><span class="si">{</span><span class="n">conf_id</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="c1">#  Event listeners for dropdowns </span>
+<span class="n">dropdown1</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="k">lambda</span> <span class="n">change</span><span class="p">:</span> <span class="n">render_conformer</span><span class="p">(</span><span class="n">change</span><span class="p">[</span><span class="s1">&#39;new&#39;</span><span class="p">],</span> <span class="n">output1</span><span class="p">)</span> <span class="k">if</span> <span class="n">change</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;change&#39;</span> <span class="ow">and</span> <span class="n">change</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;value&#39;</span> <span class="k">else</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">dropdown2</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="k">lambda</span> <span class="n">change</span><span class="p">:</span> <span class="n">render_conformer</span><span class="p">(</span><span class="n">change</span><span class="p">[</span><span class="s1">&#39;new&#39;</span><span class="p">],</span> <span class="n">output2</span><span class="p">)</span> <span class="k">if</span> <span class="n">change</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;change&#39;</span> <span class="ow">and</span> <span class="n">change</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;value&#39;</span> <span class="k">else</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="c1"># Display interface </span>
+<span class="n">controls</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">dropdown1</span><span class="p">,</span> <span class="n">dropdown2</span><span class="p">])</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">output1</span><span class="p">,</span> <span class="n">output2</span><span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">controls</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span>
+
+<span class="c1"># Initial render</span>
+<span class="n">render_conformer</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">output1</span><span class="p">)</span>
+<span class="n">render_conformer</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">output2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Conformer_ID</th>
+      <th>Conformer_URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0000ED9700000002</td>
+      <td>https://pubchem.ncbi.nlm.nih.gov/rest/pug/conformers/0000ED9700000002/SDF?response_type=display</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0000ED9700000014</td>
+      <td>https://pubchem.ncbi.nlm.nih.gov/rest/pug/conformers/0000ED9700000014/SDF?response_type=display</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0000ED970000000E</td>
+      <td>https://pubchem.ncbi.nlm.nih.gov/rest/pug/conformers/0000ED970000000E/SDF?response_type=display</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0000ED970000000A</td>
+      <td>https://pubchem.ncbi.nlm.nih.gov/rest/pug/conformers/0000ED970000000A/SDF?response_type=display</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0000ED970000000F</td>
+      <td>https://pubchem.ncbi.nlm.nih.gov/rest/pug/conformers/0000ED970000000F/SDF?response_type=display</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0000ED9700000017</td>
+      <td>https://pubchem.ncbi.nlm.nih.gov/rest/pug/conformers/0000ED9700000017/SDF?response_type=display</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0000ED9700000019</td>
+      <td>https://pubchem.ncbi.nlm.nih.gov/rest/pug/conformers/0000ED9700000019/SDF?response_type=display</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0000ED9700000005</td>
+      <td>https://pubchem.ncbi.nlm.nih.gov/rest/pug/conformers/0000ED9700000005/SDF?response_type=display</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0000ED9700000003</td>
+      <td>https://pubchem.ncbi.nlm.nih.gov/rest/pug/conformers/0000ED9700000003/SDF?response_type=display</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0000ED9700000012</td>
+      <td>https://pubchem.ncbi.nlm.nih.gov/rest/pug/conformers/0000ED9700000012/SDF?response_type=display</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><script type="application/vnd.jupyter.widget-view+json">{"model_id": "092adae569a642b18f736455066adfa3", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "529b0374a41146db8307a59f2d869002", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="alert alert-block alert-success">
+<center><H1>Homework</H1></center>
+<ol class="arabic simple">
+<li><p>The code above generates URLs to download SDF files of each conformer and displays in a py3Dmol widget. Explain why conformer data needs to be stored as SDF and not as InChI or SMILES.</p></li>
+</ol>
+<p>Write your explaination to question 1 here.</p>
+<div class="alert alert-block alert-success">
+2) Choose a small molecule of your choice from PubChem (e.g., an over-the-counter drug or a natural product). Identify the CID of your chosen molecule using the PubChem website. Write a short Python script or Jupyter notebook that does the following:
+<ul class="simple">
+<li><p>Use PUG REST to retrieve the list of conformer IDs for that compound.</p></li>
+<li><p>Download all publicly available conformers in SDF format.</p></li>
+<li><p>Visualize the conformers side by side using py3Dmol, either as individual viewers or using a dropdown or slider to switch between them.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-success">
+3) Previously you downloaded the superposition of 2 conformations of atorvastatin as an SDF. It probably had a filename of CID_60823_60823_algn.sdf. Load this SDF into a pymol3D viewer to visualize. <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="acknowledgments">
+<h1>Acknowledgments<a class="headerlink" href="#acknowledgments" title="Link to this heading">#</a></h1>
+<p>This module was developed by Ehren Bucholtz and has a CC BY-NC-SA 4.0 license</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "cinf26"
+        },
+        kernelOptions: {
+            name: "cinf26",
+            path: "./content/modules/04_Chemical_Representations"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'cinf26'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="04-01-introduction_chemical_representations.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chemical Representations and Introduction to RDKit</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="04-3-Substructure_Searching_with_SMARTS.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Substructure Searching with SMARTS</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">PubChem3D</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-data-through-the-compound-summary-page">Accessing data through the compound summary page</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgments">Acknowledgments</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Robert Belford
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright CC 4.0 2026 Robert Belford, additional info on each notebook.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <script async src="https://hypothes.is/embed.js"></script>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

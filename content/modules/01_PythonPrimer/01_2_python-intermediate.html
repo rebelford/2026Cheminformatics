@@ -177,6 +177,8 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">1.2 Intermediate Python</a></li>
 
 
+
+
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../02_Introduction/README.html">Module 2: Introduction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -192,6 +194,14 @@
 <li class="toctree-l2"><a class="reference internal" href="../03_Public_Chemical_Databases/03_01_Survey_Public_Chemical_Databases.html">Public Compound Databases</a></li>
 
 
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_Chemical_Representations/README.html">Module3: Chemical Representation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04_Chemical_Representations/04-01-introduction_chemical_representations.html">Chemical Representations and Introduction to RDKit</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../04_Chemical_Representations/04-02-PubChem3D_update.html">PubChem3D</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../04_Chemical_Representations/04-3-Substructure_Searching_with_SMARTS.html">Substructure Searching with SMARTS</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../10_SupervisedML/README.html">Module 10: Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -499,34 +509,31 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1.2 Intermediate Python</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Intermediate Python</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-data-structures">Python Data Structures</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">Lists</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples">Tuples</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sets">Sets</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">Dictionaries</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#python-data-structures">Python Data Structures</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">Lists</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples">Tuples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sets">Sets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">Dictionaries</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-error-types">Python Error Types</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nameerror-using-a-variable-that-hasnt-been-defined"><code class="docutils literal notranslate"><span class="pre">NameError</span></code>: Using a variable that hasn’t been defined</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntaxerror-your-code-breaks-pythons-grammar-rules"><code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code>: Your code breaks Python’s grammar rules</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keyerror-accessing-a-missing-key-in-a-dictionary"><code class="docutils literal notranslate"><span class="pre">KeyError</span></code>: Accessing a missing key in a dictionary</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexerror-accessing-a-list-index-that-doesn-t-exist"><code class="docutils literal notranslate"><span class="pre">IndexError</span></code>: Accessing a list index that doesn’t exist</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indentationerror-incorrect-indentation-spacing-in-the-code">IndentationError: Incorrect indentation (spacing) in the code</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#python-error-types">Python Error Types</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nameerror-using-a-variable-that-hasnt-been-defined"><code class="docutils literal notranslate"><span class="pre">NameError</span></code>: Using a variable that hasn’t been defined</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#syntaxerror-your-code-breaks-pythons-grammar-rules"><code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code>: Your code breaks Python’s grammar rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keyerror-accessing-a-missing-key-in-a-dictionary"><code class="docutils literal notranslate"><span class="pre">KeyError</span></code>: Accessing a missing key in a dictionary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexerror-accessing-a-list-index-that-doesn-t-exist"><code class="docutils literal notranslate"><span class="pre">IndexError</span></code>: Accessing a list index that doesn’t exist</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indentation-error-incorrect-indentation-spacing-in-the-code">Indentation Error: Incorrect indentation (spacing) in the code</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-python-modules">More Python Modules</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#os-interacting-with-the-operating-system"><code class="docutils literal notranslate"><span class="pre">os</span></code>: Interacting with the Operating System</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-generating-random-numbers-or-choices"><code class="docutils literal notranslate"><span class="pre">random</span></code> – Generating Random Numbers or Choices</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#controlling-randomness-with-random-seed">Controlling Randomness with <code class="docutils literal notranslate"><span class="pre">random.seed()</span></code></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#more-python-modules">More Python Modules</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#os-interacting-with-the-operating-system"><code class="docutils literal notranslate"><span class="pre">os</span></code>: Interacting with the Operating System</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-generating-random-numbers-or-choices"><code class="docutils literal notranslate"><span class="pre">random</span></code> – Generating Random Numbers or Choices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#controlling-randomness-with-random-seed">Controlling Randomness with <code class="docutils literal notranslate"><span class="pre">random.seed()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enumerate-looping-with-indexes"><code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> – Looping with Indexes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-data-from-the-web-with-requests">Getting Data from the Web with <code class="docutils literal notranslate"><span class="pre">requests</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-tracking-and-delaying-execution"><code class="docutils literal notranslate"><span class="pre">time</span></code> – Tracking and Delaying Execution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-io-and-stringio-working-with-in-memory-text-streams">Exploring <code class="docutils literal notranslate"><span class="pre">io</span></code> and <code class="docutils literal notranslate"><span class="pre">StringIO</span></code> – Working with In-Memory Text Streams</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enumerate-looping-with-indexes"><code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> – Looping with Indexes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-data-from-the-web-with-requests">Getting Data from the Web with <code class="docutils literal notranslate"><span class="pre">requests</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-tracking-and-delaying-execution"><code class="docutils literal notranslate"><span class="pre">time</span></code> – Tracking and Delaying Execution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-io-and-stringio-working-with-in-memory-text-streams">Exploring <code class="docutils literal notranslate"><span class="pre">io</span></code> and <code class="docutils literal notranslate"><span class="pre">StringIO</span></code> – Working with In-Memory Text Streams</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-problem-1">Python Problem 1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-problem-2">Python Problem 2</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-problem-3">Python Problem 3</a></li>
@@ -548,9 +555,6 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="intermediate-python">
 <h1>1.2 Intermediate Python<a class="headerlink" href="#intermediate-python" title="Link to this heading">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Intermediate Python<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>This notebook borrows heavily from <a href = "https://weisscharlesj.github.io/SciCompforChemists/notebooks/chapter_02/chap_02_notebook.html"> Chapter 2: Intermediate Python </a> from Charlie Weiss’s book <a href ="https://weisscharlesj.github.io/SciCompforChemists/notebooks/introduction/intro.html">   Scientific Computing for Chemists with Python.</a></p>
 <div class="alert alert-block alert-info">
 <h2>Learning Objectives</h2>
@@ -583,8 +587,9 @@
 <li><p>Practice code from previous notebook</p></li>
 </ul>
 </div>
-<section id="python-data-structures">
-<h2>Python Data Structures<a class="headerlink" href="#python-data-structures" title="Link to this heading">#</a></h2>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="python-data-structures">
+<h1>Python Data Structures<a class="headerlink" href="#python-data-structures" title="Link to this heading">#</a></h1>
 <p>Python uses several built-in data structures to organize and store information. You were introduced to the <strong>list</strong> data structure in the last notebook. The four main types are:</p>
 <ul class="simple">
 <li><p><strong>Lists</strong></p></li>
@@ -593,7 +598,7 @@
 <li><p><strong>Sets</strong></p></li>
 </ul>
 <section id="lists">
-<h3>Lists<a class="headerlink" href="#lists" title="Link to this heading">#</a></h3>
+<h2>Lists<a class="headerlink" href="#lists" title="Link to this heading">#</a></h2>
 <p>A sequence is an object that stores multiple data items in a contiguous manner. Two types of sequences are strings and lists. Lists are special variables that store multiple values. Each value stored in a list is called an element or item. The following are examples of lists:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -728,31 +733,94 @@ List after removing ethanol: [&#39;methanol&#39;, &#39;dichloromethane&#39;, &#3
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">originalList</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;carbon&quot;</span><span class="p">,</span> <span class="s2">&quot;oxygen&quot;</span><span class="p">,</span> <span class="s2">&quot;hydrogen&quot;</span><span class="p">,</span> <span class="s2">&quot;nitrogen&quot;</span><span class="p">,</span> <span class="s2">&quot;oxygen&quot;</span><span class="p">,</span> <span class="s2">&quot;sulfur&quot;</span><span class="p">,</span> <span class="s2">&quot;hydrogen&quot;</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">originalList</span><span class="p">)</span>
-
 <span class="c1"># create a copy of the original list</span>
-<span class="n">elements</span> <span class="o">=</span> <span class="n">originalList</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>  
-
-<span class="c1"># index(value) method to find the first occurrence of a value in a list</span>
+<span class="n">elements</span> <span class="o">=</span> <span class="n">originalList</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> 
+<span class="n">elements</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;carbon&#39;, &#39;oxygen&#39;, &#39;hydrogen&#39;, &#39;nitrogen&#39;, &#39;oxygen&#39;, &#39;sulfur&#39;, &#39;hydrogen&#39;]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;carbon&#39;, &#39;oxygen&#39;, &#39;hydrogen&#39;, &#39;nitrogen&#39;, &#39;oxygen&#39;, &#39;sulfur&#39;, &#39;hydrogen&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># index(value) method to find the first occurrence of a value in a list</span>
 <span class="n">pos</span> <span class="o">=</span> <span class="n">elements</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;oxygen&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First occurrence of &#39;oxygen&#39; is at index:&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span> 
-
-<span class="c1"># Change the value at a specific index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>First occurrence of &#39;oxygen&#39; is at index: 1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Change the value at a specific index</span>
 <span class="n">elements</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span><span class="o">=</span> <span class="s2">&quot;fluorine&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Elements after changing &#39;oxygen&#39; to &#39;fluorine&#39;:&quot;</span><span class="p">,</span> <span class="n">elements</span><span class="p">)</span>  
-
-<span class="c1"># using the count() method to count occurrences of a value in a list</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Elements after changing &#39;oxygen&#39; to &#39;fluorine&#39;: [&#39;carbon&#39;, &#39;fluorine&#39;, &#39;hydrogen&#39;, &#39;nitrogen&#39;, &#39;oxygen&#39;, &#39;sulfur&#39;, &#39;hydrogen&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># using the count() method to count occurrences of a value in a list</span>
 <span class="n">count_oxygen</span> <span class="o">=</span> <span class="n">elements</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;hydrogen&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of occurrences of &#39;hydrogen&#39;:&quot;</span><span class="p">,</span> <span class="n">count_oxygen</span><span class="p">)</span>
-
-<span class="c1"># using the sort() method to sort a list in ascending order</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of occurrences of &#39;hydrogen&#39;: 2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># using the sort() method to sort a list in ascending order</span>
 <span class="n">elements</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sorted elements:&quot;</span><span class="p">,</span> <span class="n">elements</span><span class="p">)</span>
-
-<span class="c1"># using the reverse() method to reverse the order of a list</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sorted elements: [&#39;carbon&#39;, &#39;fluorine&#39;, &#39;hydrogen&#39;, &#39;hydrogen&#39;, &#39;nitrogen&#39;, &#39;oxygen&#39;, &#39;sulfur&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># using the reverse() method to reverse the order of a list</span>
 <span class="n">elements</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reversed elements:&quot;</span><span class="p">,</span> <span class="n">elements</span><span class="p">)</span>
-
-<span class="c1"># using the clear() method to remove all items from a list</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reversed elements: [&#39;sulfur&#39;, &#39;oxygen&#39;, &#39;nitrogen&#39;, &#39;hydrogen&#39;, &#39;hydrogen&#39;, &#39;fluorine&#39;, &#39;carbon&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># using the clear() method to remove all items from a list</span>
 <span class="n">elements</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Elements after clear:&quot;</span><span class="p">,</span> <span class="n">elements</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Original list remains unchanged:&quot;</span><span class="p">,</span> <span class="n">originalList</span><span class="p">)</span>
@@ -760,13 +828,7 @@ List after removing ethanol: [&#39;methanol&#39;, &#39;dichloromethane&#39;, &#3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;carbon&#39;, &#39;oxygen&#39;, &#39;hydrogen&#39;, &#39;nitrogen&#39;, &#39;oxygen&#39;, &#39;sulfur&#39;, &#39;hydrogen&#39;]
-First occurrence of &#39;oxygen&#39; is at index: 1
-Elements after changing &#39;oxygen&#39; to &#39;fluorine&#39;: [&#39;carbon&#39;, &#39;fluorine&#39;, &#39;hydrogen&#39;, &#39;nitrogen&#39;, &#39;oxygen&#39;, &#39;sulfur&#39;, &#39;hydrogen&#39;]
-Number of occurrences of &#39;hydrogen&#39;: 2
-Sorted elements: [&#39;carbon&#39;, &#39;fluorine&#39;, &#39;hydrogen&#39;, &#39;hydrogen&#39;, &#39;nitrogen&#39;, &#39;oxygen&#39;, &#39;sulfur&#39;]
-Reversed elements: [&#39;sulfur&#39;, &#39;oxygen&#39;, &#39;nitrogen&#39;, &#39;hydrogen&#39;, &#39;hydrogen&#39;, &#39;fluorine&#39;, &#39;carbon&#39;]
-Elements after clear: []
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Elements after clear: []
 Original list remains unchanged: [&#39;carbon&#39;, &#39;oxygen&#39;, &#39;hydrogen&#39;, &#39;nitrogen&#39;, &#39;oxygen&#39;, &#39;sulfur&#39;, &#39;hydrogen&#39;]
 </pre></div>
 </div>
@@ -801,7 +863,7 @@ print(drugs)
 </code>
 </div></section>
 <section id="tuples">
-<h3>Tuples<a class="headerlink" href="#tuples" title="Link to this heading">#</a></h3>
+<h2>Tuples<a class="headerlink" href="#tuples" title="Link to this heading">#</a></h2>
 <p>A <strong>tuple</strong> is an ordered, immutable collection of items. They are used when you want to group related values that should not change. Think of it as a locked list that you don’t want to accidentally modify or that it is reference data.</p>
 <p>Key characteristics of tuples:</p>
 <ul class="simple">
@@ -854,7 +916,7 @@ phenol has a molecular weight greater than 90 g/mol
 </ul>
 </div></section>
 <section id="sets">
-<h3>Sets<a class="headerlink" href="#sets" title="Link to this heading">#</a></h3>
+<h2>Sets<a class="headerlink" href="#sets" title="Link to this heading">#</a></h2>
 <p>A set is a multi-element data structure, similar to a list, with one key difference: each element can appear only once. Sets are particularly useful when the goal is to keep track of which items are present, rather than how many. For instance, when taking inventory of a chemical stockroom, you might use a set to record the names of all compounds available for experiments. Even if multiple bottles of the same compound exist, the set will store that compound’s name only once (because the focus is on presence, not quantity). In Python, a set looks similar to a list, but it uses curly braces {} instead of square brackets [].</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -865,7 +927,7 @@ phenol has a molecular weight greater than 90 g/mol
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;acetone&#39;, &#39;ethanol&#39;, &#39;methanol&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;methanol&#39;, &#39;ethanol&#39;, &#39;acetone&#39;}
 </pre></div>
 </div>
 </div>
@@ -928,11 +990,11 @@ phenol has a molecular weight greater than 90 g/mol
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Common drugs in both groups: {&#39;naproxen&#39;}
-Unique drugs in group1: {&#39;aspirin&#39;, &#39;ibuprofen&#39;}
+Unique drugs in group1: {&#39;ibuprofen&#39;, &#39;aspirin&#39;}
 Unique drugs in group2: {&#39;acetaminophen&#39;}
-All unique drugs from both groups: {&#39;aspirin&#39;, &#39;acetaminophen&#39;, &#39;naproxen&#39;, &#39;ibuprofen&#39;}
-All unique drugs after adding diclofenac: {&#39;aspirin&#39;, &#39;acetaminophen&#39;, &#39;naproxen&#39;, &#39;ibuprofen&#39;, &#39;diclofenac&#39;}
-Molecules as a List: [&#39;aspirin&#39;, &#39;acetaminophen&#39;, &#39;naproxen&#39;, &#39;ibuprofen&#39;, &#39;diclofenac&#39;]
+All unique drugs from both groups: {&#39;naproxen&#39;, &#39;acetaminophen&#39;, &#39;ibuprofen&#39;, &#39;aspirin&#39;}
+All unique drugs after adding diclofenac: {&#39;naproxen&#39;, &#39;acetaminophen&#39;, &#39;ibuprofen&#39;, &#39;aspirin&#39;, &#39;diclofenac&#39;}
+Molecules as a List: [&#39;naproxen&#39;, &#39;acetaminophen&#39;, &#39;ibuprofen&#39;, &#39;aspirin&#39;, &#39;diclofenac&#39;]
 Sorted Molecules List: [&#39;acetaminophen&#39;, &#39;aspirin&#39;, &#39;diclofenac&#39;, &#39;ibuprofen&#39;, &#39;naproxen&#39;]
 </pre></div>
 </div>
@@ -940,7 +1002,7 @@ Sorted Molecules List: [&#39;acetaminophen&#39;, &#39;aspirin&#39;, &#39;diclofe
 </div>
 </section>
 <section id="dictionaries">
-<h3>Dictionaries<a class="headerlink" href="#dictionaries" title="Link to this heading">#</a></h3>
+<h2>Dictionaries<a class="headerlink" href="#dictionaries" title="Link to this heading">#</a></h2>
 <p>Python dictionaries are a type of multi-element object that store data as key–value pairs, much like how a real dictionary links a word (the key) to its definition (the value). Also known as associative arrays, dictionaries allow users to access values directly using keys without needing to know or rely on the order of the items. One way to think of a dictionary is as a container of named variables, each assigned a specific value.</p>
 <p>For example, if you wanted to write a script to calculate the molecular weight of a compound based on its molecular formula, you would need to look up the atomic mass of each element using its chemical symbol. In this case, the element symbol would serve as the key, and the atomic mass as the value.</p>
 <p>Similar to a set, a dictionary is written using curly braces {}, however entry is a <code class="docutils literal notranslate"><span class="pre">key:value</span></code> pair separated by a colon.</p>
@@ -970,12 +1032,12 @@ Sorted Molecules List: [&#39;acetaminophen&#39;, &#39;aspirin&#39;, &#39;diclofe
 </div>
 </section>
 </section>
-<section id="python-error-types">
-<h2>Python Error Types<a class="headerlink" href="#python-error-types" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="python-error-types">
+<h1>Python Error Types<a class="headerlink" href="#python-error-types" title="Link to this heading">#</a></h1>
 <p>In Python, errors are raised when your code breaks the rules of the language. Understanding common error types can help you debug faster and write better code. Below are some of the most frequent errors students encounter.</p>
 <p>Note that each of the following will show you the error and stop the notebook from running subsequent code in the cell.</p>
 <section id="nameerror-using-a-variable-that-hasnt-been-defined">
-<h3><code class="docutils literal notranslate"><span class="pre">NameError</span></code>: Using a variable that hasn’t been defined<a class="headerlink" href="#nameerror-using-a-variable-that-hasnt-been-defined" title="Link to this heading">#</a></h3>
+<h2><code class="docutils literal notranslate"><span class="pre">NameError</span></code>: Using a variable that hasn’t been defined<a class="headerlink" href="#nameerror-using-a-variable-that-hasnt-been-defined" title="Link to this heading">#</a></h2>
 <p>A <code class="docutils literal notranslate"><span class="pre">NameError</span> <span class="pre">occurs</span></code> when the code tries to use a variable or function name that hasn’t been defined. This is often caused by a <strong>typo</strong> in the name, but it can also happen if you’re working in a Jupyter notebook and try to run code before running the cells that define necessary variables.</p>
 <p>Often if you have saved your notebook and reopened it to resume where you left off, it’s a good idea to use <em>Run → Run All Cells</em> from the top menu to make sure all required code has been executed.</p>
 <div class="cell docutils container">
@@ -989,7 +1051,7 @@ Sorted Molecules List: [&#39;acetaminophen&#39;, &#39;aspirin&#39;, &#39;diclofe
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Example: misspelled variable name</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">mol_weight</span> <span class="o">=</span> <span class="mf">46.07</span>
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">mol_wieght</span><span class="p">)</span>  <span class="c1"># Typo!</span>
@@ -1001,7 +1063,7 @@ Sorted Molecules List: [&#39;acetaminophen&#39;, &#39;aspirin&#39;, &#39;diclofe
 </div>
 </section>
 <section id="syntaxerror-your-code-breaks-pythons-grammar-rules">
-<h3><code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code>: Your code breaks Python’s grammar rules<a class="headerlink" href="#syntaxerror-your-code-breaks-pythons-grammar-rules" title="Link to this heading">#</a></h3>
+<h2><code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code>: Your code breaks Python’s grammar rules<a class="headerlink" href="#syntaxerror-your-code-breaks-pythons-grammar-rules" title="Link to this heading">#</a></h2>
 <p>A programming language’s syntax is its set of rules for how code must be written—including proper formatting, use of symbols, valid variable names, and more. A <code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code> occurs when your code violates one of these rules. To help you debug, Python provides an error message that shows the specific line of code with the problem and often includes a pointer (<code class="docutils literal notranslate"><span class="pre">^</span></code>) to indicate where the issue is likely occurring. This error usually signals a small but important mistake, such as a missing colon, unmatched parentheses, or incorrect indentation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1012,7 +1074,7 @@ Sorted Molecules List: [&#39;acetaminophen&#39;, &#39;aspirin&#39;, &#39;diclofe
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">compoundClass</span>
                              <span class="o">^</span>
 <span class="ne">SyntaxError</span>: expected &#39;:&#39;
@@ -1022,7 +1084,7 @@ Sorted Molecules List: [&#39;acetaminophen&#39;, &#39;aspirin&#39;, &#39;diclofe
 </div>
 </section>
 <section id="keyerror-accessing-a-missing-key-in-a-dictionary">
-<h3><code class="docutils literal notranslate"><span class="pre">KeyError</span></code>: Accessing a missing key in a dictionary<a class="headerlink" href="#keyerror-accessing-a-missing-key-in-a-dictionary" title="Link to this heading">#</a></h3>
+<h2><code class="docutils literal notranslate"><span class="pre">KeyError</span></code>: Accessing a missing key in a dictionary<a class="headerlink" href="#keyerror-accessing-a-missing-key-in-a-dictionary" title="Link to this heading">#</a></h2>
 <p>You will get a <code class="docutils literal notranslate"><span class="pre">KeyError</span></code> you try to access a information in a diction that doesn’t exist.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1040,7 +1102,7 @@ Sorted Molecules List: [&#39;acetaminophen&#39;, &#39;aspirin&#39;, &#39;diclofe
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="s2">&quot;acetone&quot;</span><span class="p">:</span> <span class="mf">58.08</span><span class="p">,</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="s2">&quot;methanol&quot;</span><span class="p">:</span> <span class="mf">32.04</span>
 <span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="p">}</span>
@@ -1087,7 +1149,7 @@ acetone has a molecular weight of 58.08 g/mol
 <p>Notice that the code above also shows you can access the dictionary by key and the order you access them does not matter.</p>
 </section>
 <section id="indexerror-accessing-a-list-index-that-doesn-t-exist">
-<h3><code class="docutils literal notranslate"><span class="pre">IndexError</span></code>: Accessing a list index that doesn’t exist<a class="headerlink" href="#indexerror-accessing-a-list-index-that-doesn-t-exist" title="Link to this heading">#</a></h3>
+<h2><code class="docutils literal notranslate"><span class="pre">IndexError</span></code>: Accessing a list index that doesn’t exist<a class="headerlink" href="#indexerror-accessing-a-list-index-that-doesn-t-exist" title="Link to this heading">#</a></h2>
 <p>If you try to access an index value that is greater than the number of items in the list, you will get an <code class="docutils literal notranslate"><span class="pre">IndexError</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1099,7 +1161,7 @@ acetone has a molecular weight of 58.08 g/mol
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">22</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">elements</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;O&quot;</span><span class="p">]</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">elements</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
 
@@ -1121,7 +1183,7 @@ A <code class="docutils literal notranslate"><span class="pre">TypeError</span><
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">23</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">mass1</span> <span class="o">=</span> <span class="mf">18.02</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">mass2</span> <span class="o">=</span> <span class="s2">&quot;18.02&quot;</span>
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">mass1</span> <span class="o">+</span> <span class="n">mass2</span><span class="p">)</span>
@@ -1132,8 +1194,8 @@ A <code class="docutils literal notranslate"><span class="pre">TypeError</span><
 </div>
 </div>
 </section>
-<section id="indentationerror-incorrect-indentation-spacing-in-the-code">
-<h3>IndentationError: Incorrect indentation (spacing) in the code<a class="headerlink" href="#indentationerror-incorrect-indentation-spacing-in-the-code" title="Link to this heading">#</a></h3>
+<section id="indentation-error-incorrect-indentation-spacing-in-the-code">
+<h2>Indentation Error: Incorrect indentation (spacing) in the code<a class="headerlink" href="#indentation-error-incorrect-indentation-spacing-in-the-code" title="Link to this heading">#</a></h2>
 <p>Python uses indentation to define code blocks (for example in making <code class="docutils literal notranslate"><span class="pre">for</span></code> loops or <code class="docutils literal notranslate"><span class="pre">if</span></code> statments). If it’s inconsistent or missing, an error is raised.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1145,7 +1207,7 @@ A <code class="docutils literal notranslate"><span class="pre">TypeError</span><
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">17</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">24</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">solvent</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">solvent</span><span class="p">))</span>
     <span class="o">^</span>
 <span class="ne">IndentationError</span>: expected an indented block after &#39;for&#39; statement on line 3
@@ -1158,11 +1220,11 @@ A <code class="docutils literal notranslate"><span class="pre">TypeError</span><
 <p>Fix each of the code cells above so that they don’t throw an error.</p>
 </div></section>
 </section>
-<section id="more-python-modules">
-<h2>More Python Modules<a class="headerlink" href="#more-python-modules" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="more-python-modules">
+<h1>More Python Modules<a class="headerlink" href="#more-python-modules" title="Link to this heading">#</a></h1>
 <p>Python includes many powerful built-in modules that make it easier to perform everyday tasks. Let’s explore some commonly used tools with examples from a chemistry or computational workflow.</p>
 <section id="os-interacting-with-the-operating-system">
-<h3><code class="docutils literal notranslate"><span class="pre">os</span></code>: Interacting with the Operating System<a class="headerlink" href="#os-interacting-with-the-operating-system" title="Link to this heading">#</a></h3>
+<h2><code class="docutils literal notranslate"><span class="pre">os</span></code>: Interacting with the Operating System<a class="headerlink" href="#os-interacting-with-the-operating-system" title="Link to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">os</span></code> module allows you to work with the file system—listing files, navigating folders, and managing paths. You might use <code class="docutils literal notranslate"><span class="pre">os</span></code> to scan or write to folders for chemical data files, experimental logs, or spectral images.</p>
 <p>A useful function from the os module is the <code class="docutils literal notranslate"><span class="pre">listdir()</span></code> method which lists all the files and directories in a folder.</p>
 <p>To open a file not in the directory of your Jupyter notebook, you will need to change the directory Python is currently looking in, known as the current working directory, using the <code class="docutils literal notranslate"><span class="pre">chdir()</span></code> method. It takes a single string argument of the path in string format to the folder containing the files of interest. The exact format will vary depending upon your computer and if you are using macOS, Windows, or Linux.</p>
@@ -1199,7 +1261,7 @@ Current working directory: /home/bob/projects/classes/CINF2026/content/modules/0
 </div>
 </section>
 <section id="random-generating-random-numbers-or-choices">
-<h3><code class="docutils literal notranslate"><span class="pre">random</span></code> – Generating Random Numbers or Choices<a class="headerlink" href="#random-generating-random-numbers-or-choices" title="Link to this heading">#</a></h3>
+<h2><code class="docutils literal notranslate"><span class="pre">random</span></code> – Generating Random Numbers or Choices<a class="headerlink" href="#random-generating-random-numbers-or-choices" title="Link to this heading">#</a></h2>
 <p>The random module provides a selection of functions for generating random values. Random values can be integers or floats and can be generated from a variety of ranges and distributions. Note:  Brackets mean inclusive while the parentheses mean exclusive.
 [0,1) will provide values of 0 up to but excluding 1 and is used for probability simulations.
 [1,10] will provide values of 1 up to and including 10.</p>
@@ -1258,31 +1320,31 @@ Current working directory: /home/bob/projects/classes/CINF2026/content/modules/0
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generate a random float between 0 and 1
-Random float: 0.6011044680670112
+Random float: 0.8740092438000803
 
 generate a random integer between 1 and 10 including 1 and 10
-Random number: 3
-Random number: 9
-Random number: 1
-Random number: 8
-Random number: 10
+Random number: 6
+Random number: 4
+Random number: 7
+Random number: 5
+Random number: 4
 
 generate a random integer between 1 and 10 selecting only even numbers
-Random number: 8
-Random number: 8
 Random number: 4
-Random number: 0
-Random number: 4
+Random number: 8
+Random number: 2
+Random number: 2
+Random number: 6
 
 randomly select a compound from a list
 [&#39;ethanol&#39;, &#39;acetone&#39;, &#39;toluene&#39;, &#39;chloroform&#39;]
-Randomly selected compound: ethanol
+Randomly selected compound: acetone
 </pre></div>
 </div>
 </div>
 </div>
 <section id="controlling-randomness-with-random-seed">
-<h4>Controlling Randomness with <code class="docutils literal notranslate"><span class="pre">random.seed()</span></code><a class="headerlink" href="#controlling-randomness-with-random-seed" title="Link to this heading">#</a></h4>
+<h3>Controlling Randomness with <code class="docutils literal notranslate"><span class="pre">random.seed()</span></code><a class="headerlink" href="#controlling-randomness-with-random-seed" title="Link to this heading">#</a></h3>
 <p>Randomness in Python allows programs to <em>simulate</em> unpredictability.This is accomplished with a pseudorandom number generator, which means that the sequence of random numbers appear random, but is actually an algorithm for generating a sequence of numbers that approximate sequences of random numbers. The sequence is not truly random because it is completely determined by an initial value called the <strong>seed</strong>. By using <code class="docutils literal notranslate"><span class="pre">random.seed()</span></code>, you can set the starting point of this sequence, ensuring that your random operations (like sampling or simulation) produce the same results every time. This makes your code reproducible and easier to debug or share with others.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1312,9 +1374,9 @@ Randomly selected compound: ethanol
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Without setting a seed we should get different results:
-First run: ethanol
-Second run: methanol
-Third run: hexane
+First run: cyclohexane
+Second run: ethanol
+Third run: toluene
 
 With setting a seed we should get the same results:
 First run: acetone
@@ -1328,7 +1390,7 @@ Fourth run with new random seed: ethanol
 </section>
 </section>
 <section id="enumerate-looping-with-indexes">
-<h3><code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> – Looping with Indexes<a class="headerlink" href="#enumerate-looping-with-indexes" title="Link to this heading">#</a></h3>
+<h2><code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> – Looping with Indexes<a class="headerlink" href="#enumerate-looping-with-indexes" title="Link to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> function lets you loop through a list while keeping track of each item’s index. This is especially useful when you want to number items, label experimental runs, or access both position and content during a loop.</p>
 <p>the basic syntax is:
 <code>
@@ -1366,7 +1428,7 @@ where:</p>
 </div>
 </section>
 <section id="getting-data-from-the-web-with-requests">
-<h3>Getting Data from the Web with <code class="docutils literal notranslate"><span class="pre">requests</span></code><a class="headerlink" href="#getting-data-from-the-web-with-requests" title="Link to this heading">#</a></h3>
+<h2>Getting Data from the Web with <code class="docutils literal notranslate"><span class="pre">requests</span></code><a class="headerlink" href="#getting-data-from-the-web-with-requests" title="Link to this heading">#</a></h2>
 <p>The requests module allows Python to send HTTP requests to websites and APIs and get back data—often in text or other formats that we will explore. This is essential for working with chemical databases, pulling compound info, literature, or real-time data from public sources.</p>
 <p>Common <code class="docutils literal notranslate"><span class="pre">requests</span></code> Methods</p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -1487,7 +1549,7 @@ Unexpected error: 400
 </div>
 </section>
 <section id="time-tracking-and-delaying-execution">
-<h3><code class="docutils literal notranslate"><span class="pre">time</span></code> – Tracking and Delaying Execution<a class="headerlink" href="#time-tracking-and-delaying-execution" title="Link to this heading">#</a></h3>
+<h2><code class="docutils literal notranslate"><span class="pre">time</span></code> – Tracking and Delaying Execution<a class="headerlink" href="#time-tracking-and-delaying-execution" title="Link to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">time</span></code> module helps you pause code or measure how long it takes to run. One particularly useful case that we will be using frequently is pausing requests websites. WorldTimeAPI enforces a fair-use policy, meaning there are rate limits, but they are not explicitly stated as a fixed number per second. The PubChem servers, however, have a strict 5 requests per second limit. If you go over that rate, you can be locked out for making excessive requests.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1507,22 +1569,22 @@ Unexpected error: 400
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Status code: 200
-{&quot;year&quot;:2026,&quot;month&quot;:5,&quot;day&quot;:23,&quot;hour&quot;:17,&quot;minute&quot;:21,&quot;seconds&quot;:53,&quot;milliSeconds&quot;:288,&quot;dateTime&quot;:&quot;2026-05-23T17:21:53.2880238&quot;,&quot;date&quot;:&quot;05/23/2026&quot;,&quot;time&quot;:&quot;17:21&quot;,&quot;timeZone&quot;:&quot;America/Chicago&quot;,&quot;dayOfWeek&quot;:&quot;Saturday&quot;,&quot;dstActive&quot;:true}
+{&quot;year&quot;:2026,&quot;month&quot;:5,&quot;day&quot;:27,&quot;hour&quot;:3,&quot;minute&quot;:7,&quot;seconds&quot;:31,&quot;milliSeconds&quot;:38,&quot;dateTime&quot;:&quot;2026-05-27T03:07:31.0381385&quot;,&quot;date&quot;:&quot;05/27/2026&quot;,&quot;time&quot;:&quot;03:07&quot;,&quot;timeZone&quot;:&quot;America/Chicago&quot;,&quot;dayOfWeek&quot;:&quot;Wednesday&quot;,&quot;dstActive&quot;:true}
 Status code: 200
-{&quot;year&quot;:2026,&quot;month&quot;:5,&quot;day&quot;:23,&quot;hour&quot;:17,&quot;minute&quot;:21,&quot;seconds&quot;:53,&quot;milliSeconds&quot;:986,&quot;dateTime&quot;:&quot;2026-05-23T17:21:53.9869647&quot;,&quot;date&quot;:&quot;05/23/2026&quot;,&quot;time&quot;:&quot;17:21&quot;,&quot;timeZone&quot;:&quot;America/Chicago&quot;,&quot;dayOfWeek&quot;:&quot;Saturday&quot;,&quot;dstActive&quot;:true}
+{&quot;year&quot;:2026,&quot;month&quot;:5,&quot;day&quot;:27,&quot;hour&quot;:3,&quot;minute&quot;:7,&quot;seconds&quot;:31,&quot;milliSeconds&quot;:699,&quot;dateTime&quot;:&quot;2026-05-27T03:07:31.69915&quot;,&quot;date&quot;:&quot;05/27/2026&quot;,&quot;time&quot;:&quot;03:07&quot;,&quot;timeZone&quot;:&quot;America/Chicago&quot;,&quot;dayOfWeek&quot;:&quot;Wednesday&quot;,&quot;dstActive&quot;:true}
 Status code: 200
-{&quot;year&quot;:2026,&quot;month&quot;:5,&quot;day&quot;:23,&quot;hour&quot;:17,&quot;minute&quot;:21,&quot;seconds&quot;:54,&quot;milliSeconds&quot;:661,&quot;dateTime&quot;:&quot;2026-05-23T17:21:54.6618998&quot;,&quot;date&quot;:&quot;05/23/2026&quot;,&quot;time&quot;:&quot;17:21&quot;,&quot;timeZone&quot;:&quot;America/Chicago&quot;,&quot;dayOfWeek&quot;:&quot;Saturday&quot;,&quot;dstActive&quot;:true}
+{&quot;year&quot;:2026,&quot;month&quot;:5,&quot;day&quot;:27,&quot;hour&quot;:3,&quot;minute&quot;:7,&quot;seconds&quot;:32,&quot;milliSeconds&quot;:360,&quot;dateTime&quot;:&quot;2026-05-27T03:07:32.3608718&quot;,&quot;date&quot;:&quot;05/27/2026&quot;,&quot;time&quot;:&quot;03:07&quot;,&quot;timeZone&quot;:&quot;America/Chicago&quot;,&quot;dayOfWeek&quot;:&quot;Wednesday&quot;,&quot;dstActive&quot;:true}
 Status code: 200
-{&quot;year&quot;:2026,&quot;month&quot;:5,&quot;day&quot;:23,&quot;hour&quot;:17,&quot;minute&quot;:21,&quot;seconds&quot;:55,&quot;milliSeconds&quot;:378,&quot;dateTime&quot;:&quot;2026-05-23T17:21:55.3789456&quot;,&quot;date&quot;:&quot;05/23/2026&quot;,&quot;time&quot;:&quot;17:21&quot;,&quot;timeZone&quot;:&quot;America/Chicago&quot;,&quot;dayOfWeek&quot;:&quot;Saturday&quot;,&quot;dstActive&quot;:true}
+{&quot;year&quot;:2026,&quot;month&quot;:5,&quot;day&quot;:27,&quot;hour&quot;:3,&quot;minute&quot;:7,&quot;seconds&quot;:33,&quot;milliSeconds&quot;:33,&quot;dateTime&quot;:&quot;2026-05-27T03:07:33.0330956&quot;,&quot;date&quot;:&quot;05/27/2026&quot;,&quot;time&quot;:&quot;03:07&quot;,&quot;timeZone&quot;:&quot;America/Chicago&quot;,&quot;dayOfWeek&quot;:&quot;Wednesday&quot;,&quot;dstActive&quot;:true}
 Status code: 200
-{&quot;year&quot;:2026,&quot;month&quot;:5,&quot;day&quot;:23,&quot;hour&quot;:17,&quot;minute&quot;:21,&quot;seconds&quot;:56,&quot;milliSeconds&quot;:56,&quot;dateTime&quot;:&quot;2026-05-23T17:21:56.0562436&quot;,&quot;date&quot;:&quot;05/23/2026&quot;,&quot;time&quot;:&quot;17:21&quot;,&quot;timeZone&quot;:&quot;America/Chicago&quot;,&quot;dayOfWeek&quot;:&quot;Saturday&quot;,&quot;dstActive&quot;:true}
+{&quot;year&quot;:2026,&quot;month&quot;:5,&quot;day&quot;:27,&quot;hour&quot;:3,&quot;minute&quot;:7,&quot;seconds&quot;:33,&quot;milliSeconds&quot;:692,&quot;dateTime&quot;:&quot;2026-05-27T03:07:33.6925533&quot;,&quot;date&quot;:&quot;05/27/2026&quot;,&quot;time&quot;:&quot;03:07&quot;,&quot;timeZone&quot;:&quot;America/Chicago&quot;,&quot;dayOfWeek&quot;:&quot;Wednesday&quot;,&quot;dstActive&quot;:true}
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="exploring-io-and-stringio-working-with-in-memory-text-streams">
-<h3>Exploring <code class="docutils literal notranslate"><span class="pre">io</span></code> and <code class="docutils literal notranslate"><span class="pre">StringIO</span></code> – Working with In-Memory Text Streams<a class="headerlink" href="#exploring-io-and-stringio-working-with-in-memory-text-streams" title="Link to this heading">#</a></h3>
+<h2>Exploring <code class="docutils literal notranslate"><span class="pre">io</span></code> and <code class="docutils literal notranslate"><span class="pre">StringIO</span></code> – Working with In-Memory Text Streams<a class="headerlink" href="#exploring-io-and-stringio-working-with-in-memory-text-streams" title="Link to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">io</span></code> module provides tools for handling file-like operations in memory. One of the most useful tools is <code class="docutils literal notranslate"><span class="pre">io.StringIO</span></code>, which allows you to treat a string like a file. Many times when we request data from PubChem we will get data that we need to parse.</p>
 <p>In the example below we are getting data from five molecules in one request and it returns all the data in one chunk. By using <code class="docutils literal notranslate"><span class="pre">StringIO</span></code> we can separate each line of data that is included in the response.</p>
 <div class="cell docutils container">
@@ -1557,7 +1619,6 @@ Parsed line: Codeine
 <H1>Homework</H1>
 In this notebook, you had a crash course in python programming. You assigned values to variables, performed operations on those variables, made decisions on those variables and finally outputted the results to your screen. 
 </div></section>
-</section>
 <section id="python-problem-1">
 <h2>Python Problem 1<a class="headerlink" href="#python-problem-1" title="Link to this heading">#</a></h2>
 <p>You are working with data collected from a small lab inventory and experiment log. The data is stored in various Python data structures. The following code cell defines a series of lists, tuples, sets and dictionaries.</p>
@@ -1729,7 +1790,7 @@ Title: Cyclohexanol, 4-(4-(4-fluorophenyl)-5-(2-methoxy-4-pyrimidinyl)-1H-imidaz
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="acknowledgements">
 <h1>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Link to this heading">#</a></h1>
-<p>This notebook modifiec by Robert Belford from work developed by Ehren Bucholtz (Ehren.Bucholtz&#64;uhsp.edu) that took inspiration from Chapter 1: Basic Python from Charlie Weiss’s book Scientific Computing for Chemists with Python, license (CC BY-NC-SA 4.0).</p>
+<p>This notebook was modified by Robert Belford from work developed by Ehren Bucholtz (Ehren.Bucholtz&#64;uhsp.edu) that took inspiration from Chapter 1: Basic Python from Charlie Weiss’s book Scientific Computing for Chemists with Python, license (CC BY-NC-SA 4.0).</p>
 <p>This work is licensed under CC BY-NC-SA 4.0.</p>
 </section>
 
@@ -1800,34 +1861,31 @@ Title: Cyclohexanol, 4-(4-(4-fluorophenyl)-5-(2-methoxy-4-pyrimidinyl)-1H-imidaz
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1.2 Intermediate Python</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Intermediate Python</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-data-structures">Python Data Structures</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">Lists</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples">Tuples</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sets">Sets</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">Dictionaries</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#python-data-structures">Python Data Structures</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">Lists</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples">Tuples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sets">Sets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">Dictionaries</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-error-types">Python Error Types</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nameerror-using-a-variable-that-hasnt-been-defined"><code class="docutils literal notranslate"><span class="pre">NameError</span></code>: Using a variable that hasn’t been defined</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntaxerror-your-code-breaks-pythons-grammar-rules"><code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code>: Your code breaks Python’s grammar rules</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keyerror-accessing-a-missing-key-in-a-dictionary"><code class="docutils literal notranslate"><span class="pre">KeyError</span></code>: Accessing a missing key in a dictionary</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexerror-accessing-a-list-index-that-doesn-t-exist"><code class="docutils literal notranslate"><span class="pre">IndexError</span></code>: Accessing a list index that doesn’t exist</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indentationerror-incorrect-indentation-spacing-in-the-code">IndentationError: Incorrect indentation (spacing) in the code</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#python-error-types">Python Error Types</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nameerror-using-a-variable-that-hasnt-been-defined"><code class="docutils literal notranslate"><span class="pre">NameError</span></code>: Using a variable that hasn’t been defined</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#syntaxerror-your-code-breaks-pythons-grammar-rules"><code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code>: Your code breaks Python’s grammar rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keyerror-accessing-a-missing-key-in-a-dictionary"><code class="docutils literal notranslate"><span class="pre">KeyError</span></code>: Accessing a missing key in a dictionary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexerror-accessing-a-list-index-that-doesn-t-exist"><code class="docutils literal notranslate"><span class="pre">IndexError</span></code>: Accessing a list index that doesn’t exist</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indentation-error-incorrect-indentation-spacing-in-the-code">Indentation Error: Incorrect indentation (spacing) in the code</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-python-modules">More Python Modules</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#os-interacting-with-the-operating-system"><code class="docutils literal notranslate"><span class="pre">os</span></code>: Interacting with the Operating System</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-generating-random-numbers-or-choices"><code class="docutils literal notranslate"><span class="pre">random</span></code> – Generating Random Numbers or Choices</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#controlling-randomness-with-random-seed">Controlling Randomness with <code class="docutils literal notranslate"><span class="pre">random.seed()</span></code></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#more-python-modules">More Python Modules</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#os-interacting-with-the-operating-system"><code class="docutils literal notranslate"><span class="pre">os</span></code>: Interacting with the Operating System</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-generating-random-numbers-or-choices"><code class="docutils literal notranslate"><span class="pre">random</span></code> – Generating Random Numbers or Choices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#controlling-randomness-with-random-seed">Controlling Randomness with <code class="docutils literal notranslate"><span class="pre">random.seed()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enumerate-looping-with-indexes"><code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> – Looping with Indexes</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-data-from-the-web-with-requests">Getting Data from the Web with <code class="docutils literal notranslate"><span class="pre">requests</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-tracking-and-delaying-execution"><code class="docutils literal notranslate"><span class="pre">time</span></code> – Tracking and Delaying Execution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-io-and-stringio-working-with-in-memory-text-streams">Exploring <code class="docutils literal notranslate"><span class="pre">io</span></code> and <code class="docutils literal notranslate"><span class="pre">StringIO</span></code> – Working with In-Memory Text Streams</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enumerate-looping-with-indexes"><code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> – Looping with Indexes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-data-from-the-web-with-requests">Getting Data from the Web with <code class="docutils literal notranslate"><span class="pre">requests</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-tracking-and-delaying-execution"><code class="docutils literal notranslate"><span class="pre">time</span></code> – Tracking and Delaying Execution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-io-and-stringio-working-with-in-memory-text-streams">Exploring <code class="docutils literal notranslate"><span class="pre">io</span></code> and <code class="docutils literal notranslate"><span class="pre">StringIO</span></code> – Working with In-Memory Text Streams</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-problem-1">Python Problem 1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-problem-2">Python Problem 2</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-problem-3">Python Problem 3</a></li>

@@ -12,6 +12,9 @@ parts:
       sections:
       - file: content/modules/02_Introduction/02-1-PubChemDataTypes
       - file: content/modules/02_Introduction/02_2_PUG_REST_activity
+    - file: content/modules/03_Public_Chemical_Databases/README
+      sections:
+      - file: content/modules/03_Public_Chemical_Databases/03_01_Survey_Public_Chemical_Databases
     - file: content/modules/10_SupervisedML/README
       sections:
       - file: content/modules/10_SupervisedML/10_0_Intro

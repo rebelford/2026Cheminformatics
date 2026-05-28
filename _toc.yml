@@ -10,11 +10,16 @@ parts:
       - file: content/modules/01_PythonPrimer/01_2_python-intermediate
     - file: content/modules/02_Introduction/README
       sections:
-      - file: content/modules/02_Introduction/02-1-PubChemDataTypes
+      - file: content/modules/02_Introduction/02_1_PubChemDataTypes
       - file: content/modules/02_Introduction/02_2_PUG_REST_activity
     - file: content/modules/03_Public_Chemical_Databases/README
       sections:
       - file: content/modules/03_Public_Chemical_Databases/03_01_Survey_Public_Chemical_Databases
+    - file: content/modules/04_Chemical_Representations/README
+      sections:
+      - file: content/modules/04_Chemical_Representations/04-01-introduction_chemical_representations
+      - file: content/modules/04_Chemical_Representations/04-02-PubChem3D_update
+      - file: content/modules/04_Chemical_Representations/04-3-Substructure_Searching_with_SMARTS
     - file: content/modules/10_SupervisedML/README
       sections:
       - file: content/modules/10_SupervisedML/10_0_Intro

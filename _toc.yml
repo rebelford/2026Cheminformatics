@@ -17,9 +17,9 @@ parts:
       - file: content/modules/03_Public_Chemical_Databases/03_01_Survey_Public_Chemical_Databases
     - file: content/modules/04_Chemical_Representations/README
       sections:
-      - file: content/modules/04_Chemical_Representations/04-01-introduction_chemical_representations
-      - file: content/modules/04_Chemical_Representations/04-02-PubChem3D_update
-      - file: content/modules/04_Chemical_Representations/04-3-Substructure_Searching_with_SMARTS
+      - file: content/modules/04_Chemical_Representations/04_01_Introduction_chemical_representations
+      - file: content/modules/04_Chemical_Representations/04_02_PubChem3D_update
+      - file: content/modules/04_Chemical_Representations/04_3_Substructure_Searching_with_SMARTS
     - file: content/modules/10_SupervisedML/README
       sections:
       - file: content/modules/10_SupervisedML/10_0_Intro
@@ -33,9 +33,12 @@ parts:
 
   - caption: Appendices
     chapters:
-    - file: content/appendices/App_1/README
+    - file: content/appendices/App_01/README
       sections:
-      - file: content/appendices/App_1/A_01-1_OS
+      - file: content/appendices/App_01/A_01-1_OS
+    - file: content/appendices/App_04/README
+      sections:
+      - file: content/appendices/App_04/04_1_SMARTS_Primer
     - file: content/appendices/App_10/README
       sections:
       - file: content/appendices/App_10/A_10-1AID_Selector

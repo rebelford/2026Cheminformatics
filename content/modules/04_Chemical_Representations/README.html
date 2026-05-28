@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Module3: Chemical Representation &#8212; 2026 Cheminformatics OLCC</title>
+    <title>Module 4: Chemical Representation &#8212; 2026 Cheminformatics OLCC</title>
   
   
   
@@ -60,7 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/modules/04_Chemical_Representations/README';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Chemical Representations and Introduction to RDKit" href="04-01-introduction_chemical_representations.html" />
+    <link rel="next" title="4.1 Chemical Representations and Introduction to RDKit" href="04_01_Introduction_chemical_representations.html" />
     <link rel="prev" title="Public Compound Databases" href="../03_Public_Chemical_Databases/03_01_Survey_Public_Chemical_Databases.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -207,12 +207,12 @@
 
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Module3: Chemical Representation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="04-01-introduction_chemical_representations.html">Chemical Representations and Introduction to RDKit</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Module 4: Chemical Representation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="04_01_Introduction_chemical_representations.html">4.1 Chemical Representations and Introduction to RDKit</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="04-02-PubChem3D_update.html">PubChem3D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_02_PubChem3D_update.html">4.2 PubChem 3D</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="04-3-Substructure_Searching_with_SMARTS.html">Substructure Searching with SMARTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_3_Substructure_Searching_with_SMARTS.html">Substructure Searching with SMARTS</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../10_SupervisedML/README.html">Module 10: Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -281,13 +281,19 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/App_1/README.html">Appendix 1: Getting Set Up</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../appendices/App_1/A_01-1_OS.html">Appendix 1.1: Linux &amp; WSL</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/App_01/README.html">Appendix 1: Getting Set Up</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/App_01/A_01-1_OS.html">Appendix 1.1: Linux &amp; WSL</a></li>
 
 
 
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appendices/App_04/04_1_SMARTS_Primer.html">1. What SMARTS is</a></li>
+
+
+
+
+
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../appendices/App_10/README.html">Appendix 10: Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../appendices/App_10/A_10-1AID_Selector.html">A10.1 BioAssay Screening: Enough Actives</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../appendices/App_10/A_10-2NaiveBayes.html">A10.2 Bayes’ Theorem: From Inference to Models</a></li>
@@ -468,9 +474,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -481,24 +485,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Module3: Chemical Representation</h1>
+    <h1>Module 4: Chemical Representation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebooks">Notebooks</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-chemical-representations">03-03-Introduction-Chemical-Representations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pubchem3d">03-02-PubChem3D</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#substructure-searching-with-smarts">03-03-Substructure Searching with SMARTS</a></li>
-</ul>
-</li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -508,24 +499,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="module3-chemical-representation">
-<h1>Module3: Chemical Representation<a class="headerlink" href="#module3-chemical-representation" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="module-4-chemical-representation">
+<h1>Module 4: Chemical Representation<a class="headerlink" href="#module-4-chemical-representation" title="Link to this heading">#</a></h1>
 <p>This directory is set up to develop a variety of Python tutorials to assist students in learning Python skills they will use in later modules. Discussions of these tutorials will take place in the <a class="reference external" href="https://github.com/DivCHED-CCCE/DataChemistryOLCC/discussions/categories/03-chemical-representation">Chemical Representation GitHub Discussions</a>. Please contact Bob Belford (rebelford&#64;ualr.edu) if you would like to join the working group, contribute content to this repository, or have any questions or concerns about this project.</p>
-<section id="notebooks">
-<h2>Notebooks<a class="headerlink" href="#notebooks" title="Link to this heading">#</a></h2>
-<section id="introduction-chemical-representations">
-<h3>03-03-Introduction-Chemical-Representations<a class="headerlink" href="#introduction-chemical-representations" title="Link to this heading">#</a></h3>
-<p><a class="reference external" href="https://github.com/DivCHED-CCCE/DataChemistryOLCC/blob/main/module-development/03-Chemical-Representations/03-01-introduction_chemical_representations.ipynb">Vhemical Representations and Introduction to RDKit</a>. This notebook is inspired by and borrows from <a class="reference external" href="https://weisscharlesj.github.io/SciCompforChemists/notebooks/chapter_015/chap_15_notebook.html">Chapter 15: Cheminformatics with RDKit</a> of Charlie Weiss’s book <a class="reference external" href="https://colab.research.google.com/github/PatWalters/practical_cheminformatics_tutorials/blob/main/fundamentals/SMILES_tutorial.ipynb">ScintiAn Introduction to the Simplified Molecular Input Line Entry System (SMILES)</a> from Pat Walter’s <a class="reference external" href="https://github.com/PatWalters/practical_cheminformatics_tutorials?tab=readme-ov-file">Cheminformatics Tutorials GitHub</a>. Contact Ehren Bucholtz (ehren.Bucholtz&#64;uhsp.edu) if you want access to the key.</p>
-</section>
-<section id="pubchem3d">
-<h3>03-02-PubChem3D<a class="headerlink" href="#pubchem3d" title="Link to this heading">#</a></h3>
-<p><a class="reference external" href="https://github.com/DivCHED-CCCE/DataChemistryOLCC/blob/main/module-development/03-Chemical-Representations/03-02-PubChem3D_update.ipynb">PubChem3D</a> Contact Ehren Bucholtz (ehren.Bucholtz&#64;uhsp.edu) if you want access to the key.</p>
-</section>
-<section id="substructure-searching-with-smarts">
-<h3>03-03-Substructure Searching with SMARTS<a class="headerlink" href="#substructure-searching-with-smarts" title="Link to this heading">#</a></h3>
-<p><a class="reference external" href="https://github.com/DivCHED-CCCE/DataChemistryOLCC/blob/main/module-development/03-Chemical-Representations/03-03-Substructure_Searching_with_SMARTS.ipynb">Substructure Searching with SMARTS</a> This notebook is inspired by, borrows from and expands upon <a href = "https://colab.research.google.com/github/PatWalters/practical_cheminformatics_tutorials/blob/main/fundamentals/SMARTS_tutorial.ipynb"> An introduction to the SMILES ARbitrary Target Specification (SMARTS)</a> from Pat Walter’s <a href="https://github.com/PatWalters/practical_cheminformatics_tutorials?tab=readme-ov-file"> Cheminformatics Tutorials Github.</a></p>
-</section>
-</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -570,11 +546,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="04-01-introduction_chemical_representations.html"
+       href="04_01_Introduction_chemical_representations.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Chemical Representations and Introduction to RDKit</p>
+        <p class="prev-next-title">4.1 Chemical Representations and Introduction to RDKit</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -584,26 +560,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebooks">Notebooks</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-chemical-representations">03-03-Introduction-Chemical-Representations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pubchem3d">03-02-PubChem3D</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#substructure-searching-with-smarts">03-03-Substructure Searching with SMARTS</a></li>
-</ul>
-</li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

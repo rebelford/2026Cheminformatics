@@ -1,0 +1,1696 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1. What SMARTS is &#8212; 2026 Cheminformatics OLCC</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/appendices/App_04/04_1_SMARTS_Primer';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Appendix 10: Supervised Machine Learning" href="../App_10/README.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="README.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="2026 Cheminformatics OLCC - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="2026 Cheminformatics OLCC - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Core Modules</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules/01_PythonPrimer/README.html">Module 1: Python Primers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01_PythonPrimer/01_1_python-basics.html">1.1 Python Basics</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../modules/01_PythonPrimer/01_2_python-intermediate.html">1.2 Intermediate Python</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules/02_Introduction/README.html">Module 2: Introduction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02_Introduction/02_1_PubChemDataTypes.html">2.1 PubChem Training Course</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../modules/02_Introduction/02_2_PUG_REST_activity.html">2.2 PubChem PUG-REST</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules/03_Public_Chemical_Databases/README.html">Module 3: Survey of Chemical Databases</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/03_Public_Chemical_Databases/03_01_Survey_Public_Chemical_Databases.html">Public Compound Databases</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules/04_Chemical_Representations/README.html">Module 4: Chemical Representation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/04_Chemical_Representations/04_01_Introduction_chemical_representations.html">4.1 Chemical Representations and Introduction to RDKit</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../modules/04_Chemical_Representations/04_02_PubChem3D_update.html">4.2 PubChem 3D</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../modules/04_Chemical_Representations/04_3_Substructure_Searching_with_SMARTS.html">Substructure Searching with SMARTS</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules/10_SupervisedML/README.html">Module 10: Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/10_SupervisedML/10_0_Intro.html">10.0: Introduction</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../modules/10_SupervisedML/10_1_data_prep.html">10.1: Data Preparation and Feature Engineering</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../modules/10_SupervisedML/10_2_NB_model_construction_workflow.html">10.2: Naive Bayes and Model Construction</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../modules/10_SupervisedML/10_3_model_evaluation.html">10.3: Evaluating and Interpreting Models</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../modules/10_SupervisedML/10_4_Pipelines.html">10.4: Pipelines, Persistence, and Reproducible Inference</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../modules/10_SupervisedML/10_5_RD_Model_Complexity.html">10.5 Random Forest and Model Complexity</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../modules/10_SupervisedML/10_6_LR_SVM_Modeling.html">10.6 Logistic Regression and SVM</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../modules/10_SupervisedML/10_7_MLP_Neural_Networks.html">10.7  Neural Networks</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../App_01/README.html">Appendix 1: Getting Set Up</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../App_01/A_01-1_OS.html">Appendix 1.1: Linux &amp; WSL</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. What SMARTS is</a></li>
+
+
+
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../App_10/README.html">Appendix 10: Supervised Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../App_10/A_10-1AID_Selector.html">A10.1 BioAssay Screening: Enough Actives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../App_10/A_10-2NaiveBayes.html">A10.2 Bayes’ Theorem: From Inference to Models</a></li>
+
+
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://nanohub.org/tools/datachemolcc/hub/user-redirect/git-pull?repo=https%3A//github.com/rebelford/2026Cheminformatics&urlpath=lab/tree/2026Cheminformatics/content/appendices/App_04/04_1_SMARTS_Primer.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/rebelford/2026Cheminformatics" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/rebelford/2026Cheminformatics/issues/new?title=Issue%20on%20page%20%2Fcontent/appendices/App_04/04_1_SMARTS_Primer.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/content/appendices/App_04/04_1_SMARTS_Primer.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>1. What SMARTS is</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. What SMARTS is</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-anatomy-of-a-smarts-string">2. The “anatomy” of a SMARTS string</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-atom-expressions">a. Atom Expressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-bond-expressions">b. Bond Expressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-logic-and-grouping">c. Logic and Grouping</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#smarts-patterns">3. SMARTS Patterns</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-patterns">Common Patterns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functional-group-patterns">Functional Group Patterns</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#using-smarts-in-rdkit">4. Using SMARTS in RDKit</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rdkit-functions-and-methods-for-smarts">4.1 RDKit Functions and Methods for SMARTS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#table-common-rdkit-functions-and-methods-for-smarts-workflows">Table: Common RDKit Functions and Methods for SMARTS Workflows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-specific-notes">Jupyter-Specific Notes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#smarts-explorer-activity">5. SMARTS Explorer Activity</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-groups">Comparing groups</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-ether-patterns">Comparing ether patterns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity">Activity</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment">6.  Assignment</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="what-smarts-is">
+<h1>1. What SMARTS is<a class="headerlink" href="#what-smarts-is" title="Link to this heading">#</a></h1>
+<p><strong>SMARTS</strong> = <em>SMiles ARbitrary Target Specification</em>.
+It extends the SMILES syntax so you can <strong>search for patterns</strong> (substructures) inside molecules instead of describing a single, fully defined molecule.</p>
+<p>A SMILES string → describes <em>one</em> molecule.
+A SMARTS pattern → describes <em>all</em> molecules that match that pattern</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="the-anatomy-of-a-smarts-string">
+<h1>2. The “anatomy” of a SMARTS string<a class="headerlink" href="#the-anatomy-of-a-smarts-string" title="Link to this heading">#</a></h1>
+<p>A SMARTS pattern is made of:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Atom expressions</strong></p></td>
+<td><p>Describe what kind of atom can match.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[C]</span></code>, <code class="docutils literal notranslate"><span class="pre">[O]</span></code>, <code class="docutils literal notranslate"><span class="pre">[N+]</span></code>, <code class="docutils literal notranslate"><span class="pre">[!C]</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Bond expressions</strong></p></td>
+<td><p>Describe how atoms are connected.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">=</span></code>, <code class="docutils literal notranslate"><span class="pre">#</span></code>, <code class="docutils literal notranslate"><span class="pre">:</span></code>, <code class="docutils literal notranslate"><span class="pre">~</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Logical operators</strong></p></td>
+<td><p>Combine conditions.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&amp;</span></code> (AND), <code class="docutils literal notranslate"><span class="pre">,</span></code> (OR), <code class="docutils literal notranslate"><span class="pre">!</span></code> (NOT)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Parentheses <code class="docutils literal notranslate"><span class="pre">()</span></code></strong></p></td>
+<td><p>Group subpatterns.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[$(C(=O)O)]</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Recursion <code class="docutils literal notranslate"><span class="pre">$()</span></code></strong></p></td>
+<td><p>A pattern within a pattern (powerful).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[$([CX4][OX2H])]</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="a-atom-expressions">
+<h2>a. Atom Expressions<a class="headerlink" href="#a-atom-expressions" title="Link to this heading">#</a></h2>
+<p>Atom Expressions</p>
+<p>Inside square brackets <code class="docutils literal notranslate"><span class="pre">[...]</span></code>, you can specify <em>which</em> atoms match and <em>how they’re bonded</em>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Token</p></th>
+<th class="head text-left"><p>Meaning</p></th>
+<th class="head text-left"><p>Example</p></th>
+<th class="head text-left"><p>Matches</p></th>
+<th class="head text-left"><p>Excludes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">C</span></code>, <code class="docutils literal notranslate"><span class="pre">N</span></code>, <code class="docutils literal notranslate"><span class="pre">O</span></code></p></td>
+<td class="text-left"><p>Element symbol (default valence inferred)</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[C]</span></code></p></td>
+<td class="text-left"><p>any carbon</p></td>
+<td class="text-left"><p>—</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">A</span></code></p></td>
+<td class="text-left"><p>any <strong>aliphatic</strong> atom (non-aromatic)</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[A]</span></code></p></td>
+<td class="text-left"><p>sp³ C, N, O…</p></td>
+<td class="text-left"><p>aromatic atoms</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">a</span></code></p></td>
+<td class="text-left"><p>any <strong>aromatic</strong> atom</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[a]</span></code></p></td>
+<td class="text-left"><p>benzene ring atoms</p></td>
+<td class="text-left"><p>aliphatic atoms</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">*</span></code></p></td>
+<td class="text-left"><p>any atom</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[*]</span></code></p></td>
+<td class="text-left"><p>everything</p></td>
+<td class="text-left"><p>—</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">#n</span></code></p></td>
+<td class="text-left"><p>atomic number =n</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[#6]</span></code></p></td>
+<td class="text-left"><p>carbon</p></td>
+<td class="text-left"><p>—</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Xn</span></code></p></td>
+<td class="text-left"><p><strong>connectivity</strong> (number of attached atoms)</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[CX4]</span></code></p></td>
+<td class="text-left"><p>sp³ carbon</p></td>
+<td class="text-left"><p>carbonyl C (X3)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Hn</span></code></p></td>
+<td class="text-left"><p>explicit <strong>hydrogen count</strong></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[OH1]</span></code></p></td>
+<td class="text-left"><p>hydroxyl oxygen</p></td>
+<td class="text-left"><p>ether oxygen (H0)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">v</span> <span class="pre">n</span></code></p></td>
+<td class="text-left"><p><strong>valence electrons</strong> (rarely used)</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[Nv3]</span></code></p></td>
+<td class="text-left"><p>neutral amine N</p></td>
+<td class="text-left"><p>quaternary N⁺</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">R</span></code></p></td>
+<td class="text-left"><p>atom is in a ring (boolean)</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[CR]</span></code></p></td>
+<td class="text-left"><p>cyclohexane C</p></td>
+<td class="text-left"><p>chain C</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">r</span> <span class="pre">n</span></code></p></td>
+<td class="text-left"><p>in a ring of size n</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[Cr6]</span></code></p></td>
+<td class="text-left"><p>benzene C</p></td>
+<td class="text-left"><p>cyclopropane C (r3)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">+n</span></code>, <code class="docutils literal notranslate"><span class="pre">-n</span></code></p></td>
+<td class="text-left"><p>charge</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[N+]</span></code></p></td>
+<td class="text-left"><p>ammonium</p></td>
+<td class="text-left"><p>neutral N</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">!</span></code></p></td>
+<td class="text-left"><p>logical NOT</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[!O]</span></code></p></td>
+<td class="text-left"><p>everything but O</p></td>
+<td class="text-left"><p>O</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">;</span></code></p></td>
+<td class="text-left"><p>logical AND (within atom expr.)</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[C;H3]</span></code></p></td>
+<td class="text-left"><p>methyl C</p></td>
+<td class="text-left"><p>secondary C</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">,</span></code></p></td>
+<td class="text-left"><p>logical OR</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[O,N]</span></code></p></td>
+<td class="text-left"><p>O or N</p></td>
+<td class="text-left"><p>others</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">$()</span></code></p></td>
+<td class="text-left"><p><strong>recursive</strong> subpattern</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[$([CX4][OX2H])]</span></code></p></td>
+<td class="text-left"><p>alcohol</p></td>
+<td class="text-left"><p>carbonyl</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="b-bond-expressions">
+<h2>b. Bond Expressions<a class="headerlink" href="#b-bond-expressions" title="Link to this heading">#</a></h2>
+<p>Outside atom brackets, characters define <strong>bond types</strong>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Symbol</p></th>
+<th class="head text-left"><p>Meaning</p></th>
+<th class="head text-left"><p>Example</p></th>
+<th class="head text-left"><p>Matches</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
+<td class="text-left"><p>single</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">CC</span></code> or <code class="docutils literal notranslate"><span class="pre">C-C</span></code></p></td>
+<td class="text-left"><p>sigma bonds</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">=</span></code></p></td>
+<td class="text-left"><p>double</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">C=O</span></code></p></td>
+<td class="text-left"><p>carbonyl</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">#</span></code></p></td>
+<td class="text-left"><p>triple</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">C#N</span></code></p></td>
+<td class="text-left"><p>nitrile</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">:</span></code></p></td>
+<td class="text-left"><p>aromatic bond</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">c1ccccc1</span></code></p></td>
+<td class="text-left"><p>benzene</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">~</span></code></p></td>
+<td class="text-left"><p>any bond (wildcard)</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">C~O</span></code></p></td>
+<td class="text-left"><p>single/double/etc.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">&#64;</span></code></p></td>
+<td class="text-left"><p>ring bond (stereo)</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[C&#64;H]</span></code></p></td>
+<td class="text-left"><p>stereochem.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">!</span></code></p></td>
+<td class="text-left"><p>NOT a bond type</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">!&#64;</span></code></p></td>
+<td class="text-left"><p>non-ring bond</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="c-logic-and-grouping">
+<h2>c. Logic and Grouping<a class="headerlink" href="#c-logic-and-grouping" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Syntax</p></th>
+<th class="head text-left"><p>Meaning</p></th>
+<th class="head text-left"><p>Example</p></th>
+<th class="head text-left"><p>Comment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[C,N]</span></code></p></td>
+<td class="text-left"><p>carbon OR nitrogen</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[O,N,S]</span></code> = heteroatoms</p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[C;H3]</span></code></p></td>
+<td class="text-left"><p>carbon AND 3 hydrogens</p></td>
+<td class="text-left"><p>methyl carbon</p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[!O;!N]</span></code></p></td>
+<td class="text-left"><p>not O AND not N</p></td>
+<td class="text-left"><p>hydrocarbon atoms</p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">$(</span> <span class="pre">...</span> <span class="pre">)</span></code></p></td>
+<td class="text-left"><p>recursive/embedded subpattern</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[$(C(=O)O)]</span></code> = carboxyl group</p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">()</span></code></p></td>
+<td class="text-left"><p>parentheses for order grouping</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[C;$(=O)]</span></code></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Meaning of “X” and related symbols</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Symbol</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>X</strong></p></td>
+<td><p><em>connectivity number</em> (count of σ-bonded neighbors)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[CX4]</span></code> = sp³ carbon</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>v</strong></p></td>
+<td><p><em>valence</em> (number of bonded electrons)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[Nv3]</span></code> = trivalent nitrogen</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>H</strong></p></td>
+<td><p>number of attached hydrogens</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[OH1]</span></code> = hydroxyl O</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>R</strong></p></td>
+<td><p>ring membership (1 = in a ring)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[CR1]</span></code> = ring carbon</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>r</strong></p></td>
+<td><p>ring size</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[Cr6]</span></code> = in a 6-membered ring</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>+ / −</strong></p></td>
+<td><p>charge</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[N+]</span></code>, <code class="docutils literal notranslate"><span class="pre">[O-]</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>!</strong></p></td>
+<td><p>NOT operator</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[!O]</span></code> = any atom except O</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>&amp; , ;</strong></p></td>
+<td><p>AND/OR connectors</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[C;H3]</span></code>, <code class="docutils literal notranslate"><span class="pre">[C,N]</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="smarts-patterns">
+<h1>3. SMARTS Patterns<a class="headerlink" href="#smarts-patterns" title="Link to this heading">#</a></h1>
+<section id="common-patterns">
+<h2>Common Patterns<a class="headerlink" href="#common-patterns" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>SMARTS Pattern</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>Example Match</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">*</span></code></p></td>
+<td><p>Any atom</p></td>
+<td><p>Matches all atoms</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">#6</span></code></p></td>
+<td><p>Carbon (atomic number 6)</p></td>
+<td><p>Matches any carbon atom</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">C</span></code></p></td>
+<td><p>Aliphatic carbon</p></td>
+<td><p>Matches non-aromatic C</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">c</span></code></p></td>
+<td><p>Aromatic carbon</p></td>
+<td><p>Matches benzene ring carbon</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">N</span></code></p></td>
+<td><p>Aliphatic nitrogen</p></td>
+<td><p>Matches amines, etc.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">n</span></code></p></td>
+<td><p>Aromatic nitrogen</p></td>
+<td><p>Matches pyridine-type N</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">[O;H1]</span></code></p></td>
+<td><p>Hydroxyl oxygen</p></td>
+<td><p>Matches -OH group</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">[CX3]=O</span></code></p></td>
+<td><p>Carbon (sp2) double bonded to O</p></td>
+<td><p>Carbonyl group</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">[OX1H]</span></code></p></td>
+<td><p>Single-bonded OH group</p></td>
+<td><p>Alcohol or acid OH</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">[$([NH2]),$([NH])</span></code></p></td>
+<td><p>Primary or secondary amine</p></td>
+<td><p>Amine groups</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">[!#6]</span></code></p></td>
+<td><p>Any atom except carbon</p></td>
+<td><p>e.g., O, N, S, etc.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">[C;H3]</span></code></p></td>
+<td><p>Methyl carbon</p></td>
+<td><p>Terminal CH₃ group</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">[R]</span></code></p></td>
+<td><p>Any atom in a ring</p></td>
+<td><p>Benzene, cyclohexane atoms</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">[R0]</span></code></p></td>
+<td><p>Atom not in a ring</p></td>
+<td><p>Linear chain atoms</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">[cH]</span></code></p></td>
+<td><p>Aromatic hydrogen</p></td>
+<td><p>e.g., hydrogen on benzene ring</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">C(=O)O</span></code></p></td>
+<td><p>Carboxylic acid group (non-generic)</p></td>
+<td><p>Acetic acid</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">[C&#64;H](N)(C)</span></code></p></td>
+<td><p>Chiral carbon (with wedge notation)</p></td>
+<td><p>Specific stereochemistry</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="functional-group-patterns">
+<h2>Functional Group Patterns<a class="headerlink" href="#functional-group-patterns" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Functional Group</p></th>
+<th class="head text-left"><p>SMARTS Pattern</p></th>
+<th class="head text-left"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Alcohol</strong></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[CX4][OX2H]</span></code></p></td>
+<td class="text-left"><p>sp³ C bonded to hydroxyl</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Ether</strong></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[OD2]([CX4])[CX4]</span></code></p></td>
+<td class="text-left"><p>O with two sp³ C neighbors</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Phenol</strong></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[c][OX2H]</span></code></p></td>
+<td class="text-left"><p>aromatic C–OH</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Aldehyde</strong></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[CX3H1](=O)[#6]</span></code></p></td>
+<td class="text-left"><p>terminal carbonyl H</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Ketone</strong></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[CX3](=O)[#6]</span></code></p></td>
+<td class="text-left"><p>internal carbonyl</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Carboxylic acid</strong></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[CX3](=O)[OX2H1]</span></code></p></td>
+<td class="text-left"><p>–C(=O)OH</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Ester</strong></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[CX3](=O)[OX2][CX4]</span></code></p></td>
+<td class="text-left"><p>–C(=O)O–</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Amide</strong></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[NX3][CX3](=O)</span></code></p></td>
+<td class="text-left"><p>N attached to carbonyl</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Amine (primary/secondary)</strong></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[NX3;H2,H1;!$(NC=O)]</span></code></p></td>
+<td class="text-left"><p>excludes amides</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Aromatic ring</strong></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">c1ccccc1</span></code></p></td>
+<td class="text-left"><p>benzene 6-ring</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Halogen</strong></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[F,Cl,Br,I]</span></code></p></td>
+<td class="text-left"><p>halogen atoms</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Thiol</strong></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[SX2H]</span></code></p></td>
+<td class="text-left"><p>–SH</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Disulfide</strong></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[SX2]S</span></code></p></td>
+<td class="text-left"><p>–S–S–</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Carboxylate anion</strong></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[CX3](=O)[O-]</span></code></p></td>
+<td class="text-left"><p>deprotonated acid</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="using-smarts-in-rdkit">
+<h1>4. Using SMARTS in RDKit<a class="headerlink" href="#using-smarts-in-rdkit" title="Link to this heading">#</a></h1>
+<p>SMARTS is a notation and language specification—a symbolic way to describe structural patterns in molecules. However, what actually happens when you run a SMARTS query depends on how the SMARTS parser and matcher are implemented in the cheminformatics toolkit you are using. Different toolkits such as RDKit, Open Babel, or Daylight, may interpret certain SMARTS features differently based on how they handle aromaticity, implicit hydrogens, or valence rules.</p>
+<p>In this section, we focus on how RDKit interprets and applies SMARTS patterns. Understanding these nuances is essential because the same SMARTS expression can yield different results across toolkits. By exploring RDKit’s parsing behavior, matching functions, and query options, you’ll gain insight into how SMARTS are operationalized within a specific chemical perception engine—and why awareness of these implementation details matters in cheminformatics workflows.</p>
+<p>When RDKit reads a SMARTS string, it doesn’t treat it as plain text — it compiles it into a special internal object called a query molecule. This object defines a set of atom and bond constraints that RDKit can test against other molecules. The process works conceptually as follows:</p>
+<ol class="arabic simple">
+<li><p>Parsing – The SMARTS string (e.g., [O;D2]) is read by <code class="docutils literal notranslate"><span class="pre">Chem.MolFromSmarts()</span></code>, which checks for valid syntax and builds an RDKit molecule object. This is the same type of object you get when you read a SMILES string, but it has special properties for querying. It has the same Python type as a normal molecule (<code class="docutils literal notranslate"><span class="pre">rdkit.Chem.rdchem.Mol</span></code>), but internally its atoms are QueryAtoms and its bonds are QueryBonds—specialized objects that store logical rules instead of fixed chemical properties.</p></li>
+<li><p>Compilation – RDKit translates these symbolic queries into a query graph, a data structure optimized for substructure searching.</p></li>
+<li><p>Matching – When you call <code class="docutils literal notranslate"><span class="pre">mol.HasSubstructMatch(patt)</span></code> or <code class="docutils literal notranslate"><span class="pre">mol.GetSubstructMatches(patt)</span></code>, RDKit walks this query graph, comparing each atom and bond in the target molecule against the constraints in the query molecule.</p></li>
+<li><p>Result Handling – Matches are returned as tuples of atom indices (for example, which atoms in ethanol match the [OX2H] pattern).</p></li>
+</ol>
+<p>Because RDKit relies on its own definitions of aromaticity, valence, and hydrogen handling, the results of a SMARTS query reflect RDKit’s chemical perception model rather than an absolute SMARTS truth.</p>
+<section id="rdkit-functions-and-methods-for-smarts">
+<h2>4.1 RDKit Functions and Methods for SMARTS<a class="headerlink" href="#rdkit-functions-and-methods-for-smarts" title="Link to this heading">#</a></h2>
+<p>Working with SMARTS in RDKit involves a mix of functions (usually from <code class="docutils literal notranslate"><span class="pre">rdkit.Chem</span></code>) and methods (attached to molecule objects). The table below summarizes the most common ones used interactively with SMARTS patterns in Jupyter Lab.</p>
+<blockquote>
+<div><p><strong>Note:</strong> RDKit functions that start with <code class="docutils literal notranslate"><span class="pre">Chem.</span></code> generally <em>create or convert</em> molecule objects, while methods called on a molecule (e.g., <code class="docutils literal notranslate"><span class="pre">mol.HasSubstructMatch(patt)</span></code>) act upon those objects.</p>
+</div></blockquote>
+<hr class="docutils" />
+<section id="table-common-rdkit-functions-and-methods-for-smarts-workflows">
+<h3>Table: Common RDKit Functions and Methods for SMARTS Workflows<a class="headerlink" href="#table-common-rdkit-functions-and-methods-for-smarts-workflows" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Category</p></th>
+<th class="head text-left"><p>Function / Method</p></th>
+<th class="head text-left"><p>Description</p></th>
+<th class="head text-left"><p>Typical Use Case</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Create / Parse</strong></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Chem.MolFromSmarts(s)</span></code></p></td>
+<td class="text-left"><p>Parses a SMARTS string into a <strong>query molecule</strong> (<code class="docutils literal notranslate"><span class="pre">Mol</span></code> with <code class="docutils literal notranslate"><span class="pre">QueryAtoms</span></code>). Returns <code class="docutils literal notranslate"><span class="pre">None</span></code> if invalid.</p></td>
+<td class="text-left"><p>Create a SMARTS pattern: <code class="docutils literal notranslate"><span class="pre">patt</span> <span class="pre">=</span> <span class="pre">Chem.MolFromSmarts(&quot;[O;D2]&quot;)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Chem.MolToSmarts(mol)</span></code></p></td>
+<td class="text-left"><p>Converts a molecule back into its SMARTS string representation.</p></td>
+<td class="text-left"><p>Inspect or export a query molecule.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Chem.MolFromSmiles(smi)</span></code></p></td>
+<td class="text-left"><p>Parses a SMILES into a <em>regular</em> molecule (for targets).</p></td>
+<td class="text-left"><p>Define target molecules for substructure searching.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Search / Match</strong></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">mol.HasSubstructMatch(patt)</span></code></p></td>
+<td class="text-left"><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the molecule matches the SMARTS pattern.</p></td>
+<td class="text-left"><p>Quick Boolean tests.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">mol.GetSubstructMatches(patt)</span></code></p></td>
+<td class="text-left"><p>Returns tuples of atom indices that match the SMARTS pattern.</p></td>
+<td class="text-left"><p>Locate and highlight matched atoms.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">mol.GetSubstructMatch(patt)</span></code></p></td>
+<td class="text-left"><p>Returns the <em>first</em> match only (single tuple).</p></td>
+<td class="text-left"><p>Simpler alternative for small molecules.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Query Introspection</strong></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">atom.DescribeQuery()</span></code></p></td>
+<td class="text-left"><p>Returns a text description of the logical tests for a query atom.</p></td>
+<td class="text-left"><p>Explore how RDKit interprets your SMARTS internally.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">bond.DescribeQuery()</span></code></p></td>
+<td class="text-left"><p>Describes bond-level query logic.</p></td>
+<td class="text-left"><p>Examine SMARTS bond conditions.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Chem.MolToMolBlock(patt)</span></code></p></td>
+<td class="text-left"><p>Prints the query molecule in MOL-block format, including SMARTS info.</p></td>
+<td class="text-left"><p>Debugging or visualization.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Visualization (Jupyter-friendly)</strong></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">rdkit.Chem</span> <span class="pre">import</span> <span class="pre">Draw</span></code></p></td>
+<td class="text-left"><p>RDKit drawing submodule.</p></td>
+<td class="text-left"><p>Must import to render structures in notebooks.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Draw.MolToImage(mol,</span> <span class="pre">size=(200,200))</span></code></p></td>
+<td class="text-left"><p>Creates a PIL image of a molecule or SMARTS match.</p></td>
+<td class="text-left"><p>Display molecules inline in Jupyter Lab.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Draw.MolsToGridImage([...])</span></code></p></td>
+<td class="text-left"><p>Displays multiple molecules side-by-side (optionally with highlights or legends).</p></td>
+<td class="text-left"><p>Compare pattern matches visually.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Batch Searching</strong></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Chem.SubstructLibrary()</span></code></p></td>
+<td class="text-left"><p>Builds an indexed library for fast bulk substructure queries.</p></td>
+<td class="text-left"><p>Screening many molecules against one SMARTS.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Reactions / Advanced</strong></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Chem.ReactionFromSmarts(s)</span></code></p></td>
+<td class="text-left"><p>Parses reaction SMARTS into an RDKit reaction object.</p></td>
+<td class="text-left"><p>For SMARTS-based transformations.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">rxn.RunReactants((mol1,</span> <span class="pre">...))</span></code></p></td>
+<td class="text-left"><p>Applies reaction SMARTS to one or more molecules.</p></td>
+<td class="text-left"><p>Explore reaction mapping or retrosynthesis.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="jupyter-specific-notes">
+<h3>Jupyter-Specific Notes<a class="headerlink" href="#jupyter-specific-notes" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>In <strong>Jupyter Lab</strong>, RDKit’s <code class="docutils literal notranslate"><span class="pre">Draw</span></code> module automatically integrates with IPython’s display system. Simply placing a molecule as the last line in a code cell will render it as an image:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Draw</span>
+
+<span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;CCO&quot;</span><span class="p">)</span>
+<span class="n">mol</span>  <span class="c1"># ← rendered automatically in Jupyter</span>
+</pre></div>
+</div>
+</li>
+<li><p>Outside Jupyter (e.g., VS Code terminal or a script), you must explicitly call <code class="docutils literal notranslate"><span class="pre">Draw.MolToImage()</span></code> or <code class="docutils literal notranslate"><span class="pre">Draw.ShowMol()</span></code> to view molecules.</p></li>
+<li><p>To highlight SMARTS matches in teaching examples, you can use:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">patt</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmarts</span><span class="p">(</span><span class="s2">&quot;[OX2H]&quot;</span><span class="p">)</span>
+<span class="n">matches</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">GetSubstructMatches</span><span class="p">(</span><span class="n">patt</span><span class="p">)</span>
+<span class="n">Draw</span><span class="o">.</span><span class="n">MolToImage</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">highlightAtoms</span><span class="o">=</span><span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">matches</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">m</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Draw</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+
+<span class="c1"># Step 1: Create the target molecule from SMILES</span>
+<span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;C(CO)CO&quot;</span><span class="p">)</span>  <span class="c1"># ethanol</span>
+
+<span class="c1"># Step 2: Create the SMARTS query and store its string form</span>
+<span class="n">patt</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmarts</span><span class="p">(</span><span class="s2">&quot;[OX2H]&quot;</span><span class="p">)</span>  <span class="c1"># alcohol oxygen pattern</span>
+<span class="n">smarts_string</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolToSmarts</span><span class="p">(</span><span class="n">patt</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&amp;&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>  <span class="c1"># convert to string for display</span>
+
+<span class="c1"># Step 3: Test for substructure match</span>
+<span class="k">if</span> <span class="n">mol</span><span class="o">.</span><span class="n">HasSubstructMatch</span><span class="p">(</span><span class="n">patt</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Match found!&quot;</span><span class="p">)</span>
+
+<span class="c1"># Step 4: Get substructure matches and print them</span>
+<span class="n">matches</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">GetSubstructMatches</span><span class="p">(</span><span class="n">patt</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matched atom indices:&quot;</span><span class="p">,</span> <span class="n">matches</span><span class="p">)</span>
+
+<span class="c1"># Step 5: Inspect object types</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mol type:&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">mol</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;patt type:&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">patt</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;smarts_string type:&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">smarts_string</span><span class="p">))</span>
+
+<span class="c1"># Step 6: Highlight matching atoms</span>
+<span class="n">highlight_atoms</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">matches</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">m</span><span class="p">]</span>
+
+<span class="c1"># Step 7: Draw molecule with atom indices, highlights, and SMARTS legend</span>
+<span class="n">drawer</span> <span class="o">=</span> <span class="n">Draw</span><span class="o">.</span><span class="n">MolDraw2DCairo</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="n">opts</span> <span class="o">=</span> <span class="n">drawer</span><span class="o">.</span><span class="n">drawOptions</span><span class="p">()</span>
+<span class="n">opts</span><span class="o">.</span><span class="n">addAtomIndices</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># show atom index numbers</span>
+
+<span class="c1"># ✅ Add the legend argument *inside* DrawMolecule()</span>
+<span class="n">legend_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;SMARTS: </span><span class="si">{</span><span class="n">smarts_string</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="n">drawer</span><span class="o">.</span><span class="n">DrawMolecule</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">highlightAtoms</span><span class="o">=</span><span class="n">highlight_atoms</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="n">legend_text</span><span class="p">)</span>
+<span class="n">drawer</span><span class="o">.</span><span class="n">FinishDrawing</span><span class="p">()</span>
+
+<span class="c1"># Step 8: Display image in Jupyter</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">drawer</span><span class="o">.</span><span class="n">GetDrawingText</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Match found!
+Matched atom indices: ((2,), (4,))
+mol type: &lt;class &#39;rdkit.Chem.rdchem.Mol&#39;&gt;
+patt type: &lt;class &#39;rdkit.Chem.rdchem.Mol&#39;&gt;
+smarts_string type: &lt;class &#39;str&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/8b482931f54fad1801afbf5a248d6588084a88a8179cb55a4c959e29c105d461.png" src="../../../_images/8b482931f54fad1801afbf5a248d6588084a88a8179cb55a4c959e29c105d461.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+
+<span class="n">molecules</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;ethanol&quot;</span><span class="p">:</span> <span class="s2">&quot;CCO&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;acetone&quot;</span><span class="p">:</span> <span class="s2">&quot;CC(=O)C&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;acetic_acid&quot;</span><span class="p">:</span> <span class="s2">&quot;CC(=O)O&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ethyl_acetate&quot;</span><span class="p">:</span> <span class="s2">&quot;CCOC(=O)C&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;aniline&quot;</span><span class="p">:</span> <span class="s2">&quot;c1ccccc1N&quot;</span>
+<span class="p">}</span>
+
+<span class="n">patterns</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;alcohol&quot;</span><span class="p">:</span> <span class="s2">&quot;[CX4][OX2H]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ketone&quot;</span><span class="p">:</span> <span class="s2">&quot;[CX3](=O)[#6]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ester&quot;</span><span class="p">:</span> <span class="s2">&quot;[CX3](=O)[OX2][CX4]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;amine&quot;</span><span class="p">:</span> <span class="s2">&quot;[NX3;H2,H1;!$(NC=O)]&quot;</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">smi</span> <span class="ow">in</span> <span class="n">molecules</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smi</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">smi</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">pname</span><span class="p">,</span> <span class="n">smarts</span> <span class="ow">in</span> <span class="n">patterns</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">patt</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmarts</span><span class="p">(</span><span class="n">smarts</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">pname</span><span class="si">:</span><span class="s2">8s</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">mol</span><span class="o">.</span><span class="n">HasSubstructMatch</span><span class="p">(</span><span class="n">patt</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ethanol: CCO
+  alcohol  -&gt; True
+  ketone   -&gt; False
+  ester    -&gt; False
+  amine    -&gt; False
+
+acetone: CC(=O)C
+  alcohol  -&gt; False
+  ketone   -&gt; True
+  ester    -&gt; False
+  amine    -&gt; False
+
+acetic_acid: CC(=O)O
+  alcohol  -&gt; False
+  ketone   -&gt; True
+  ester    -&gt; False
+  amine    -&gt; False
+
+ethyl_acetate: CCOC(=O)C
+  alcohol  -&gt; False
+  ketone   -&gt; True
+  ester    -&gt; True
+  amine    -&gt; False
+
+aniline: c1ccccc1N
+  alcohol  -&gt; False
+  ketone   -&gt; False
+  ester    -&gt; False
+  amine    -&gt; True
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="smarts-explorer-activity">
+<h1>5. SMARTS Explorer Activity<a class="headerlink" href="#smarts-explorer-activity" title="Link to this heading">#</a></h1>
+<p>Run the following code and then use the SMARTS explorer to answer the following questions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">molecules</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Ethanol&quot;</span><span class="p">:</span> <span class="s2">&quot;CCO&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Explicit Ethanol&quot;</span><span class="p">:</span> <span class="s2">&quot;CC[OH]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Acetone&quot;</span><span class="p">:</span> <span class="s2">&quot;CC(=O)C&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Acetic acid&quot;</span><span class="p">:</span> <span class="s2">&quot;CC(=O)O&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Ethyl acetate&quot;</span><span class="p">:</span> <span class="s2">&quot;CCOC(=O)C&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Phenol&quot;</span><span class="p">:</span> <span class="s2">&quot;c1ccc(cc1)O&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Aniline&quot;</span><span class="p">:</span> <span class="s2">&quot;c1ccccc1N&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Dimethyl ether&quot;</span><span class="p">:</span> <span class="s2">&quot;COC&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Toluene&quot;</span><span class="p">:</span> <span class="s2">&quot;Cc1ccccc1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Nitrobenzene&quot;</span><span class="p">:</span> <span class="s2">&quot;c1ccc(cc1)[N+](=O)[O-]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2-nitropropane&quot;</span><span class="p">:</span> <span class="s2">&quot;CC(C)[N+](=O)[O-]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Methanol&quot;</span><span class="p">:</span> <span class="s2">&quot;CO&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Acetamide&quot;</span><span class="p">:</span> <span class="s2">&quot;CC(=O)N&quot;</span><span class="p">,</span>   
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Draw</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">smarts_lab</span><span class="p">(</span><span class="n">smarts_pattern</span><span class="p">):</span>
+    <span class="n">patt</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmarts</span><span class="p">(</span><span class="n">smarts_pattern</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">patt</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Invalid SMARTS pattern: `</span><span class="si">{</span><span class="n">smarts_pattern</span><span class="si">}</span><span class="s2">`&quot;</span><span class="p">))</span>
+        <span class="k">return</span>
+    <span class="n">images</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">legends</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">smi</span> <span class="ow">in</span> <span class="n">molecules</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smi</span><span class="p">)</span>
+        <span class="n">matches</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">GetSubstructMatches</span><span class="p">(</span><span class="n">patt</span><span class="p">)</span>
+        <span class="n">highlight</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">matches</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">m</span><span class="p">]</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">Draw</span><span class="o">.</span><span class="n">MolToImage</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">200</span><span class="p">),</span> <span class="n">highlightAtoms</span><span class="o">=</span><span class="n">highlight</span><span class="p">)</span>
+        <span class="n">images</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+        <span class="n">legends</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;### Pattern: `</span><span class="si">{</span><span class="n">smarts_pattern</span><span class="si">}</span><span class="s2">`&quot;</span><span class="p">))</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Draw</span><span class="o">.</span><span class="n">MolsToGridImage</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">molecules</span><span class="o">.</span><span class="n">values</span><span class="p">()],</span>
+        <span class="n">legends</span><span class="o">=</span><span class="n">legends</span><span class="p">,</span>
+        <span class="n">highlightAtomLists</span><span class="o">=</span><span class="p">[</span>
+            <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">GetSubstructMatches</span><span class="p">(</span><span class="n">patt</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">m</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">molecules</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+        <span class="p">],</span>
+        <span class="n">subImgSize</span><span class="o">=</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">200</span><span class="p">),</span>
+        <span class="n">molsPerRow</span><span class="o">=</span><span class="mi">4</span>
+    <span class="p">))</span>
+
+<span class="n">widgets</span><span class="o">.</span><span class="n">interact</span><span class="p">(</span>
+    <span class="n">smarts_lab</span><span class="p">,</span>
+    <span class="n">smarts_pattern</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span>
+        <span class="n">value</span><span class="o">=</span><span class="s1">&#39;[CX4][OX2H]&#39;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s1">&#39;SMARTS:&#39;</span><span class="p">,</span>
+        <span class="n">placeholder</span><span class="o">=</span><span class="s1">&#39;Type a SMARTS pattern…&#39;</span><span class="p">,</span>
+        <span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "94cda80294944868a5ae04d113f5311d", "version_major": 2, "version_minor": 0}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.smarts_lab(smarts_pattern)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<section id="comparing-groups">
+<h2>Comparing groups<a class="headerlink" href="#comparing-groups" title="Link to this heading">#</a></h2>
+<p>Paste the following groups into the SMARTS Explorer and see what they match.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Topic</p></th>
+<th class="head text-left"><p>Try this SMARTS</p></th>
+<th class="head text-left"><p>Expected Outcome</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Alcohol vs Carbonyl</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[CX4][OX2H]</span></code></p></td>
+<td class="text-left"><p>Highlights ethanol &amp; phenol but not acetone</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Carbonyl group</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[CX3]=O</span></code></p></td>
+<td class="text-left"><p>Highlights acetone, acetic acid, ethyl acetate</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Ketone group</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[#6][CX3](=O)[#6]</span></code></p></td>
+<td class="text-left"><p>Highlights acetone only</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Carboxylic acid</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[CX3](=O)[OX2H1]</span></code></p></td>
+<td class="text-left"><p>Only acetic acid</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Ester linkage</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[CX3](=O)[OX2][CX4]</span></code></p></td>
+<td class="text-left"><p>Only ethyl acetate</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Amine only</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[NX3;!$(NC=O);!$(N=O)]</span></code></p></td>
+<td class="text-left"><p>Aniline only</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Amide only</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[NX3][CX3](=O)</span></code></p></td>
+<td class="text-left"><p>Only acetamide</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Hydrocarbon chain C</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">[CX4;!R]</span></code></p></td>
+<td class="text-left"><p>Aliphatic chains only</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Aromatic ring</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">c1ccccc1</span></code></p></td>
+<td class="text-left"><p>All benzene derivatives</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="comparing-ether-patterns">
+<h2>Comparing ether patterns<a class="headerlink" href="#comparing-ether-patterns" title="Link to this heading">#</a></h2>
+<p>Paste the following ehter patterns into the SMARTS Explorer to see how there are different ways of generating SMARTS patterns.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>SMARTS Pattern</p></th>
+<th class="head text-left"><p>type</p></th>
+<th class="head text-left"><p>comments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>[O;D2]</p></td>
+<td class="text-left"><p>minimalist</p></td>
+<td class="text-left"><p>Ether oxygen with 2 carbons</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>[#6X4]-[OX2]-[#6X4]</p></td>
+<td class="text-left"><p>Bond based</p></td>
+<td class="text-left"><p>each carbon has 4 bonds</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><a class="reference internal" href="#%5BCX4%5D"><span class="xref myst">OD2</span></a>[CX4]</p></td>
+<td class="text-left"><p>Bracket based</p></td>
+<td class="text-left"><p>O with 2 sp³ C neighbors</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="activity">
+<h2>Activity<a class="headerlink" href="#activity" title="Link to this heading">#</a></h2>
+<p>Provide SMARTS patterns that do the following.  You can test them in the SMARTS Explorer above.</p>
+<ol class="arabic simple">
+<li><p>Show nitro group of nitrobenzene and 2-nitropropane</p></li>
+<li><p>Show the nitro group of nitrobenzene but not 2-nitropropane</p></li>
+<li><p>Show the nitro group of 2-nitropropane but not nitrobenzene</p></li>
+<li><p>Show just the nitrogen of the nitro group in nitrobenzene and 2-nitropropane (use recursive SMARTS)</p></li>
+<li><p>Show the alcohol group of all alcohols</p></li>
+<li><p>Show the alcohol group of ethanol but not phenol</p></li>
+<li><p>Show the alcohol group of phenol but not ethanol</p></li>
+<li><p>Show the ether group of dimethyl ether but not ethyl acetate</p></li>
+<li><p>Show all C=O bonds</p></li>
+<li><p>Show amines and amides but not nitro or nitroso compounds</p></li>
+</ol>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="assignment">
+<h1>6.  Assignment<a class="headerlink" href="#assignment" title="Link to this heading">#</a></h1>
+<p>You should use an AI to assist you in this assignment. The following code cell takes a dictionary of amino acids and their SMILES strings and uses the RDKit library to create a polypeptide from 5 randomly selected amino acids.  Your job is to create a new Jupyter notebook called <strong>Amino Acid Functional Group Explorer</strong> that identifies which functional groups are present in your amino acid, and displays an image for each functional group with the name of the group as the label and the group(s) highlighted on the polypeptide.</p>
+<p>Two assist you I have also created a dictionary of common functional groups and their SMARTS patterns. You can use this to identify the functional groups in your polypeptide.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#This program will build and display a polypeptide from 5 randomly selected amino acids from a python dictionary</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">AllChem</span><span class="p">,</span> <span class="n">Draw</span>
+
+<span class="c1"># Step 1: Define amino acids (simplified SMILES, unprotected)</span>
+<span class="n">amino_acids</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Gly&quot;</span><span class="p">:</span> <span class="s2">&quot;NCC(=O)O&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Ala&quot;</span><span class="p">:</span> <span class="s2">&quot;NCC(C)C(=O)O&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Val&quot;</span><span class="p">:</span> <span class="s2">&quot;NCC(C(C)C)C(=O)O&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Leu&quot;</span><span class="p">:</span> <span class="s2">&quot;NCC(CC(C)C)C(=O)O&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Ile&quot;</span><span class="p">:</span> <span class="s2">&quot;NCC(C(C)C)C(=O)O&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Ser&quot;</span><span class="p">:</span> <span class="s2">&quot;NCC(CO)C(=O)O&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Thr&quot;</span><span class="p">:</span> <span class="s2">&quot;NCC(C(O)C)C(=O)O&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Asp&quot;</span><span class="p">:</span> <span class="s2">&quot;NCC(C(=O)O)C(=O)O&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Glu&quot;</span><span class="p">:</span> <span class="s2">&quot;NCC(CC(=O)O)C(=O)O&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Lys&quot;</span><span class="p">:</span> <span class="s2">&quot;NCC(CCCCN)C(=O)O&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Arg&quot;</span><span class="p">:</span> <span class="s2">&quot;NCC(CCCNC(N)=N)C(=O)O&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Phe&quot;</span><span class="p">:</span> <span class="s2">&quot;NCC(Cc1ccccc1)C(=O)O&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Tyr&quot;</span><span class="p">:</span> <span class="s2">&quot;NCC(Cc1ccc(O)cc1)C(=O)O&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Trp&quot;</span><span class="p">:</span> <span class="s2">&quot;NCC(Cc1c[nH]c2ccccc12)C(=O)O&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;His&quot;</span><span class="p">:</span> <span class="s2">&quot;NCC(Cc1cncn1)C(=O)O&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Asn&quot;</span><span class="p">:</span> <span class="s2">&quot;NCC(C(=O)N)C(=O)O&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Gln&quot;</span><span class="p">:</span> <span class="s2">&quot;NCC(CC(=O)N)C(=O)O&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Met&quot;</span><span class="p">:</span> <span class="s2">&quot;NCC(CSC)C(=O)O&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Cys&quot;</span><span class="p">:</span> <span class="s2">&quot;NCC(CS)C(=O)O&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Pro&quot;</span><span class="p">:</span> <span class="s2">&quot;N1CCC[C@H](C(=O)O)N1&quot;</span>
+<span class="p">}</span>
+
+<span class="c1"># Step 2: Randomly select 5 amino acids</span>
+<span class="n">selected</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">amino_acids</span><span class="o">.</span><span class="n">items</span><span class="p">()),</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Selected amino acids:&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">aa</span> <span class="k">for</span> <span class="n">aa</span><span class="p">,</span> <span class="n">smi</span> <span class="ow">in</span> <span class="n">selected</span><span class="p">])</span>
+
+<span class="c1"># Step 3: Convert to RDKit molecules</span>
+<span class="n">mols</span> <span class="o">=</span> <span class="p">[</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smi</span><span class="p">)</span> <span class="k">for</span> <span class="n">aa</span><span class="p">,</span> <span class="n">smi</span> <span class="ow">in</span> <span class="n">selected</span><span class="p">]</span>
+
+<span class="c1"># Step 4: Use RDKit’s peptide builder (requires RDKit &gt;=2022)</span>
+<span class="c1"># if not available, can use a manual connection function</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">rdChemReactions</span>
+
+<span class="c1"># Define generic peptide coupling reaction: acid + amine → amide + H2O</span>
+<span class="n">rxn</span> <span class="o">=</span> <span class="n">rdChemReactions</span><span class="o">.</span><span class="n">ReactionFromSmarts</span><span class="p">(</span><span class="s2">&quot;[C:1](=O)[O:2].[N:3]&gt;&gt;[C:1](=O)[N:3]&quot;</span><span class="p">)</span>
+
+<span class="c1"># Step 5: Iteratively build the chain</span>
+<span class="n">peptide</span> <span class="o">=</span> <span class="n">mols</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">next_mol</span> <span class="ow">in</span> <span class="n">mols</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+    <span class="n">prod</span> <span class="o">=</span> <span class="n">rxn</span><span class="o">.</span><span class="n">RunReactants</span><span class="p">((</span><span class="n">peptide</span><span class="p">,</span> <span class="n">next_mol</span><span class="p">))</span>
+    <span class="n">peptide</span> <span class="o">=</span> <span class="n">prod</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># take first product</span>
+    <span class="n">Chem</span><span class="o">.</span><span class="n">SanitizeMol</span><span class="p">(</span><span class="n">peptide</span><span class="p">)</span>
+
+<span class="c1"># Step 6: Display the final random pentapeptide</span>
+<span class="n">Draw</span><span class="o">.</span><span class="n">MolToImage</span><span class="p">(</span><span class="n">peptide</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">300</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Selected amino acids: [&#39;Glu&#39;, &#39;Ser&#39;, &#39;Leu&#39;, &#39;Gly&#39;, &#39;Ile&#39;]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[14:03:30] mapped atoms in the reactants were not mapped in the products.
+  unmapped numbers are: 2 
+</pre></div>
+</div>
+<img alt="../../../_images/b27a7e31fe62bfc7af53a8467264be6ba954a40cb52cd58441167eb10a45a57d.png" src="../../../_images/b27a7e31fe62bfc7af53a8467264be6ba954a40cb52cd58441167eb10a45a57d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">functional_groups</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># Core functional groups</span>
+    <span class="s2">&quot;Amine (primary/secondary/tertiary)&quot;</span><span class="p">:</span> <span class="s2">&quot;[NX3;!$(NC=O);!$([N]~[!#1;!#6])]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Carboxylic acid&quot;</span><span class="p">:</span> <span class="s2">&quot;[CX3](=O)[OX2H1]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Amide&quot;</span><span class="p">:</span> <span class="s2">&quot;[CX3](=O)[NX3]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Alcohol&quot;</span><span class="p">:</span> <span class="s2">&quot;[OX2H][CX4]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Phenol&quot;</span><span class="p">:</span> <span class="s2">&quot;c[OX2H]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Thiol&quot;</span><span class="p">:</span> <span class="s2">&quot;[SX2H]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Thioether&quot;</span><span class="p">:</span> <span class="s2">&quot;[SX2][CX4]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Ether&quot;</span><span class="p">:</span> <span class="s2">&quot;[OD2]([#6])[#6]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Ketone&quot;</span><span class="p">:</span> <span class="s2">&quot;[#6][CX3](=O)[#6]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Aldehyde&quot;</span><span class="p">:</span> <span class="s2">&quot;[CX3H1](=O)[#6]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Carboxylate (deprotonated acid)&quot;</span><span class="p">:</span> <span class="s2">&quot;[CX3](=O)[O-]&quot;</span><span class="p">,</span>
+    
+    <span class="c1"># Nitrogen-rich groups</span>
+    <span class="s2">&quot;Guanidinium&quot;</span><span class="p">:</span> <span class="s2">&quot;NC(=[NH2+])N&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Amidinium&quot;</span><span class="p">:</span> <span class="s2">&quot;NC(=N)N&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Imidazole&quot;</span><span class="p">:</span> <span class="s2">&quot;c1ncnc1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Indole&quot;</span><span class="p">:</span> <span class="s2">&quot;c1ccc2c(c1)[nH]cc2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Amine (aromatic)&quot;</span><span class="p">:</span> <span class="s2">&quot;c[NX3;!$(NC=O)]&quot;</span><span class="p">,</span>
+    
+    <span class="c1"># Sulfur groups</span>
+    <span class="s2">&quot;Disulfide&quot;</span><span class="p">:</span> <span class="s2">&quot;[SX2][SX2]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Thioester&quot;</span><span class="p">:</span> <span class="s2">&quot;[CX3](=O)[SX2]&quot;</span><span class="p">,</span>
+    
+    <span class="c1"># Acid derivatives</span>
+    <span class="s2">&quot;Ester&quot;</span><span class="p">:</span> <span class="s2">&quot;[CX3](=O)[OX2][CX4]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Carbamate&quot;</span><span class="p">:</span> <span class="s2">&quot;[NX3][CX3](=O)[OX2]&quot;</span><span class="p">,</span>
+    
+    <span class="c1"># Aromatic ring</span>
+    <span class="s2">&quot;Aromatic ring&quot;</span><span class="p">:</span> <span class="s2">&quot;a1aaaaa1&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "nbi"
+        },
+        kernelOptions: {
+            name: "nbi",
+            path: "./content/appendices/App_04"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'nbi'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="README.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../App_10/README.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Appendix 10: Supervised Machine Learning</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. What SMARTS is</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-anatomy-of-a-smarts-string">2. The “anatomy” of a SMARTS string</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-atom-expressions">a. Atom Expressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-bond-expressions">b. Bond Expressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-logic-and-grouping">c. Logic and Grouping</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#smarts-patterns">3. SMARTS Patterns</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-patterns">Common Patterns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functional-group-patterns">Functional Group Patterns</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#using-smarts-in-rdkit">4. Using SMARTS in RDKit</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rdkit-functions-and-methods-for-smarts">4.1 RDKit Functions and Methods for SMARTS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#table-common-rdkit-functions-and-methods-for-smarts-workflows">Table: Common RDKit Functions and Methods for SMARTS Workflows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-specific-notes">Jupyter-Specific Notes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#smarts-explorer-activity">5. SMARTS Explorer Activity</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-groups">Comparing groups</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-ether-patterns">Comparing ether patterns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#activity">Activity</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment">6.  Assignment</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Robert Belford
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright CC 4.0 2026 Robert Belford, additional info on each notebook.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <script async src="https://hypothes.is/embed.js"></script>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
